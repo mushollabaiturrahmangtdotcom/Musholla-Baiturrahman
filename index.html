@@ -48,11 +48,20 @@
             text-decoration: none;
         }
 
+        nav {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         nav a {
             color: #fff;
             text-decoration: none;
-            margin-left: 2rem;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.9rem;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -309,12 +318,28 @@
                 gap: 1rem;
             }
 
+            nav {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                width: 100%;
+            }
+
             nav a {
-                margin-left: 1rem;
+                text-align: center;
+                padding: 0.6rem;
+                font-size: 0.85rem;
+                background: rgba(212, 175, 55, 0.1);
+                border-radius: 5px;
+                margin: 0;
+            }
+
+            .logo {
+                font-size: 1.5rem;
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .info-grid {
@@ -322,7 +347,7 @@
             }
 
             .section h2 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .schedule-item {
@@ -333,6 +358,70 @@
             .schedule-item .date {
                 margin-bottom: 0.5rem;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .prayer-times {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+                padding: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+
+            .prayer-times {
+                grid-template-columns: 1fr;
+            }
+
+            .prayer-time .name {
+                font-size: 0.8rem;
+            }
+
+            .prayer-time .time {
+                font-size: 1.2rem;
+            }
+
+            .info-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-section p, .footer-section a {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -341,7 +430,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">🕌 مُصَلَّى بَيْتُ الرَّحْمٰنِ</a>
+                <a href="#" class="logo">🕌 Baiturrahman</a>
                 <nav>
                     <a href="#tentang">Tentang</a>
                     <a href="#galeri">Galeri</a>
@@ -356,8 +445,8 @@
     <section class="hero">
         <div class="container">
             <h1>Musholla Baiturrahman</h1>
-            <p>Sholat Berjamaah Lebih utama 27 Derajat dibandingkan sholat sendiri</p>
-            <p style="color: #d4af37; font-size: 1rem;">Gunung Tinggi, Batulicin, Tanah Bumbu</p>
+            <p>Rumah Tuhan yang Penuh Rahmat</p>
+            <p style="color: #d4af37; font-size: 1rem;">Pondok Butun, Batulicin, Tanah Bumbu</p>
         </div>
     </section>
 
@@ -366,21 +455,18 @@
         <div class="container">
             <h2>Tentang Musholla</h2>
             <div class="info-grid">
-                <!---MASUKKAN GAMBAR MUSHOLLA DISINI--->
                 <div>
-                    <img src=foto/musholla.jpg alt="Musholla Baiturrahman" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                    <img src="https://images.unsplash.com/photo-1564536131407-4deb1d691e3e?w=500&h=400&fit=crop" alt="Musholla Baiturrahman" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
                 </div>
                 <div>
                     <div class="info-card">
                         <h3>Deskripsi</h3>
-                        <p>Musholla Baiturrahman adalah tempat ibadah yang nyaman dan sejuk di tengah komunitas Gunung Tinggi. Kami menyediakan fasilitas lengkap untuk menjalankan ibadah dengan khidmat dan istiqomah. Dengan desain yang indah dan bersih, kami menghadirkan suasana spiritual yang menenangkan untuk setiap jamaah.</p>
+                        <p>Musholla Baiturrahman adalah tempat ibadah yang nyaman dan sejuk di tengah komunitas Pondok Butun. Kami menyediakan fasilitas lengkap untuk menjalankan ibadah dengan khidmat dan istiqomah. Dengan desain yang indah dan bersih, kami menghadirkan suasana spiritual yang menenangkan untuk setiap jamaah.</p>
                     </div>
 
                     <div class="info-card" style="margin-top: 1.5rem;">
                         <h3>📍 Alamat Lengkap</h3>
-                        <p> Jalan PDSB Gunung Tinggi RT.003 RW.002 Kelurahan Gunung Tinggi Kecamatan Batulicin<br>
-                            Kabupaten Tanah Bumbu Provinsi Kalimantan Selatan, 72214<br>
-                            Maps : https://maps.app.goo.gl/j8E8BB3axp7xZCkB6</p>
+                        <p>Pondok Butun<br>Kecamatan Batulicin<br>Kabupaten Tanah Bumbu<br>Kalimantan Selatan</p>
                     </div>
                 </div>
             </div>
@@ -391,7 +477,7 @@
     <section class="section" id="jadwal-sholat">
         <div class="container">
             <h2>Jadwal Waktu Sholat</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 1rem;">Wilayah Gunung Tinggi, Batulicin, Tanah Bumbu</p>
+            <p style="text-align: center; color: #666; margin-bottom: 1rem;">Wilayah Pondok Butun, Batulicin, Tanah Bumbu</p>
             <div class="prayer-times" id="prayerTimesContainer">
                 <!-- Prayer times akan dimuat secara real-time -->
                 <div class="prayer-time" style="opacity: 0.7; text-align: center; grid-column: 1 / -1;">
@@ -406,19 +492,21 @@
         <div class="container">
             <h2>Galeri Kegiatan</h2>
             <div class="gallery" id="gallery">
-                <!-- Foto dapat ditambahkan di sini dengan format:
+                <!-- Tambah foto dengan format:
                 <div class="gallery-item">
-                    <img src="URL_FOTO" alt="Deskripsi">
+                    <img src="foto/musholla.jpg" alt="Deskripsi Foto">
+                </div>
+                
+                CONTOH: Jika ada foto bernama kegiatan1.jpg, kegiatan2.jpg di folder foto:
+                <div class="gallery-item">
+                    <img src="foto/kegiatan1.jpg" alt="Kegiatan 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/kegiatan2.jpg" alt="Kegiatan 2">
                 </div>
                 -->
                 <div class="gallery-item">
-                    <img src=kegiatan/maulid.png alt="Kegiatan Musholla">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1564536131407-4deb1d691e3e?w=400&h=300&fit=crop" alt="Kegiatan Musholla">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=400&h=300&fit=crop" alt="Kegiatan Musholla">
+                    <img src="foto/musholla.jpg" alt="Musholla Baiturrahman">
                 </div>
             </div>
         </div>
@@ -462,8 +550,9 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>📍 Lokasi</h3>
-                    <p>Jalan PDSB Gunung Tinggi RT.003 RW.002 Kelurahan Gunung Tinggi Kecamatan Batulicin Kabupaten Tanah Bumbu Provinsi Kalimantan Selatan, 72214</p>
-                    <p>Maps : https://maps.app.goo.gl/j8E8BB3axp7xZCkB6</p>
+                    <p>Pondok Butun, Kecamatan Batulicin</p>
+                    <p>Kabupaten Tanah Bumbu</p>
+                    <p>Kalimantan Selatan</p>
                 </div>
 
                 <div class="footer-section">
@@ -534,11 +623,11 @@
         // Format: { name: 'Nama Sholat', offset: perubahan dalam menit }
         // Contoh: offset: 5 = tambah 5 menit, offset: -3 = kurangi 3 menit, offset: 0 = tidak ada perubahan
         const prayerAdjustments = {
-            subuh: -4,      // Sesuaikan offset untuk Subuh (misal: 5 untuk +5 menit)
-            zuhur: -2,      // Sesuaikan offset untuk Zuhur
-            ashar: -3,      // Sesuaikan offset untuk Ashar
-            maghrib: -2,    // Sesuaikan offset untuk Maghrib
-            isya: -2        // Sesuaikan offset untuk Isya
+            subuh: 0,      // Sesuaikan offset untuk Subuh (misal: 5 untuk +5 menit)
+            zuhur: 0,      // Sesuaikan offset untuk Zuhur
+            ashar: 0,      // Sesuaikan offset untuk Ashar
+            maghrib: 0,    // Sesuaikan offset untuk Maghrib
+            isya: 0        // Sesuaikan offset untuk Isya
         };
 
         // Fungsi untuk menampilkan jadwal sholat dengan countdown
@@ -710,6 +799,11 @@
 
         // Update jadwal sholat setiap jam
         setInterval(loadPrayerTimes, 3600000);
+
+        // Inisialisasi halaman
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPrayerTimes();
+        });
     </script>
 </body>
 </html>
