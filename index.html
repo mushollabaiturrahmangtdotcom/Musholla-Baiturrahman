@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Musholla Baiturrahman</title>
     <style>
         * {
@@ -15,6 +15,15 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         /* Header & Navigation */
@@ -26,12 +35,15 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            width: 100%;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .header-content {
@@ -39,6 +51,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
@@ -46,13 +61,17 @@
             font-weight: bold;
             color: #d4af37;
             text-decoration: none;
+            flex: 1;
+            min-width: 150px;
         }
 
         nav {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-end;
+            flex: 1;
+            min-width: 150px;
         }
 
         nav a {
@@ -74,6 +93,7 @@
             color: #fff;
             padding: 4rem 0;
             text-align: center;
+            width: 100%;
         }
 
         .hero h1 {
@@ -91,6 +111,7 @@
         .section {
             padding: 4rem 0;
             border-bottom: 2px solid #d4af37;
+            width: 100%;
         }
 
         .section h2 {
