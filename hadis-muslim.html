@@ -301,11 +301,42 @@ window.pilihKitab = function(id){
 /* Cache: { 'kitabId_page': [hadiths] } */
 var CACHE = {};
 
+function ekstrakHadiths(res){
+  if(!res) return [];
+  if(res.data && Array.isArray(res.data.hadiths))  return res.data.hadiths;
+  if(res.data && Array.isArray(res.data.hadith))   return res.data.hadith;
+  if(res.data && Array.isArray(res.data))           return res.data;
+  if(Array.isArray(res.hadiths))                    return res.hadiths;
+  if(res.data && typeof res.data === 'object' && !Array.isArray(res.data)){
+    var d = res.data;
+    if(d.arab || d.text_ar || d.arabic) return [d];
+    if(d.data && (d.data.arab || d.data.text_ar)) return [d.data];
+  }
+  return [];
+}
+
+function normalHadis(h){
+  if(!h) return null;
+  var arab = (h.arab || h.text_ar || h.arabic || '').trim();
+  var terjemah = '';
+  if(h.id && h.id.length > 20) terjemah = h.id;
+  terjemah = terjemah ||
+             h.indonesia || h.terjemah || h.terjemahan ||
+             h.translation || h.text_id || h.text_idn ||
+             h.en || h.english || h.text_en || '';
+  terjemah = terjemah.trim();
+  var chain = (h.chain || h.narrator || h.sanad || '').trim();
+  var num   = h.number || h.no || h.id_number || 0;
+  return {number:num, arab:arab, terjemah:terjemah, chain:chain};
+}
+
 function muatHadis(){
   if(!aktif) return;
-  var localStart = (curPg-1)*PER + 1;
-  var localEnd   = Math.min(curPg*PER, aktif.n);
-  var cacheKey   = aktif.id + '_' + curPg;
+  var localStart  = (curPg-1)*PER + 1;
+  var localEnd    = Math.min(curPg*PER, aktif.n);
+  var globalStart = aktif.s + localStart - 1;
+  var globalEnd   = aktif.s + localEnd   - 1;
+  var cacheKey    = aktif.id + '_' + curPg;
 
   if(CACHE[cacheKey]){
     lastData = CACHE[cacheKey];
@@ -315,44 +346,50 @@ function muatHadis(){
 
   tampilLoading();
 
-  /* Fetch individual per nomor global — endpoint /books/muslim/{number} */
-  var promises = [];
-  for(var n = localStart; n <= localEnd; n++){
-    var globalNum = aktif.s + n - 1;
-    promises.push(
-      fetch(API + '/books/muslim/' + globalNum)
-        .then(function(r){
-          if(!r.ok) throw new Error('HTTP ' + r.status);
-          return r.json();
-        })
-        .then(function(res){
-          if(res && res.data) return res.data;
-          return null;
-        })
-    );
-  }
-
-  Promise.all(promises)
-    .then(function(results){
-      var hadiths = results.filter(function(h){ return h !== null; });
-      CACHE[cacheKey] = hadiths;
-      lastData = hadiths;
-      renderHadis(localStart);
+  fetch(API + '/books/muslim?range=' + globalStart + '-' + globalEnd)
+    .then(function(r){
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
     })
-    .catch(function(err){
-      /* Fallback: range endpoint */
-      var globalStart = aktif.s + localStart - 1;
-      var globalEnd   = aktif.s + localEnd   - 1;
-      fetch(API + '/books/muslim?range=' + globalStart + '-' + globalEnd)
-        .then(function(r){ return r.json(); })
-        .then(function(res){
-          var hadiths = [];
-          if(res && res.data){
-            if(Array.isArray(res.data.hadiths)) hadiths = res.data.hadiths;
-            else if(Array.isArray(res.data))     hadiths = res.data;
+    .then(function(res){
+      var raw   = ekstrakHadiths(res);
+      var valid = raw.filter(function(h){ var n=normalHadis(h); return n&&(n.arab||n.terjemah); });
+      if(valid.length > 0){
+        var hadiths = valid.map(normalHadis);
+        CACHE[cacheKey] = hadiths;
+        lastData = hadiths;
+        renderHadis(localStart);
+      } else {
+        throw new Error('empty_response');
+      }
+    })
+    .catch(function(){
+      var promises = [];
+      for(var n = localStart; n <= localEnd; n++){
+        (function(gNum){
+          promises.push(
+            fetch(API + '/books/muslim/' + gNum)
+              .then(function(r){ return r.ok ? r.json() : null; })
+              .then(function(res){
+                if(!res) return null;
+                var arr = ekstrakHadiths(res);
+                if(arr.length) return normalHadis(arr[0]);
+                return normalHadis(res.data || res);
+              })
+              .catch(function(){ return null; })
+          );
+        })(aktif.s + n - 1);
+      }
+      Promise.all(promises)
+        .then(function(results){
+          var hadiths = results.filter(function(h){ return h&&(h.arab||h.terjemah); });
+          if(hadiths.length){
+            CACHE[cacheKey] = hadiths;
+            lastData = hadiths;
+            renderHadis(localStart);
+          } else {
+            tampilError(new Error('Tidak ada data dari API.'));
           }
-          lastData = hadiths;
-          renderHadis(localStart);
         })
         .catch(function(e){ tampilError(e); });
     });
@@ -390,9 +427,9 @@ function renderHadis(startNum){
   } else {
     lastData.forEach(function(h, i){
       var num   = (h.number || h.no || (startNum + i));
-      var arab  = (h.arab || h.text_ar || '').trim();
-      var trjm  = (h.id   || h.text_id || h.en || h.text_en || '').trim();
-      var perawi = (h.chain || h.narrator || '').trim();
+      var arab  = (h.arab || '').trim();
+      var trjm  = (h.terjemah || '').trim();
+      var perawi = (h.chain || '').trim();
       html +=
         '<div class="hadis-card">'+
           '<div class="hc-top">'+
