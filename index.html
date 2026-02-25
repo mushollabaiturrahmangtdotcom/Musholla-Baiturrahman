@@ -718,10 +718,9 @@
   <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:1.5rem;">
     <a href="alquran.html" class="hero-cta" style="margin-top:0;">📖 Baca Al-Qur'an</a>
     <a href="#" class="hero-cta" style="margin-top:0;" onclick="showHadisPopup(); return false;">📚 Hadis</a>
+    <a href="#" class="hero-cta" style="margin-top:0;" onclick="showTataCaraPopup(); return false;">🕌 Tata Cara Ibadah</a>
   </div>
   <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:1.5rem;">
-    <a href="tata-cara-sholat.html" class="hero-cta" style="margin-top:0;">🕌 Tata Cara Sholat</a>
-    <a href="tata-cara-wudhu.html" class="hero-cta" style="margin-top:0;">💧 Tata Cara Wudhu</a>
     <a href="kumpulan-sholawat.html" class="hero-cta" style="margin-top:0;">🌙 Kumpulan Sholawat</a>
     <a href="doa-harian.html" class="hero-cta" style="margin-top:0;">🤲 Doa Harian</a>
     <a href="belajar-iqro.html" class="hero-cta" style="margin-top:0;">📚 Belajar Iqro</a>
@@ -1161,6 +1160,31 @@
     </div>
   </div>
 </div>
+  <!-- POPUP TATA CARA IBADAH -->
+<div class="popup-overlay" id="tataCaraPopup" onclick="closeTataCaraPopup(event)">
+  <div class="popup-box">
+    <button class="popup-close" onclick="document.getElementById('tataCaraPopup').classList.remove('show'); document.body.style.overflow='';">✕</button>
+    <div class="popup-arabic">كَيْفِيَّةُ الْعِبَادَة</div>
+    <h3>Tata Cara Ibadah</h3>
+    <p style="font-size:0.8rem; color:var(--text-light); margin-bottom:4px;">Panduan tata cara ibadah sesuai sunnah</p>
+    <div class="popup-options">
+      <a href="tata-cara-wudhu.html" class="popup-option-btn">
+        <span class="pob-icon">💧</span>
+        <div>
+          <div class="pob-title">Tata Cara Wudhu</div>
+          <div class="pob-desc">Langkah-langkah wudhu yang benar sesuai sunnah</div>
+        </div>
+      </a>
+      <a href="tata-cara-sholat.html" class="popup-option-btn">
+        <span class="pob-icon">🕌</span>
+        <div>
+          <div class="pob-title">Tata Cara Sholat</div>
+          <div class="pob-desc">Panduan lengkap gerakan dan bacaan sholat</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 <script>
 (function() {
   /* ── Tanggal ── */
@@ -1314,6 +1338,17 @@ window.showHadisPopup = function() {
 window.closeHadisPopup = function(e) {
   if (e.target === document.getElementById('hadisPopup')) {
     document.getElementById('hadisPopup').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+};
+  /* ── Popup Tata Cara Ibadah ── */
+window.showTataCaraPopup = function() {
+  document.getElementById('tataCaraPopup').classList.add('show');
+  document.body.style.overflow = 'hidden';
+};
+window.closeTataCaraPopup = function(e) {
+  if (e.target === document.getElementById('tataCaraPopup')) {
+    document.getElementById('tataCaraPopup').classList.remove('show');
     document.body.style.overflow = '';
   }
 };
