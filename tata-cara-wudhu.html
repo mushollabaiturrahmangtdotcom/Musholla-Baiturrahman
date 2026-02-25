@@ -3,33 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tata Cara Wudhu — Musholla Baiturrahman</title>
+<title>Tata Cara Wudhu & Tayamum — Musholla Baiturrahman</title>
 <link rel="icon" type="image/png" href="images/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{--green-deep:#0d3b2e;--green-mid:#155f45;--green-bright:#1e8a5e;--gold:#c9a84c;--gold-light:#e8c97a;--cream:#f9f5ee;--cream-dark:#ede8dc;--white:#ffffff;--text-dark:#1a1a1a;--text-mid:#4a4a4a;--text-light:#7a7a7a;}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--text-dark);min-height:100vh;}
+
+  /* NAV */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,59,46,0.97);backdrop-filter:blur(12px);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid rgba(201,168,76,0.3);}
   .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
   .nav-brand img{height:38px;width:auto;}
   .nav-brand span{font-size:0.85rem;font-weight:600;color:var(--white);}
   .nav-back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.82rem;font-weight:500;padding:7px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);transition:all 0.2s;}
   .nav-back:hover{background:rgba(255,255,255,0.1);color:var(--gold-light);}
+
+  /* HERO */
   .page-hero{margin-top:64px;padding:40px 2rem;background:linear-gradient(135deg,var(--green-deep),var(--green-mid));text-align:center;}
   .page-hero h1{font-family:'Amiri',serif;font-size:2rem;color:var(--white);margin-bottom:6px;}
   .page-hero p{font-size:0.85rem;color:rgba(255,255,255,0.7);max-width:480px;margin:0 auto;}
   .gold-line{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto;}
-  .page-content{max-width:760px;margin:0 auto;padding:32px 2rem 60px;}
 
-  /* Niat */
+  /* TAB NAVIGASI */
+  .tab-nav{display:flex;gap:0;max-width:760px;margin:0 auto;padding:0 2rem;margin-top:24px;}
+  .tab-btn{flex:1;padding:12px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;border:2px solid var(--cream-dark);background:var(--white);color:var(--text-light);transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+  .tab-btn:first-child{border-radius:10px 0 0 10px;}
+  .tab-btn:last-child{border-radius:0 10px 10px 0;}
+  .tab-btn.active{background:var(--green-deep);color:var(--gold-light);border-color:var(--green-deep);}
+  .tab-btn:not(.active):hover{background:var(--cream-dark);color:var(--green-deep);}
+
+  .page-content{max-width:760px;margin:0 auto;padding:28px 2rem 60px;}
+
+  /* TAB PANEL */
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  /* NIAT BOX */
   .niat-box{background:linear-gradient(135deg,var(--green-deep),var(--green-mid));border-radius:16px;padding:24px;margin-bottom:28px;text-align:center;border-top:3px solid var(--gold);}
   .niat-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:10px;}
   .niat-arab{font-family:'Amiri',serif;font-size:1.4rem;line-height:2;color:var(--white);direction:rtl;}
-  .niat-latin{font-size:0.8rem;color:rgba(255,255,255,0.7);font-style:italic;margin-top:8px;}
+  .niat-latin{font-size:0.8rem;color:rgba(255,255,255,0.75);font-style:italic;margin-top:8px;}
   .niat-arti{font-size:0.8rem;color:rgba(255,255,255,0.6);margin-top:8px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.15);}
 
-  /* Steps timeline */
+  /* STEPS TIMELINE */
   .step-timeline{position:relative;padding-left:52px;}
   .step-timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--green-bright),var(--gold));opacity:0.3;border-radius:1px;}
   .step-item{position:relative;margin-bottom:20px;}
@@ -38,57 +55,101 @@
   .step-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);}
   .step-judul{font-weight:700;font-size:0.95rem;color:var(--green-deep);margin-bottom:8px;}
   .step-desc{font-size:0.82rem;color:var(--text-mid);line-height:1.7;margin-bottom:12px;}
+  .step-desc:last-child{margin-bottom:0;}
   .step-arab{font-family:'Amiri',serif;font-size:1.3rem;line-height:2;color:var(--text-dark);direction:rtl;text-align:right;padding:12px 14px;background:rgba(13,59,46,0.04);border-radius:8px;margin-bottom:8px;border-right:3px solid var(--gold);}
   .step-latin{font-size:0.8rem;color:var(--green-bright);font-style:italic;line-height:1.8;margin-bottom:6px;}
   .step-arti{font-size:0.8rem;color:var(--text-mid);line-height:1.8;padding:8px 12px;background:rgba(30,138,94,0.05);border-left:3px solid var(--green-bright);border-radius:0 6px 6px 0;}
   .step-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.68rem;font-weight:700;background:rgba(201,168,76,0.15);color:#8a6b1e;margin-top:8px;}
+  .step-badge.wajib{background:rgba(220,38,38,0.1);color:#b91c1c;}
+  .step-badge.sunnah{background:rgba(201,168,76,0.15);color:#8a6b1e;}
 
-  /* Doa selesai wudhu */
+  /* DOA BOX */
   .doa-box{background:var(--white);border-radius:16px;padding:24px;border:1px solid var(--cream-dark);margin-top:12px;}
   .doa-title{font-family:'Amiri',serif;font-size:1.2rem;color:var(--green-deep);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--cream-dark);}
   .doa-arab{font-family:'Amiri',serif;font-size:1.3rem;line-height:2;color:var(--text-dark);direction:rtl;text-align:right;margin-bottom:10px;}
   .doa-latin{font-size:0.82rem;color:var(--green-mid);font-style:italic;line-height:1.8;margin-bottom:8px;}
   .doa-arti{font-size:0.82rem;color:var(--text-mid);line-height:1.8;padding:10px 14px;background:rgba(30,138,94,0.05);border-left:3px solid var(--green-bright);border-radius:0 8px 8px 0;}
 
-  /* Info */
-  .info-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:0.82rem;color:var(--text-mid);line-height:1.7;}
+  /* INFO BOX */
+  .info-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:0.82rem;color:var(--text-mid);line-height:1.8;}
   .info-box strong{color:var(--green-deep);}
 
-  @media(max-width:768px){nav .nav-brand span{display:none;} .page-content{padding:20px 1rem 40px;} .step-timeline{padding-left:44px;} .step-dot{left:-44px;width:30px;height:30px;font-size:0.72rem;}}
+  /* SECTION HEADING */
+  .section-heading{display:flex;align-items:center;gap:12px;margin:32px 0 20px;}
+  .section-heading-line{flex:1;height:1px;background:var(--cream-dark);}
+  .section-heading-text{font-family:'Amiri',serif;font-size:1.1rem;color:var(--green-deep);white-space:nowrap;font-weight:700;}
+
+  /* TAYAMUM KHUSUS — warna sedikit berbeda agar terasa berbeda */
+  .niat-box.tayamum-niat{background:linear-gradient(135deg,#2c1a0e,#5a3a1a);}
+  .tayamum-niat .niat-label{color:#e8c97a;}
+  .step-timeline.tayamum .step-timeline::before{background:linear-gradient(to bottom,#c9a84c,#8a6b1e);}
+  .step-dot.tayamum-dot{background:linear-gradient(135deg,#2c1a0e,#5a3a1a);}
+
+  /* SYARAT BOX */
+  .syarat-box{background:var(--white);border-radius:14px;padding:20px;border:1px solid var(--cream-dark);margin-bottom:24px;}
+  .syarat-title{font-weight:700;font-size:0.9rem;color:var(--green-deep);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .syarat-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .syarat-item{font-size:0.8rem;color:var(--text-mid);line-height:1.6;display:flex;align-items:flex-start;gap:6px;}
+  .syarat-item::before{content:'•';color:var(--green-bright);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+  @media(max-width:768px){
+    nav .nav-brand span{display:none;}
+    .page-content{padding:20px 1rem 40px;}
+    .tab-nav{padding:0 1rem;}
+    .step-timeline{padding-left:44px;}
+    .step-dot{left:-44px;width:30px;height:30px;font-size:0.72rem;}
+    .syarat-list{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
+
 <nav>
-  <a href="index.html" class="nav-brand"><img src="images/logo_nav.png" alt="Logo"><span>Musholla Baiturrahman</span></a>
+  <a href="index.html" class="nav-brand">
+    <img src="images/logo_nav.png" alt="Logo">
+    <span>Musholla Baiturrahman</span>
+  </a>
   <a href="index.html" class="nav-back">← Kembali</a>
 </nav>
-<div class="page-hero">
-  <h1>💧 Tata Cara Wudhu</h1>
-  <div class="gold-line"></div>
-  <p>Panduan lengkap berwudhu sesuai sunnah Nabi Muhammad ﷺ beserta bacaan dan doanya</p>
-</div>
-<div class="page-content">
 
-  <!-- Niat -->
+<div class="page-hero">
+  <h1>💧 Tata Cara Bersuci</h1>
+  <div class="gold-line"></div>
+  <p>Panduan lengkap wudhu dan tayamum sesuai sunnah Nabi Muhammad ﷺ beserta bacaan dan doanya</p>
+</div>
+
+<!-- TAB NAVIGASI -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="gantiTab('wudhu', this)">💧 Tata Cara Wudhu</button>
+  <button class="tab-btn" onclick="gantiTab('tayamum', this)">🤲 Tata Cara Tayamum</button>
+</div>
+
+<!-- ══════════════════════════════════════
+     TAB WUDHU
+══════════════════════════════════════ -->
+<div class="page-content">
+<div id="tab-wudhu" class="tab-panel active">
+
+  <!-- Niat Wudhu -->
   <div class="niat-box">
     <div class="niat-label">✦ Niat Wudhu ✦</div>
     <div class="niat-arab">نَوَيْتُ الْوُضُوءَ لِرَفْعِ الْحَدَثِ الْأَصْغَرِ فَرْضًا لِلَّهِ تَعَالَى</div>
     <div class="niat-latin">Nawaitul wudhuu-a lirof'il hadatsil ashghari fardhal lillaahi ta'aalaa.</div>
-    <div class="niat-arti">Saya berniat wudhu untuk menghilangkan hadats kecil, fardhu karena Allah Ta'ala.</div>
+    <div class="niat-arti">Artinya: "Saya berniat wudhu untuk menghilangkan hadats kecil, fardhu karena Allah Ta'ala."</div>
   </div>
 
-  <!-- Steps -->
+  <!-- Langkah-langkah Wudhu -->
   <div class="step-timeline">
 
     <div class="step-item">
       <div class="step-dot">1</div>
       <div class="step-card">
         <div class="step-judul">Membaca Bismillah</div>
-        <div class="step-desc">Sebelum memulai wudhu, ucapkan bismillah:</div>
+        <div class="step-desc">Sebelum memulai wudhu, ucapkan bismillah. Ini dilakukan di awal sebelum membasuh tangan.</div>
         <div class="step-arab">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-        <div class="step-latin">Bismillahir rahmaanir rahiim</div>
-        <div class="step-arti">Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.</div>
-        <div class="step-badge">⭐ Sunnah</div>
+        <div class="step-latin">Bismillahir rahmaanir rahiim.</div>
+        <div class="step-arti">Artinya: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."</div>
+        <span class="step-badge sunnah">⭐ Sunnah</span>
       </div>
     </div>
 
@@ -96,63 +157,71 @@
       <div class="step-dot">2</div>
       <div class="step-card">
         <div class="step-judul">Membasuh Kedua Telapak Tangan</div>
-        <div class="step-desc">Basuh kedua telapak tangan hingga pergelangan tangan sebanyak 3 kali, sela-selai jari-jari tangan.</div>
-        <div class="step-badge">⭐ Sunnah</div>
+        <div class="step-desc">Basuh kedua telapak tangan hingga pergelangan tangan sebanyak 3 kali. Sela-selai jari-jari tangan agar air merata ke seluruh bagian.</div>
+        <span class="step-badge sunnah">⭐ Sunnah</span>
       </div>
     </div>
 
     <div class="step-item">
       <div class="step-dot">3</div>
       <div class="step-card">
-        <div class="step-judul">Berkumur dan Istinsyaq</div>
-        <div class="step-desc">Berkumur (memasukkan air ke mulut dan memutarnya) kemudian istinsyaq (menghirup air ke hidung) masing-masing 3 kali. Disunahkan menggunakan tangan kanan untuk menghirup air dan tangan kiri untuk membuang air dari hidung.</div>
-        <div class="step-badge">⭐ Sunnah Muakkad</div>
+        <div class="step-judul">Berkumur (Madhmadhah)</div>
+        <div class="step-desc">Ambil air dengan tangan kanan, masukkan ke mulut, putar-putar air di dalam mulut lalu buang. Lakukan sebanyak 3 kali.</div>
+        <span class="step-badge sunnah">⭐ Sunnah Muakkad</span>
       </div>
     </div>
 
     <div class="step-item">
       <div class="step-dot">4</div>
       <div class="step-card">
-        <div class="step-judul">Membasuh Wajah</div>
-        <div class="step-desc">Basuh seluruh wajah dari tempat tumbuh rambut kepala hingga dagu, dan dari telinga kanan hingga telinga kiri sebanyak 3 kali.</div>
-        <div class="step-arab">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</div>
-        <div class="step-badge">🔴 Wajib / Fardhu</div>
+        <div class="step-judul">Istinsyaq (Menghirup Air ke Hidung)</div>
+        <div class="step-desc">Hirup air ke dalam hidung dengan tangan kanan, kemudian keluarkan dengan tangan kiri. Lakukan sebanyak 3 kali. Disunahkan menghirup dengan kuat kecuali saat berpuasa.</div>
+        <span class="step-badge sunnah">⭐ Sunnah Muakkad</span>
       </div>
     </div>
 
     <div class="step-item">
       <div class="step-dot">5</div>
       <div class="step-card">
-        <div class="step-judul">Membasuh Kedua Tangan hingga Siku</div>
-        <div class="step-desc">Basuh tangan kanan terlebih dahulu hingga siku sebanyak 3 kali, kemudian tangan kiri hingga siku sebanyak 3 kali. Pastikan air merata hingga siku.</div>
-        <div class="step-badge">🔴 Wajib / Fardhu</div>
+        <div class="step-judul">Membasuh Seluruh Wajah</div>
+        <div class="step-desc">Basuh seluruh wajah 3 kali, dari tempat tumbuh rambut kepala hingga ujung dagu, dan dari batas telinga kanan hingga telinga kiri. Sela-selai jenggot jika tebal.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
       </div>
     </div>
 
     <div class="step-item">
       <div class="step-dot">6</div>
       <div class="step-card">
-        <div class="step-judul">Mengusap Kepala</div>
-        <div class="step-desc">Usapkan kedua tangan yang basah ke seluruh kepala, dari depan ke belakang kemudian dari belakang ke depan, sebanyak 1 kali.</div>
-        <div class="step-badge">🔴 Wajib / Fardhu</div>
+        <div class="step-judul">Membasuh Kedua Tangan hingga Siku</div>
+        <div class="step-desc">Basuh tangan kanan terlebih dahulu dari ujung jari hingga siku sebanyak 3 kali, kemudian tangan kiri dengan cara yang sama. Pastikan air merata hingga ke siku termasuk bagian siku itu sendiri.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
       </div>
     </div>
 
     <div class="step-item">
       <div class="step-dot">7</div>
       <div class="step-card">
-        <div class="step-judul">Mengusap Kedua Telinga</div>
-        <div class="step-desc">Masukkan jari telunjuk ke dalam lubang telinga dan ibu jari mengusap bagian luar telinga. Lakukan 1 kali untuk kedua telinga bersamaan.</div>
-        <div class="step-badge">⭐ Sunnah</div>
+        <div class="step-judul">Mengusap Seluruh Kepala</div>
+        <div class="step-desc">Basahi kedua tangan lalu usapkan ke seluruh kepala mulai dari bagian depan (tempat tumbuh rambut) ke bagian belakang kepala, kemudian kembali ke depan. Dilakukan cukup 1 kali.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
       </div>
     </div>
 
     <div class="step-item">
       <div class="step-dot">8</div>
       <div class="step-card">
+        <div class="step-judul">Mengusap Kedua Telinga</div>
+        <div class="step-desc">Dengan air sisa usapan kepala (atau ambil air baru), masukkan jari telunjuk ke dalam lubang telinga dan ibu jari mengusap bagian luar daun telinga. Lakukan untuk kedua telinga sekaligus 1 kali.</div>
+        <span class="step-badge sunnah">⭐ Sunnah</span>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-dot">9</div>
+      <div class="step-card">
         <div class="step-judul">Membasuh Kedua Kaki hingga Mata Kaki</div>
-        <div class="step-desc">Basuh kaki kanan terlebih dahulu hingga mata kaki sebanyak 3 kali, sela-selai jari-jari kaki, kemudian kaki kiri dengan cara yang sama.</div>
-        <div class="step-badge">🔴 Wajib / Fardhu</div>
+        <div class="step-desc">Basuh kaki kanan terlebih dahulu dari ujung jari hingga mata kaki sebanyak 3 kali, sela-selai jari-jari kaki dengan jari kelingking tangan kiri. Kemudian kaki kiri dengan cara yang sama.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
       </div>
     </div>
 
@@ -163,15 +232,172 @@
     <div class="doa-title">🤲 Doa Setelah Wudhu</div>
     <div class="doa-arab">أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ. اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ</div>
     <div class="doa-latin">Asyhadu allaa ilaaha illallaahu wahdahu laa syariika lah, wa asyhadu anna muhammadan 'abduhu wa rasuuluh. Allaahummaj'alni minat tawwaabiina waj'alni minal mutathahhariin.</div>
-    <div class="doa-arti">Aku bersaksi bahwa tiada Tuhan yang berhak disembah selain Allah semata, tidak ada sekutu bagi-Nya, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya. Ya Allah, jadikanlah aku termasuk orang-orang yang bertaubat dan jadikanlah aku termasuk orang-orang yang bersuci.</div>
+    <div class="doa-arti">Artinya: "Aku bersaksi bahwa tiada Tuhan yang berhak disembah selain Allah semata, tidak ada sekutu bagi-Nya, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya. Ya Allah, jadikanlah aku termasuk orang-orang yang bertaubat dan jadikanlah aku termasuk orang-orang yang bersuci."</div>
   </div>
 
+  <!-- Info wudhu -->
   <div class="info-box">
-    <strong>🔴 Wajib/Fardhu:</strong> Rukun wudhu yang harus dilakukan, jika ditinggalkan wudhu tidak sah.<br>
-    <strong>⭐ Sunnah:</strong> Amalan yang dianjurkan oleh Nabi ﷺ, jika dikerjakan mendapat pahala, jika ditinggalkan tidak batal wudhu.<br><br>
-    <strong>Hal yang membatalkan wudhu:</strong> Buang air besar/kecil, kentut, tidur nyenyak, hilang akal, menyentuh kemaluan dengan telapak tangan tanpa penghalang, dan murtad.
+    <strong>🔴 Wajib/Fardhu:</strong> Rukun wudhu yang harus dilakukan. Jika ditinggalkan, wudhu tidak sah.<br>
+    <strong>⭐ Sunnah:</strong> Amalan yang dianjurkan Nabi ﷺ. Jika dikerjakan mendapat pahala, jika ditinggalkan wudhu tetap sah.<br><br>
+    <strong>Hal yang membatalkan wudhu:</strong> Buang air besar atau kecil, kentut, tidur nyenyak (hingga hilang kesadaran), hilang akal (pingsan/mabuk), menyentuh kemaluan dengan telapak tangan tanpa penghalang, dan murtad dari Islam.
   </div>
 
 </div>
+
+<!-- ══════════════════════════════════════
+     TAB TAYAMUM
+══════════════════════════════════════ -->
+<div id="tab-tayamum" class="tab-panel">
+
+  <!-- Penjelasan singkat -->
+  <div class="info-box" style="margin-bottom:24px; margin-top:0;">
+    <strong>📌 Apa itu Tayamum?</strong><br>
+    Tayamum adalah bersuci pengganti wudhu atau mandi wajib menggunakan debu atau tanah yang suci, ketika seseorang tidak dapat menggunakan air karena alasan tertentu. Tayamum merupakan kemudahan (rukhsah) dari Allah SWT.
+  </div>
+
+  <!-- Syarat boleh tayamum -->
+  <div class="syarat-box">
+    <div class="syarat-title">⚠️ Kondisi yang Membolehkan Tayamum</div>
+    <div class="syarat-list">
+      <div class="syarat-item">Tidak ada air sama sekali</div>
+      <div class="syarat-item">Ada air namun tidak cukup untuk bersuci</div>
+      <div class="syarat-item">Sakit dan tidak boleh terkena air</div>
+      <div class="syarat-item">Air sangat jauh (lebih dari 1 mil) dan dikhawatirkan habis waktu sholat</div>
+      <div class="syarat-item">Suhu sangat dingin dan menggunakan air berbahaya bagi kesehatan</div>
+      <div class="syarat-item">Air hanya tersedia untuk minum atau kebutuhan darurat</div>
+    </div>
+  </div>
+
+  <!-- Syarat media tayamum -->
+  <div class="syarat-box">
+    <div class="syarat-title">🪨 Syarat Media Tayamum</div>
+    <div class="syarat-list">
+      <div class="syarat-item">Menggunakan debu atau tanah yang suci</div>
+      <div class="syarat-item">Tanah/debu belum pernah dipakai untuk tayamum sebelumnya</div>
+      <div class="syarat-item">Bukan tanah yang bernajis</div>
+      <div class="syarat-item">Boleh menggunakan tembok, batu, atau benda berdebu yang mengandung unsur tanah</div>
+    </div>
+  </div>
+
+  <!-- Niat Tayamum -->
+  <div class="niat-box">
+    <div class="niat-label">✦ Niat Tayamum ✦</div>
+    <div class="niat-arab">نَوَيْتُ التَّيَمُّمَ لِاسْتِبَاحَةِ الصَّلَاةِ فَرْضًا لِلَّهِ تَعَالَى</div>
+    <div class="niat-latin">Nawaitul tayammuma listitbaakhatis sholaati fardhal lillaahi ta'aalaa.</div>
+    <div class="niat-arti">Artinya: "Saya berniat tayamum agar diperbolehkan shalat, fardhu karena Allah Ta'ala."</div>
+  </div>
+
+  <!-- Langkah-langkah Tayamum -->
+  <div class="step-timeline">
+
+    <div class="step-item">
+      <div class="step-dot" style="background:linear-gradient(135deg,#5a3a1a,#8a6b1e);">1</div>
+      <div class="step-card">
+        <div class="step-judul">Menghadap Kiblat & Membaca Bismillah</div>
+        <div class="step-desc">Disunahkan menghadap kiblat dan membaca bismillah sebelum memulai tayamum.</div>
+        <div class="step-arab">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+        <div class="step-latin">Bismillahir rahmaanir rahiim.</div>
+        <span class="step-badge sunnah">⭐ Sunnah</span>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-dot" style="background:linear-gradient(135deg,#5a3a1a,#8a6b1e);">2</div>
+      <div class="step-card">
+        <div class="step-judul">Menepukkan Kedua Telapak Tangan ke Debu/Tanah</div>
+        <div class="step-desc">Tepukkan kedua telapak tangan ke permukaan debu atau tanah yang suci dengan sekali tepukan. Kedua telapak tangan menyentuh debu secara bersamaan.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-dot" style="background:linear-gradient(135deg,#5a3a1a,#8a6b1e);">3</div>
+      <div class="step-card">
+        <div class="step-judul">Meniup Debu di Telapak Tangan</div>
+        <div class="step-desc">Tiup atau kibas-kibas sedikit debu yang menempel di telapak tangan agar tidak terlalu tebal. Cukupkan debu yang tipis saja.</div>
+        <span class="step-badge sunnah">⭐ Sunnah</span>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-dot" style="background:linear-gradient(135deg,#5a3a1a,#8a6b1e);">4</div>
+      <div class="step-card">
+        <div class="step-judul">Mengusapkan Kedua Telapak Tangan ke Seluruh Wajah</div>
+        <div class="step-desc">Usapkan kedua telapak tangan secara bersamaan ke seluruh wajah 1 kali. Pastikan debu merata ke seluruh wajah, dari dahi hingga dagu dan dari telinga kanan ke telinga kiri.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-dot" style="background:linear-gradient(135deg,#5a3a1a,#8a6b1e);">5</div>
+      <div class="step-card">
+        <div class="step-judul">Menepuk Debu Kembali untuk Mengusap Tangan</div>
+        <div class="step-desc">Tepukkan kembali kedua telapak tangan ke debu untuk tepukan kedua, guna mengusap tangan. Tiup sedikit debunya.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-dot" style="background:linear-gradient(135deg,#5a3a1a,#8a6b1e);">6</div>
+      <div class="step-card">
+        <div class="step-judul">Mengusap Tangan Kanan hingga Pergelangan</div>
+        <div class="step-desc">Usapkan telapak tangan kiri ke punggung tangan kanan hingga pergelangan tangan. Kemudian usap bagian dalam tangan kanan dengan telapak tangan kiri.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-dot" style="background:linear-gradient(135deg,#5a3a1a,#8a6b1e);">7</div>
+      <div class="step-card">
+        <div class="step-judul">Mengusap Tangan Kiri hingga Pergelangan</div>
+        <div class="step-desc">Usapkan telapak tangan kanan ke punggung tangan kiri hingga pergelangan tangan. Kemudian usap bagian dalam tangan kiri dengan telapak tangan kanan.</div>
+        <span class="step-badge wajib">🔴 Wajib / Fardhu</span>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-dot" style="background:linear-gradient(135deg,#5a3a1a,#8a6b1e);">8</div>
+      <div class="step-card">
+        <div class="step-judul">Menyilangkan Jari-jari Kedua Tangan</div>
+        <div class="step-desc">Setelah mengusap kedua tangan, silangkan jari-jari kedua tangan agar debu merata di sela-sela jari.</div>
+        <span class="step-badge sunnah">⭐ Sunnah</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Doa setelah tayamum -->
+  <div class="doa-box" style="margin-top:28px;">
+    <div class="doa-title">🤲 Doa Setelah Tayamum</div>
+    <div class="doa-arab">أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ. اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ</div>
+    <div class="doa-latin">Asyhadu allaa ilaaha illallaahu wahdahu laa syariika lah, wa asyhadu anna muhammadan 'abduhu wa rasuuluh. Allaahummaj'alni minat tawwaabiina waj'alni minal mutathahhariin.</div>
+    <div class="doa-arti">Artinya: "Aku bersaksi bahwa tiada Tuhan yang berhak disembah selain Allah semata, tidak ada sekutu bagi-Nya, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya. Ya Allah, jadikanlah aku termasuk orang-orang yang bertaubat dan jadikanlah aku termasuk orang-orang yang bersuci."</div>
+  </div>
+
+  <!-- Info tayamum -->
+  <div class="info-box">
+    <strong>🔴 Wajib/Fardhu:</strong> Rukun tayamum yang harus dilakukan. Jika ditinggalkan, tayamum tidak sah.<br>
+    <strong>⭐ Sunnah:</strong> Amalan yang dianjurkan. Jika ditinggalkan, tayamum tetap sah.<br><br>
+    <strong>Hal yang membatalkan tayamum:</strong> Semua hal yang membatalkan wudhu, menemukan air (bagi yang tayamum karena tidak ada air), sembuh dari sakit (bagi yang tayamum karena sakit), dan hilangnya uzur (alasan) yang membolehkan tayamum.<br><br>
+    <strong>📌 Catatan penting:</strong> Tayamum hanya berlaku untuk satu kali sholat fardhu. Jika ingin sholat fardhu berikutnya, tayamum harus diulang kembali.
+  </div>
+
+</div>
+</div><!-- end page-content -->
+
+<script>
+function gantiTab(tabId, btnEl) {
+  /* Sembunyikan semua panel */
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  /* Non-aktifkan semua tombol */
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  /* Tampilkan panel yang dipilih */
+  document.getElementById('tab-' + tabId).classList.add('active');
+  /* Aktifkan tombol */
+  btnEl.classList.add('active');
+  /* Scroll ke atas konten */
+  window.scrollTo({ top: document.querySelector('.tab-nav').offsetTop - 80, behavior: 'smooth' });
+}
+</script>
 </body>
 </html>
