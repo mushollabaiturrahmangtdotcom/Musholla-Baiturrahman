@@ -5,624 +5,896 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hadis Qudsi — Musholla Baiturrahman</title>
 <link rel="icon" type="image/png" href="images/logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green-deep: #0d3b2e;
-    --green-mid: #155f45;
-    --green-bright: #1e8a5e;
-    --green-light: #2db87a;
-    --gold: #c9a84c;
-    --gold-light: #e8c97a;
-    --cream: #f9f5ee;
-    --cream-dark: #ede8dc;
-    --white: #ffffff;
-    --text-dark: #1a1a1a;
-    --text-mid: #4a4a4a;
-    --text-light: #7a7a7a;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text-dark);
-    overflow-x: hidden;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+:root {
+  /* Gold-centric palette */
+  --g1:   #2a1f0a;   /* darkest warm brown */
+  --g2:   #3d2c0e;   /* sidebar bg */
+  --g3:   #5a3e14;   /* sidebar mid */
+  --g4:   #7a5520;   /* sidebar light */
+  --gold:  #c9a84c;
+  --goldl: #e8c97a;
+  --goldf: #f5e6b0;
+  --goldd: #9a7830;
+  --cream: #faf6ee;
+  --creamd:#f0e9d8;
+  --crdd:  #e0d5c0;
+  --white: #ffffff;
+  --ink:   #1e160a;
+  --inkm:  #4a3a20;
+  --inkl:  #8a7450;
+  --ok:    #2d6a4f;
+  --sb-w:  290px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Lora',Georgia,serif;
+  background:var(--cream);
+  color:var(--ink);
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
 
-  /* ─── NAVBAR ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(13,59,46,0.97);
-    backdrop-filter: blur(12px);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-    border-bottom: 1px solid rgba(201,168,76,0.3);
-    flex-shrink: 0;
-  }
-  .nav-brand {
-    display: flex; align-items: center; gap: 12px;
-    text-decoration: none;
-  }
-  .nav-brand img { height: 38px; width: auto; }
-  .nav-brand span {
-    font-size: 0.85rem; font-weight: 600;
-    color: var(--white); letter-spacing: 0.02em;
-  }
-  .nav-back {
-    display: inline-flex; align-items: center; gap: 6px;
-    color: rgba(255,255,255,0.8); text-decoration: none;
-    font-size: 0.82rem; font-weight: 500;
-    padding: 7px 14px; border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: all 0.2s;
-  }
-  .nav-back:hover { background: rgba(255,255,255,0.1); color: var(--gold-light); }
+/* ─── ORNAMENTAL PATTERN ─── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.025;
+  background-image:
+    radial-gradient(circle, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle, var(--gold) 1px, transparent 1px);
+  background-size:40px 40px;
+  background-position:0 0, 20px 20px;
+}
 
-  /* ─── LAYOUT ─── */
-  .main-layout {
-    display: flex;
-    height: calc(100vh - 64px);
-    margin-top: 64px;
-  }
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:60px;
+  background:var(--g1);
+  border-bottom:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.5rem;
+  flex-shrink:0;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-brand img{height:34px;}
+.nav-brand span{font-family:'Tajawal',sans-serif;font-size:.82rem;font-weight:600;color:#fff;}
+.nav-back{
+  font-family:'Tajawal',sans-serif;font-size:.78rem;font-weight:500;
+  color:rgba(255,255,255,.7);text-decoration:none;
+  padding:5px 13px;border-radius:6px;
+  border:1px solid rgba(201,168,76,.35);
+  transition:all .2s;
+}
+.nav-back:hover{background:rgba(201,168,76,.15);color:var(--goldl);}
 
-  /* ─── SIDEBAR ─── */
-  .sidebar {
-    width: 300px; flex-shrink: 0;
-    background: var(--white);
-    border-right: 1px solid var(--cream-dark);
-    display: flex; flex-direction: column;
-    height: 100%;
-  }
-  .sidebar-header {
-    padding: 16px;
-    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
-    flex-shrink: 0;
-  }
-  .sidebar-header h2 {
-    font-family: 'Amiri', serif;
-    font-size: 1.2rem; color: var(--white); margin-bottom: 10px;
-  }
-  .sidebar-header p {
-    font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-bottom: 10px;
-  }
-  .search-box {
-    width: 100%; padding: 9px 14px;
-    border: none; border-radius: 8px;
-    font-size: 0.82rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    outline: none;
-    background: rgba(255,255,255,0.15);
-    color: var(--white);
-  }
-  .search-box::placeholder { color: rgba(255,255,255,0.5); }
-  .search-box:focus { background: rgba(255,255,255,0.25); }
+/* ─── LAYOUT ─── */
+.layout{display:flex;height:calc(100vh - 60px);margin-top:60px;position:relative;z-index:1;}
 
-  .hadis-list {
-    flex: 1; overflow-y: auto; padding: 6px;
-  }
-  .hadis-list::-webkit-scrollbar { width: 4px; }
-  .hadis-list::-webkit-scrollbar-thumb { background: var(--cream-dark); border-radius: 2px; }
+/* ─── SIDEBAR ─── */
+.sidebar{
+  width:var(--sb-w);flex-shrink:0;
+  display:flex;flex-direction:column;
+  background:var(--g2);
+  border-right:1px solid rgba(201,168,76,.25);
+  overflow:hidden;
+}
 
-  .hadis-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 10px 10px; border-radius: 8px;
-    cursor: pointer; border: none; width: 100%;
-    text-align: left; background: transparent;
-    transition: background 0.15s;
-  }
-  .hadis-item:hover { background: rgba(30,138,94,0.08); }
-  .hadis-item.aktif { background: var(--green-deep); }
-  .hadis-item.aktif .hi-num,
-  .hadis-item.aktif .hi-title,
-  .hadis-item.aktif .hi-preview { color: var(--white) !important; }
-  .hadis-item.aktif .hi-num { background: rgba(255,255,255,0.15); color: var(--white); }
-  .hi-num {
-    width: 30px; height: 30px; flex-shrink: 0;
-    background: rgba(30,138,94,0.1);
-    border-radius: 6px; display: grid; place-items: center;
-    font-size: 0.72rem; font-weight: 700; color: var(--green-bright);
-    margin-top: 2px;
-  }
-  .hi-text { flex: 1; min-width: 0; }
-  .hi-title {
-    font-size: 0.83rem; font-weight: 600; color: var(--text-dark);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    margin-bottom: 2px;
-  }
-  .hi-preview {
-    font-size: 0.68rem; color: var(--text-light);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
+.sb-head{
+  padding:18px 16px 14px;
+  border-bottom:1px solid rgba(201,168,76,.15);
+  flex-shrink:0;
+  background:linear-gradient(160deg,var(--g1),var(--g2));
+}
 
-  .sidebar-empty {
-    padding: 20px; text-align: center;
-    color: var(--text-light); font-size: 0.8rem; line-height: 1.6;
-  }
+/* Geometric ornament */
+.sb-ornament{
+  text-align:center;
+  margin-bottom:10px;
+}
+.sb-ornament-line{
+  display:flex;align-items:center;gap:8px;justify-content:center;
+}
+.sb-ornament-line::before,
+.sb-ornament-line::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,.5),transparent);
+}
+.sb-ornament-diamond{
+  width:8px;height:8px;background:var(--gold);
+  transform:rotate(45deg);flex-shrink:0;
+}
 
-  /* ─── KONTEN ─── */
-  .content {
-    flex: 1; display: flex; flex-direction: column;
-    overflow: hidden; background: var(--cream);
-  }
+.sb-title-ar{
+  font-family:'Amiri',serif;
+  font-size:1.7rem;color:var(--goldl);
+  direction:rtl;text-align:center;
+  line-height:1.2;margin-bottom:3px;
+}
+.sb-title-id{
+  font-family:'Tajawal',sans-serif;
+  font-size:.65rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.4);
+  text-align:center;margin-bottom:12px;
+}
+.sb-desc{
+  font-family:'Tajawal',sans-serif;
+  font-size:.7rem;color:rgba(255,255,255,.35);
+  text-align:center;line-height:1.6;margin-bottom:12px;
+}
 
-  /* Placeholder */
-  .placeholder {
-    flex: 1; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 14px; text-align: center; padding: 40px;
-  }
-  .placeholder-icon { font-size: 3.5rem; opacity: 0.35; }
-  .placeholder h3 { font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--green-deep); }
-  .placeholder p { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; max-width: 360px; }
-  .placeholder .arab-deco {
-    font-family: 'Amiri', serif; font-size: 1.4rem;
-    color: var(--gold); margin-top: 8px; direction: rtl;
-  }
+.sb-stats{display:flex;gap:6px;margin-bottom:12px;}
+.sb-stat{
+  flex:1;
+  background:rgba(201,168,76,.1);
+  border:1px solid rgba(201,168,76,.2);
+  border-radius:8px;padding:6px 4px;text-align:center;
+}
+.sb-stat-n{font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;color:var(--goldl);line-height:1;}
+.sb-stat-l{font-family:'Tajawal',sans-serif;font-size:.55rem;color:rgba(255,255,255,.35);margin-top:2px;text-transform:uppercase;letter-spacing:.05em;}
 
-  /* Header Hadis */
-  .hadis-header {
-    padding: 20px 28px 16px;
-    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
-    flex-shrink: 0; text-align: center;
-  }
-  .hh-badge {
-    display: inline-block;
-    background: rgba(201,168,76,0.2);
-    color: var(--gold-light);
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; padding: 3px 12px; border-radius: 20px;
-    border: 1px solid rgba(201,168,76,0.3); margin-bottom: 8px;
-  }
-  .hh-nomor {
-    font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 4px;
-  }
-  .hh-title {
-    font-family: 'Amiri', serif; font-size: 1.4rem; color: var(--white);
-  }
-  .hh-divider {
-    width: 48px; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 10px auto 0;
-  }
+.sb-search{position:relative;}
+.sb-search input{
+  width:100%;padding:8px 12px 8px 34px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(201,168,76,.2);
+  border-radius:8px;color:rgba(255,255,255,.85);
+  font-family:'Tajawal',sans-serif;font-size:.82rem;
+  outline:none;transition:all .2s;
+}
+.sb-search input::placeholder{color:rgba(255,255,255,.3);}
+.sb-search input:focus{background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.4);}
+.sb-si{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:.8rem;pointer-events:none;}
 
-  /* Konten Hadis */
-  .hadis-content {
-    flex: 1; overflow-y: auto; padding: 28px;
-  }
-  .hadis-content::-webkit-scrollbar { width: 5px; }
-  .hadis-content::-webkit-scrollbar-thumb { background: var(--cream-dark); border-radius: 3px; }
+/* Sidebar list */
+.sb-list{flex:1;overflow-y:auto;padding:6px;}
+.sb-list::-webkit-scrollbar{width:3px;}
+.sb-list::-webkit-scrollbar-thumb{background:rgba(201,168,76,.2);border-radius:2px;}
 
-  .hadis-arab-box {
-    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
-    border-radius: 14px; padding: 24px 28px;
-    margin-bottom: 20px;
-    border-top: 3px solid var(--gold);
-  }
-  .hadis-arab-text {
-    font-family: 'Amiri', serif;
-    font-size: 1.6rem; line-height: 2.2;
-    color: var(--white); direction: rtl; text-align: right;
-  }
+.hq-btn{
+  display:flex;align-items:flex-start;gap:9px;
+  width:100%;padding:9px 9px;
+  border-radius:8px;border:none;
+  background:transparent;cursor:pointer;text-align:left;
+  transition:all .15s;
+  color:rgba(255,255,255,.65);
+}
+.hq-btn:hover{background:rgba(201,168,76,.08);color:rgba(255,255,255,.9);}
+.hq-btn.active{
+  background:linear-gradient(90deg,rgba(201,168,76,.22),rgba(201,168,76,.06));
+  border-left:3px solid var(--gold);
+  padding-left:6px;
+  color:var(--goldl);
+}
+.hq-btn.active .hq-num{background:rgba(201,168,76,.25);color:var(--goldl);}
 
-  .hadis-section {
-    margin-bottom: 16px;
-  }
-  .hadis-section-label {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--green-bright);
-    margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
-  }
-  .hadis-section-label::after {
-    content: ''; flex: 1; height: 1px; background: var(--cream-dark);
-  }
+.hq-num{
+  width:26px;height:26px;flex-shrink:0;
+  background:rgba(255,255,255,.05);
+  border-radius:6px;display:grid;place-items:center;
+  font-family:'Tajawal',sans-serif;font-size:.65rem;font-weight:700;
+  color:rgba(201,168,76,.5);margin-top:1px;
+}
+.hq-text{flex:1;min-width:0;}
+.hq-title{
+  font-family:'Tajawal',sans-serif;font-size:.79rem;font-weight:500;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3;
+}
+.hq-perawi{
+  font-family:'Tajawal',sans-serif;font-size:.62rem;
+  color:rgba(201,168,76,.45);margin-top:2px;
+}
+.hq-btn.active .hq-perawi{color:rgba(201,168,76,.65);}
 
-  .hadis-latin-text {
-    font-size: 0.9rem; color: var(--green-mid);
-    line-height: 1.9; font-style: italic;
-    padding: 14px 18px;
-    background: rgba(30,138,94,0.06);
-    border-radius: 8px;
-  }
-  .hadis-terjemah-text {
-    font-size: 0.9rem; color: var(--text-mid);
-    line-height: 1.9;
-    padding: 14px 18px;
-    background: var(--white);
-    border-left: 3px solid var(--green-bright);
-    border-radius: 0 8px 8px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
+/* ─── MAIN ─── */
+.main{
+  flex:1;display:flex;flex-direction:column;
+  overflow:hidden;background:var(--cream);
+}
 
-  .hadis-footer {
-    display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;
-    padding-top: 16px; border-top: 1px solid var(--cream-dark);
-  }
-  .hadis-tag {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 5px 12px; border-radius: 20px;
-    font-size: 0.72rem; font-weight: 600;
-    background: rgba(30,138,94,0.1); color: var(--green-mid);
-  }
+/* Welcome state */
+.welcome{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 24px;text-align:center;gap:16px;
+}
+.welcome-ar{
+  font-family:'Amiri',serif;font-size:2.2rem;
+  color:var(--gold);direction:rtl;
+  text-shadow:0 2px 16px rgba(201,168,76,.25);
+}
+.welcome-title{
+  font-family:'Lora',serif;font-size:1.5rem;
+  color:var(--inkm);
+}
+.welcome-body{
+  font-family:'Tajawal',sans-serif;font-size:.85rem;
+  color:var(--inkl);line-height:1.8;max-width:420px;
+}
+.welcome-box{
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.2);
+  border-radius:12px;padding:14px 18px;
+  font-family:'Tajawal',sans-serif;font-size:.77rem;
+  color:var(--inkm);line-height:1.7;max-width:420px;text-align:left;
+}
 
-  .nav-arrows {
-    display: flex; gap: 10px; margin-top: 20px;
-  }
-  .nav-btn {
-    flex: 1; padding: 10px;
-    border: 1.5px solid var(--cream-dark);
-    border-radius: 8px; background: var(--white);
-    font-size: 0.8rem; font-weight: 600; color: var(--green-deep);
-    cursor: pointer; transition: all 0.2s; text-align: center;
-  }
-  .nav-btn:hover:not(:disabled) {
-    background: var(--green-deep); color: var(--white); border-color: var(--green-deep);
-  }
-  .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+/* ─── HADIS DETAIL ─── */
+.hadis-header{
+  flex-shrink:0;
+  background:linear-gradient(135deg,var(--g1) 0%,var(--g2) 50%,#4a3010 100%);
+  border-bottom:2px solid var(--gold);
+  padding:20px 28px 16px;
+  position:relative;overflow:hidden;
+}
+.hadis-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 50%, rgba(201,168,76,.1), transparent 60%);
+  pointer-events:none;
+}
+.hh-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.hh-left{}
+.hh-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,168,76,.18);
+  border:1px solid rgba(201,168,76,.35);
+  color:var(--goldl);
+  font-family:'Tajawal',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 12px;border-radius:20px;margin-bottom:8px;
+}
+.hh-nomor{
+  font-family:'Tajawal',sans-serif;
+  font-size:.7rem;color:rgba(255,255,255,.4);margin-bottom:5px;
+}
+.hh-title{
+  font-family:'Amiri',serif;font-size:1.35rem;
+  color:var(--white);line-height:1.35;
+}
+.hh-nav{display:flex;gap:6px;flex-shrink:0;}
+.hh-nav-btn{
+  width:30px;height:30px;border-radius:8px;
+  border:1px solid rgba(201,168,76,.3);
+  background:rgba(201,168,76,.1);
+  color:var(--goldl);font-size:.85rem;
+  cursor:pointer;display:grid;place-items:center;
+  transition:all .15s;
+}
+.hh-nav-btn:hover:not(:disabled){background:rgba(201,168,76,.25);}
+.hh-nav-btn:disabled{opacity:.25;cursor:not-allowed;}
+.hh-divider{
+  width:60px;height:1px;margin-top:12px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
 
-  /* Loading */
-  .loading {
-    flex: 1; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 14px; color: var(--text-light); font-size: 0.85rem;
-  }
-  .spinner {
-    width: 40px; height: 40px;
-    border: 3px solid var(--cream-dark);
-    border-top-color: var(--green-bright);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* Content scroll */
+.hadis-scroll{
+  flex:1;overflow-y:auto;padding:24px 28px;
+}
+.hadis-scroll::-webkit-scrollbar{width:4px;}
+.hadis-scroll::-webkit-scrollbar-thumb{background:var(--crdd);border-radius:2px;}
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    .sidebar { width: 240px; }
-    nav .nav-brand span { display: none; }
-    .hadis-arab-text { font-size: 1.3rem; }
-    .hadis-content { padding: 16px; }
-  }
-  @media (max-width: 520px) {
-    .main-layout { flex-direction: column; }
-    .sidebar {
-      width: 100%; height: 220px;
-      border-right: none; border-bottom: 1px solid var(--cream-dark);
-    }
-    .hadis-list {
-      display: flex; flex-direction: row; flex-wrap: nowrap;
-      overflow-x: auto; overflow-y: hidden; padding: 6px;
-    }
-    .hadis-item { min-width: 160px; }
-  }
+/* Arabic box */
+.arab-box{
+  background:linear-gradient(135deg,var(--g1),var(--g2),#3d2a05);
+  border-radius:16px;padding:24px 26px;margin-bottom:22px;
+  position:relative;overflow:hidden;
+  border-top:3px solid var(--gold);
+  box-shadow:0 8px 32px rgba(42,31,10,.2);
+}
+.arab-box::before{
+  content:'';position:absolute;
+  bottom:-10px;right:-10px;
+  width:120px;height:120px;
+  background:radial-gradient(circle,rgba(201,168,76,.08),transparent 70%);
+  pointer-events:none;
+}
+.arab-box::after{
+  content:'قَالَ اللَّهُ';
+  position:absolute;top:10px;left:16px;
+  font-family:'Amiri',serif;font-size:.85rem;
+  color:rgba(201,168,76,.3);direction:rtl;
+  pointer-events:none;
+}
+.arab-text{
+  font-family:'Amiri',serif;
+  font-size:1.6rem;line-height:2.3;
+  color:var(--white);direction:rtl;text-align:right;
+  padding-top:16px;
+}
+
+/* Sections */
+.section{margin-bottom:18px;}
+.section-label{
+  display:flex;align-items:center;gap:8px;
+  font-family:'Tajawal',sans-serif;
+  font-size:.62rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--goldd);
+  margin-bottom:8px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:var(--creamd);}
+.section-label-icon{
+  width:20px;height:20px;border-radius:5px;
+  background:rgba(201,168,76,.12);
+  display:grid;place-items:center;font-size:.75rem;flex-shrink:0;
+}
+
+.latin-text{
+  font-family:'Lora',serif;font-style:italic;
+  font-size:.9rem;color:var(--goldd);line-height:2;
+  padding:14px 18px;
+  background:rgba(201,168,76,.06);
+  border-left:3px solid var(--gold);
+  border-radius:0 10px 10px 0;
+}
+
+.terjemah-text{
+  font-family:'Lora',serif;
+  font-size:.95rem;color:var(--inkm);line-height:1.9;
+  padding:16px 20px;
+  background:var(--white);
+  border-radius:10px;
+  border:1px solid var(--creamd);
+  box-shadow:0 2px 8px rgba(42,31,10,.05);
+  position:relative;
+}
+.terjemah-text::before{
+  content:'"';
+  position:absolute;top:-4px;left:12px;
+  font-family:'Amiri',serif;font-size:3rem;
+  color:rgba(201,168,76,.15);line-height:1;
+}
+
+/* Footer */
+.hadis-footer{
+  display:flex;gap:8px;flex-wrap:wrap;
+  margin-top:18px;padding-top:16px;
+  border-top:1px solid var(--creamd);
+}
+.hadis-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 13px;border-radius:20px;
+  font-family:'Tajawal',sans-serif;font-size:.72rem;font-weight:600;
+}
+.tag-perawi{background:rgba(201,168,76,.1);color:var(--goldd);}
+.tag-dari{background:rgba(42,31,10,.06);color:var(--inkm);}
+
+/* Share / copy action */
+.hadis-actions{
+  display:flex;gap:8px;margin-top:14px;
+}
+.act-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 16px;border-radius:8px;
+  font-family:'Tajawal',sans-serif;font-size:.75rem;font-weight:600;
+  border:1.5px solid var(--creamd);background:var(--white);
+  color:var(--inkm);cursor:pointer;transition:all .15s;
+}
+.act-btn:hover{border-color:var(--gold);color:var(--goldd);}
+.act-btn.copied{border-color:var(--ok);color:var(--ok);background:rgba(45,106,79,.05);}
+
+/* Bottom nav */
+.bottom-nav{
+  display:flex;gap:10px;margin-top:20px;
+}
+.bn-btn{
+  flex:1;padding:10px 14px;
+  border:1.5px solid var(--creamd);border-radius:10px;
+  background:var(--white);
+  font-family:'Tajawal',sans-serif;font-size:.8rem;font-weight:600;
+  color:var(--inkm);cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.bn-btn:hover:not(:disabled){
+  background:var(--g1);color:var(--goldl);border-color:var(--g1);
+}
+.bn-btn:disabled{opacity:.3;cursor:not-allowed;}
+
+/* Progress bar */
+.progress-strip{
+  height:3px;background:var(--creamd);flex-shrink:0;
+}
+.progress-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--goldd),var(--goldl));
+  transition:width .4s ease;
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:860px){:root{--sb-w:250px;}.hadis-scroll{padding:16px;}}
+@media(max-width:640px){
+  nav .nav-brand span{display:none;}
+  .layout{flex-direction:column;}
+  .sidebar{width:100%;height:auto;border-right:none;border-bottom:1px solid rgba(201,168,76,.2);max-height:200px;}
+  .sb-desc,.sb-stats{display:none;}
+  .sb-head{padding:10px 12px;}
+  .sb-title-ar{font-size:1.3rem;}
+  .sb-list{flex-direction:row;display:flex;overflow-x:auto;overflow-y:hidden;padding:4px 6px;}
+  .hq-btn{min-width:160px;flex-shrink:0;}
+  .hadis-scroll{padding:14px;}
+  .arab-text{font-size:1.3rem;}
+  .hadis-header{padding:14px 16px;}
+}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <a href="index.html" class="nav-brand">
     <img src="images/logo_nav.png" alt="Logo">
     <span>Musholla Baiturrahman</span>
   </a>
-  <a href="index.html" class="nav-back">← Kembali ke Beranda</a>
+  <a href="index.html" class="nav-back">← Kembali</a>
 </nav>
 
-<!-- LAYOUT -->
-<div class="main-layout">
+<div class="layout">
 
   <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h2>📜 Hadis Qudsi</h2>
-      <p>Firman Allah yang diriwayatkan melalui Nabi ﷺ</p>
-      <input class="search-box" id="searchBox" type="text"
-             placeholder="🔍 Cari hadis..."
-             oninput="filterHadis(this.value)">
+  <aside class="sidebar">
+    <div class="sb-head">
+      <div class="sb-ornament">
+        <div class="sb-ornament-line">
+          <div class="sb-ornament-diamond"></div>
+          <div class="sb-ornament-diamond" style="width:5px;height:5px;opacity:.5"></div>
+          <div class="sb-ornament-diamond"></div>
+        </div>
+      </div>
+      <div class="sb-title-ar">الْحَدِيثُ الْقُدْسِي</div>
+      <div class="sb-title-id">Hadis Qudsi</div>
+      <div class="sb-desc">Firman Allah SWT yang diriwayatkan melalui lisan Nabi Muhammad ﷺ</div>
+      <div class="sb-stats">
+        <div class="sb-stat"><div class="sb-stat-n">40</div><div class="sb-stat-l">Hadis</div></div>
+        <div class="sb-stat"><div class="sb-stat-n">Arab</div><div class="sb-stat-l">Teks</div></div>
+        <div class="sb-stat"><div class="sb-stat-n">Latin</div><div class="sb-stat-l">& Terjemah</div></div>
+      </div>
+      <div class="sb-search">
+        <span class="sb-si">🔍</span>
+        <input type="text" id="sbSearch" placeholder="Cari hadis atau tema..." oninput="cariHadis(this.value)">
+      </div>
     </div>
-    <div class="hadis-list" id="hadisListEl">
-      <div class="sidebar-empty">Memuat hadis qudsi...</div>
-    </div>
-  </div>
+    <div class="sb-list" id="sbList"></div>
+  </aside>
 
-  <!-- KONTEN -->
-  <div class="content" id="mainContent">
-    <div class="placeholder">
-      <div class="placeholder-icon">📜</div>
-      <h3>Hadis Qudsi</h3>
-      <p>Hadis Qudsi adalah firman Allah SWT yang disampaikan melalui lisan Nabi Muhammad ﷺ, berbeda dari Al-Qur'an dalam redaksi dan penyampaiannya.</p>
-      <div class="arab-deco">قَالَ اللَّهُ تَعَالَى</div>
-      <p style="font-size:0.78rem;color:var(--text-light);">Pilih hadis dari daftar di sebelah kiri untuk mulai membaca.</p>
+  <!-- MAIN -->
+  <main class="main" id="mainPane">
+    <div class="welcome">
+      <div class="welcome-ar">الْحَدِيثُ الْقُدْسِي</div>
+      <div class="welcome-title">Hadis Qudsi</div>
+      <div class="welcome-body">
+        Hadis Qudsi adalah firman Allah SWT yang disampaikan kepada Nabi Muhammad ﷺ bukan sebagai bagian dari Al-Qur'an. Redaksinya dari Nabi ﷺ, namun maknanya dari Allah SWT.
+      </div>
+      <div class="welcome-box">
+        ✦ Koleksi ini memuat <strong>40 Hadis Qudsi</strong> pilihan, lengkap dengan teks Arab, transliterasi Latin, dan terjemahan Bahasa Indonesia. Klik salah satu hadis di sebelah kiri untuk mulai membaca.
+      </div>
     </div>
-  </div>
-
+  </main>
 </div>
 
 <script>
-(function() {
+(function(){
+'use strict';
 
-  /* ══════════════════════════════════════════════
-     DATA HADIS QUDSI
-     Sumber: Kitab Hadis Qudsi yang shahih
-  ══════════════════════════════════════════════ */
-  var HADIS_DATA = [
-    {
-      id: 1,
-      judul: "Allah Lebih Dekat dari Urat Leher",
-      arab: "أَنَا عِنْدَ ظَنِّ عَبْدِي بِي، وَأَنَا مَعَهُ إِذَا ذَكَرَنِي، فَإِنْ ذَكَرَنِي فِي نَفْسِهِ ذَكَرْتُهُ فِي نَفْسِي، وَإِنْ ذَكَرَنِي فِي مَلَإٍ ذَكَرْتُهُ فِي مَلَإٍ خَيْرٍ مِنْهُمْ",
-      latin: "Ana 'inda zhanni 'abdi bi, wa ana ma'ahu idza dzakarani, fa-in dzakarani fi nafsihi dzakartuhu fi nafsi, wa-in dzakarani fi mala-in dzakartuhu fi mala-in khayrin minhum.",
-      terjemah: "Aku sesuai dengan persangkaan hamba-Ku kepada-Ku, dan Aku bersamanya ketika ia mengingat-Ku. Jika ia mengingat-Ku dalam dirinya, Aku mengingatnya dalam diri-Ku. Jika ia mengingat-Ku di tengah keramaian, Aku mengingatnya di tengah keramaian yang lebih baik dari mereka.",
-      perawi: "HR. Bukhari & Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 2,
-      judul: "Rahmat Allah Mendahului Murka-Nya",
-      arab: "إِنَّ رَحْمَتِي سَبَقَتْ غَضَبِي",
-      latin: "Inna rahmati sabaqat ghadabi.",
-      terjemah: "Sesungguhnya rahmat-Ku mendahului (mengalahkan) murka-Ku.",
-      perawi: "HR. Bukhari & Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 3,
-      judul: "Allah Malu kepada Hamba yang Berdoa",
-      arab: "إِنَّ رَبَّكُمْ تَبَارَكَ وَتَعَالَى حَيِيٌّ كَرِيمٌ، يَسْتَحِي مِنْ عَبْدِهِ إِذَا رَفَعَ يَدَيْهِ إِلَيْهِ أَنْ يَرُدَّهُمَا صِفْرًا",
-      latin: "Inna rabbakum tabaaraka wa ta'ala hayiyyun kariim, yastahi min 'abdihi idza rafa'a yadaihi ilaihi an yaruddahuma shifran.",
-      terjemah: "Sesungguhnya Rabb kalian Tabaraka wa Ta'ala adalah Maha Pemalu lagi Maha Mulia. Dia malu kepada hamba-Nya apabila hamba itu mengangkat kedua tangannya kepada-Nya, lalu Dia mengembalikannya dalam keadaan kosong (tidak dikabulkan).",
-      perawi: "HR. Abu Dawud & Tirmidzi",
-      dari: "Salman Al-Farisi radhiyallahu 'anhu"
-    },
-    {
-      id: 4,
-      judul: "Balasan Kebaikan Berlipat Ganda",
-      arab: "مَنْ هَمَّ بِحَسَنَةٍ فَلَمْ يَعْمَلْهَا كَتَبَهَا اللَّهُ عِنْدَهُ حَسَنَةً كَامِلَةً، وَإِنْ هَمَّ بِهَا فَعَمِلَهَا كَتَبَهَا اللَّهُ عِنْدَهُ عَشْرَ حَسَنَاتٍ إِلَى سَبْعِمِائَةِ ضِعْفٍ إِلَى أَضْعَافٍ كَثِيرَةٍ",
-      latin: "Man hamma bihasanatin falam ya'malha katabahallaahu 'indahu hasanatan kaamilah, wa-in hamma biha fa'amilaha katabahallaahu 'indahu 'ashra hasanatin ila sab'imiati dhi'fin ila adh'aafin katsirah.",
-      terjemah: "Barangsiapa berniat melakukan kebaikan namun tidak jadi melakukannya, Allah tetap mencatatnya sebagai satu kebaikan sempurna. Jika ia berniat dan kemudian melakukannya, Allah mencatatnya sebagai sepuluh kebaikan hingga tujuh ratus kali lipat bahkan berlipat-lipat ganda.",
-      perawi: "HR. Bukhari & Muslim",
-      dari: "Ibnu Abbas radhiyallahu 'anhu"
-    },
-    {
-      id: 5,
-      judul: "Allah Turun ke Langit Dunia",
-      arab: "يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الْآخِرُ فَيَقُولُ: مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ؟ مَنْ يَسْأَلُنِي فَأُعْطِيَهُ؟ مَنْ يَسْتَغْفِرُنِي فَأَغْفِرَ لَهُ؟",
-      latin: "Yanzilu Rabbuna tabaaraka wa ta'ala kulla lailatin ila as-samaa-id dunya hiina yabqa tsuluts ul-laili al-aakhiru fayaqulu: man yad'uni fa-astajiba lahu? Man yas-aluni fa-u'thiyahu? Man yastaghfiruni fa-aghfira lah?",
-      terjemah: "Rabb kita Tabaraka wa Ta'ala turun setiap malam ke langit dunia ketika tersisa sepertiga malam terakhir, lalu berfirman: Siapa yang berdoa kepada-Ku maka Aku kabulkan? Siapa yang meminta kepada-Ku maka Aku beri? Siapa yang memohon ampun kepada-Ku maka Aku ampuni?",
-      perawi: "HR. Bukhari & Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 6,
-      judul: "Puasa adalah untuk Allah",
-      arab: "كُلُّ عَمَلِ ابْنِ آدَمَ لَهُ إِلَّا الصِّيَامَ فَإِنَّهُ لِي وَأَنَا أَجْزِي بِهِ، وَالصِّيَامُ جُنَّةٌ",
-      latin: "Kullu 'amali ibni aadama lahu illash shiyaama fa-innahu li wa ana ajzi bih, wash shiyaamu junnah.",
-      terjemah: "Setiap amal perbuatan manusia adalah untuknya, kecuali puasa. Sesungguhnya puasa itu untuk-Ku dan Aku sendiri yang akan membalasnya. Puasa adalah perisai.",
-      perawi: "HR. Bukhari & Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 7,
-      judul: "Tiga Golongan yang Allah Musuhi",
-      arab: "ثَلَاثَةٌ أَنَا خَصْمُهُمْ يَوْمَ الْقِيَامَةِ: رَجُلٌ أَعْطَى بِي ثُمَّ غَدَرَ، وَرَجُلٌ بَاعَ حُرًّا فَأَكَلَ ثَمَنَهُ، وَرَجُلٌ اسْتَأْجَرَ أَجِيرًا فَاسْتَوْفَى مِنْهُ وَلَمْ يُعْطِهِ أَجْرَهُ",
-      latin: "Tsalaatsatun ana khasmuhum yawmal qiyaamah: rajulun a'tha bi tsumma ghadar, wa rajulun baa'a hurran fa-akala tsamanah, wa rajulun ista'jara ajiiran fasta wfa minhu wa lam yu'thihi ajrahu.",
-      terjemah: "Tiga golongan yang Aku akan menjadi musuh mereka pada hari kiamat: Orang yang berjanji atas nama-Ku kemudian berkhianat, orang yang menjual orang merdeka lalu memakan hasil penjualannya, dan orang yang mempekerjakan buruh lalu tidak membayar upahnya.",
-      perawi: "HR. Bukhari",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 8,
-      judul: "Kecintaan Allah kepada Hamba yang Saling Mencintai",
-      arab: "وَجَبَتْ مَحَبَّتِي لِلْمُتَحَابِّينَ فِيَّ، وَالْمُتَجَالِسِينَ فِيَّ، وَالْمُتَزَاوِرِينَ فِيَّ، وَالْمُتَبَاذِلِينَ فِيَّ",
-      latin: "Wajabat mahabbati lil mutahabbiina fiyya, wal mutajaalisiina fiyya, wal mutazaawiriina fiyya, wal mutabaadziliina fiyya.",
-      terjemah: "Kecintaan-Ku pasti diberikan kepada orang-orang yang saling mencintai karena-Ku, yang saling duduk bersama karena-Ku, yang saling mengunjungi karena-Ku, dan yang saling memberi karena-Ku.",
-      perawi: "HR. Ahmad & Malik",
-      dari: "Mu'adz bin Jabal radhiyallahu 'anhu"
-    },
-    {
-      id: 9,
-      judul: "Allah Bersama Hamba yang Berbaik Sangka",
-      arab: "أَنَا عِنْدَ ظَنِّ عَبْدِي بِي، إِنْ ظَنَّ خَيْرًا فَلَهُ، وَإِنْ ظَنَّ شَرًّا فَلَهُ",
-      latin: "Ana 'inda zhanni 'abdi bi, in zhanna khayran falahu, wa-in zhanna syarran falahu.",
-      terjemah: "Aku sesuai dengan persangkaan hamba-Ku kepada-Ku. Jika ia berprasangka baik, maka kebaikan itu baginya. Jika ia berprasangka buruk, maka keburukan itu baginya.",
-      perawi: "HR. Ahmad",
-      dari: "Watsilah bin Al-Asqa' radhiyallahu 'anhu"
-    },
-    {
-      id: 10,
-      judul: "Orang yang Saling Mencintai di Bawah Naungan Allah",
-      arab: "أَيْنَ الْمُتَحَابُّونَ بِجَلَالِي؟ الْيَوْمَ أُظِلُّهُمْ فِي ظِلِّي يَوْمَ لَا ظِلَّ إِلَّا ظِلِّي",
-      latin: "Ainal mutahabbuuna bijalali? Al-yawma uzhilluhum fi zhilli, yawma laa zhilla illaa zhilli.",
-      terjemah: "Dimanakah orang-orang yang saling mencintai karena keagungan-Ku? Pada hari ini Aku akan menaungi mereka dalam naungan-Ku, pada hari yang tidak ada naungan selain naungan-Ku.",
-      perawi: "HR. Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 11,
-      judul: "Allah Mencintai Hamba yang Bertaubat",
-      arab: "لَلَّهُ أَشَدُّ فَرَحًا بِتَوْبَةِ عَبْدِهِ الْمُؤْمِنِ مِنْ رَجُلٍ فِي أَرْضٍ دَوِّيَّةٍ مَهْلَكَةٍ مَعَهُ رَاحِلَتُهُ عَلَيْهَا طَعَامُهُ وَشَرَابُهُ",
-      latin: "Lallaahu asyaddu farahan bitawbati 'abdihil mu'min min rajulin fi ardhin dawwiyyatin mahlakata ma'ahu raahilatuhu 'alayha tha'aamuhu wa syaraabuh.",
-      terjemah: "Sungguh Allah lebih gembira dengan taubat hamba-Nya yang beriman melebihi gembiranya seseorang yang berada di tanah yang gersang berbahaya, bersamanya tunggangannya yang membawa bekal makanan dan minumannya (yang kemudian hilang dan ditemukan kembali).",
-      perawi: "HR. Muslim",
-      dari: "Anas bin Malik radhiyallahu 'anhu"
-    },
-    {
-      id: 12,
-      judul: "Hak Allah dan Hak Hamba",
-      arab: "حَقُّ اللَّهِ عَلَى الْعِبَادِ أَنْ يَعْبُدُوهُ وَلَا يُشْرِكُوا بِهِ شَيْئًا، وَحَقُّ الْعِبَادِ عَلَى اللَّهِ أَنْ لَا يُعَذِّبَ مَنْ لَا يُشْرِكُ بِهِ شَيْئًا",
-      latin: "Haqqullaahi 'alal 'ibaadi an ya'buduuhu wa laa yusyrikuu bihi syay-an, wa haqqul 'ibaadi 'alallaahi an laa yu'adzdziba man laa yusyriku bihi syay-an.",
-      terjemah: "Hak Allah atas para hamba adalah mereka menyembah-Nya dan tidak menyekutukan-Nya dengan sesuatu apapun. Adapun hak para hamba atas Allah adalah Allah tidak akan menyiksa orang yang tidak menyekutukan-Nya dengan sesuatu apapun.",
-      perawi: "HR. Bukhari & Muslim",
-      dari: "Mu'adz bin Jabal radhiyallahu 'anhu"
-    },
-    {
-      id: 13,
-      judul: "Allah Menyembuhkan Orang Sakit",
-      arab: "يَا ابْنَ آدَمَ مَرِضْتُ فَلَمْ تَعُدْنِي، قَالَ: يَا رَبِّ كَيْفَ أَعُودُكَ وَأَنْتَ رَبُّ الْعَالَمِينَ؟ قَالَ: أَمَا عَلِمْتَ أَنَّ عَبْدِي فُلَانًا مَرِضَ فَلَمْ تَعُدْهُ؟ أَمَا عَلِمْتَ أَنَّكَ لَوْ عُدْتَهُ لَوَجَدْتَنِي عِنْدَهُ",
-      latin: "Ya ibna aadama maridtu falam ta'udni, qaala: ya rabbi kayfa a'uuduka wa anta rabbul 'aalamiin? Qaala: ama 'alimta anna 'abdi fulaanan maridha falam ta'udhu? Ama 'alimta annaka law 'udtahu lawajadtani 'indahu.",
-      terjemah: "Wahai anak Adam, Aku sakit namun kamu tidak menjenguk-Ku. Ia berkata: Ya Rabb, bagaimana aku menjenguk-Mu sedangkan Engkau adalah Rabb semesta alam? Allah berfirman: Tidakkah kamu tahu bahwa hamba-Ku fulan sakit namun kamu tidak menjenguknya? Tidakkah kamu tahu bahwa seandainya kamu menjenguknya, niscaya kamu akan mendapati-Ku di sisinya.",
-      perawi: "HR. Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 14,
-      judul: "Berlindung dari Sifat Sombong",
-      arab: "الْكِبْرِيَاءُ رِدَائِي، وَالْعَظَمَةُ إِزَارِي، فَمَنْ نَازَعَنِي وَاحِدًا مِنْهُمَا قَذَفْتُهُ فِي النَّارِ",
-      latin: "Al-kibriyaa-u ridaa-i, wal 'azhamatu izaari, faman naaza'ani waahidan minhuma qadzaftuhu fin naar.",
-      terjemah: "Kesombongan adalah selendang-Ku dan keagungan adalah sarung-Ku. Barangsiapa yang menandingi-Ku dalam salah satu dari keduanya, maka Aku akan melemparkannya ke dalam neraka.",
-      perawi: "HR. Abu Dawud & Ibnu Majah",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 15,
-      judul: "Doa Seorang Hamba Dikabulkan",
-      arab: "مَا مِنْ مُسْلِمٍ يَدْعُو بِدَعْوَةٍ لَيْسَ فِيهَا إِثْمٌ وَلَا قَطِيعَةُ رَحِمٍ إِلَّا أَعْطَاهُ اللَّهُ بِهَا إِحْدَى ثَلَاثٍ: إِمَّا أَنْ تُعَجَّلَ لَهُ دَعْوَتُهُ، وَإِمَّا أَنْ يَدَّخِرَهَا لَهُ فِي الْآخِرَةِ، وَإِمَّا أَنْ يَصْرِفَ عَنْهُ مِنَ السُّوءِ مِثْلَهَا",
-      latin: "Maa min muslimin yad'u bida'watin laysa fiihaa itsmun wa laa qathi'atu rahmin illaa a'thaahullaahu bihaa ihdaa tsalaats: immaa an tu'ajjala lahu da'watuhu, wa immaa an yadda khirahaa lahu fil aakhirah, wa immaa an yashrifaa 'anhu minas suu-i mitslahaa.",
-      terjemah: "Tidak ada seorang muslim pun yang berdoa dengan doa yang tidak mengandung dosa dan tidak memutus silaturahmi, kecuali Allah akan memberikan kepadanya salah satu dari tiga hal: Doanya segera dikabulkan, atau Allah simpan (pahalanya) untuknya di akhirat, atau Allah palingkan darinya keburukan yang semisalnya.",
-      perawi: "HR. Ahmad",
-      dari: "Abu Sa'id Al-Khudri radhiyallahu 'anhu"
-    },
-    {
-      id: 16,
-      judul: "Keutamaan Dzikir Berjamaah",
-      arab: "إِذَا اجْتَمَعَ قَوْمٌ يَذْكُرُونَ اللَّهَ لَا يُرِيدُونَ بِذَلِكَ إِلَّا وَجْهَهُ، نَادَاهُمْ مُنَادٍ مِنَ السَّمَاءِ: أَنْ قُومُوا مَغْفُورًا لَكُمْ، قَدْ بُدِّلَتْ سَيِّئَاتُكُمْ حَسَنَاتٍ",
-      latin: "Idzajtama'a qawmun yadzkuruunallaaha laa yuriiduuna bidzaalika illaa wajhahu, naadaahum munaadin minas samaa-i: an quumuu maghfuuran lakum, qad buddilat sayyi-aatukum hasanaat.",
-      terjemah: "Apabila suatu kaum berkumpul untuk berdzikir kepada Allah, tidak menginginkan dengan hal itu kecuali wajah-Nya, maka penyeru dari langit berseru: Bangunlah kalian dalam keadaan telah diampuni, sungguh keburukan-keburukan kalian telah diganti dengan kebaikan-kebaikan.",
-      perawi: "HR. Ahmad",
-      dari: "Anas bin Malik radhiyallahu 'anhu"
-    },
-    {
-      id: 17,
-      judul: "Sedekah Tidak Mengurangi Harta",
-      arab: "يَا ابْنَ آدَمَ أَنْفِقْ أُنْفِقْ عَلَيْكَ",
-      latin: "Ya ibna aadama anfiq, unfiq 'alayk.",
-      terjemah: "Wahai anak Adam, berinfaklah, niscaya Aku akan berinfak (memberi rezeki) kepadamu.",
-      perawi: "HR. Bukhari & Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 18,
-      judul: "Allah Tidak Melihat Rupa dan Harta",
-      arab: "إِنَّ اللَّهَ لَا يَنْظُرُ إِلَى صُوَرِكُمْ وَأَمْوَالِكُمْ، وَلَكِنْ يَنْظُرُ إِلَى قُلُوبِكُمْ وَأَعْمَالِكُمْ",
-      latin: "Innallaaha laa yanzuru ilaa shuwarikum wa amwaalikum, wa laakin yanzuru ilaa quluubikum wa a'maalikum.",
-      terjemah: "Sesungguhnya Allah tidak melihat kepada rupa dan harta kalian, akan tetapi Allah melihat kepada hati dan amal perbuatan kalian.",
-      perawi: "HR. Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 19,
-      judul: "Balasan bagi yang Meringankan Kesulitan Orang Lain",
-      arab: "مَنْ نَفَّسَ عَنْ مُؤْمِنٍ كُرْبَةً مِنْ كُرَبِ الدُّنْيَا نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ الْقِيَامَةِ",
-      latin: "Man naffasa 'an mu-minin kurbatan min kurabil dunya, naffasallaahu 'anhu kurbatan min kurabi yawmil qiyaamah.",
-      terjemah: "Barangsiapa melepaskan seorang mukmin dari satu kesulitan dunia, maka Allah akan melepaskannya dari satu kesulitan pada hari kiamat.",
-      perawi: "HR. Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    },
-    {
-      id: 20,
-      judul: "Keistimewaan Surga",
-      arab: "أَعْدَدْتُ لِعِبَادِي الصَّالِحِينَ مَا لَا عَيْنٌ رَأَتْ، وَلَا أُذُنٌ سَمِعَتْ، وَلَا خَطَرَ عَلَى قَلْبِ بَشَرٍ",
-      latin: "A'dadtu li'ibaadish shaalihiina maa laa 'aynun ra-at, wa laa udzunun sami'at, wa laa khathara 'alaa qalbi basyar.",
-      terjemah: "Aku telah menyiapkan untuk hamba-hamba-Ku yang shalih sesuatu yang belum pernah dilihat oleh mata, belum pernah didengar oleh telinga, dan belum pernah terbetik dalam hati manusia.",
-      perawi: "HR. Bukhari & Muslim",
-      dari: "Abu Hurairah radhiyallahu 'anhu"
-    }
-  ];
-
-  var HADIS_FILTERED = HADIS_DATA.slice();
-  var AKTIF_ID = null;
-
-  /* ── Render Daftar ── */
-  function renderList(list) {
-    var el = document.getElementById('hadisListEl');
-    if (!list.length) {
-      el.innerHTML = '<div class="sidebar-empty">Hadis tidak ditemukan.</div>';
-      return;
-    }
-    el.innerHTML = list.map(function(h) {
-      return '<button class="hadis-item" id="hi-' + h.id + '" onclick="bukaHadis(' + h.id + ')">' +
-        '<div class="hi-num">' + h.id + '</div>' +
-        '<div class="hi-text">' +
-          '<div class="hi-title">' + h.judul + '</div>' +
-          '<div class="hi-preview">' + h.perawi + '</div>' +
-        '</div>' +
-      '</button>';
-    }).join('');
+/* ══════════════════════════════════════════════════
+   40 HADIS QUDSI LENGKAP
+   Sumber: Kitab Al-Ittihafat As-Sunniyyah fil Ahaditsil Qudsiyyah
+          & Kitab Al-Ahadits Al-Qudsiyyah
+══════════════════════════════════════════════════ */
+var DATA = [
+  {
+    id:1, judul:'Aku Sesuai Prasangka Hamba-Ku',
+    arab:'أَنَا عِنْدَ ظَنِّ عَبْدِي بِي، وَأَنَا مَعَهُ إِذَا ذَكَرَنِي، فَإِنْ ذَكَرَنِي فِي نَفْسِهِ ذَكَرْتُهُ فِي نَفْسِي، وَإِنْ ذَكَرَنِي فِي مَلَإٍ ذَكَرْتُهُ فِي مَلَإٍ خَيْرٍ مِنْهُمْ، وَإِنْ تَقَرَّبَ إِلَيَّ بِشِبْرٍ تَقَرَّبْتُ إِلَيْهِ ذِرَاعًا، وَإِنْ تَقَرَّبَ إِلَيَّ ذِرَاعًا تَقَرَّبْتُ إِلَيْهِ بَاعًا، وَإِنْ أَتَانِي يَمْشِي أَتَيْتُهُ هَرْوَلَةً',
+    latin:'Ana \'inda zhanni \'abdi bi, wa ana ma\'ahu idzaa dzakarani. Fa-in dzakarani fi nafsihi dzakartuhu fi nafsi, wa-in dzakarani fi mala-in dzakartuhu fi mala-in khayrin minhum. Wa-in taqarraba ilayya bi-syibrin taqarrabtu ilayhi dzira\'an, wa-in taqarraba ilayya dzira\'an taqarrabtu ilayhi baa\'an, wa-in ataani yamsyi ataytuhu harwalataan.',
+    terjemah:'Aku sesuai dengan prasangka hamba-Ku kepada-Ku, dan Aku bersamanya ketika ia mengingat-Ku. Jika ia mengingat-Ku dalam dirinya, Aku mengingatnya dalam diri-Ku. Jika ia mengingat-Ku di hadapan orang banyak, Aku mengingatnya di hadapan kelompok yang lebih baik. Jika ia mendekat kepada-Ku sejengkal, Aku mendekat kepadanya sehasta. Jika ia mendekat kepada-Ku sehasta, Aku mendekat kepadanya sedepa. Dan jika ia datang kepada-Ku dengan berjalan, Aku datang kepadanya dengan berlari.',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:2, judul:'Rahmat Mendahului Murka',
+    arab:'إِنَّ رَحْمَتِي سَبَقَتْ غَضَبِي',
+    latin:'Inna rahmati sabaqat ghadabi.',
+    terjemah:'Sesungguhnya rahmat-Ku mendahului (mengalahkan) murka-Ku.',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:3, judul:'Allah Turun ke Langit Dunia setiap Malam',
+    arab:'يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الْآخِرُ فَيَقُولُ: مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ؟ مَنْ يَسْأَلُنِي فَأُعْطِيَهُ؟ مَنْ يَسْتَغْفِرُنِي فَأَغْفِرَ لَهُ؟',
+    latin:'Yanzilu Rabbuna tabaaraka wa ta\'ala kulla lailatin ilas-samaa-id-dunya hiina yabqa tsuluts ul-laili al-aakhiru fayaquulu: Man yad\'uuni fa-astajiba lahu? Man yas-aluuni fa-u\'thiyahu? Man yastaghfiruuni fa-aghfira lahu?',
+    terjemah:'Rabb kita Tabaraka wa Ta\'ala turun setiap malam ke langit dunia ketika tersisa sepertiga malam terakhir, lalu berfirman: "Siapakah yang berdoa kepada-Ku maka Aku kabulkan? Siapakah yang meminta kepada-Ku maka Aku beri? Siapakah yang memohon ampun kepada-Ku maka Aku ampuni?"',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:4, judul:'Puasa adalah Milik Allah',
+    arab:'كُلُّ عَمَلِ ابْنِ آدَمَ لَهُ إِلَّا الصِّيَامَ فَإِنَّهُ لِي وَأَنَا أَجْزِي بِهِ، وَالصِّيَامُ جُنَّةٌ، وَإِذَا كَانَ يَوْمُ صَوْمِ أَحَدِكُمْ فَلَا يَرْفُثْ وَلَا يَصْخَبْ، فَإِنْ سَابَّهُ أَحَدٌ أَوْ قَاتَلَهُ فَلْيَقُلْ إِنِّي امْرُؤٌ صَائِمٌ',
+    latin:'Kullu \'amali ibni aadama lahu illash-shiyaama fa-innahu li wa ana ajzi bih. Wash-shiyaamu junnah. Wa-idzaa kaana yawmu shawmi ahadikum falaa yarfuts wa laa yashkhab, fa-in saabbahu ahadun aw qaatalahu falyaqul inni imru-un shaa-im.',
+    terjemah:'Setiap amal perbuatan anak Adam adalah miliknya, kecuali puasa. Sesungguhnya puasa itu untuk-Ku dan Aku sendiri yang akan membalasnya. Puasa adalah perisai. Apabila salah seorang dari kalian berpuasa, janganlah ia berkata kotor dan janganlah berteriak. Jika ada yang mencacinya atau mengajaknya berkelahi, katakanlah: "Sungguh, aku sedang berpuasa."',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:5, judul:'Balasan Kebaikan Berlipat Ganda',
+    arab:'مَنْ هَمَّ بِحَسَنَةٍ فَلَمْ يَعْمَلْهَا كَتَبَهَا اللَّهُ عِنْدَهُ حَسَنَةً كَامِلَةً، وَإِنْ هَمَّ بِهَا فَعَمِلَهَا كَتَبَهَا اللَّهُ عِنْدَهُ عَشْرَ حَسَنَاتٍ إِلَى سَبْعِمِائَةِ ضِعْفٍ إِلَى أَضْعَافٍ كَثِيرَةٍ، وَمَنْ هَمَّ بِسَيِّئَةٍ فَلَمْ يَعْمَلْهَا كَتَبَهَا اللَّهُ عِنْدَهُ حَسَنَةً كَامِلَةً',
+    latin:'Man hamma bihasanatin falam ya\'malha katabahallaahu \'indahu hasanatan kaamilah. Wa-in hamma biha fa\'amilaha katabahallaahu \'indahu \'ashra hasanatin ila sab\'imiati dhi\'fin ila adh\'aafin katsirah. Wa man hamma bisayyi-atin falam ya\'malha katabahallaahu \'indahu hasanatan kaamilah.',
+    terjemah:'Barangsiapa berniat melakukan kebaikan namun tidak jadi melakukannya, Allah tetap mencatatnya sebagai satu kebaikan sempurna. Jika ia berniat lalu melakukannya, Allah mencatatnya sebagai sepuluh kebaikan hingga tujuh ratus kali lipat bahkan berlipat-lipat ganda. Barangsiapa berniat melakukan keburukan namun tidak jadi melakukannya, Allah mencatatnya sebagai satu kebaikan sempurna.',
+    perawi:'HR. Bukhari & Muslim', dari:'Ibnu Abbas radhiyallahu \'anhu'
+  },
+  {
+    id:6, judul:'Hak Allah dan Hak Hamba',
+    arab:'حَقُّ اللَّهِ عَلَى الْعِبَادِ أَنْ يَعْبُدُوهُ وَلَا يُشْرِكُوا بِهِ شَيْئًا، وَحَقُّ الْعِبَادِ عَلَى اللَّهِ أَنْ لَا يُعَذِّبَ مَنْ لَا يُشْرِكُ بِهِ شَيْئًا',
+    latin:'Haqqullaahi \'alal-\'ibaadi an ya\'buduuhu wa laa yusyrikuu bihi syay-an. Wa haqqul-\'ibaadi \'alallaahi an laa yu\'adzdziba man laa yusyriku bihi syay-an.',
+    terjemah:'Hak Allah atas para hamba adalah mereka menyembah-Nya dan tidak menyekutukan-Nya dengan sesuatu apapun. Adapun hak para hamba atas Allah adalah Allah tidak akan menyiksa orang yang tidak menyekutukan-Nya dengan sesuatu apapun.',
+    perawi:'HR. Bukhari & Muslim', dari:'Mu\'adz bin Jabal radhiyallahu \'anhu'
+  },
+  {
+    id:7, judul:'Tiga Golongan yang Allah Musuhi',
+    arab:'ثَلَاثَةٌ أَنَا خَصْمُهُمْ يَوْمَ الْقِيَامَةِ: رَجُلٌ أَعْطَى بِي ثُمَّ غَدَرَ، وَرَجُلٌ بَاعَ حُرًّا فَأَكَلَ ثَمَنَهُ، وَرَجُلٌ اسْتَأْجَرَ أَجِيرًا فَاسْتَوْفَى مِنْهُ وَلَمْ يُعْطِهِ أَجْرَهُ',
+    latin:'Tsalaatsatun ana khasmuhum yawmal-qiyaamah: rajulun a\'tha bi tsumma ghadar, wa rajulun baa\'a hurran fa-akala tsamanah, wa rajulun ista\'jara ajiiran fasta-wfa minhu wa lam yu\'thihi ajrahu.',
+    terjemah:'Tiga golongan yang Aku akan menjadi musuh mereka pada hari kiamat: Orang yang berjanji atas nama-Ku kemudian berkhianat, orang yang menjual orang merdeka lalu memakan hasil penjualannya, dan orang yang mempekerjakan buruh lalu tidak membayar upahnya setelah ia menyelesaikan pekerjaannya.',
+    perawi:'HR. Bukhari', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:8, judul:'Kecintaan Allah kepada yang Saling Mencintai',
+    arab:'وَجَبَتْ مَحَبَّتِي لِلْمُتَحَابِّينَ فِيَّ، وَالْمُتَجَالِسِينَ فِيَّ، وَالْمُتَزَاوِرِينَ فِيَّ، وَالْمُتَبَاذِلِينَ فِيَّ',
+    latin:'Wajabat mahabbati lil-mutahabbiina fiyya, wal-mutajaalisiina fiyya, wal-mutazaawiriina fiyya, wal-mutabaadziliina fiyya.',
+    terjemah:'Kecintaan-Ku pasti diberikan kepada orang-orang yang saling mencintai karena-Ku, yang saling duduk bersama karena-Ku, yang saling mengunjungi karena-Ku, dan yang saling memberi karena-Ku.',
+    perawi:'HR. Ahmad & Malik', dari:'Mu\'adz bin Jabal radhiyallahu \'anhu'
+  },
+  {
+    id:9, judul:'Orang Saling Mencintai di Naungan Allah',
+    arab:'أَيْنَ الْمُتَحَابُّونَ بِجَلَالِي؟ الْيَوْمَ أُظِلُّهُمْ فِي ظِلِّي يَوْمَ لَا ظِلَّ إِلَّا ظِلِّي',
+    latin:'Ainal-mutahabbuuna bijalali? Al-yawma uzhilluhum fi zhilli, yawma laa zhilla illaa zhilli.',
+    terjemah:'Dimanakah orang-orang yang saling mencintai karena keagungan-Ku? Pada hari ini Aku akan menaungi mereka dalam naungan-Ku, pada hari yang tidak ada naungan selain naungan-Ku.',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:10, judul:'Allah Malu Menolak Doa Hamba',
+    arab:'إِنَّ رَبَّكُمْ تَبَارَكَ وَتَعَالَى حَيِيٌّ كَرِيمٌ، يَسْتَحِي مِنْ عَبْدِهِ إِذَا رَفَعَ يَدَيْهِ إِلَيْهِ أَنْ يَرُدَّهُمَا صِفْرًا',
+    latin:'Inna rabbakum tabaaraka wa ta\'ala hayiyyun kariim, yastahi min \'abdihi idzaa rafa\'a yadayhi ilayhi an yaruddahuma shifran.',
+    terjemah:'Sesungguhnya Rabb kalian Tabaraka wa Ta\'ala adalah Maha Pemalu lagi Maha Mulia. Dia malu kepada hamba-Nya apabila hamba itu mengangkat kedua tangannya kepada-Nya, lalu Dia mengembalikannya dalam keadaan kosong (tidak dikabulkan).',
+    perawi:'HR. Abu Dawud & Tirmidzi', dari:'Salman Al-Farisi radhiyallahu \'anhu'
+  },
+  {
+    id:11, judul:'Allah Bergembira dengan Taubat Hamba',
+    arab:'لَلَّهُ أَشَدُّ فَرَحًا بِتَوْبَةِ عَبْدِهِ حِينَ يَتُوبُ إِلَيْهِ مِنْ أَحَدِكُمْ كَانَ عَلَى رَاحِلَتِهِ بِأَرْضِ فَلَاةٍ، فَانْفَلَتَتْ مِنْهُ وَعَلَيْهَا طَعَامُهُ وَشَرَابُهُ، فَأَيِسَ مِنْهَا، فَأَتَى شَجَرَةً فَاضْطَجَعَ فِي ظِلِّهَا، ثُمَّ وَجَدَهَا قَائِمَةً عِنْدَهُ',
+    latin:'Lallaahu asyaddu farahan bitawbati \'abdihi hiina yatuubu ilayhi min ahadikum kaana \'ala raakilatihi bi-ardhi falaa, fanfalathat minhu wa \'alayha tha\'aamuhu wa syaraabuh, fa-ayisa minha, fa-ata syajaratan fadhtaja\'a fi zhilliha, tsumma wajadaha qaa-imatan \'indahu.',
+    terjemah:'Sungguh Allah lebih gembira dengan taubat hamba-Nya ketika ia bertaubat kepada-Nya melebihi gembiranya seseorang yang berada di padang pasir bersama tunggangannya, lalu tunggangannya itu lepas darinya sementara di atasnya ada bekal makanan dan minumannya. Ia pun putus asa lalu berteduh di bawah pohon, kemudian tiba-tiba ia mendapati tunggangannya berdiri di depannya.',
+    perawi:'HR. Muslim', dari:'Anas bin Malik radhiyallahu \'anhu'
+  },
+  {
+    id:12, judul:'Allah Tidak Melihat Rupa dan Harta',
+    arab:'إِنَّ اللَّهَ لَا يَنْظُرُ إِلَى صُوَرِكُمْ وَأَمْوَالِكُمْ، وَلَكِنْ يَنْظُرُ إِلَى قُلُوبِكُمْ وَأَعْمَالِكُمْ',
+    latin:'Innallaaha laa yanzuru ilaa shuwarikum wa amwaalikum, wa laakin yanzuru ilaa quluubikum wa a\'maalikum.',
+    terjemah:'Sesungguhnya Allah tidak melihat kepada rupa dan harta kalian, akan tetapi Allah melihat kepada hati dan amal perbuatan kalian.',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:13, judul:'Berinfak kepada yang Membutuhkan',
+    arab:'يَا ابْنَ آدَمَ أَنْفِقْ أُنْفِقْ عَلَيْكَ',
+    latin:'Ya ibna aadama anfiq, unfiq \'alayk.',
+    terjemah:'Wahai anak Adam, berinfaklah (di jalan Allah), niscaya Aku akan berinfak (memberi rezeki) kepadamu.',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:14, judul:'Kesombongan adalah Milik Allah',
+    arab:'الْكِبْرِيَاءُ رِدَائِي، وَالْعَظَمَةُ إِزَارِي، فَمَنْ نَازَعَنِي وَاحِدًا مِنْهُمَا قَذَفْتُهُ فِي النَّارِ',
+    latin:'Al-kibriyaa-u ridaa-i, wal-\'azhamatu izaari. Faman naaza\'ani waahidan minhuma qadzaftuhu fin-naar.',
+    terjemah:'Kesombongan adalah selendang-Ku dan keagungan adalah sarung-Ku. Barangsiapa yang berani menandingi-Ku dalam salah satu dari keduanya, maka Aku akan melemparkannya ke dalam neraka.',
+    perawi:'HR. Abu Dawud & Ibnu Majah', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:15, judul:'Menjenguk Orang Sakit adalah Menjenguk Allah',
+    arab:'يَا ابْنَ آدَمَ مَرِضْتُ فَلَمْ تَعُدْنِي. قَالَ: يَا رَبِّ كَيْفَ أَعُودُكَ وَأَنْتَ رَبُّ الْعَالَمِينَ؟ قَالَ: أَمَا عَلِمْتَ أَنَّ عَبْدِي فُلَانًا مَرِضَ فَلَمْ تَعُدْهُ؟ أَمَا عَلِمْتَ أَنَّكَ لَوْ عُدْتَهُ لَوَجَدْتَنِي عِنْدَهُ؟',
+    latin:'Ya ibna aadama maridtu falam ta\'udni. Qaala: ya rabbi kayfa a\'uuduka wa anta rabbul-\'aalamiin? Qaala: ama \'alimta anna \'abdi fulaanan maridha falam ta\'udhu? Ama \'alimta annaka law \'udtahu lawajadtani \'indahu?',
+    terjemah:'(Allah berfirman): "Wahai anak Adam, Aku sakit namun kamu tidak menjenguk-Ku." Ia berkata: "Ya Rabb, bagaimana aku menjenguk-Mu sedangkan Engkau adalah Rabb semesta alam?" Allah berfirman: "Tidakkah kamu tahu bahwa hamba-Ku si fulan sakit namun kamu tidak menjenguknya? Tidakkah kamu tahu bahwa seandainya kamu menjenguknya, niscaya kamu akan mendapati-Ku di sisinya?"',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:16, judul:'Memberi Makan adalah Memberi Makan Allah',
+    arab:'يَا ابْنَ آدَمَ اسْتَطْعَمْتُكَ فَلَمْ تُطْعِمْنِي. قَالَ: يَا رَبِّ وَكَيْفَ أُطْعِمُكَ وَأَنْتَ رَبُّ الْعَالَمِينَ؟ قَالَ: أَمَا عَلِمْتَ أَنَّهُ اسْتَطْعَمَكَ عَبْدِي فُلَانٌ فَلَمْ تُطْعِمْهُ؟ أَمَا عَلِمْتَ أَنَّكَ لَوْ أَطْعَمْتَهُ لَوَجَدْتَ ذَلِكَ عِنْدِي؟',
+    latin:'Ya ibna aadama ista-tha\'mtuka falam tuth\'imni. Qaala: ya rabbi wa kayfa uth\'imuka wa anta rabbul-\'aalamiin? Qaala: ama \'alimta annahu ista-tha\'maka \'abdi fulaanun falam tuth\'imhu? Ama \'alimta annaka law ath\'amtahu lawajadta dzalika \'indi?',
+    terjemah:'(Allah berfirman): "Wahai anak Adam, Aku meminta makan kepadamu namun kamu tidak memberi-Ku makan." Ia berkata: "Ya Rabb, bagaimana aku memberi-Mu makan sedangkan Engkau adalah Rabb semesta alam?" Allah berfirman: "Tidakkah kamu tahu bahwa hamba-Ku si fulan meminta makan kepadamu namun kamu tidak memberinya makan? Tidakkah kamu tahu bahwa seandainya kamu memberinya makan, niscaya kamu akan mendapati pahalanya di sisi-Ku?"',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:17, judul:'Doa yang Selalu Dikabulkan',
+    arab:'مَا مِنْ مُسْلِمٍ يَدْعُو بِدَعْوَةٍ لَيْسَ فِيهَا إِثْمٌ وَلَا قَطِيعَةُ رَحِمٍ إِلَّا أَعْطَاهُ اللَّهُ بِهَا إِحْدَى ثَلَاثٍ: إِمَّا أَنْ تُعَجَّلَ لَهُ دَعْوَتُهُ، وَإِمَّا أَنْ يَدَّخِرَهَا لَهُ فِي الْآخِرَةِ، وَإِمَّا أَنْ يَصْرِفَ عَنْهُ مِنَ السُّوءِ مِثْلَهَا',
+    latin:'Maa min muslimin yad\'u bida\'watin laysa fiihaa itsmun wa laa qathi\'atu rahmin illaa a\'thaahullaahu bihaa ihdaa tsalaats: immaa an tu\'ajjala lahu da\'watuhu, wa immaa an yadda-khirahaa lahu fil-aakhirah, wa immaa an yashrifaa \'anhu minas-suu-i mitslahaa.',
+    terjemah:'Tidak ada seorang muslim pun yang berdoa dengan doa yang tidak mengandung dosa dan tidak memutus silaturahmi, kecuali Allah akan memberikan kepadanya salah satu dari tiga hal: Doanya segera dikabulkan, atau Allah simpan (pahalanya) untuknya di akhirat, atau Allah palingkan darinya keburukan yang semisalnya.',
+    perawi:'HR. Ahmad', dari:'Abu Sa\'id Al-Khudri radhiyallahu \'anhu'
+  },
+  {
+    id:18, judul:'Keutamaan Dzikir Berjamaah',
+    arab:'إِذَا اجْتَمَعَ قَوْمٌ يَذْكُرُونَ اللَّهَ، لَا يُرِيدُونَ بِذَلِكَ إِلَّا وَجْهَهُ، نَادَاهُمْ مُنَادٍ مِنَ السَّمَاءِ: أَنْ قُومُوا مَغْفُورًا لَكُمْ، قَدْ بُدِّلَتْ سَيِّئَاتُكُمْ حَسَنَاتٍ',
+    latin:'Idzajtama\'a qawmun yadzkuruunallaaha, laa yuriiduuna bidzaalika illaa wajhahu, naadaahum munaadin minas-samaa-i: an quumuu maghfuuran lakum, qad buddilat sayyi-aatukum hasanaat.',
+    terjemah:'Apabila suatu kaum berkumpul untuk berdzikir kepada Allah, tidak menginginkan dengan hal itu kecuali wajah-Nya, maka penyeru dari langit berseru: "Bangunlah kalian dalam keadaan telah diampuni, sungguh keburukan-keburukan kalian telah diganti dengan kebaikan-kebaikan."',
+    perawi:'HR. Ahmad', dari:'Anas bin Malik radhiyallahu \'anhu'
+  },
+  {
+    id:19, judul:'Meringankan Kesulitan Saudara',
+    arab:'مَنْ نَفَّسَ عَنْ مُؤْمِنٍ كُرْبَةً مِنْ كُرَبِ الدُّنْيَا نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ الْقِيَامَةِ، وَمَنْ يَسَّرَ عَلَى مُعْسِرٍ يَسَّرَ اللَّهُ عَلَيْهِ فِي الدُّنْيَا وَالْآخِرَةِ',
+    latin:'Man naffasa \'an mu-minin kurbatan min kurabil-dunya, naffasallaahu \'anhu kurbatan min kurabi yawmil-qiyaamah. Wa man yassara \'ala mu\'sirin yassarallaahu \'alayhi fid-dunya wal-aakhirah.',
+    terjemah:'Barangsiapa melepaskan seorang mukmin dari satu kesulitan dunia, maka Allah akan melepaskannya dari satu kesulitan pada hari kiamat. Barangsiapa memudahkan (urusan) orang yang kesulitan, maka Allah akan memudahkannya di dunia dan akhirat.',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:20, judul:'Kenikmatan Surga yang Tak Terbayangkan',
+    arab:'أَعْدَدْتُ لِعِبَادِي الصَّالِحِينَ مَا لَا عَيْنٌ رَأَتْ، وَلَا أُذُنٌ سَمِعَتْ، وَلَا خَطَرَ عَلَى قَلْبِ بَشَرٍ. فَاقْرَءُوا إِنْ شِئْتُمْ: فَلَا تَعْلَمُ نَفْسٌ مَا أُخْفِيَ لَهُمْ مِنْ قُرَّةِ أَعْيُنٍ',
+    latin:'A\'dadtu li\'ibaadish-shaalihiina maa laa \'aynun ra-at, wa laa udzunun sami\'at, wa laa khathara \'alaa qalbi basyar. Faqra-uu in syi\'tum: falaa ta\'lamu nafsun maa ukhfiya lahum min qurrati a\'yun.',
+    terjemah:'Aku telah menyiapkan untuk hamba-hamba-Ku yang shalih sesuatu yang belum pernah dilihat oleh mata, belum pernah didengar oleh telinga, dan belum pernah terbetik dalam hati manusia. Bacalah jika kalian mau (firman Allah): "Maka tidak seorang pun mengetahui nikmat apa yang disembunyikan untuk mereka sebagai balasan atas apa yang telah mereka kerjakan." (QS. As-Sajdah: 17)',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:21, judul:'Allah Menjamin yang Keluar di Jalan-Nya',
+    arab:'مَنْ خَرَجَ فِي سَبِيلِي مُجَاهِدًا أَوْ حَاجًّا أَوْ مُعْتَمِرًا، فَمَاتَ فِيهِ كَانَ ضَامِنًا عَلَى اللَّهِ أَنْ يُدْخِلَهُ الْجَنَّةَ أَوْ يَرُدَّهُ إِلَى مَنْزِلِهِ مَعَ الْأَجْرِ أَوِ الْغَنِيمَةِ',
+    latin:'Man kharaja fi sabili mujaahidan aw haajjan aw mu\'tamiran famata fiihi kaana dhaaminan \'alallaahi an yudkhilahul-jannata aw yaruddahu ila manziilihi ma\'al-ajri awil-ghaniimah.',
+    terjemah:'Barangsiapa keluar di jalan-Ku sebagai mujahid, haji, atau umroh, lalu meninggal di dalamnya, maka Allah menjamin untuk memasukkannya ke surga atau mengembalikannya ke rumahnya disertai pahala atau ghanimah.',
+    perawi:'HR. Abu Dawud', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:22, judul:'Ampunan Allah Melebihi Dosa Hamba',
+    arab:'يَا ابْنَ آدَمَ إِنَّكَ مَا دَعَوْتَنِي وَرَجَوْتَنِي غَفَرْتُ لَكَ عَلَى مَا كَانَ فِيكَ وَلَا أُبَالِي، يَا ابْنَ آدَمَ لَوْ بَلَغَتْ ذُنُوبُكَ عَنَانَ السَّمَاءِ ثُمَّ اسْتَغْفَرْتَنِي غَفَرْتُ لَكَ، يَا ابْنَ آدَمَ إِنَّكَ لَوْ أَتَيْتَنِي بِقُرَابِ الْأَرْضِ خَطَايَا ثُمَّ لَقِيتَنِي لَا تُشْرِكُ بِي شَيْئًا لَأَتَيْتُكَ بِقُرَابِهَا مَغْفِرَةً',
+    latin:'Ya ibna aadama innaka maa da\'awtani wa rajautani ghafart laka \'ala maa kaana fiika wa laa ubaali. Ya ibna aadama law balaghat dzunuubuka \'anaanas-samaa-i tsummas-taghfartani ghafart lak. Ya ibna aadama innaka law ataytani biquraabil-ardhi khataayaa tsumma laqiitani laa tusyriku bi syay-an la-ataytuka biquraabiha maghfirah.',
+    terjemah:'Wahai anak Adam, selama engkau berdoa kepada-Ku dan berharap kepada-Ku, Aku ampuni engkau atas (dosa) apa yang ada padamu dan Aku tidak peduli. Wahai anak Adam, seandainya dosamu mencapai awan langit, kemudian engkau memohon ampun kepada-Ku, Aku akan mengampunimu. Wahai anak Adam, seandainya engkau datang kepada-Ku dengan membawa dosa sepenuh bumi, kemudian engkau bertemu-Ku tanpa menyekutukan-Ku dengan sesuatu apapun, Aku akan datang kepadamu dengan ampunan sepenuh bumi itu.',
+    perawi:'HR. Tirmidzi', dari:'Anas bin Malik radhiyallahu \'anhu'
+  },
+  {
+    id:23, judul:'Allah Mencintai Hamba yang Mulia Akhlaknya',
+    arab:'إِنَّ اللَّهَ كَتَبَ الْإِحْسَانَ عَلَى كُلِّ شَيْءٍ، فَإِذَا قَتَلْتُمْ فَأَحْسِنُوا الْقِتْلَةَ، وَإِذَا ذَبَحْتُمْ فَأَحْسِنُوا الذَّبْحَ، وَلْيُحِدَّ أَحَدُكُمْ شَفْرَتَهُ، وَلْيُرِحْ ذَبِيحَتَهُ',
+    latin:'Innallaaha kataba al-ihsaana \'ala kulli syay-in, fa-idzaa qataltum fa-ahsinul-qitlah, wa-idzaa dzabahtum fa-ahsinudz-dzabha, walyuhidda ahadukum syafratahu, walyurih dzabiihatahu.',
+    terjemah:'Sesungguhnya Allah mewajibkan ihsan (berbuat baik) dalam segala sesuatu. Maka apabila kalian membunuh (dalam perang yang dibenarkan), lakukanlah dengan cara yang baik. Apabila kalian menyembelih, sembelihlah dengan cara yang baik. Hendaklah salah seorang dari kalian mengasah pisaunya dan menenangkan hewan sembelihannya.',
+    perawi:'HR. Muslim', dari:'Syaddad bin Aus radhiyallahu \'anhu'
+  },
+  {
+    id:24, judul:'Allah Bersama Hamba yang Berpuasa',
+    arab:'الصِّيَامُ لِي وَأَنَا أَجْزِي بِهِ، إِنَّهُ تَرَكَ شَهْوَتَهُ وَأَكْلَهُ وَشُرْبَهُ مِنْ أَجْلِي',
+    latin:'Ash-shiyaamu li wa ana ajzi bih. Innahu taraka syahwatahu wa aklahu wa syurbahu min ajli.',
+    terjemah:'Puasa adalah untuk-Ku dan Aku sendiri yang membalasnya. Sesungguhnya orang yang berpuasa telah meninggalkan syahwatnya, makan dan minumnya karena-Ku.',
+    perawi:'HR. Bukhari', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:25, judul:'Shalat adalah Tiang Agama',
+    arab:'يَا ابْنَ آدَمَ لَا تَعْجِزْ عَنْ أَرْبَعِ رَكَعَاتٍ مِنْ أَوَّلِ النَّهَارِ أَكْفِكَ آخِرَهُ',
+    latin:'Ya ibna aadama laa ta\'jiz \'an arba\'i raka\'aatin min awwalin-nahaari akfika aakhirah.',
+    terjemah:'Wahai anak Adam, janganlah kamu lemah untuk mengerjakan empat rakaat di awal siang, (jika kamu kerjakan) Aku akan mencukupimu di akhir harimu.',
+    perawi:'HR. Abu Dawud & Tirmidzi', dari:'Nu\'aim bin Hammar radhiyallahu \'anhu'
+  },
+  {
+    id:26, judul:'Berlindung dari Api Neraka',
+    arab:'اتَّقُوا النَّارَ وَلَوْ بِشِقِّ تَمْرَةٍ، فَإِنْ لَمْ تَجِدُوا فَبِكَلِمَةٍ طَيِّبَةٍ',
+    latin:'Ittaqun-naara wa law bisyiqqi tamrah, fa-in lam tajiduu fabikalimatin thayyibah.',
+    terjemah:'Jagalah diri kalian dari api neraka meski hanya dengan (bersedekah) sepotong kurma. Jika kalian tidak mendapatkan (sesuatu untuk disedekahkan), maka dengan ucapan yang baik.',
+    perawi:'HR. Bukhari & Muslim', dari:'Adiy bin Hatim radhiyallahu \'anhu'
+  },
+  {
+    id:27, judul:'Menjaga Lisan',
+    arab:'مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ',
+    latin:'Man kaana yu-minu billaahi wal-yawmil-aakhiri falyaqul khayran aw liyashmut.',
+    terjemah:'Barangsiapa beriman kepada Allah dan hari akhir, hendaklah ia berkata baik atau diam.',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:28, judul:'Berpegang pada Al-Qur\'an dan Sunnah',
+    arab:'تَرَكْتُ فِيكُمْ أَمْرَيْنِ لَنْ تَضِلُّوا مَا تَمَسَّكْتُمْ بِهِمَا: كِتَابَ اللَّهِ وَسُنَّةَ نَبِيِّهِ',
+    latin:'Taraktu fiikum amrayni lan tadhilluu maa tamassaktem bihimaa: kitaaballaahi wa sunatta nabiyyihi.',
+    terjemah:'Aku tinggalkan untuk kalian dua perkara yang kalian tidak akan sesat selama kalian berpegang teguh pada keduanya: Kitabullah (Al-Qur\'an) dan Sunnah Nabi-Nya.',
+    perawi:'HR. Malik', dari:'Nabi Muhammad ﷺ'
+  },
+  {
+    id:29, judul:'Keutamaan Shalat Malam',
+    arab:'أَفْضَلُ الصَّلَاةِ بَعْدَ الْفَرِيضَةِ صَلَاةُ اللَّيْلِ',
+    latin:'Afdhalu-sh-shalaati ba\'dal-faridhati shalaatu-l-layli.',
+    terjemah:'Shalat yang paling utama setelah shalat wajib adalah shalat malam (tahajud).',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:30, judul:'Allah Melihat Amal Hati',
+    arab:'إِنَّ اللَّهَ لَا يَنْظُرُ إِلَى أَجْسَادِكُمْ وَلَا إِلَى صُوَرِكُمْ، وَلَكِنْ يَنْظُرُ إِلَى قُلُوبِكُمْ، وَأَشَارَ بِأَصَابِعِهِ إِلَى صَدْرِهِ',
+    latin:'Innallaaha laa yanzuru ilaa ajsaadikum wa laa ilaa shuwarikum, wa laakin yanzuru ilaa quluubikum, wa ashaara bi-ashaabi\'ihi ilaa shadrihi.',
+    terjemah:'Sesungguhnya Allah tidak memandang tubuh kalian dan tidak pula memandang rupa kalian, akan tetapi Allah memandang hati kalian (sambil Nabi menunjuk ke arah dadanya dengan jarinya).',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:31, judul:'Tawakkal kepada Allah',
+    arab:'لَوْ أَنَّكُمْ تَتَوَكَّلُونَ عَلَى اللَّهِ حَقَّ تَوَكُّلِهِ لَرَزَقَكُمْ كَمَا يَرْزُقُ الطَّيْرَ، تَغْدُو خِمَاصًا وَتَرُوحُ بِطَانًا',
+    latin:'Law annakum tatawakkaluuna \'alallaahi haqqa tawakkuulihi larazaqakum kamaa yarzuquth-thayr, taghduu khimaasham wa taruuhu bithaanaa.',
+    terjemah:'Seandainya kalian benar-benar bertawakkal kepada Allah dengan tawakkal yang sesungguhnya, niscaya Dia akan memberi rezeki kepada kalian sebagaimana Dia memberi rezeki kepada burung yang berangkat pagi dalam keadaan lapar dan pulang petang dalam keadaan kenyang.',
+    perawi:'HR. Tirmidzi & Ibnu Majah', dari:'Umar bin Khattab radhiyallahu \'anhu'
+  },
+  {
+    id:32, judul:'Keutamaan Membaca Al-Fatihah',
+    arab:'قَسَمْتُ الصَّلَاةَ بَيْنِي وَبَيْنَ عَبْدِي نِصْفَيْنِ، وَلِعَبْدِي مَا سَأَلَ. فَإِذَا قَالَ الْعَبْدُ: الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ قَالَ اللَّهُ: حَمِدَنِي عَبْدِي',
+    latin:'Qasamtu-sh-shalaata bayni wa bayna \'abdi nishfayn, wa li\'abdi maa sa-al. Fa-idzaa qaalal-\'abdu: al-hamdu lillaahi rabbil-\'aalamiin, qaalallaaahu: hamidani \'abdi.',
+    terjemah:'Aku membagi shalat (Al-Fatihah) antara Aku dan hamba-Ku menjadi dua bagian, dan bagi hamba-Ku apa yang ia minta. Apabila hamba berkata: "Segala puji bagi Allah, Rabb semesta alam," Allah berfirman: "Hamba-Ku telah memuji-Ku."',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:33, judul:'Kecintaan Allah kepada Orang yang Sabar',
+    arab:'مَا أَصَابَ الْمُؤْمِنَ مِنْ وَصَبٍ وَلَا نَصَبٍ وَلَا سَقَمٍ وَلَا حَزَنٍ حَتَّى الْهَمِّ يُهَمُّهُ إِلَّا كَفَّرَ اللَّهُ بِهِ مِنْ خَطَايَاهُ',
+    latin:'Maa ashabal-mu-mina min washabin wa laa nashabin wa laa saqamin wa laa hazanin hattaa-l-hammi yuhammuh illaa kaffarallaahu bihi min khataayaah.',
+    terjemah:'Tidaklah seorang mukmin tertimpa kelelahan, kepayahan, sakit, kesedihan, bahkan kekhawatiran yang menggelisahkannya, melainkan Allah akan menghapus dengannya sebagian dari dosa-dosanya.',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Sa\'id dan Abu Hurairah radhiyallahu \'anhumaa'
+  },
+  {
+    id:34, judul:'Doa Nabi Untuk Umatnya',
+    arab:'اللَّهُمَّ إِنِّي أَتَّخِذُ عِنْدَكَ عَهْدًا لَنْ تُخْلِفَنِيهِ، فَإِنَّمَا أَنَا بَشَرٌ، فَأَيُّ الْمُؤْمِنِينَ آذَيْتُهُ أَوْ شَتَمْتُهُ أَوْ جَلَدْتُهُ فَاجْعَلْهَا لَهُ صَلَاةً وَزَكَاةً وَقُرْبَةً تُقَرِّبُهُ بِهَا إِلَيْكَ يَوْمَ الْقِيَامَةِ',
+    latin:'Allaahumma inni attakhidzu \'indaka \'ahdan lan tukhlifaniihi. Fa-innamaa ana basyarun, fa-ayyu-l-mu-miniina aadhaytuhu aw syatamtuhu aw jaladtuhu faj\'alhaa lahu shalaatan wa zakaatan wa qurbatan tuqarribuhu bihaa ilayka yawmal-qiyaamah.',
+    terjemah:'Ya Allah, sesungguhnya aku membuat perjanjian kepada-Mu yang tidak akan Engkau ingkari. Sesungguhnya aku hanyalah manusia. Maka mukmin mana pun yang pernah aku sakiti, aku caci, atau aku hukum, jadikanlah hal itu sebagai shalat, zakat, dan kedekatan yang mendekatkannya kepada-Mu pada hari kiamat.',
+    perawi:'HR. Bukhari & Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:35, judul:'Allah Melapangkan Rezeki',
+    arab:'أَنَا الْغَنِيُّ لَا يَضُرُّنِي مَنْ عَصَانِي، وَلَا يَنْفَعُنِي مَنْ أَطَاعَنِي. يَا عِبَادِي لَوْ أَنَّ أَوَّلَكُمْ وَآخِرَكُمْ وَإِنْسَكُمْ وَجِنَّكُمْ كَانُوا عَلَى أَتْقَى قَلْبِ رَجُلٍ وَاحِدٍ مِنْكُمْ مَا زَادَ ذَلِكَ فِي مُلْكِي شَيْئًا',
+    latin:'Anal-ghaniyu laa yadhurruni man \'ashani, wa laa yanfa\'uni man atha\'ani. Ya \'ibaadi law anna awwalakum wa aakhirakum wa insakum wa jinnakum kaanuu \'ala atqaa qalbi rajulin waahidin minkum maa zaada dzalika fi mulki syay-an.',
+    terjemah:'Aku Maha Kaya. Tidak membahayakan-Ku siapa pun yang bermaksiat kepada-Ku, dan tidak memberi manfaat kepada-Ku siapa pun yang taat kepada-Ku. Wahai hamba-hamba-Ku, seandainya orang yang pertama hingga yang terakhir di antara kalian, manusia dan jin kalian, semuanya memiliki hati setakwa hati seorang laki-laki yang paling bertakwa di antara kalian, hal itu tidak menambah kerajaan-Ku sedikit pun.',
+    perawi:'HR. Muslim', dari:'Abu Dzar Al-Ghifari radhiyallahu \'anhu'
+  },
+  {
+    id:36, judul:'Hamba yang Paling Dicintai Allah',
+    arab:'أَحَبُّ الْعَمَلِ إِلَى اللَّهِ أَدْوَمُهُ وَإِنْ قَلَّ',
+    latin:'Ahabbu-l-\'amali ilallaaahi adwamuhu wa-in qall.',
+    terjemah:'Amal yang paling dicintai Allah adalah yang paling konsisten (terus-menerus) meskipun sedikit.',
+    perawi:'HR. Bukhari & Muslim', dari:'Aisyah radhiyallahu \'anha'
+  },
+  {
+    id:37, judul:'Taubat yang Diterima',
+    arab:'إِنَّ اللَّهَ يَقْبَلُ تَوْبَةَ الْعَبْدِ مَا لَمْ يُغَرْغِرْ',
+    latin:'Innallaaha yaqbalu tawbatal-\'abdi maa lam yugharghir.',
+    terjemah:'Sesungguhnya Allah menerima taubat seorang hamba selama (ruh) belum sampai di tenggorokan (menjelang ajal).',
+    perawi:'HR. Tirmidzi & Ibnu Majah', dari:'Ibnu Umar radhiyallahu \'anhu'
+  },
+  {
+    id:38, judul:'Keutamaan Silaturahmi',
+    arab:'مَنْ أَحَبَّ أَنْ يُبْسَطَ لَهُ فِي رِزْقِهِ وَيُنْسَأَ لَهُ فِي أَثَرِهِ فَلْيَصِلْ رَحِمَهُ',
+    latin:'Man ahabba an yubsatha lahu fi rizqihi wa yunsa-a lahu fi atsarihi falyashil rahimah.',
+    terjemah:'Barangsiapa ingin dilapangkan rezekinya dan dipanjangkan umurnya (bekasnya), maka hendaklah ia menyambung silaturahmi.',
+    perawi:'HR. Bukhari & Muslim', dari:'Anas bin Malik radhiyallahu \'anhu'
+  },
+  {
+    id:39, judul:'Balasan Ikhlas di Jalan Allah',
+    arab:'يَقُولُ اللَّهُ تَعَالَى: أَنَا أَغْنَى الشُّرَكَاءِ عَنِ الشِّرْكِ، مَنْ عَمِلَ عَمَلًا أَشْرَكَ فِيهِ مَعِي غَيْرِي تَرَكْتُهُ وَشِرْكَهُ',
+    latin:'Yaqulullaaahu ta\'ala: ana aghnaa-sy-syurakaa-i \'anisy-syirk. Man \'amila \'amalan asyraka fiihi ma\'i ghayri taraktuhu wa syirkah.',
+    terjemah:'Allah Ta\'ala berfirman: "Aku paling tidak membutuhkan sekutu. Barangsiapa mengerjakan suatu amal yang di dalamnya ia menyekutukan-Ku dengan selain-Ku, Aku tinggalkan dia bersama kesyirikannya itu (tidak Aku terima amalnya)."',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
+  },
+  {
+    id:40, judul:'Akhir dari Dosa dan Awal Ampunan',
+    arab:'لَوْ لَمْ تُذْنِبُوا لَذَهَبَ اللَّهُ بِكُمْ وَلَجَاءَ بِقَوْمٍ يُذْنِبُونَ فَيَسْتَغْفِرُونَ اللَّهَ فَيَغْفِرُ لَهُمْ',
+    latin:'Law lam tudznibu laadzahaba-llaahu bikum wa lajaa-a biqawmin yudznibuuna fa-yastaghfiruunallaaha fa-yaghfiru lahum.',
+    terjemah:'Seandainya kalian tidak pernah berbuat dosa, niscaya Allah akan menyingkirkan kalian dan mendatangkan suatu kaum yang berbuat dosa kemudian memohon ampun kepada Allah, lalu Allah mengampuni mereka.',
+    perawi:'HR. Muslim', dari:'Abu Hurairah radhiyallahu \'anhu'
   }
+];
 
-  renderList(HADIS_DATA);
+var aktifId = null;
+var filtered = DATA.slice();
 
-  /* ── Filter ── */
-  window.filterHadis = function(q) {
-    q = q.toLowerCase().trim();
-    var filtered = HADIS_DATA.filter(function(h) {
-      return h.judul.toLowerCase().includes(q) ||
-             h.terjemah.toLowerCase().includes(q) ||
-             h.perawi.toLowerCase().includes(q) ||
-             String(h.id).includes(q);
-    });
-    HADIS_FILTERED = filtered;
-    renderList(filtered);
-  };
+/* ── Build sidebar ── */
+function buildList(list){
+  var el = document.getElementById('sbList');
+  if(!list.length){
+    el.innerHTML='<div style="padding:16px;text-align:center;font-family:Tajawal,sans-serif;font-size:.75rem;color:rgba(255,255,255,.3)">Hadis tidak ditemukan</div>';
+    return;
+  }
+  el.innerHTML = list.map(function(h){
+    return '<button class="hq-btn'+(aktifId===h.id?' active':'')+'" id="hb'+h.id+'" onclick="bukaHadis('+h.id+')">'+
+      '<div class="hq-num">'+h.id+'</div>'+
+      '<div class="hq-text">'+
+        '<div class="hq-title">'+h.judul+'</div>'+
+        '<div class="hq-perawi">'+h.perawi+'</div>'+
+      '</div>'+
+    '</button>';
+  }).join('');
+}
+buildList(DATA);
 
-  /* ── Buka Hadis ── */
-  window.bukaHadis = function(id) {
-    AKTIF_ID = id;
-    var h = HADIS_DATA.find(function(x) { return x.id === id; });
-    if (!h) return;
+/* ── Search ── */
+window.cariHadis = function(q){
+  q = q.toLowerCase().trim();
+  if(!q){ filtered=DATA.slice(); buildList(DATA); return; }
+  filtered = DATA.filter(function(h){
+    return h.judul.toLowerCase().includes(q)||
+           h.terjemah.toLowerCase().includes(q)||
+           h.perawi.toLowerCase().includes(q)||
+           h.dari.toLowerCase().includes(q)||
+           String(h.id).includes(q);
+  });
+  buildList(filtered);
+};
 
-    /* Tandai aktif */
-    document.querySelectorAll('.hadis-item').forEach(function(b) { b.classList.remove('aktif'); });
-    var btn = document.getElementById('hi-' + id);
-    if (btn) { btn.classList.add('aktif'); btn.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+/* ── Buka Hadis ── */
+window.bukaHadis = function(id){
+  var h = DATA.find(function(x){return x.id===id;});
+  if(!h) return;
+  aktifId = id;
 
-    /* Cari index di filtered untuk navigasi */
-    var allIds = HADIS_DATA.map(function(x){return x.id;});
-    var idx    = allIds.indexOf(id);
-    var prevId = idx > 0 ? allIds[idx-1] : null;
-    var nextId = idx < allIds.length-1 ? allIds[idx+1] : null;
+  document.querySelectorAll('.hq-btn').forEach(function(b){b.classList.remove('active');});
+  var btn = document.getElementById('hb'+id);
+  if(btn){btn.classList.add('active');btn.scrollIntoView({block:'nearest',behavior:'smooth'});}
 
-    var content = document.getElementById('mainContent');
-    content.innerHTML =
-      '<div class="hadis-header">' +
-        '<div class="hh-badge">✦ Hadis Qudsi ✦</div>' +
-        '<div class="hh-nomor">Hadis ke-' + h.id + ' dari ' + HADIS_DATA.length + '</div>' +
-        '<div class="hh-title">' + h.judul + '</div>' +
-        '<div class="hh-divider"></div>' +
-      '</div>' +
-      '<div class="hadis-content">' +
+  var allIds = DATA.map(function(x){return x.id;});
+  var idx = allIds.indexOf(id);
+  var prev = idx > 0 ? allIds[idx-1] : null;
+  var next = idx < allIds.length-1 ? allIds[idx+1] : null;
+  var pct = Math.round(((idx+1)/allIds.length)*100);
 
-        '<div class="hadis-arab-box">' +
-          '<div class="hadis-arab-text">' + h.arab + '</div>' +
-        '</div>' +
+  var pane = document.getElementById('mainPane');
+  pane.innerHTML =
+    /* Header */
+    '<div class="hadis-header">'+
+      '<div class="hh-top">'+
+        '<div class="hh-left">'+
+          '<div class="hh-badge">✦ Hadis Qudsi ✦</div>'+
+          '<div class="hh-nomor">Hadis ke-'+h.id+' dari '+DATA.length+'</div>'+
+          '<div class="hh-title">'+h.judul+'</div>'+
+          '<div class="hh-divider"></div>'+
+        '</div>'+
+        '<div class="hh-nav">'+
+          '<button class="hh-nav-btn" onclick="bukaHadis('+prev+')" '+(prev?'':'disabled')+' title="Sebelumnya">‹</button>'+
+          '<button class="hh-nav-btn" onclick="bukaHadis('+next+')" '+(next?'':'disabled')+' title="Berikutnya">›</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+    /* Progress */
+    '<div class="progress-strip"><div class="progress-fill" style="width:'+pct+'%"></div></div>'+
+    /* Scroll area */
+    '<div class="hadis-scroll">'+
+      /* Arab */
+      '<div class="arab-box">'+
+        '<div class="arab-text">'+h.arab+'</div>'+
+      '</div>'+
+      /* Latin */
+      '<div class="section">'+
+        '<div class="section-label"><div class="section-label-icon">🔤</div>Transliterasi Latin</div>'+
+        '<div class="latin-text">'+h.latin+'</div>'+
+      '</div>'+
+      /* Terjemah */
+      '<div class="section">'+
+        '<div class="section-label"><div class="section-label-icon">📖</div>Terjemahan Bahasa Indonesia</div>'+
+        '<div class="terjemah-text">'+h.terjemah+'</div>'+
+      '</div>'+
+      /* Footer */
+      '<div class="hadis-footer">'+
+        '<span class="hadis-tag tag-perawi">📚 '+h.perawi+'</span>'+
+        '<span class="hadis-tag tag-dari">👤 '+h.dari+'</span>'+
+      '</div>'+
+      /* Actions */
+      '<div class="hadis-actions">'+
+        '<button class="act-btn" id="copyBtn" onclick="salinHadis('+h.id+',this)">📋 Salin Terjemahan</button>'+
+        '<button class="act-btn" id="copyArabBtn" onclick="salinArab('+h.id+',this)">📋 Salin Arab</button>'+
+      '</div>'+
+      /* Bottom nav */
+      '<div class="bottom-nav">'+
+        '<button class="bn-btn" onclick="bukaHadis('+prev+')" '+(prev?'':'disabled')+'>← Sebelumnya</button>'+
+        '<button class="bn-btn" onclick="bukaHadis('+next+')" '+(next?'':'disabled')+'>Berikutnya →</button>'+
+      '</div>'+
+    '</div>';
+};
 
-        '<div class="hadis-section">' +
-          '<div class="hadis-section-label">Latin / Transliterasi</div>' +
-          '<div class="hadis-latin-text">' + h.latin + '</div>' +
-        '</div>' +
+/* ── Salin ── */
+window.salinHadis = function(id, btn){
+  var h = DATA.find(function(x){return x.id===id;});
+  if(!h||!navigator.clipboard) return;
+  var teks = '[Hadis Qudsi No.'+h.id+'] '+h.judul+'\n\n'+h.arab+'\n\n'+h.terjemah+'\n\n'+h.perawi+'\nDari: '+h.dari+'\n\n— Musholla Baiturrahman';
+  navigator.clipboard.writeText(teks).then(function(){
+    btn.textContent='✅ Tersalin!'; btn.classList.add('copied');
+    setTimeout(function(){btn.textContent='📋 Salin Terjemahan';btn.classList.remove('copied');},2200);
+  });
+};
+window.salinArab = function(id, btn){
+  var h = DATA.find(function(x){return x.id===id;});
+  if(!h||!navigator.clipboard) return;
+  navigator.clipboard.writeText(h.arab).then(function(){
+    btn.textContent='✅ Tersalin!'; btn.classList.add('copied');
+    setTimeout(function(){btn.textContent='📋 Salin Arab';btn.classList.remove('copied');},2200);
+  });
+};
 
-        '<div class="hadis-section">' +
-          '<div class="hadis-section-label">Terjemahan Bahasa Indonesia</div>' +
-          '<div class="hadis-terjemah-text">' + h.terjemah + '</div>' +
-        '</div>' +
-
-        '<div class="hadis-footer">' +
-          '<span class="hadis-tag">📚 ' + h.perawi + '</span>' +
-          '<span class="hadis-tag">👤 Dari: ' + h.dari + '</span>' +
-        '</div>' +
-
-        '<div class="nav-arrows">' +
-          '<button class="nav-btn" onclick="bukaHadis(' + prevId + ')" ' + (prevId ? '' : 'disabled') + '>← Hadis Sebelumnya</button>' +
-          '<button class="nav-btn" onclick="bukaHadis(' + nextId + ')" ' + (nextId ? '' : 'disabled') + '>Hadis Berikutnya →</button>' +
-        '</div>' +
-
-      '</div>';
-  };
-
-  /* Buka hadis pertama otomatis */
-  bukaHadis(1);
+/* Auto buka hadis pertama */
+bukaHadis(1);
 
 })();
 </script>
