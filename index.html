@@ -596,6 +596,75 @@
   font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
   color: var(--gold); text-transform: uppercase; margin-top: 2px;
 }
+  /* ─── POPUP HADIS ─── */
+.popup-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+}
+.popup-overlay.show { display: flex; }
+.popup-box {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 32px;
+  max-width: 400px; width: 90%;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  animation: fadeUp 0.3s ease both;
+  text-align: center;
+  position: relative;
+}
+.popup-box h3 {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem;
+  color: var(--green-deep);
+  margin-bottom: 6px;
+}
+.popup-box .popup-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.popup-options {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-top: 16px;
+}
+.popup-option-btn {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: var(--cream);
+  border: 1.5px solid var(--cream-dark);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.popup-option-btn:hover {
+  background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13,59,46,0.2);
+}
+.popup-option-btn:hover .pob-title,
+.popup-option-btn:hover .pob-desc { color: var(--white); }
+.popup-option-btn .pob-icon { font-size: 1.6rem; flex-shrink: 0; }
+.popup-option-btn .pob-title {
+  font-weight: 700; font-size: 0.9rem;
+  color: var(--green-deep); text-align: left;
+}
+.popup-option-btn .pob-desc {
+  font-size: 0.72rem; color: var(--text-light); text-align: left;
+}
+.popup-close {
+  position: absolute; top: 14px; right: 16px;
+  background: none; border: none;
+  font-size: 1.2rem; color: var(--text-light);
+  cursor: pointer; line-height: 1;
+  transition: color 0.2s;
+}
+.popup-close:hover { color: var(--green-deep); }
 </style>
 </head>
   <!-- JAM DIGITAL -->
@@ -648,9 +717,7 @@
   <a href="#jadwal" class="hero-cta">🕌 Lihat Jadwal Sholat</a>
   <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:1.5rem;">
     <a href="alquran.html" class="hero-cta" style="margin-top:0;">📖 Baca Al-Qur'an</a>
-    <a href="hadis-qudsi.html" class="hero-cta" style="margin-top:0;">📜 Hadis Qudsi</a>
-    <a href="hadis-bukhari.html" class="hero-cta" style="margin-top:0;">📗 Hadis Bukhari</a>
-    <a href="hadis-muslim.html" class="hero-cta" style="margin-top:0;">📗 Hadis Muslim</a>
+    <a href="#" class="hero-cta" style="margin-top:0;" onclick="showHadisPopup(); return false;">📚 Hadis</a>
   </div>
   <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:1.5rem;">
     <a href="tata-cara-sholat.html" class="hero-cta" style="margin-top:0;">🕌 Tata Cara Sholat</a>
@@ -1062,7 +1129,38 @@
     </div>
   </div>
 </footer>
-
+<!-- POPUP PILIH HADIS -->
+<div class="popup-overlay" id="hadisPopup" onclick="closeHadisPopup(event)">
+  <div class="popup-box">
+    <button class="popup-close" onclick="document.getElementById('hadisPopup').classList.remove('show'); document.body.style.overflow='';">✕</button>
+    <div class="popup-arabic">الْحَدِيثُ الشَّرِيف</div>
+    <h3>Pilih Kitab Hadis</h3>
+    <p style="font-size:0.8rem; color:var(--text-light); margin-bottom:4px;">Pelajari hadis dari kitab-kitab terpercaya</p>
+    <div class="popup-options">
+      <a href="hadis-qudsi.html" class="popup-option-btn">
+        <span class="pob-icon">📜</span>
+        <div>
+          <div class="pob-title">Hadis Qudsi</div>
+          <div class="pob-desc">Firman Allah yang diriwayatkan melalui Nabi ﷺ</div>
+        </div>
+      </a>
+      <a href="hadis-bukhari.html" class="popup-option-btn">
+        <span class="pob-icon">📗</span>
+        <div>
+          <div class="pob-title">Hadis Bukhari</div>
+          <div class="pob-desc">Shahih Al-Bukhari – koleksi hadis paling sahih</div>
+        </div>
+      </a>
+      <a href="hadis-muslim.html" class="popup-option-btn">
+        <span class="pob-icon">📘</span>
+        <div>
+          <div class="pob-title">Hadis Muslim</div>
+          <div class="pob-desc">Shahih Muslim – kitab hadis kedua paling sahih</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 <script>
 (function() {
   /* ── Tanggal ── */
@@ -1208,6 +1306,17 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 1000);
+  /* ── Popup Hadis ── */
+window.showHadisPopup = function() {
+  document.getElementById('hadisPopup').classList.add('show');
+  document.body.style.overflow = 'hidden';
+};
+window.closeHadisPopup = function(e) {
+  if (e.target === document.getElementById('hadisPopup')) {
+    document.getElementById('hadisPopup').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+};
 })();
 </script>
 </body>
