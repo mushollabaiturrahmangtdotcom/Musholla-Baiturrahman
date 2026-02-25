@@ -12,131 +12,114 @@
   --mid:    #154f74;
   --bright: #1a7aaa;
   --light:  #2196c8;
-  --gold:   #c9a84c;
-  --goldl:  #e8c97a;
-  --cream:  #f8f4ec;
-  --creamd: #eae4d6;
-  --white:  #ffffff;
-  --ink:    #1c1c1c;
-  --inkm:   #444;
-  --inkl:   #788;
-  --ok:     #16a34a;
-  --sb-w:   280px;
+  --gold:    #c9a84c;
+  --goldl:   #e8c97a;
+  --cream:   #f8f4ec;
+  --creamd:  #eae4d6;
+  --white:   #ffffff;
+  --ink:     #1c1c1c;
+  --inkm:    #444;
+  --inkl:    #788;
+  --ok:      #16a34a;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Crimson Pro',Georgia,serif;background:var(--cream);color:var(--ink);height:100vh;display:flex;flex-direction:column;overflow:hidden;}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;background:var(--deep);border-bottom:2px solid var(--gold);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;flex-shrink:0;}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-brand img{height:34px;}
-.nav-brand span{font-size:.82rem;font-weight:600;color:#fff;font-family:'Tajawal',sans-serif;}
-.nav-back{font-family:'Tajawal',sans-serif;font-size:.78rem;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;padding:5px 13px;border-radius:6px;border:1px solid rgba(255,255,255,.2);transition:all .2s;}
-.nav-back:hover{background:rgba(255,255,255,.1);color:var(--goldl);}
-
-/* LAYOUT */
-.layout{display:flex;height:calc(100vh - 60px);margin-top:60px;}
-
-/* SIDEBAR */
-.sidebar{width:var(--sb-w);flex-shrink:0;display:flex;flex-direction:column;background:var(--deep);border-right:1px solid rgba(201,168,76,.25);overflow:hidden;}
-.sb-head{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;}
-.sb-title-ar{font-family:'Amiri',serif;font-size:1.6rem;color:var(--goldl);direction:rtl;text-align:right;line-height:1.2;margin-bottom:2px;}
-.sb-title-id{font-family:'Tajawal',sans-serif;font-size:.72rem;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;}
-.sb-stats{display:flex;gap:8px;margin-bottom:12px;}
-.sb-stat{flex:1;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2);border-radius:8px;padding:6px 8px;text-align:center;}
-.sb-stat-n{font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;color:var(--goldl);line-height:1;}
-.sb-stat-l{font-family:'Tajawal',sans-serif;font-size:.58rem;color:rgba(255,255,255,.4);margin-top:2px;text-transform:uppercase;letter-spacing:.05em;}
-.sb-search{position:relative;}
-.sb-search input{width:100%;padding:8px 12px 8px 34px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-family:'Tajawal',sans-serif;font-size:.82rem;outline:none;transition:all .2s;}
-.sb-search input::placeholder{color:rgba(255,255,255,.35);}
-.sb-search input:focus{background:rgba(255,255,255,.13);border-color:rgba(201,168,76,.4);}
-.sb-search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:.8rem;pointer-events:none;}
-.sb-list{flex:1;overflow-y:auto;padding:6px;}
-.sb-list::-webkit-scrollbar{width:3px;}
-.sb-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px;}
-.kitab-btn{display:flex;align-items:center;gap:9px;width:100%;padding:8px 9px;border-radius:8px;border:none;background:transparent;cursor:pointer;text-align:left;transition:background .15s;color:rgba(255,255,255,.7);}
-.kitab-btn:hover{background:rgba(255,255,255,.07);color:#fff;}
-.kitab-btn.active{background:linear-gradient(90deg,rgba(201,168,76,.2),rgba(201,168,76,.08));border-left:3px solid var(--gold);padding-left:6px;color:var(--goldl);}
-.kitab-btn.active .kb-num{background:rgba(201,168,76,.25);color:var(--goldl);}
-.kb-num{width:28px;height:28px;flex-shrink:0;background:rgba(255,255,255,.07);border-radius:6px;display:grid;place-items:center;font-family:'Tajawal',sans-serif;font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);}
-.kb-text{flex:1;min-width:0;}
-.kb-name{font-family:'Tajawal',sans-serif;font-size:.79rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3;}
-.kb-count{font-family:'Tajawal',sans-serif;font-size:.62rem;color:rgba(255,255,255,.3);margin-top:1px;}
-.kitab-btn.active .kb-count{color:rgba(201,168,76,.6);}
-
-/* MAIN */
-.main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--cream);}
-.main-head{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--white);border-bottom:2px solid var(--creamd);flex-shrink:0;gap:12px;flex-wrap:wrap;}
-.mh-left h2{font-family:'Amiri',serif;font-size:1.3rem;color:var(--deep);line-height:1.2;}
-.mh-left p{font-family:'Tajawal',sans-serif;font-size:.68rem;color:var(--inkl);margin-top:2px;}
-.mh-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.nav-arrow{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--creamd);background:var(--white);font-size:.85rem;cursor:pointer;display:grid;place-items:center;transition:all .15s;color:var(--inkm);}
-.nav-arrow:hover:not(:disabled){background:var(--deep);color:#fff;border-color:var(--deep);}
-.nav-arrow:disabled{opacity:.3;cursor:not-allowed;}
-.page-counter{font-family:'Tajawal',sans-serif;font-size:.78rem;color:var(--inkl);white-space:nowrap;padding:4px 10px;background:var(--cream);border-radius:6px;border:1px solid var(--creamd);}
-.info-bar{display:flex;align-items:center;gap:16px;padding:8px 22px;background:rgba(14,42,64,.04);border-bottom:1px solid var(--creamd);flex-shrink:0;flex-wrap:wrap;}
-.ib-item{display:flex;align-items:center;gap:5px;font-family:'Tajawal',sans-serif;font-size:.7rem;color:var(--inkl);}
-.ib-item strong{color:var(--bright);font-weight:600;}
-
-/* HADIS LIST */
-.hadis-scroll{flex:1;overflow-y:auto;padding:16px 20px 8px;}
-.hadis-scroll::-webkit-scrollbar{width:5px;}
-.hadis-scroll::-webkit-scrollbar-thumb{background:var(--creamd);border-radius:3px;}
-.hadis-card{background:var(--white);border-radius:14px;margin-bottom:14px;border:1px solid var(--creamd);overflow:hidden;transition:box-shadow .2s,transform .2s;}
-.hadis-card:hover{box-shadow:0 6px 24px rgba(14,42,64,.08);transform:translateY(-1px);}
-.hc-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:linear-gradient(90deg,rgba(14,42,64,.03),transparent);border-bottom:1px solid var(--creamd);}
-.hc-badge{display:flex;align-items:center;gap:8px;}
-.hc-num{width:34px;height:34px;background:linear-gradient(135deg,var(--deep),var(--mid));border-radius:9px;display:grid;place-items:center;font-family:'Tajawal',sans-serif;font-size:.7rem;font-weight:700;color:var(--goldl);}
-.hc-meta{font-family:'Tajawal',sans-serif;font-size:.7rem;color:var(--inkl);line-height:1.5;}
-.hc-meta b{color:var(--bright);font-weight:600;}
-.hc-actions{display:flex;gap:6px;}
-.hc-action{width:28px;height:28px;border-radius:7px;border:1px solid var(--creamd);background:var(--white);cursor:pointer;display:grid;place-items:center;font-size:.78rem;transition:all .15s;color:var(--inkl);}
-.hc-action:hover{border-color:var(--bright);color:var(--bright);}
-.hc-action.copied{border-color:var(--ok);color:var(--ok);background:rgba(22,163,74,.06);}
-.hc-arab{font-family:'Amiri',serif;font-size:1.5rem;line-height:2.3;direction:rtl;text-align:right;color:var(--ink);padding:18px 20px 14px;background:linear-gradient(160deg,rgba(201,168,76,.04) 0%,transparent 60%);border-bottom:1px solid var(--creamd);position:relative;}
-.hc-arab::before{content:'';position:absolute;right:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold),var(--goldl));border-radius:0 0 0 4px;}
-.hc-sep{display:flex;align-items:center;gap:10px;padding:0 16px;}
-.hc-sep-line{flex:1;height:1px;background:var(--creamd);}
-.hc-sep-label{font-family:'Tajawal',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--inkl);padding:4px 0;}
-.hc-terjemah{font-family:'Crimson Pro',serif;font-size:1rem;line-height:1.85;color:var(--inkm);padding:12px 20px 16px;border-left:3px solid var(--light);margin:8px 16px 12px;border-radius:0 8px 8px 0;background:rgba(26,122,170,.04);}
-.hc-perawi{padding:0 16px 12px;font-family:'Tajawal',sans-serif;font-size:.68rem;color:var(--inkl);display:flex;align-items:center;gap:5px;}
-
-/* PAGINATION */
-.pagination{display:flex;align-items:center;justify-content:center;gap:5px;padding:10px 20px;border-top:1px solid var(--creamd);background:var(--white);flex-shrink:0;flex-wrap:wrap;}
-.pg-btn{min-width:34px;height:34px;padding:0 8px;border-radius:8px;border:1.5px solid var(--creamd);background:var(--white);font-family:'Tajawal',sans-serif;font-size:.8rem;font-weight:600;color:var(--deep);cursor:pointer;transition:all .18s;display:grid;place-items:center;}
-.pg-btn:hover:not(:disabled):not(.dots){background:var(--deep);color:var(--goldl);border-color:var(--deep);}
-.pg-btn.active{background:var(--deep);color:var(--goldl);border-color:var(--deep);}
-.pg-btn:disabled{opacity:.3;cursor:not-allowed;}
-.pg-btn.dots{border-color:transparent;background:transparent;cursor:default;}
-
-/* STATES */
-.state-view{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center;gap:16px;}
-.state-icon{font-size:3.2rem;opacity:.35;}
-.state-title{font-family:'Amiri',serif;font-size:1.6rem;color:var(--deep);}
-.state-body{font-family:'Tajawal',sans-serif;font-size:.85rem;color:var(--inkl);line-height:1.75;max-width:380px;}
-.state-ar{font-family:'Amiri',serif;font-size:1.8rem;color:var(--gold);direction:rtl;}
-.spinner{width:42px;height:42px;border:3px solid var(--creamd);border-top-color:var(--bright);border-radius:50%;animation:spin .8s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.err-box{background:#fff5f5;border:1px solid #fecaca;border-radius:12px;padding:20px 24px;max-width:420px;width:100%;}
-.err-box p{font-family:'Tajawal',sans-serif;font-size:.83rem;color:#c0392b;line-height:1.7;}
-.err-box code{display:block;margin-top:6px;font-size:.72rem;color:#888;background:#f5f5f5;padding:4px 8px;border-radius:4px;}
-.btn-retry{margin-top:12px;padding:8px 22px;border-radius:8px;background:var(--deep);color:#fff;font-family:'Tajawal',sans-serif;font-size:.82rem;font-weight:600;border:none;cursor:pointer;transition:background .15s;}
-.btn-retry:hover{background:var(--mid);}
-.api-notice{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:12px 16px;font-family:'Tajawal',sans-serif;font-size:.75rem;color:var(--inkm);line-height:1.65;max-width:480px;text-align:left;}
-
-@media(max-width:860px){:root{--sb-w:240px;}.hadis-scroll{padding:12px;}}
-@media(max-width:620px){
-  nav .nav-brand span{display:none;}
-  .layout{flex-direction:column;}
-  .sidebar{width:100%;height:180px;border-right:none;border-bottom:1px solid rgba(201,168,76,.25);}
-  .sb-head{padding:10px 12px;}
-  .sb-title-ar{font-size:1.2rem;}
-  .sb-stats{display:none;}
-  .sb-list{flex-direction:row;display:flex;overflow-x:auto;overflow-y:hidden;padding:4px 6px;}
-  .kitab-btn{min-width:150px;flex-shrink:0;}
-  .hc-arab{font-size:1.25rem;}
-  .hadis-scroll{padding:10px;}
-  .info-bar{padding:6px 12px;}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: var(--cream); color: var(--ink);
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 60px; background: var(--deep); border-bottom: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-brand img { height: 34px; }
+.nav-brand span { font-size: .82rem; font-weight: 600; color: #fff; font-family: 'Tajawal', sans-serif; }
+.nav-back { font-family: 'Tajawal', sans-serif; font-size: .78rem; font-weight: 500; color: rgba(255,255,255,.75); text-decoration: none; padding: 5px 13px; border-radius: 6px; border: 1px solid rgba(255,255,255,.2); transition: all .2s; }
+.nav-back:hover { background: rgba(255,255,255,.1); color: var(--goldl); }
+.hero-header { margin-top: 60px; background: linear-gradient(160deg, var(--deep) 0%, var(--mid) 60%, var(--bright) 100%); padding: 40px 24px 32px; text-align: center; position: relative; overflow: hidden; }
+.hero-header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border: 50px solid rgba(201,168,76,.07); border-radius: 50%; }
+.hero-header::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 200px; height: 200px; border: 35px solid rgba(201,168,76,.05); border-radius: 50%; }
+.hero-ar { font-family: 'Amiri', serif; font-size: clamp(2rem,5vw,3.2rem); color: var(--goldl); direction: rtl; line-height: 1.4; margin-bottom: 8px; }
+.hero-title { font-family: 'Tajawal', sans-serif; font-size: clamp(1.2rem,3vw,1.8rem); color: rgba(255,255,255,.9); font-weight: 700; margin-bottom: 14px; }
+.hero-stats { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+.h-stat { background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.3); border-radius: 20px; padding: 5px 14px; font-family: 'Tajawal', sans-serif; font-size: .75rem; color: var(--goldl); font-weight: 600; }
+.hero-desc { font-family: 'Tajawal', sans-serif; font-size: .82rem; color: rgba(255,255,255,.55); max-width: 500px; margin: 0 auto; line-height: 1.75; }
+.content-wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 40px; width: 100%; }
+.status-bar { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 10px; margin-bottom: 14px; font-family: 'Tajawal', sans-serif; font-size: .75rem; font-weight: 500; transition: all .3s; }
+.status-bar.loading { background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.25); color: #8a6b1e; }
+.status-bar.success { background: rgba(22,163,74,.08); border: 1px solid rgba(22,163,74,.2); color: #166534; }
+.status-bar.warning { background: rgba(234,179,8,.08); border: 1px solid rgba(234,179,8,.25); color: #713f12; }
+.status-bar.error   { background: rgba(220,38,38,.07); border: 1px solid rgba(220,38,38,.2); color: #991b1b; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.status-bar.loading .status-dot { background: #c9a84c; animation: pulse 1s infinite; }
+.status-bar.success .status-dot { background: #16a34a; }
+.status-bar.warning .status-dot { background: #eab308; }
+.status-bar.error   .status-dot { background: #dc2626; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.controls-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: var(--white); border-radius: 14px; padding: 14px 18px; margin-bottom: 20px; border: 1px solid var(--creamd); box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+.ctrl-left { font-family: 'Tajawal', sans-serif; font-size: .78rem; color: var(--inkl); }
+.ctrl-left strong { color: var(--bright); font-size: .9rem; }
+.ctrl-right { display: flex; align-items: center; gap: 8px; }
+.nav-arrow { width: 34px; height: 34px; border-radius: 8px; border: 1.5px solid var(--creamd); background: var(--white); font-size: .9rem; cursor: pointer; display: grid; place-items: center; transition: all .15s; color: var(--inkm); }
+.nav-arrow:hover:not(:disabled) { background: var(--deep); color: #fff; border-color: var(--deep); }
+.nav-arrow:disabled { opacity: .35; cursor: not-allowed; }
+.page-counter { font-family: 'Tajawal', sans-serif; font-size: .78rem; color: var(--inkl); padding: 5px 12px; background: var(--cream); border-radius: 8px; border: 1px solid var(--creamd); white-space: nowrap; }
+.jump-wrap { display: flex; align-items: center; gap: 6px; font-family: 'Tajawal', sans-serif; font-size: .78rem; color: var(--inkl); }
+.jump-wrap input { width: 52px; padding: 5px 8px; text-align: center; border: 1.5px solid var(--creamd); border-radius: 7px; font-family: 'Tajawal', sans-serif; font-size: .82rem; color: var(--deep); background: var(--cream); outline: none; transition: border-color .2s; }
+.jump-wrap input:focus { border-color: var(--bright); }
+.jump-btn { padding: 5px 11px; border-radius: 7px; background: var(--deep); color: var(--goldl); font-family: 'Tajawal', sans-serif; font-size: .73rem; font-weight: 600; border: none; cursor: pointer; transition: background .15s; }
+.jump-btn:hover { background: var(--mid); }
+.state-box { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 24px; gap: 16px; text-align: center; }
+.spinner { width: 46px; height: 46px; border: 3px solid var(--creamd); border-top-color: var(--bright); border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.state-body { font-family: 'Tajawal', sans-serif; font-size: .85rem; color: var(--inkl); line-height: 1.75; max-width: 380px; }
+.err-box { background: #fff5f5; border: 1px solid #fecaca; border-radius: 12px; padding: 20px 24px; max-width: 480px; width: 100%; text-align: left; }
+.err-box p { font-family: 'Tajawal', sans-serif; font-size: .84rem; color: #b91c1c; line-height: 1.75; }
+.err-box code { display: block; margin-top: 8px; font-size: .7rem; color: #999; background: #f5f5f5; padding: 6px 10px; border-radius: 6px; word-break: break-all; }
+.err-servers { margin-top: 12px; display: flex; flex-direction: column; gap: 5px; }
+.srv-row { display: flex; align-items: center; gap: 7px; font-family: 'Tajawal', sans-serif; font-size: .73rem; }
+.srv-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.srv-ok   .srv-dot { background: #16a34a; } .srv-ok   { color: #166534; }
+.srv-fail .srv-dot { background: #dc2626; } .srv-fail { color: #991b1b; }
+.srv-wait .srv-dot { background: #d1d5db; } .srv-wait { color: #9ca3af; }
+.btn-retry { margin-top: 14px; padding: 9px 24px; border-radius: 8px; background: var(--deep); color: #fff; font-family: 'Tajawal', sans-serif; font-size: .82rem; font-weight: 600; border: none; cursor: pointer; transition: background .15s; }
+.btn-retry:hover { background: var(--mid); }
+.hadis-list { display: flex; flex-direction: column; gap: 14px; }
+.hadis-card { background: var(--white); border-radius: 16px; border: 1px solid var(--creamd); overflow: hidden; transition: box-shadow .2s, transform .2s; }
+.hadis-card:hover { box-shadow: 0 8px 28px rgba(13,59,46,.09); transform: translateY(-1px); }
+.hc-top { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: linear-gradient(90deg, rgba(13,59,46,.04), transparent); border-bottom: 1px solid var(--creamd); }
+.hc-badge { display: flex; align-items: center; gap: 10px; }
+.hc-num { width: 36px; height: 36px; flex-shrink: 0; background: linear-gradient(135deg, var(--deep), var(--mid)); border-radius: 10px; display: grid; place-items: center; font-family: 'Tajawal', sans-serif; font-size: .72rem; font-weight: 700; color: var(--goldl); }
+.hc-meta { font-family: 'Tajawal', sans-serif; font-size: .72rem; color: var(--inkl); line-height: 1.5; }
+.hc-meta b { color: var(--bright); font-weight: 600; }
+.hc-src { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 10px; font-size: .6rem; font-weight: 700; letter-spacing: .04em; vertical-align: middle; }
+.hc-src.src-id  { background: rgba(22,163,74,.1); color: #15803d; }
+.hc-src.src-cdn { background: rgba(234,179,8,.12); color: #854d0e; }
+.hc-actions { display: flex; gap: 6px; }
+.hc-action { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--creamd); background: var(--white); cursor: pointer; display: grid; place-items: center; font-size: .8rem; transition: all .15s; color: var(--inkl); }
+.hc-action:hover { border-color: var(--bright); color: var(--bright); }
+.hc-action.copied { border-color: var(--ok); color: var(--ok); background: rgba(22,163,74,.06); }
+.hc-arab { font-family: 'Amiri', serif; font-size: 1.55rem; line-height: 2.4; direction: rtl; text-align: right; color: var(--ink); padding: 20px 22px 16px; background: linear-gradient(160deg, rgba(201,168,76,.05) 0%, transparent 60%); border-bottom: 1px solid var(--creamd); position: relative; }
+.hc-arab::before { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--gold), var(--goldl)); }
+.hc-sep { display: flex; align-items: center; gap: 10px; padding: 0 16px; }
+.hc-sep-line { flex: 1; height: 1px; background: var(--creamd); }
+.hc-sep-label { font-family: 'Tajawal', sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--inkl); padding: 4px 0; }
+.hc-terjemah { font-family: 'Crimson Pro', serif; font-size: 1.05rem; line-height: 1.9; color: var(--inkm); padding: 12px 20px 18px; border-left: 3px solid var(--light); margin: 8px 16px 14px; border-radius: 0 8px 8px 0; background: rgba(39,174,116,.04); }
+.no-translate { font-style: italic; color: var(--inkl); font-size: .9rem; }
+.pagination { display: flex; align-items: center; justify-content: center; gap: 5px; padding: 24px 0 0; flex-wrap: wrap; }
+.pg-btn { min-width: 36px; height: 36px; padding: 0 8px; border-radius: 9px; border: 1.5px solid var(--creamd); background: var(--white); font-family: 'Tajawal', sans-serif; font-size: .82rem; font-weight: 600; color: var(--deep); cursor: pointer; transition: all .18s; display: grid; place-items: center; }
+.pg-btn:hover:not(:disabled):not(.dots) { background: var(--deep); color: var(--goldl); border-color: var(--deep); }
+.pg-btn.active { background: var(--deep); color: var(--goldl); border-color: var(--deep); }
+.pg-btn:disabled { opacity: .3; cursor: not-allowed; }
+.pg-btn.dots { border-color: transparent; background: transparent; cursor: default; color: var(--inkl); }
+@media (max-width: 620px) {
+  nav .nav-brand span { display: none; }
+  .hero-header { padding: 28px 16px 24px; }
+  .hc-arab { font-size: 1.3rem; }
+  .controls-bar { flex-direction: column; align-items: flex-start; }
+  .ctrl-right { width: 100%; justify-content: flex-end; }
 }
 </style>
 </head>
@@ -150,387 +133,340 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;background:var(-
   <a href="index.html" class="nav-back">← Kembali</a>
 </nav>
 
-<div class="layout">
-  <aside class="sidebar">
-    <div class="sb-head">
-      <div class="sb-title-ar">صَحِيحُ مُسْلِم</div>
-      <div class="sb-title-id">Shahih Muslim</div>
-      <div class="sb-stats">
-        <div class="sb-stat"><div class="sb-stat-n">56</div><div class="sb-stat-l">Kitab</div></div>
-        <div class="sb-stat"><div class="sb-stat-n">7453</div><div class="sb-stat-l">Hadis</div></div>
-        <div class="sb-stat"><div class="sb-stat-n">1322</div><div class="sb-stat-l">Bab</div></div>
-      </div>
-      <div class="sb-search">
-        <span class="sb-search-icon">🔍</span>
-        <input type="text" id="sbSearch" placeholder="Cari kitab atau nomor..." oninput="cariKitab(this.value)">
-      </div>
-    </div>
-    <div class="sb-list" id="sbList">
-      <div style="padding:20px;text-align:center;font-family:'Tajawal',sans-serif;font-size:.78rem;color:rgba(255,255,255,.3);">Memuat daftar kitab...</div>
-    </div>
-  </aside>
+<div class="hero-header">
+  <div class="hero-ar">صَحِيحُ مُسْلِم</div>
+  <div class="hero-title">Shahih Muslim</div>
+  <div class="hero-stats">
+    <span class="h-stat">📚 7.453 Hadis</span>
+    <span class="h-stat">📖 Terjemahan Indonesia</span>
+    <span class="h-stat">✅ Shahih</span>
+  </div>
+  <p class="hero-desc">Kitab hadis terpercaya karya Imam Muslim bin Al-Hajjaj Al-Qusyairi An-Naisaburi rahimahullah. Beliau mengumpulkan lebih dari 300.000 hadis lalu memilih 7.453 hadis yang paling shahih.</p>
+</div>
 
-  <main class="main" id="mainPane">
-    <div class="state-view" id="welcomeView">
-      <div class="state-ar">صَحِيحُ مُسْلِم</div>
-      <div class="state-title">Shahih Muslim</div>
-      <div class="state-body">
-        Kitab hadis terpercaya karya Imam Muslim bin Al-Hajjaj Al-Qusyairi An-Naisaburi rahimahullah. Beliau mengumpulkan lebih dari 300.000 hadis lalu memilih 7.453 hadis yang paling shahih.
+<div class="content-wrap">
+  <div id="statusBar" class="status-bar loading">
+    <div class="status-dot"></div>
+    <span id="statusText">Menghubungi server...</span>
+  </div>
+
+  <div class="controls-bar" id="controlsBar" style="display:none">
+    <div class="ctrl-left">Hadis <strong id="rangeInfo">–</strong> dari <strong id="totalInfo">–</strong></div>
+    <div class="ctrl-right">
+      <div class="jump-wrap">
+        Hal. <input type="number" id="jumpInput" min="1" placeholder="1">
+        <button class="jump-btn" onclick="jumpToPage()">Go</button>
       </div>
-      <div class="api-notice">
-        💡 <strong>Catatan:</strong> Data hadis dimuat dari <strong>api.hadith.gading.dev</strong> secara real-time. Pastikan perangkat terhubung ke internet.
-      </div>
-      <div class="state-body" style="font-size:.8rem;color:var(--inkl);">← Pilih kitab dari daftar di sebelah kiri</div>
+      <button class="nav-arrow" id="btnPrev" onclick="pindahHal(curPage-1)" disabled>‹</button>
+      <span class="page-counter" id="pageCounter">– / –</span>
+      <button class="nav-arrow" id="btnNext" onclick="pindahHal(curPage+1)" disabled>›</button>
     </div>
-  </main>
+  </div>
+
+  <div id="contentArea">
+    <div class="state-box">
+      <div class="spinner"></div>
+      <div class="state-body">Memuat hadis, mohon tunggu...<br><small style="font-size:.72rem">Mencoba 3 server secara otomatis</small></div>
+    </div>
+  </div>
+  <div id="paginationBottom"></div>
 </div>
 
 <script>
 (function(){
 'use strict';
 
-/* ══════════════════════════════════════════
-   DATA: 56 KITAB SHAHIH MUSLIM LENGKAP
-   Sumber: Daftar resmi Shahih Muslim
-══════════════════════════════════════════ */
-var KITAB = [
-  {id:1,s:1,ar:'الْإِيمَان',                   id_name:'Iman',                              n:432},
-  {id:2,s:433,ar:'الطَّهَارَة',                  id_name:'Bersuci (Thaharah)',                n:99},
-  {id:3,s:532,ar:'الْحَيْض',                     id_name:'Haid',                              n:130},
-  {id:4,s:662,ar:'الصَّلَاة',                    id_name:'Shalat',                            n:309},
-  {id:5,s:971,ar:'الْمَسَاجِد',                  id_name:'Masjid dan Tempat Shalat',          n:315},
-  {id:6,s:1286,ar:'صَلَاةُ الْمُسَافِرِين',       id_name:'Shalat Musafir dan Qashar',         n:311},
-  {id:7,s:1597,ar:'الْجُمُعَة',                   id_name:'Shalat Jumat',                      n:62},
-  {id:8,s:1659,ar:'صَلَاةُ الْعِيدَيْن',          id_name:'Shalat Dua Hari Raya',             n:26},
-  {id:9,s:1685,ar:'صَلَاةُ الِاسْتِسْقَاء',       id_name:'Shalat Istisqa (Minta Hujan)',      n:14},
-  {id:10,s:1699,ar:'صَلَاةُ الْكُسُوف',            id_name:'Shalat Gerhana',                    n:10},
-  {id:11,s:1709,ar:'الْجَنَائِز',                  id_name:'Jenazah',                           n:122},
-  {id:12,s:1831,ar:'الزَّكَاة',                    id_name:'Zakat',                             n:174},
-  {id:13,s:2005,ar:'الصِّيَام',                    id_name:'Puasa',                             n:257},
-  {id:14,s:2262,ar:'الِاعْتِكَاف',                 id_name:'Itikaf',                            n:10},
-  {id:15,s:2272,ar:'الْحَجّ',                      id_name:'Haji',                              n:573},
-  {id:16,s:2845,ar:'النِّكَاح',                    id_name:'Nikah',                             n:138},
-  {id:17,s:2983,ar:'الرَّضَاع',                    id_name:'Penyusuan (Radha\'ah)',              n:38},
-  {id:18,s:3021,ar:'الطَّلَاق',                    id_name:'Talak',                             n:66},
-  {id:19,s:3087,ar:'اللِّعَان',                    id_name:'Lian',                              n:22},
-  {id:20,s:3109,ar:'الْعِتْق',                     id_name:'Memerdekakan Budak',                n:13},
-  {id:21,s:3122,ar:'الْبُيُوع',                    id_name:'Jual Beli',                         n:146},
-  {id:22,s:3268,ar:'الْمُسَاقَاة',                 id_name:'Musaqah (Bagi Hasil Kebun)',        n:133},
-  {id:23,s:3401,ar:'اللُّقَطَة',                   id_name:'Barang Temuan (Luqathah)',          n:8},
-  {id:24,s:3409,ar:'الْهِبَات',                    id_name:'Hibah dan Hadiah',                  n:24},
-  {id:25,s:3433,ar:'الْوَصِيَّة',                  id_name:'Wasiat',                            n:26},
-  {id:26,s:3459,ar:'النُّذُور',                    id_name:'Nadzar',                            n:27},
-  {id:27,s:3486,ar:'الْأَيْمَان',                  id_name:'Sumpah',                            n:56},
-  {id:28,s:3542,ar:'الْقَسَامَة',                  id_name:'Qasaman dan Qishash',               n:44},
-  {id:29,s:3586,ar:'الْحُدُود',                    id_name:'Hudud (Hukuman Had)',               n:54},
-  {id:30,s:3640,ar:'الْأَقْضِيَة',                 id_name:'Peradilan',                         n:20},
-  {id:31,s:3660,ar:'اللُّقَطَة (2)',               id_name:'Temuan dan Kepemilikan',            n:12},
-  {id:32,s:3672,ar:'الْجِهَاد',                    id_name:'Jihad dan Peperangan',              n:182},
-  {id:33,s:3854,ar:'الصَّيْد وَالذَّبَائِح',       id_name:'Berburu dan Sembelihan',            n:62},
-  {id:34,s:3916,ar:'الْأَضَاحِي',                  id_name:'Kurban (Udhhiyyah)',                n:44},
-  {id:35,s:3960,ar:'الْأَشْرِبَة',                 id_name:'Minuman',                           n:160},
-  {id:36,s:4120,ar:'اللِّبَاس وَالزِّينَة',        id_name:'Pakaian dan Perhiasan',             n:145},
-  {id:37,s:4265,ar:'الْآدَاب',                     id_name:'Adab (Etika Islami)',               n:42},
-  {id:38,s:4307,ar:'الْأَلْفَاظ مِنَ الْأَدَب',    id_name:'Lafaz dan Etika Berbicara',         n:31},
-  {id:39,s:4338,ar:'الشِّعْر',                     id_name:'Syair',                             n:15},
-  {id:40,s:4353,ar:'الرُّؤْيَا',                   id_name:'Mimpi',                             n:30},
-  {id:41,s:4383,ar:'الْفَضَائِل',                  id_name:'Keutamaan Para Sahabat',            n:208},
-  {id:42,s:4591,ar:'فَضَائِلُ الصَّحَابَة',        id_name:'Manaqib Sahabat',                  n:244},
-  {id:43,s:4835,ar:'الْبِرّ وَالصِّلَة',           id_name:'Berbakti dan Silaturahmi',          n:166},
-  {id:44,s:5001,ar:'الْقَدَر',                     id_name:'Takdir (Qadar)',                    n:36},
-  {id:45,s:5037,ar:'الْعِلْم',                     id_name:'Ilmu',                              n:21},
-  {id:46,s:5058,ar:'الذِّكْر وَالدُّعَاء',         id_name:'Dzikir dan Doa',                    n:96},
-  {id:47,s:5154,ar:'التَّوْبَة',                   id_name:'Taubat',                            n:52},
-  {id:48,s:5206,ar:'صِفَةُ الْمُنَافِقِين',        id_name:'Sifat-Sifat Munafik',              n:83},
-  {id:49,s:5289,ar:'صِفَةُ الْقِيَامَة',           id_name:'Sifat Hari Kiamat',                n:60},
-  {id:50,s:5349,ar:'الْجَنَّة وَالنَّار',          id_name:'Surga dan Neraka',                  n:86},
-  {id:51,s:5435,ar:'الْفِتَن',                     id_name:'Fitnah (Huru-Hara)',                n:110},
-  {id:52,s:5545,ar:'الزُّهْد وَالرَّقَائِق',       id_name:'Zuhud dan Kelembutan Hati',         n:75},
-  {id:53,s:5620,ar:'التَّفْسِير',                  id_name:'Tafsir Al-Qur\'an',                 n:42},
-  {id:54,s:5662,ar:'الطِّبّ وَالْمَرَض',           id_name:'Pengobatan dan Penyakit',           n:96},
-  {id:55,s:5758,ar:'السَّلَام',                    id_name:'Salam',                             n:56},
-  {id:56,s:5814,ar:'أَلْفَاظُ الطَّلَاق',          id_name:'Lafaz Talak',                       n:24},
+var CFG = {
+  kitab:    'muslim',
+  cdnArab:  'ara-muslim',
+  cdnEng:   'eng-muslim',
+  total:    7453,
+  limit:    10,
+  label:    'Shahih Muslim',
+  labelNo:  'Muslim'
+};
+
+var SERVERS = [
+  {id:1, name:'Server 1 — gading.dev (Indonesia)',   status:'wait'},
+  {id:2, name:'Server 2 — vercel.app (Indonesia)',   status:'wait'},
+  {id:3, name:'Server 3 — jsDelivr CDN (Arab+Ingg)', status:'wait'}
 ];
 
-var API   = 'https://api.hadith.gading.dev';
-var PER   = 10;
-var aktif = null;
-var curPg = 1;
-var lastData = [];
+var curPage    = 1;
+var totalItems = CFG.total;
+var totalPages = Math.ceil(CFG.total / CFG.limit);
+var CACHE      = {};
+var activeSrv  = 0;
 
-/* ── Build Sidebar ── */
-function buildSidebar(list){
-  var el = document.getElementById('sbList');
-  if(!list.length){
-    el.innerHTML='<div style="padding:16px;text-align:center;font-family:Tajawal,sans-serif;font-size:.75rem;color:rgba(255,255,255,.3)">Tidak ditemukan</div>';
-    return;
-  }
-  el.innerHTML = list.map(function(k){
-    return '<button class="kitab-btn'+(aktif&&aktif.id===k.id?' active':'')+'" id="kb'+k.id+'" onclick="pilihKitab('+k.id+')">'+
-      '<div class="kb-num">'+k.id+'</div>'+
-      '<div class="kb-text">'+
-        '<div class="kb-name">'+k.id_name+'</div>'+
-        '<div class="kb-count">'+k.n+' hadis</div>'+
-      '</div>'+
-    '</button>';
-  }).join('');
-}
-buildSidebar(KITAB);
-
-/* ── Search ── */
-window.cariKitab = function(q){
-  q = q.toLowerCase().trim();
-  if(!q){ buildSidebar(KITAB); return; }
-  buildSidebar(KITAB.filter(function(k){
-    return k.id_name.toLowerCase().includes(q) || String(k.id).includes(q) || k.ar.includes(q);
-  }));
-};
-
-/* ── Pilih Kitab ── */
-window.pilihKitab = function(id){
-  aktif = KITAB.find(function(k){ return k.id===id; });
-  if(!aktif) return;
-  curPg = 1;
-  document.querySelectorAll('.kitab-btn').forEach(function(b){ b.classList.remove('active'); });
-  var btn = document.getElementById('kb'+id);
-  if(btn){ btn.classList.add('active'); btn.scrollIntoView({block:'nearest',behavior:'smooth'}); }
-  muatHadis();
-};
-
-/* ── Muat Hadis ── */
-/* Cache: { 'kitabId_page': [hadiths] } */
-var CACHE = {};
-
-function ekstrakHadiths(res){
-  if(!res) return [];
-  if(res.data && Array.isArray(res.data.hadiths))  return res.data.hadiths;
-  if(res.data && Array.isArray(res.data.hadith))   return res.data.hadith;
-  if(res.data && Array.isArray(res.data))           return res.data;
-  if(Array.isArray(res.hadiths))                    return res.hadiths;
-  if(res.data && typeof res.data === 'object' && !Array.isArray(res.data)){
-    var d = res.data;
-    if(d.arab || d.text_ar || d.arabic) return [d];
-    if(d.data && (d.data.arab || d.data.text_ar)) return [d.data];
-  }
-  return [];
+/* ── Status bar ── */
+function setStatus(type, msg){
+  var b = document.getElementById('statusBar');
+  b.className = 'status-bar ' + type;
+  document.getElementById('statusText').textContent = msg;
 }
 
-function normalHadis(h){
-  if(!h) return null;
-  var arab = (h.arab || h.text_ar || h.arabic || '').trim();
-  var terjemah = '';
-  if(h.id && h.id.length > 20) terjemah = h.id;
-  terjemah = terjemah ||
-             h.indonesia || h.terjemah || h.terjemahan ||
-             h.translation || h.text_id || h.text_idn ||
-             h.en || h.english || h.text_en || '';
-  terjemah = terjemah.trim();
-  var chain = (h.chain || h.narrator || h.sanad || '').trim();
-  var num   = h.number || h.no || h.id_number || 0;
-  return {number:num, arab:arab, terjemah:terjemah, chain:chain};
+/* ── Fetch dengan timeout ── */
+function fetchT(url, ms){
+  return new Promise(function(resolve, reject){
+    var t = setTimeout(function(){ reject(new Error('Timeout')); }, ms || 9000);
+    fetch(url).then(function(r){
+      clearTimeout(t);
+      r.ok ? resolve(r) : reject(new Error('HTTP '+r.status));
+    }).catch(function(e){ clearTimeout(t); reject(e); });
+  });
 }
 
-function muatHadis(){
-  if(!aktif) return;
-  var localStart  = (curPg-1)*PER + 1;
-  var localEnd    = Math.min(curPg*PER, aktif.n);
-  var globalStart = aktif.s + localStart - 1;
-  var globalEnd   = aktif.s + localEnd   - 1;
-  var cacheKey    = aktif.id + '_' + curPg;
-
-  if(CACHE[cacheKey]){
-    lastData = CACHE[cacheKey];
-    renderHadis(localStart);
-    return;
-  }
-
+/* ══════════════════════════
+   MAIN ENTRY
+══════════════════════════ */
+function muatHalaman(page){
+  if(page < 1 || page > totalPages) return;
+  curPage = page;
+  var key = 'p'+page;
+  if(CACHE[key]){ renderHadis(CACHE[key]); window.scrollTo({top:0,behavior:'smooth'}); return; }
   tampilLoading();
-
-  fetch(API + '/books/muslim?range=' + globalStart + '-' + globalEnd)
-    .then(function(r){
-      if(!r.ok) throw new Error('HTTP ' + r.status);
-      return r.json();
-    })
-    .then(function(res){
-      var raw   = ekstrakHadiths(res);
-      var valid = raw.filter(function(h){ var n=normalHadis(h); return n&&(n.arab||n.terjemah); });
-      if(valid.length > 0){
-        var hadiths = valid.map(normalHadis);
-        CACHE[cacheKey] = hadiths;
-        lastData = hadiths;
-        renderHadis(localStart);
-      } else {
-        throw new Error('empty_response');
-      }
-    })
-    .catch(function(){
-      var promises = [];
-      for(var n = localStart; n <= localEnd; n++){
-        (function(gNum){
-          promises.push(
-            fetch(API + '/books/muslim/' + gNum)
-              .then(function(r){ return r.ok ? r.json() : null; })
-              .then(function(res){
-                if(!res) return null;
-                var arr = ekstrakHadiths(res);
-                if(arr.length) return normalHadis(arr[0]);
-                return normalHadis(res.data || res);
-              })
-              .catch(function(){ return null; })
-          );
-        })(aktif.s + n - 1);
-      }
-      Promise.all(promises)
-        .then(function(results){
-          var hadiths = results.filter(function(h){ return h&&(h.arab||h.terjemah); });
-          if(hadiths.length){
-            CACHE[cacheKey] = hadiths;
-            lastData = hadiths;
-            renderHadis(localStart);
-          } else {
-            tampilError(new Error('Tidak ada data dari API.'));
-          }
-        })
-        .catch(function(e){ tampilError(e); });
-    });
+  if(activeSrv === 1){ coba1(page); return; }
+  if(activeSrv === 2){ coba2(page); return; }
+  if(activeSrv === 3){ coba3(page); return; }
+  coba1(page);
 }
 
-/* ── Render ── */
-function renderHadis(startNum){
-  var pane = document.getElementById('mainPane');
-  var totalPg = Math.ceil(aktif.n / PER);
-  var endNum  = Math.min(curPg*PER, aktif.n);
+/* ── SERVER 1: api.hadith.gading.dev ── */
+function coba1(page){
+  SERVERS[0].status = 'loading';
+  setStatus('loading','⏳ Mencoba Server 1 (gading.dev)...');
+  var s = (page-1)*CFG.limit + 1;
+  var e = Math.min(page*CFG.limit, CFG.total);
+  fetchT('https://api.hadith.gading.dev/books/'+CFG.kitab+'?range='+s+'-'+e)
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      var h = parseGading(res, s);
+      if(!h.length) throw new Error('empty');
+      SERVERS[0].status = 'ok'; activeSrv = 1;
+      setStatus('success','✅ Server 1 aktif (gading.dev) — Terjemahan Indonesia');
+      simpan(page, h, 'id');
+    })
+    .catch(function(){ SERVERS[0].status='fail'; coba2(page); });
+}
 
-  var html =
-    '<div class="main-head">'+
-      '<div class="mh-left">'+
-        '<h2>'+aktif.id_name+'</h2>'+
-        '<p>Kitab ke-'+aktif.id+' · Shahih Muslim · '+aktif.n+' hadis</p>'+
-      '</div>'+
-      '<div class="mh-right">'+
-        '<button class="nav-arrow" onclick="pindahHal('+(curPg-1)+')" '+(curPg<=1?'disabled':'')+'>‹</button>'+
-        '<span class="page-counter">'+curPg+' / '+totalPg+'</span>'+
-        '<button class="nav-arrow" onclick="pindahHal('+(curPg+1)+')" '+(curPg>=totalPg?'disabled':'')+'>›</button>'+
-      '</div>'+
-    '</div>'+
-    '<div class="info-bar">'+
-      '<div class="ib-item">📄 Hadis <strong>'+startNum+'–'+endNum+'</strong> dari <strong>'+aktif.n+'</strong></div>'+
-      '<div class="ib-item">📋 Halaman <strong>'+curPg+'</strong> dari <strong>'+totalPg+'</strong></div>'+
-      '<div class="ib-item">📗 Shahih Muslim</div>'+
-    '</div>'+
-    '<div class="hadis-scroll" id="hadisScroll">';
+/* ── SERVER 2: hadis-api-id.vercel.app ── */
+function coba2(page){
+  SERVERS[1].status = 'loading';
+  setStatus('warning','⚠️ Server 1 gagal — Mencoba Server 2 (vercel)...');
+  fetchT('https://hadis-api-id.vercel.app/hadith/'+CFG.kitab+'?page='+page+'&limit='+CFG.limit)
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      var h = parseVercel(res);
+      if(!h.length) throw new Error('empty');
+      var pg = (res.data&&res.data.pagination)||(res.pagination)||{};
+      if(pg.totalItems){ totalItems=pg.totalItems; totalPages=Math.ceil(totalItems/CFG.limit); }
+      SERVERS[1].status = 'ok'; activeSrv = 2;
+      setStatus('success','✅ Server 2 aktif (vercel) — Terjemahan Indonesia');
+      simpan(page, h, 'id');
+    })
+    .catch(function(){ SERVERS[1].status='fail'; coba3(page); });
+}
 
-  if(!lastData.length){
-    html += '<div class="state-view"><div class="state-icon">📭</div>'+
-      '<div class="state-title">Tidak Ada Data</div>'+
-      '<div class="state-body">API tidak mengembalikan hadis. Coba halaman lain atau periksa koneksi.</div></div>';
-  } else {
-    lastData.forEach(function(h, i){
-      var num   = (h.number || h.no || (startNum + i));
-      var arab  = (h.arab || '').trim();
-      var trjm  = (h.terjemah || '').trim();
-      var perawi = (h.chain || '').trim();
-      html +=
-        '<div class="hadis-card">'+
-          '<div class="hc-top">'+
-            '<div class="hc-badge">'+
-              '<div class="hc-num">'+num+'</div>'+
-              '<div class="hc-meta">Kitab <b>'+aktif.id_name+'</b> · Hadis No.&nbsp;'+num+'</div>'+
-            '</div>'+
-            '<div class="hc-actions">'+
-              '<button class="hc-action" onclick="salinHadis('+num+',this)" title="Salin terjemahan">📋</button>'+
-            '</div>'+
-          '</div>'+
-          (arab ? '<div class="hc-arab">'+arab+'</div>' : '')+
-          '<div class="hc-sep"><div class="hc-sep-line"></div><div class="hc-sep-label">Terjemahan</div><div class="hc-sep-line"></div></div>'+
-          '<div class="hc-terjemah">'+(trjm||'<em style="color:var(--inkl);font-style:italic">Terjemahan tidak tersedia untuk hadis ini.</em>')+'</div>'+
-          (perawi ? '<div class="hc-perawi">📜 Diriwayatkan: '+perawi+'</div>' : '')+
-        '</div>';
-    });
+/* ── SERVER 3: jsDelivr CDN fawazahmed0 (fetch per-nomor, parallel) ── */
+function coba3(page){
+  SERVERS[2].status = 'loading';
+  setStatus('warning','⚠️ Server 1 & 2 gagal — Mencoba Server 3 (jsDelivr CDN)...');
+  var s    = (page-1)*CFG.limit + 1;
+  var e    = Math.min(page*CFG.limit, CFG.total);
+  var BASE = 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/';
+  var jobs = [];
+  for(var n=s; n<=e; n++){
+    (function(num){
+      var ar = fetchT(BASE+CFG.cdnArab+'/'+num+'.min.json',12000).then(function(r){return r.json();}).catch(function(){return null;});
+      var en = fetchT(BASE+CFG.cdnEng +'/'+num+'.min.json',12000).then(function(r){return r.json();}).catch(function(){return null;});
+      jobs.push(Promise.all([ar,en]).then(function(v){ return {num:num,ar:v[0],en:v[1]}; }));
+    })(n);
+  }
+  Promise.all(jobs).then(function(results){
+    var h = results.map(function(r){
+      var arab = '', trjm = '';
+      if(r.ar&&r.ar.hadiths&&r.ar.hadiths[0]) arab = (r.ar.hadiths[0].text||'').trim();
+      if(r.en&&r.en.hadiths&&r.en.hadiths[0]) trjm = (r.en.hadiths[0].text||'').trim();
+      return {number:r.num, arab:arab, terjemah:trjm};
+    }).filter(function(h){ return h.arab||h.terjemah; });
+    if(!h.length) throw new Error('Semua server tidak merespons');
+    SERVERS[2].status = 'ok'; activeSrv = 3;
+    setStatus('warning','⚡ Server 3 (CDN) aktif — Bahasa Arab + Inggris');
+    simpan(page, h, 'cdn');
+  }).catch(function(e){
+    SERVERS[2].status = 'fail'; activeSrv = 0;
+    tampilError(e);
+  });
+}
+
+/* ══════════════════════════
+   PARSER
+══════════════════════════ */
+function parseGading(res, start){
+  var raw = [];
+  if(res.data&&Array.isArray(res.data.hadiths)) raw=res.data.hadiths;
+  else if(res.data&&Array.isArray(res.data))    raw=res.data;
+  else if(Array.isArray(res.hadiths))           raw=res.hadiths;
+  return raw.map(function(h,i){
+    var arab = (h.arab||h.arabic||'').trim();
+    var trjm = '';
+    if(h.id&&typeof h.id==='string'&&h.id.length>20) trjm=h.id;
+    trjm = trjm||h.indonesia||h.terjemah||h.translation||'';
+    return {number:h.number||(start+i), arab:arab, terjemah:trjm.trim()};
+  }).filter(function(h){ return h.arab||h.terjemah; });
+}
+
+function parseVercel(res){
+  var raw = [];
+  if(res.data&&Array.isArray(res.data.hadiths)) raw=res.data.hadiths;
+  else if(res.data&&Array.isArray(res.data))    raw=res.data;
+  else if(Array.isArray(res.hadiths))           raw=res.hadiths;
+  return raw.map(function(h){
+    var arab = (h.arab||h.arabic||'').trim();
+    var trjm = (h.id&&typeof h.id==='string'&&h.id.length>20)?h.id:(h.indonesia||h.terjemah||h.translation||'');
+    if(trjm===CFG.kitab) trjm='';
+    return {number:h.number||h.no, arab:arab, terjemah:trjm.trim()};
+  }).filter(function(h){ return h.arab||h.terjemah; });
+}
+
+/* ══════════════════════════
+   RENDER
+══════════════════════════ */
+function simpan(page, hadiths, src){
+  CACHE['p'+page] = {hadiths:hadiths, page:page, src:src};
+  renderHadis(CACHE['p'+page]);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function renderHadis(data){
+  var hadiths = data.hadiths||[], page=data.page||curPage, src=data.src||'id';
+  var start   = (page-1)*CFG.limit+1;
+  var end     = Math.min(page*CFG.limit, totalItems);
+
+  document.getElementById('controlsBar').style.display='flex';
+  document.getElementById('rangeInfo').textContent   = start+'–'+end;
+  document.getElementById('totalInfo').textContent   = totalItems.toLocaleString('id-ID');
+  document.getElementById('pageCounter').textContent = page+' / '+totalPages;
+  document.getElementById('btnPrev').disabled = page<=1;
+  document.getElementById('btnNext').disabled = page>=totalPages;
+  document.getElementById('jumpInput').max    = totalPages;
+
+  if(!hadiths.length){
+    document.getElementById('contentArea').innerHTML =
+      '<div class="state-box"><div style="font-size:2.5rem">📭</div>'+
+      '<div class="state-body">Tidak ada hadis pada halaman ini. Coba halaman lain.</div></div>';
+    return;
   }
 
+  var srcBadge = src==='cdn'
+    ? '<span class="hc-src src-cdn">Arab+Ingg</span>'
+    : '<span class="hc-src src-id">Indonesia</span>';
+  var sepLabel = src==='cdn' ? 'Translation' : 'Terjemahan';
+
+  var html = '<div class="hadis-list">';
+  hadiths.forEach(function(h){
+    var num=h.number||'', arab=(h.arab||'').trim(), trjm=(h.terjemah||'').trim();
+    html +=
+      '<div class="hadis-card">'+
+        '<div class="hc-top">'+
+          '<div class="hc-badge">'+
+            '<div class="hc-num">'+num+'</div>'+
+            '<div class="hc-meta">'+CFG.label+' · No.&nbsp;<b>'+num+'</b>'+srcBadge+'</div>'+
+          '</div>'+
+          '<div class="hc-actions">'+
+            '<button class="hc-action" onclick="salinHadis('+num+',this)" title="Salin">📋</button>'+
+          '</div>'+
+        '</div>'+
+        (arab?'<div class="hc-arab">'+arab+'</div>':'')+
+        '<div class="hc-sep"><div class="hc-sep-line"></div><div class="hc-sep-label">'+sepLabel+'</div><div class="hc-sep-line"></div></div>'+
+        '<div class="hc-terjemah">'+(trjm||'<span class="no-translate">Terjemahan tidak tersedia untuk hadis ini.</span>')+'</div>'+
+      '</div>';
+  });
   html += '</div>';
-  html += buildPagination(curPg, totalPg);
-  pane.innerHTML = html;
+  document.getElementById('contentArea').innerHTML = html;
+  document.getElementById('paginationBottom').innerHTML = buildPagination(page, totalPages);
 }
 
-/* ── Pagination ── */
 function buildPagination(cur, total){
-  if(total <= 1) return '';
-  var pages = [];
-  if(total <= 7){
-    for(var i=1;i<=total;i++) pages.push(i);
-  } else {
+  if(total<=1) return '';
+  var pages=[];
+  if(total<=7){ for(var i=1;i<=total;i++) pages.push(i); }
+  else{
     pages.push(1);
-    if(cur > 3) pages.push('…');
-    var lo = Math.max(2,cur-1), hi = Math.min(total-1,cur+1);
+    if(cur>3) pages.push('…');
+    var lo=Math.max(2,cur-1), hi=Math.min(total-1,cur+1);
     for(var p=lo;p<=hi;p++) pages.push(p);
-    if(cur < total-2) pages.push('…');
+    if(cur<total-2) pages.push('…');
     pages.push(total);
   }
-  var html = '<div class="pagination">'+
+  var h='<div class="pagination">'+
     '<button class="pg-btn" onclick="pindahHal(1)" '+(cur<=1?'disabled':'')+'>«</button>'+
     '<button class="pg-btn" onclick="pindahHal('+(cur-1)+')" '+(cur<=1?'disabled':'')+'>‹</button>';
   pages.forEach(function(p){
-    if(p==='…') html += '<button class="pg-btn dots">…</button>';
-    else html += '<button class="pg-btn'+(p===cur?' active':'')+'" onclick="pindahHal('+p+')">'+p+'</button>';
+    h+=p==='…'?'<button class="pg-btn dots">…</button>':
+      '<button class="pg-btn'+(p===cur?' active':'')+'" onclick="pindahHal('+p+')">'+p+'</button>';
   });
-  html += '<button class="pg-btn" onclick="pindahHal('+(cur+1)+')" '+(cur>=total?'disabled':'')+'>›</button>'+
-          '<button class="pg-btn" onclick="pindahHal('+total+')" '+(cur>=total?'disabled':'')+'>»</button>'+
-          '</div>';
-  return html;
+  h+='<button class="pg-btn" onclick="pindahHal('+(cur+1)+')" '+(cur>=total?'disabled':'')+'>›</button>'+
+     '<button class="pg-btn" onclick="pindahHal('+total+')" '+(cur>=total?'disabled':'')+'>»</button></div>';
+  return h;
 }
 
-/* ── Pindah Halaman ── */
-window.pindahHal = function(pg){
-  if(!aktif) return;
-  var total = Math.ceil(aktif.n / PER);
-  if(pg < 1 || pg > total) return;
-  curPg = pg;
-  muatHadis();
-  var sc = document.getElementById('hadisScroll');
-  if(sc) sc.scrollTop = 0;
-};
-
-/* ── States ── */
 function tampilLoading(){
-  document.getElementById('mainPane').innerHTML =
-    '<div class="state-view"><div class="spinner"></div>'+
-    '<div class="state-body">Memuat hadis dari server...</div></div>';
+  document.getElementById('controlsBar').style.display='none';
+  document.getElementById('paginationBottom').innerHTML='';
+  document.getElementById('contentArea').innerHTML=
+    '<div class="state-box"><div class="spinner"></div>'+
+    '<div class="state-body">Memuat halaman '+curPage+'...<br>'+
+    '<small style="font-size:.72rem;color:var(--inkl)">Mencoba 3 server secara otomatis</small></div></div>';
 }
 
 function tampilError(err){
-  document.getElementById('mainPane').innerHTML =
-    '<div class="state-view">'+
+  document.getElementById('controlsBar').style.display='none';
+  setStatus('error','❌ Semua server gagal. Periksa koneksi internet Anda.');
+  var srvHtml = SERVERS.map(function(s){
+    var cls = s.status==='ok'?'srv-ok':s.status==='fail'?'srv-fail':'srv-wait';
+    var icon = s.status==='ok'?'✓':s.status==='fail'?'✗':'–';
+    return '<div class="srv-row '+cls+'"><div class="srv-dot"></div>'+icon+' '+s.name+'</div>';
+  }).join('');
+  document.getElementById('contentArea').innerHTML=
+    '<div class="state-box">'+
       '<div class="err-box">'+
-        '<p>⚠️ <strong>Gagal memuat hadis.</strong><br>Periksa koneksi internet dan coba lagi.'+
-        (err ? '<code>'+err.message+'</code>' : '')+
-        '</p>'+
-        '<button class="btn-retry" onclick="muatHadis()">🔄 Coba Lagi</button>'+
-      '</div>'+
-      '<div class="api-notice" style="margin-top:12px">'+
-        '📡 Data dimuat dari <strong>api.hadith.gading.dev</strong>. '+
-        'Jika server API tidak tersedia, data tidak dapat dimuat sementara.'+
+        '<p>⚠️ <strong>Semua server (3/3) gagal diakses.</strong><br>'+
+        'Pastikan Anda terhubung ke internet, lalu tekan tombol di bawah.</p>'+
+        (err?'<code>'+err.message+'</code>':'')+
+        '<div class="err-servers">'+srvHtml+'</div>'+
+        '<button class="btn-retry" onclick="muatUlang()">🔄 Coba Lagi</button>'+
       '</div>'+
     '</div>';
 }
 
-/* ── Salin Hadis ── */
+/* ══════════════════════════
+   PUBLIC
+══════════════════════════ */
+window.pindahHal = function(page){
+  var pg=parseInt(page); if(isNaN(pg)||pg<1||pg>totalPages) return;
+  curPage=pg; muatHalaman(pg);
+};
+window.jumpToPage = function(){
+  var v=parseInt(document.getElementById('jumpInput').value);
+  if(!isNaN(v)&&v>=1&&v<=totalPages) pindahHal(v);
+};
+window.muatUlang = function(){
+  CACHE={}; activeSrv=0;
+  SERVERS.forEach(function(s){ s.status='wait'; });
+  muatHalaman(curPage);
+};
 window.salinHadis = function(num, btn){
-  var card = btn.closest('.hadis-card');
-  var trjm = card.querySelector('.hc-terjemah');
+  var trjm = btn.closest('.hadis-card').querySelector('.hc-terjemah');
   if(!trjm) return;
-  var teks = '[Shahih Muslim No. '+num+']\n\n'+trjm.innerText+'\n\n— Musholla Baiturrahman';
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(teks).then(function(){
-      btn.textContent='✅'; btn.classList.add('copied');
-      setTimeout(function(){ btn.textContent='📋'; btn.classList.remove('copied'); }, 2200);
-    });
-  }
+  var teks='['+CFG.label+' No. '+num+']\n\n'+trjm.innerText.trim()+'\n\n— Musholla Baiturrahman';
+  if(navigator.clipboard) navigator.clipboard.writeText(teks).then(function(){
+    btn.textContent='✅'; btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent='📋'; btn.classList.remove('copied'); },2200);
+  });
 };
 
-window.muatHadis = muatHadis;
-
+muatHalaman(1);
 })();
 </script>
 </body>
