@@ -6,7 +6,7 @@
 <title>Shahih Al-Bukhari — Musholla Baiturrahman</title>
 <link rel="icon" type="image/png" href="images/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<style> 
+<style>
 :root {
   --deep:    #0b2d22;
   --mid:     #134836;
@@ -610,103 +610,103 @@ nav {
    Sumber: Daftar resmi Shahih Bukhari
 ══════════════════════════════════════════ */
 var KITAB = [
-  {id:1,  ar:'بَدْءُ الْوَحْي',       id_name:'Permulaan Wahyu',              n:7},
-  {id:2,  ar:'الْإِيمَان',            id_name:'Iman',                          n:51},
-  {id:3,  ar:'الْعِلْم',              id_name:'Ilmu',                          n:76},
-  {id:4,  ar:'الْوُضُوء',             id_name:'Wudhu',                         n:75},
-  {id:5,  ar:'الْغُسْل',              id_name:'Mandi',                         n:28},
-  {id:6,  ar:'الْحَيْض',              id_name:'Haid',                          n:32},
-  {id:7,  ar:'التَّيَمُّم',           id_name:'Tayamum',                       n:9},
-  {id:8,  ar:'الصَّلَاة',             id_name:'Shalat',                        n:106},
-  {id:9,  ar:'مَوَاقِيتُ الصَّلَاة', id_name:'Waktu-Waktu Shalat',            n:52},
-  {id:10, ar:'الْأَذَان',             id_name:'Adzan',                         n:166},
-  {id:11, ar:'الْجُمُعَة',            id_name:'Shalat Jumat',                  n:45},
-  {id:12, ar:'صَلَاةُ الْخَوْف',     id_name:'Shalat Khauf',                  n:7},
-  {id:13, ar:'الْعِيدَيْن',           id_name:'Dua Hari Raya',                 n:25},
-  {id:14, ar:'الْوِتْر',              id_name:'Shalat Witir',                  n:12},
-  {id:15, ar:'الِاسْتِسْقَاء',        id_name:'Shalat Istisqa',                n:14},
-  {id:16, ar:'الْكُسُوف',             id_name:'Shalat Gerhana',                n:14},
-  {id:17, ar:'سُجُودُ الْقُرْآن',    id_name:'Sujud Tilawah',                 n:11},
-  {id:18, ar:'التَّهَجُّد',           id_name:'Shalat Tahajud',                n:32},
-  {id:19, ar:'فَضْلُ الصَّلَاة فِي مَسْجِدِ مَكَّة', id_name:'Keutamaan Shalat di Masjidil Haram', n:4},
-  {id:20, ar:'الْعَمَلُ فِي الصَّلَاة', id_name:'Gerakan dalam Shalat',       n:29},
-  {id:21, ar:'السَّهْو',              id_name:'Sujud Sahwi',                   n:8},
-  {id:22, ar:'الْجَنَائِز',           id_name:'Jenazah',                       n:101},
-  {id:23, ar:'الزَّكَاة',             id_name:'Zakat',                         n:77},
-  {id:24, ar:'صَدَقَةُ الْفِطْر',    id_name:'Zakat Fitrah',                  n:14},
-  {id:25, ar:'الْحَجّ',               id_name:'Haji',                          n:132},
-  {id:26, ar:'الْعُمْرَة',            id_name:'Umroh',                         n:22},
-  {id:27, ar:'الْمُحْصَر',            id_name:'Orang yang Terhalang Haji',    n:19},
-  {id:28, ar:'جَزَاءُ الصَّيْد',    id_name:'Denda Berburu saat Ihram',      n:29},
-  {id:29, ar:'فَضَائِلُ الْمَدِينَة', id_name:'Keutamaan Madinah',            n:19},
-  {id:30, ar:'الصَّوْم',              id_name:'Puasa',                         n:60},
-  {id:31, ar:'صَلَاةُ التَّرَاوِيح', id_name:'Shalat Tarawih',                n:9},
-  {id:32, ar:'فَضْلُ لَيْلَةِ الْقَدْر', id_name:'Keutamaan Lailatul Qadar', n:6},
-  {id:33, ar:'الِاعْتِكَاف',          id_name:'Itikaf',                        n:20},
-  {id:34, ar:'الْبُيُوع',             id_name:'Jual Beli',                     n:105},
-  {id:35, ar:'السَّلَم',              id_name:'Jual Beli Salam',               n:23},
-  {id:36, ar:'الشُّفْعَة',            id_name:'Syuf\'ah',                      n:8},
-  {id:37, ar:'الْإِجَارَة',           id_name:'Sewa-Menyewa',                  n:22},
-  {id:38, ar:'الْحَوَالَة',           id_name:'Hiwalah (Pemindahan Hutang)',   n:4},
-  {id:39, ar:'الْوَكَالَة',           id_name:'Wakalah (Perwakilan)',          n:16},
-  {id:40, ar:'الْمُزَارَعَة',         id_name:'Muzara\'ah (Bagi Hasil Tani)', n:22},
-  {id:41, ar:'الْمُسَاقَاة',          id_name:'Musaqah (Bagi Hasil Kebun)',   n:17},
-  {id:42, ar:'الِاسْتِقْرَاض',        id_name:'Utang Piutang',                 n:20},
-  {id:43, ar:'الْخُصُومَات',          id_name:'Perselisihan',                  n:8},
-  {id:44, ar:'اللُّقَطَة',            id_name:'Barang Temuan (Luqathah)',      n:11},
-  {id:45, ar:'الْمَظَالِم',           id_name:'Kezaliman dan Perampasan',      n:30},
-  {id:46, ar:'الشَّرِكَة',            id_name:'Perkongsian (Syirkah)',         n:15},
-  {id:47, ar:'الرَّهْن',              id_name:'Gadai (Rahn)',                   n:5},
-  {id:48, ar:'الْعِتْق',              id_name:'Memerdekakan Budak',            n:20},
-  {id:49, ar:'الْمُكَاتَب',           id_name:'Perjanjian Memerdekakan',       n:6},
-  {id:50, ar:'الْهِبَة',              id_name:'Hibah dan Hadiah',              n:30},
-  {id:51, ar:'الشَّهَادَات',          id_name:'Persaksian',                    n:23},
-  {id:52, ar:'الصُّلْح',              id_name:'Perdamaian (Sulhu)',             n:14},
-  {id:53, ar:'الشُّرُوط',             id_name:'Syarat-Syarat',                 n:18},
-  {id:54, ar:'الْوَصَايَا',           id_name:'Wasiat',                        n:28},
-  {id:55, ar:'الْجِهَاد',             id_name:'Jihad dan Peperangan',          n:176},
-  {id:56, ar:'الْخُمُس',              id_name:'Khumus (Seperlima Ghanimah)',   n:19},
-  {id:57, ar:'الْجِزْيَة',            id_name:'Jizyah dan Gencatan Senjata',  n:23},
-  {id:58, ar:'بَدْءُ الْخَلْق',       id_name:'Permulaan Penciptaan',          n:56},
-  {id:59, ar:'أَحَادِيثُ الْأَنْبِيَاء', id_name:'Kisah Para Nabi',           n:55},
-  {id:60, ar:'الْمَنَاقِب',           id_name:'Keutamaan Para Sahabat',        n:274},
-  {id:61, ar:'مَنَاقِبُ الْأَنْصَار', id_name:'Manaqib Kaum Anshar',          n:51},
-  {id:62, ar:'الْمَغَازِي',           id_name:'Peperangan (Maghazi)',          n:83},
-  {id:63, ar:'التَّفْسِير',           id_name:'Tafsir Al-Qur\'an',             n:490},
-  {id:64, ar:'فَضَائِلُ الْقُرْآن',  id_name:'Keutamaan Al-Qur\'an',          n:36},
-  {id:65, ar:'النِّكَاح',             id_name:'Nikah',                         n:113},
-  {id:66, ar:'الطَّلَاق',             id_name:'Talak',                         n:53},
-  {id:67, ar:'النَّفَقَات',           id_name:'Nafkah',                        n:26},
-  {id:68, ar:'الْأَطْعِمَة',          id_name:'Makanan',                       n:53},
-  {id:69, ar:'الْعَقِيقَة',           id_name:'Akikah',                        n:8},
-  {id:70, ar:'الذَّبَائِح',           id_name:'Sembelihan dan Berburu',        n:43},
-  {id:71, ar:'الْأَضَاحِي',           id_name:'Kurban',                        n:18},
-  {id:72, ar:'الْأَشْرِبَة',          id_name:'Minuman',                       n:75},
-  {id:73, ar:'الْمَرْضَى',            id_name:'Orang Sakit',                   n:22},
-  {id:74, ar:'الطِّبّ',               id_name:'Pengobatan (Thibb)',             n:56},
-  {id:75, ar:'اللِّبَاس',             id_name:'Pakaian',                       n:93},
-  {id:76, ar:'الْأَدَب',              id_name:'Adab (Etika Islami)',           n:143},
-  {id:77, ar:'الِاسْتِئْذَان',        id_name:'Meminta Izin',                  n:65},
-  {id:78, ar:'الدَّعَوَات',           id_name:'Doa',                           n:76},
-  {id:79, ar:'الرِّقَاق',             id_name:'Kelembutan Hati (Riqaq)',       n:53},
-  {id:80, ar:'الْقَدَر',              id_name:'Takdir (Qadar)',                 n:16},
-  {id:81, ar:'الْأَيْمَان',           id_name:'Sumpah dan Nadzar',             n:32},
-  {id:82, ar:'الْكَفَّارَات',         id_name:'Kafarat (Tebusan Dosa)',        n:6},
-  {id:83, ar:'الْفَرَائِض',           id_name:'Warisan (Fara\'id)',             n:29},
-  {id:84, ar:'الْحُدُود',             id_name:'Hudud (Hukuman Had)',           n:46},
-  {id:85, ar:'الدِّيَات',             id_name:'Diyat',                         n:31},
-  {id:86, ar:'الْمُرْتَدِّين',        id_name:'Orang Murtad (Riddah)',         n:5},
-  {id:87, ar:'الْإِكْرَاه',           id_name:'Paksaan (Ikrah)',               n:7},
-  {id:88, ar:'الْحِيَل',              id_name:'Tipu Daya (Hail)',              n:15},
-  {id:89, ar:'تَعْبِيرُ الرُّؤْيَا',  id_name:'Tafsir Mimpi',                 n:50},
-  {id:90, ar:'الْفِتَن',              id_name:'Fitnah',                        n:25},
-  {id:91, ar:'الْأَحْكَام',           id_name:'Hukum-Hukum',                  n:48},
-  {id:92, ar:'الْأَمَانِي',           id_name:'Angan-Angan',                   n:12},
-  {id:93, ar:'أَخْبَارُ الْآحَاد',   id_name:'Hadis Ahad',                   n:6},
-  {id:94, ar:'التَّوْحِيد',           id_name:'Keesaan Allah (Tauhid)',        n:57},
-  {id:95, ar:'الِاعْتِصَام',          id_name:'Berpegang pada Al-Qur\'an & Sunnah', n:28},
-  {id:96, ar:'الْعِلْم (2)',          id_name:'Ilmu (Tambahan)',               n:13},
-  {id:97, ar:'الدِّيَات (2)',         id_name:'Kitab Penutup',                 n:10},
+  {id:1,s:1,ar:'بَدْءُ الْوَحْي',       id_name:'Permulaan Wahyu',              n:7},
+  {id:2,s:8,ar:'الْإِيمَان',            id_name:'Iman',                          n:51},
+  {id:3,s:59,ar:'الْعِلْم',              id_name:'Ilmu',                          n:76},
+  {id:4,s:135,ar:'الْوُضُوء',             id_name:'Wudhu',                         n:75},
+  {id:5,s:210,ar:'الْغُسْل',              id_name:'Mandi',                         n:28},
+  {id:6,s:238,ar:'الْحَيْض',              id_name:'Haid',                          n:32},
+  {id:7,s:270,ar:'التَّيَمُّم',           id_name:'Tayamum',                       n:9},
+  {id:8,s:279,ar:'الصَّلَاة',             id_name:'Shalat',                        n:106},
+  {id:9,s:385,ar:'مَوَاقِيتُ الصَّلَاة', id_name:'Waktu-Waktu Shalat',            n:52},
+  {id:10,s:437,ar:'الْأَذَان',             id_name:'Adzan',                         n:166},
+  {id:11,s:603,ar:'الْجُمُعَة',            id_name:'Shalat Jumat',                  n:45},
+  {id:12,s:648,ar:'صَلَاةُ الْخَوْف',     id_name:'Shalat Khauf',                  n:7},
+  {id:13,s:655,ar:'الْعِيدَيْن',           id_name:'Dua Hari Raya',                 n:25},
+  {id:14,s:680,ar:'الْوِتْر',              id_name:'Shalat Witir',                  n:12},
+  {id:15,s:692,ar:'الِاسْتِسْقَاء',        id_name:'Shalat Istisqa',                n:14},
+  {id:16,s:706,ar:'الْكُسُوف',             id_name:'Shalat Gerhana',                n:14},
+  {id:17,s:720,ar:'سُجُودُ الْقُرْآن',    id_name:'Sujud Tilawah',                 n:11},
+  {id:18,s:731,ar:'التَّهَجُّد',           id_name:'Shalat Tahajud',                n:32},
+  {id:19,s:763,ar:'فَضْلُ الصَّلَاة فِي مَسْجِدِ مَكَّة', id_name:'Keutamaan Shalat di Masjidil Haram', n:4},
+  {id:20,s:767,ar:'الْعَمَلُ فِي الصَّلَاة', id_name:'Gerakan dalam Shalat',       n:29},
+  {id:21,s:796,ar:'السَّهْو',              id_name:'Sujud Sahwi',                   n:8},
+  {id:22,s:804,ar:'الْجَنَائِز',           id_name:'Jenazah',                       n:101},
+  {id:23,s:905,ar:'الزَّكَاة',             id_name:'Zakat',                         n:77},
+  {id:24,s:982,ar:'صَدَقَةُ الْفِطْر',    id_name:'Zakat Fitrah',                  n:14},
+  {id:25,s:996,ar:'الْحَجّ',               id_name:'Haji',                          n:132},
+  {id:26,s:1128,ar:'الْعُمْرَة',            id_name:'Umroh',                         n:22},
+  {id:27,s:1150,ar:'الْمُحْصَر',            id_name:'Orang yang Terhalang Haji',    n:19},
+  {id:28,s:1169,ar:'جَزَاءُ الصَّيْد',    id_name:'Denda Berburu saat Ihram',      n:29},
+  {id:29,s:1198,ar:'فَضَائِلُ الْمَدِينَة', id_name:'Keutamaan Madinah',            n:19},
+  {id:30,s:1217,ar:'الصَّوْم',              id_name:'Puasa',                         n:60},
+  {id:31,s:1277,ar:'صَلَاةُ التَّرَاوِيح', id_name:'Shalat Tarawih',                n:9},
+  {id:32,s:1286,ar:'فَضْلُ لَيْلَةِ الْقَدْر', id_name:'Keutamaan Lailatul Qadar', n:6},
+  {id:33,s:1292,ar:'الِاعْتِكَاف',          id_name:'Itikaf',                        n:20},
+  {id:34,s:1312,ar:'الْبُيُوع',             id_name:'Jual Beli',                     n:105},
+  {id:35,s:1417,ar:'السَّلَم',              id_name:'Jual Beli Salam',               n:23},
+  {id:36,s:1440,ar:'الشُّفْعَة',            id_name:'Syuf\'ah',                      n:8},
+  {id:37,s:1448,ar:'الْإِجَارَة',           id_name:'Sewa-Menyewa',                  n:22},
+  {id:38,s:1470,ar:'الْحَوَالَة',           id_name:'Hiwalah (Pemindahan Hutang)',   n:4},
+  {id:39,s:1474,ar:'الْوَكَالَة',           id_name:'Wakalah (Perwakilan)',          n:16},
+  {id:40,s:1490,ar:'الْمُزَارَعَة',         id_name:'Muzara\'ah (Bagi Hasil Tani)', n:22},
+  {id:41,s:1512,ar:'الْمُسَاقَاة',          id_name:'Musaqah (Bagi Hasil Kebun)',   n:17},
+  {id:42,s:1529,ar:'الِاسْتِقْرَاض',        id_name:'Utang Piutang',                 n:20},
+  {id:43,s:1549,ar:'الْخُصُومَات',          id_name:'Perselisihan',                  n:8},
+  {id:44,s:1557,ar:'اللُّقَطَة',            id_name:'Barang Temuan (Luqathah)',      n:11},
+  {id:45,s:1568,ar:'الْمَظَالِم',           id_name:'Kezaliman dan Perampasan',      n:30},
+  {id:46,s:1598,ar:'الشَّرِكَة',            id_name:'Perkongsian (Syirkah)',         n:15},
+  {id:47,s:1613,ar:'الرَّهْن',              id_name:'Gadai (Rahn)',                   n:5},
+  {id:48,s:1618,ar:'الْعِتْق',              id_name:'Memerdekakan Budak',            n:20},
+  {id:49,s:1638,ar:'الْمُكَاتَب',           id_name:'Perjanjian Memerdekakan',       n:6},
+  {id:50,s:1644,ar:'الْهِبَة',              id_name:'Hibah dan Hadiah',              n:30},
+  {id:51,s:1674,ar:'الشَّهَادَات',          id_name:'Persaksian',                    n:23},
+  {id:52,s:1697,ar:'الصُّلْح',              id_name:'Perdamaian (Sulhu)',             n:14},
+  {id:53,s:1711,ar:'الشُّرُوط',             id_name:'Syarat-Syarat',                 n:18},
+  {id:54,s:1729,ar:'الْوَصَايَا',           id_name:'Wasiat',                        n:28},
+  {id:55,s:1757,ar:'الْجِهَاد',             id_name:'Jihad dan Peperangan',          n:176},
+  {id:56,s:1933,ar:'الْخُمُس',              id_name:'Khumus (Seperlima Ghanimah)',   n:19},
+  {id:57,s:1952,ar:'الْجِزْيَة',            id_name:'Jizyah dan Gencatan Senjata',  n:23},
+  {id:58,s:1975,ar:'بَدْءُ الْخَلْق',       id_name:'Permulaan Penciptaan',          n:56},
+  {id:59,s:2031,ar:'أَحَادِيثُ الْأَنْبِيَاء', id_name:'Kisah Para Nabi',           n:55},
+  {id:60,s:2086,ar:'الْمَنَاقِب',           id_name:'Keutamaan Para Sahabat',        n:274},
+  {id:61,s:2360,ar:'مَنَاقِبُ الْأَنْصَار', id_name:'Manaqib Kaum Anshar',          n:51},
+  {id:62,s:2411,ar:'الْمَغَازِي',           id_name:'Peperangan (Maghazi)',          n:83},
+  {id:63,s:2494,ar:'التَّفْسِير',           id_name:'Tafsir Al-Qur\'an',             n:490},
+  {id:64,s:2984,ar:'فَضَائِلُ الْقُرْآن',  id_name:'Keutamaan Al-Qur\'an',          n:36},
+  {id:65,s:3020,ar:'النِّكَاح',             id_name:'Nikah',                         n:113},
+  {id:66,s:3133,ar:'الطَّلَاق',             id_name:'Talak',                         n:53},
+  {id:67,s:3186,ar:'النَّفَقَات',           id_name:'Nafkah',                        n:26},
+  {id:68,s:3212,ar:'الْأَطْعِمَة',          id_name:'Makanan',                       n:53},
+  {id:69,s:3265,ar:'الْعَقِيقَة',           id_name:'Akikah',                        n:8},
+  {id:70,s:3273,ar:'الذَّبَائِح',           id_name:'Sembelihan dan Berburu',        n:43},
+  {id:71,s:3316,ar:'الْأَضَاحِي',           id_name:'Kurban',                        n:18},
+  {id:72,s:3334,ar:'الْأَشْرِبَة',          id_name:'Minuman',                       n:75},
+  {id:73,s:3409,ar:'الْمَرْضَى',            id_name:'Orang Sakit',                   n:22},
+  {id:74,s:3431,ar:'الطِّبّ',               id_name:'Pengobatan (Thibb)',             n:56},
+  {id:75,s:3487,ar:'اللِّبَاس',             id_name:'Pakaian',                       n:93},
+  {id:76,s:3580,ar:'الْأَدَب',              id_name:'Adab (Etika Islami)',           n:143},
+  {id:77,s:3723,ar:'الِاسْتِئْذَان',        id_name:'Meminta Izin',                  n:65},
+  {id:78,s:3788,ar:'الدَّعَوَات',           id_name:'Doa',                           n:76},
+  {id:79,s:3864,ar:'الرِّقَاق',             id_name:'Kelembutan Hati (Riqaq)',       n:53},
+  {id:80,s:3917,ar:'الْقَدَر',              id_name:'Takdir (Qadar)',                 n:16},
+  {id:81,s:3933,ar:'الْأَيْمَان',           id_name:'Sumpah dan Nadzar',             n:32},
+  {id:82,s:3965,ar:'الْكَفَّارَات',         id_name:'Kafarat (Tebusan Dosa)',        n:6},
+  {id:83,s:3971,ar:'الْفَرَائِض',           id_name:'Warisan (Fara\'id)',             n:29},
+  {id:84,s:4000,ar:'الْحُدُود',             id_name:'Hudud (Hukuman Had)',           n:46},
+  {id:85,s:4046,ar:'الدِّيَات',             id_name:'Diyat',                         n:31},
+  {id:86,s:4077,ar:'الْمُرْتَدِّين',        id_name:'Orang Murtad (Riddah)',         n:5},
+  {id:87,s:4082,ar:'الْإِكْرَاه',           id_name:'Paksaan (Ikrah)',               n:7},
+  {id:88,s:4089,ar:'الْحِيَل',              id_name:'Tipu Daya (Hail)',              n:15},
+  {id:89,s:4104,ar:'تَعْبِيرُ الرُّؤْيَا',  id_name:'Tafsir Mimpi',                 n:50},
+  {id:90,s:4154,ar:'الْفِتَن',              id_name:'Fitnah',                        n:25},
+  {id:91,s:4179,ar:'الْأَحْكَام',           id_name:'Hukum-Hukum',                  n:48},
+  {id:92,s:4227,ar:'الْأَمَانِي',           id_name:'Angan-Angan',                   n:12},
+  {id:93,s:4239,ar:'أَخْبَارُ الْآحَاد',   id_name:'Hadis Ahad',                   n:6},
+  {id:94,s:4245,ar:'التَّوْحِيد',           id_name:'Keesaan Allah (Tauhid)',        n:57},
+  {id:95,s:4302,ar:'الِاعْتِصَام',          id_name:'Berpegang pada Al-Qur\'an & Sunnah', n:28},
+  {id:96,s:4330,ar:'الْعِلْم (2)',          id_name:'Ilmu (Tambahan)',               n:13},
+  {id:97,s:4343,ar:'الدِّيَات (2)',         id_name:'Kitab Penutup',                 n:10},
 ];
 
 var API    = 'https://api.hadith.gading.dev';
@@ -757,31 +757,66 @@ window.pilihKitab = function(id){
 };
 
 /* ── Muat Hadis dari API ── */
+/* Cache: { 'kitabId_page': [hadiths] } */
+var CACHE = {};
+
 function muatHadis(){
   if(!aktif) return;
-  var start = (curPg-1)*PER + 1;
-  var end   = Math.min(curPg*PER, aktif.n);
+  var localStart = (curPg-1)*PER + 1;            /* nomor hadis dalam kitab, dimulai 1 */
+  var localEnd   = Math.min(curPg*PER, aktif.n);
+  var cacheKey   = aktif.id + '_' + curPg;
+
+  /* Gunakan cache kalau ada */
+  if(CACHE[cacheKey]){
+    lastData = CACHE[cacheKey];
+    renderHadis(localStart);
+    return;
+  }
+
   tampilLoading();
-  fetch(API + '/books/bukhari?range=' + start + '-' + end)
-    .then(function(r){
-      if(!r.ok) throw new Error('HTTP ' + r.status + ' — ' + r.statusText);
-      return r.json();
-    })
-    .then(function(res){
-      /* API Response structure: { code, message, data: { name, hadiths:[{number,arab,id,en,chain}] } }  */
-      var hadiths = [];
-      if(res && res.data){
-        if(Array.isArray(res.data.hadiths))      hadiths = res.data.hadiths;
-        else if(Array.isArray(res.data.hadith))  hadiths = res.data.hadith;
-        else if(Array.isArray(res.data))          hadiths = res.data;
-      } else if(res && Array.isArray(res.hadiths)){
-        hadiths = res.hadiths;
-      }
+
+  /* Fetch individual hadis berdasarkan nomor global (aktif.s = offset awal kitab) */
+  /* Endpoint: /books/bukhari/{number}  — dijamin benar per nomor */
+  var promises = [];
+  for(var n = localStart; n <= localEnd; n++){
+    var globalNum = aktif.s + n - 1;   /* nomor hadis dalam seluruh koleksi Bukhari */
+    promises.push(
+      fetch(API + '/books/bukhari/' + globalNum)
+        .then(function(r){
+          if(!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function(res){
+          /* Respons: { code, message, data: { number, arab, id, en, chain } } */
+          if(res && res.data) return res.data;
+          return null;
+        })
+    );
+  }
+
+  Promise.all(promises)
+    .then(function(results){
+      var hadiths = results.filter(function(h){ return h !== null; });
+      CACHE[cacheKey] = hadiths;
       lastData = hadiths;
-      renderHadis(start);
+      renderHadis(localStart);
     })
     .catch(function(err){
-      tampilError(err);
+      /* Fallback: coba range endpoint jika individual gagal */
+      var globalStart = aktif.s + localStart - 1;
+      var globalEnd   = aktif.s + localEnd   - 1;
+      fetch(API + '/books/bukhari?range=' + globalStart + '-' + globalEnd)
+        .then(function(r){ return r.json(); })
+        .then(function(res){
+          var hadiths = [];
+          if(res && res.data){
+            if(Array.isArray(res.data.hadiths)) hadiths = res.data.hadiths;
+            else if(Array.isArray(res.data))     hadiths = res.data;
+          }
+          lastData = hadiths;
+          renderHadis(localStart);
+        })
+        .catch(function(e){ tampilError(e); });
     });
 }
 
@@ -819,7 +854,7 @@ function renderHadis(startNum){
       '<div class="state-body">API tidak mengembalikan hadis untuk rentang ini. Coba halaman lain atau periksa koneksi.</div></div>';
   } else {
     lastData.forEach(function(h, i){
-      var num  = startNum + i;
+      var num  = (h.number || h.no || (startNum + i));
       var arab = (h.arab || h.text_ar || '').trim();
       var trjm = (h.id   || h.text_id || h.en || h.text_en || '').trim();
       var perawi = (h.chain || h.narrator || '').trim();
@@ -889,7 +924,7 @@ function tampilLoading(){
   document.getElementById('mainPane').innerHTML =
     '<div class="state-view">'+
       '<div class="spinner"></div>'+
-      '<div class="state-body">Memuat hadis dari server...</div>'+
+      '<div class="state-body">Memuat hadis... <span id="loadCount"></span></div>'+
     '</div>';
 }
 
