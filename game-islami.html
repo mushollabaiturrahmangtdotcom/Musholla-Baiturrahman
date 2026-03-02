@@ -196,6 +196,58 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .chip-nyawa{background:rgba(239,68,68,.1);color:var(--err);}
 .chip-poin{background:rgba(201,168,76,.15);color:#8a6b1e;}
 
+
+/* ── CATUR ── */
+.chess-wrap{max-width:480px;margin:0 auto;}
+.chess-topinfo{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+.chess-player{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:10px;background:var(--white);border:1.5px solid var(--creamd);font-size:.8rem;font-weight:700;transition:all .2s;}
+.chess-player.aktif{border-color:var(--gb);background:rgba(30,138,94,.07);box-shadow:0 2px 8px rgba(30,138,94,.15);}
+.cp-dot{width:12px;height:12px;border-radius:50%;}
+.cp-dot.white{background:#fff;border:2px solid #888;}
+.cp-dot.black{background:#222;}
+.chess-status{font-size:.76rem;font-weight:700;padding:5px 12px;border-radius:8px;background:rgba(201,168,76,.15);color:#8a6b1e;text-align:center;}
+.chess-status.check{background:rgba(239,68,68,.1);color:var(--err);}
+.chess-status.mate{background:rgba(30,138,94,.1);color:var(--gb);}
+.chess-board{display:grid;grid-template-columns:repeat(8,1fr);border:3px solid var(--gd);border-radius:6px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.2);width:100%;aspect-ratio:1;}
+.chess-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:background .1s;}
+.chess-cell.light{background:#f0d9b5;}
+.chess-cell.dark{background:#b58863;}
+.chess-cell.selected{background:#7fc97f !important;}
+.chess-cell.move-hint::after{content:'';position:absolute;width:30%;height:30%;border-radius:50%;background:rgba(0,0,0,.2);}
+.chess-cell.capture-hint{box-shadow:inset 0 0 0 4px rgba(220,50,50,.6);}
+.chess-cell.check-sq{background:#e05050 !important;}
+.chess-cell.last-from{background:#cdd96e !important;}
+.chess-cell.last-to{background:#b5cc42 !important;}
+.chess-piece{font-size:clamp(1.2rem,4.5vw,2rem);line-height:1;pointer-events:none;user-select:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));}
+.chess-captured{display:flex;gap:3px;flex-wrap:wrap;min-height:24px;padding:4px 8px;background:rgba(0,0,0,.04);border-radius:8px;margin-bottom:5px;}
+.chess-captured-piece{font-size:1rem;line-height:1;}
+.chess-diff-btns{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.chess-diff-btn{padding:5px 13px;border-radius:20px;border:1.5px solid var(--creamd);background:var(--white);font-size:.72rem;font-weight:700;cursor:pointer;color:var(--tm);transition:all .15s;}
+.chess-diff-btn.aktif{background:var(--gd);color:#fff;border-color:var(--gd);}
+.chess-controls{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center;}
+.chess-btn{padding:8px 16px;border-radius:10px;border:1.5px solid var(--creamd);background:var(--white);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .15s;color:var(--gd);}
+.chess-btn:hover{background:var(--gd);color:#fff;border-color:var(--gd);}
+.chess-btn.primary{background:var(--gd);color:#fff;border-color:var(--gd);}
+.chess-log{margin-top:12px;max-height:110px;overflow-y:auto;background:var(--white);border-radius:10px;border:1px solid var(--creamd);padding:8px 12px;}
+.chess-log-title{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tl);margin-bottom:5px;}
+.chess-log-moves{display:grid;grid-template-columns:24px 1fr 1fr;gap:2px 6px;font-size:.7rem;font-family:monospace;color:var(--tm);}
+.chess-thinking{text-align:center;padding:8px;font-size:.78rem;color:var(--tl);display:none;}
+.chess-thinking.show{display:block;}
+.chess-thinking span{animation:blinkThink 1s infinite;}
+@keyframes blinkThink{0%,100%{opacity:1}50%{opacity:.25}}
+.promo-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.55);align-items:center;justify-content:center;}
+.promo-overlay.show{display:flex;}
+.promo-box{background:var(--white);border-radius:16px;padding:24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:popIn .25s ease;}
+.promo-box h3{font-size:.95rem;font-weight:700;color:var(--gd);margin-bottom:12px;}
+.promo-opts{display:flex;gap:10px;justify-content:center;}
+.promo-opt{font-size:2.4rem;cursor:pointer;padding:8px;border-radius:10px;border:2px solid var(--creamd);transition:all .15s;line-height:1;}
+.promo-opt:hover{border-color:var(--gb);background:rgba(30,138,94,.08);}
+.chess-coord-row{display:flex;padding-left:20px;}
+.chess-coord-item{flex:1;text-align:center;font-size:.55rem;font-weight:600;color:var(--tl);}
+.chess-board-outer{display:flex;gap:4px;align-items:flex-start;}
+.chess-rank-nums{display:flex;flex-direction:column;justify-content:space-around;padding:3px 0;}
+.chess-rank-num{font-size:.55rem;font-weight:600;color:var(--tl);text-align:right;line-height:1;}
+
 /* RESPONSIVE */
 @media(max-width:600px){
   .game-grid{grid-template-columns:1fr 1fr;gap:10px;}
@@ -211,11 +263,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-brand">
+  <a href="musholla-baiturrahman.html" class="nav-brand">
     <img src="images/logo_nav.png" alt="Logo">
     <span>Musholla Baiturrahman</span>
   </a>
-  <a href="index.html" class="nav-back">← Kembali</a>
+  <a href="musholla-baiturrahman.html" class="nav-back">← Kembali</a>
 </nav>
 
 <!-- MENU UTAMA -->
@@ -259,6 +311,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
       <span class="gc-emoji">🌟</span>
       <div class="gc-title">Tebak Tokoh Islam</div>
       <div class="gc-desc">Tebak nama Nabi, Sahabat, dan Orang Sholeh dari petunjuk-petunjuk yang diberikan!</div>
+      <div class="gc-btn">Main Sekarang →</div>
+    </div>
+    <div class="game-card" style="--cc:#7b3f00" onclick="mulaiGame('catur')">
+      <span class="gc-badge">vs AI</span>
+      <span class="gc-emoji">♟️</span>
+      <div class="gc-title">Catur Islami</div>
+      <div class="gc-desc">Mainkan catur melawan AI dengan pilihan tingkat kesulitan. Asah strategi dan kecerdasan!</div>
       <div class="gc-btn">Main Sekarang →</div>
     </div>
   </div>
@@ -318,6 +377,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
     <div class="score-box"><div class="score-val" id="tokohScore">0</div><div class="score-lbl">Skor</div></div>
   </div>
   <div class="game-body" id="tokohBody"></div>
+</div>
+
+
+<div class="game-view" id="gCatur">
+  <div class="game-topbar">
+    <div class="gtb-left">
+      <button class="btn-back-game" onclick="keMenu()">← Menu</button>
+      <span class="gtb-title">♟️ Catur Islami</span>
+    </div>
+    <div class="score-box"><div class="score-val" id="caturScore">0</div><div class="score-lbl">Menang</div></div>
+  </div>
+  <div class="game-body" id="caturBody"></div>
 </div>
 
 <!-- FEEDBACK OVERLAY -->
@@ -622,11 +693,11 @@ function tampilHasil(containerId,skor,total,onUlang,onMenu){
 var gameAktif=null;
 function mulaiGame(g){
   document.getElementById('menuView').style.display='none';
-  ['hijaiyah','kuis','asma','puzzle','tokoh'].forEach(function(id){
+  ['hijaiyah','kuis','asma','puzzle','tokoh','catur'].forEach(function(id){
     document.getElementById('g'+id.charAt(0).toUpperCase()+id.slice(1)).classList.remove('active');
   });
   gameAktif=g;
-  var viewMap={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh'};
+  var viewMap={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur'};
   document.getElementById(viewMap[g]).classList.add('active');
   scrollTop();
   if(g==='hijaiyah') initHijaiyah();
@@ -634,11 +705,12 @@ function mulaiGame(g){
   else if(g==='asma') initAsma();
   else if(g==='puzzle') initPuzzle();
   else if(g==='tokoh') initTokoh();
+  else if(g==='catur') initCatur();
 }
 function keMenu(){
   clearTimers();
   document.getElementById('feedbackOverlay').classList.remove('show');
-  var viewMap={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh'};
+  var viewMap={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur'};
   if(gameAktif) document.getElementById(viewMap[gameAktif]).classList.remove('active');
   document.getElementById('menuView').style.display='block';
   scrollTop();
@@ -1063,6 +1135,706 @@ function skipTokoh(){
     function(){s.idx++;renderTokoh();}
   );
 }
+
+
+
+/* ═══════════════════════════════════════════
+   CHESS ENGINE
+═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   CHESS ENGINE — FULL IMPLEMENTATION
+═══════════════════════════════════════ */
+
+/* Piece codes: uppercase=white, lowercase=black
+   K=King, Q=Queen, R=Rook, B=Bishop, N=Knight, P=Pawn */
+
+var ChessGame = (function(){
+
+/* ── Board representation: 8x8 array, row 0 = rank 8 (black side) ── */
+var EMPTY = '.';
+
+function newBoard(){
+  return [
+    ['r','n','b','q','k','b','n','r'],
+    ['p','p','p','p','p','p','p','p'],
+    ['.','.','.','.','.','.','.','.',],
+    ['.','.','.','.','.','.','.','.',],
+    ['.','.','.','.','.','.','.','.',],
+    ['.','.','.','.','.','.','.','.',],
+    ['P','P','P','P','P','P','P','P'],
+    ['R','N','B','Q','K','B','N','R']
+  ];
+}
+
+function copyBoard(b){
+  return b.map(function(r){return r.slice();});
+}
+
+function isWhite(p){ return p!==EMPTY && p===p.toUpperCase(); }
+function isBlack(p){ return p!==EMPTY && p===p.toLowerCase(); }
+function isEnemy(p,white){ return white ? isBlack(p) : isWhite(p); }
+function isFriend(p,white){ return white ? isWhite(p) : isBlack(p); }
+function isEmpty(b,r,c){ return b[r][c]===EMPTY; }
+function inBounds(r,c){ return r>=0&&r<8&&c>=0&&c<8; }
+
+/* ── Piece values for AI ── */
+var PIECE_VAL = {p:100,n:320,b:330,r:500,q:900,k:20000};
+
+/* ── Move generation ── */
+function getMoves(b,r,c,state){
+  var p=b[r][c]; if(p===EMPTY) return [];
+  var white=isWhite(p);
+  var moves=[];
+  var pt=p.toLowerCase();
+
+  function push(tr,tc,promo){
+    if(!inBounds(tr,tc)) return;
+    if(isFriend(b[tr][tc],white)) return;
+    moves.push({fr:r,fc:c,tr:tr,tc:tc,promo:promo||null});
+  }
+  function slide(dr,dc){
+    var nr=r+dr,nc=c+dc;
+    while(inBounds(nr,nc)){
+      if(isFriend(b[nr][nc],white)) break;
+      moves.push({fr:r,fc:c,tr:nr,tc:nc,promo:null});
+      if(isEnemy(b[nr][nc],white)) break;
+      nr+=dr; nc+=dc;
+    }
+  }
+
+  if(pt==='p'){
+    var dir=white?-1:1;
+    var startRow=white?6:1;
+    var promoRow=white?0:7;
+    // Forward
+    if(inBounds(r+dir,c)&&isEmpty(b,r+dir,c)){
+      var isPromo=(r+dir===promoRow);
+      if(isPromo){['q','r','b','n'].forEach(function(pp){moves.push({fr:r,fc:c,tr:r+dir,tc:c,promo:white?pp.toUpperCase():pp});});}
+      else{ moves.push({fr:r,fc:c,tr:r+dir,tc:c,promo:null}); }
+      // Double push
+      if(r===startRow&&isEmpty(b,r+2*dir,c))
+        moves.push({fr:r,fc:c,tr:r+2*dir,tc:c,promo:null,dbl:true});
+    }
+    // Captures
+    [-1,1].forEach(function(dc){
+      var tc2=c+dc,tr2=r+dir;
+      if(!inBounds(tr2,tc2)) return;
+      if(isEnemy(b[tr2][tc2],white)){
+        var isPromo2=(tr2===promoRow);
+        if(isPromo2){['q','r','b','n'].forEach(function(pp){moves.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:white?pp.toUpperCase():pp});});}
+        else{ moves.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:null}); }
+      }
+      // En passant
+      if(state&&state.ep&&state.ep[0]===tr2&&state.ep[1]===tc2)
+        moves.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:null,ep:true});
+    });
+  }
+  else if(pt==='n'){
+    [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]].forEach(function(d){push(r+d[0],c+d[1]);});
+  }
+  else if(pt==='b'){ [[-1,-1],[-1,1],[1,-1],[1,1]].forEach(function(d){slide(d[0],d[1]);}); }
+  else if(pt==='r'){ [[-1,0],[1,0],[0,-1],[0,1]].forEach(function(d){slide(d[0],d[1]);}); }
+  else if(pt==='q'){ [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]].forEach(function(d){slide(d[0],d[1]);}); }
+  else if(pt==='k'){
+    [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]].forEach(function(d){push(r+d[0],c+d[1]);});
+    // Castling
+    if(state){
+      var kingRow=white?7:0;
+      if(r===kingRow&&c===4){
+        if(white){
+          if(state.castle.wk && b[7][5]===EMPTY&&b[7][6]===EMPTY&&b[7][7]==='R')
+            moves.push({fr:7,fc:4,tr:7,tc:6,castle:'wk'});
+          if(state.castle.wq && b[7][3]===EMPTY&&b[7][2]===EMPTY&&b[7][1]===EMPTY&&b[7][0]==='R')
+            moves.push({fr:7,fc:4,tr:7,tc:2,castle:'wq'});
+        } else {
+          if(state.castle.bk && b[0][5]===EMPTY&&b[0][6]===EMPTY&&b[0][7]==='r')
+            moves.push({fr:0,fc:4,tr:0,tc:6,castle:'bk'});
+          if(state.castle.bq && b[0][3]===EMPTY&&b[0][2]===EMPTY&&b[0][1]===EMPTY&&b[0][0]==='r')
+            moves.push({fr:0,fc:4,tr:0,tc:2,castle:'bq'});
+        }
+      }
+    }
+  }
+  return moves;
+}
+
+function getAllMoves(b,white,state){
+  var all=[];
+  for(var r=0;r<8;r++) for(var c=0;c<8;c++){
+    var p=b[r][c];
+    if(p===EMPTY) continue;
+    if(white&&!isWhite(p)) continue;
+    if(!white&&!isBlack(p)) continue;
+    var ms=getMoves(b,r,c,state);
+    all=all.concat(ms);
+  }
+  return all;
+}
+
+function applyMove(b,m){
+  var nb=copyBoard(b);
+  var p=nb[m.fr][m.fc];
+  nb[m.tr][m.tc]=m.promo||(p);
+  nb[m.fr][m.fc]=EMPTY;
+  // En passant capture
+  if(m.ep){
+    var dir=isWhite(p)?1:-1;
+    nb[m.tr+dir][m.tc]=EMPTY;
+  }
+  // Castling rook move
+  if(m.castle==='wk'){nb[7][5]='R';nb[7][7]=EMPTY;}
+  else if(m.castle==='wq'){nb[7][3]='R';nb[7][0]=EMPTY;}
+  else if(m.castle==='bk'){nb[0][5]='r';nb[0][7]=EMPTY;}
+  else if(m.castle==='bq'){nb[0][3]='r';nb[0][0]=EMPTY;}
+  return nb;
+}
+
+function updateState(state,b,m){
+  var p=b[m.fr][m.fc];
+  var ns={
+    castle:{wk:state.castle.wk,wq:state.castle.wq,bk:state.castle.bk,bq:state.castle.bq},
+    ep:null
+  };
+  // Revoke castling rights
+  if(p==='K'){ns.castle.wk=false;ns.castle.wq=false;}
+  if(p==='R'&&m.fr===7&&m.fc===7) ns.castle.wk=false;
+  if(p==='R'&&m.fr===7&&m.fc===0) ns.castle.wq=false;
+  if(p==='k'){ns.castle.bk=false;ns.castle.bq=false;}
+  if(p==='r'&&m.fr===0&&m.fc===7) ns.castle.bk=false;
+  if(p==='r'&&m.fr===0&&m.fc===0) ns.castle.bq=false;
+  // En passant target
+  if((p==='P'||p==='p')&&Math.abs(m.tr-m.fr)===2)
+    ns.ep=[(m.fr+m.tr)/2,m.tc];
+  return ns;
+}
+
+/* ── Check detection ── */
+function findKing(b,white){
+  var k=white?'K':'k';
+  for(var r=0;r<8;r++) for(var c=0;c<8;c++) if(b[r][c]===k) return [r,c];
+  return null;
+}
+
+function isSquareAttacked(b,r,c,byWhite){
+  var allM=getAllMoves(b,byWhite,{castle:{wk:false,wq:false,bk:false,bq:false},ep:null});
+  return allM.some(function(m){return m.tr===r&&m.tc===c;});
+}
+
+function isInCheck(b,white){
+  var k=findKing(b,white);
+  if(!k) return true;
+  return isSquareAttacked(b,k[0],k[1],!white);
+}
+
+function getLegalMoves(b,white,state){
+  var pseudo=getAllMoves(b,white,state);
+  return pseudo.filter(function(m){
+    // Check castling doesn't pass through check
+    if(m.castle){
+      var passCols=m.castle==='wk'||m.castle==='bk'?[4,5,6]:[2,3,4];
+      var row=white?7:0;
+      for(var i=0;i<passCols.length;i++){
+        if(isSquareAttacked(b,row,passCols[i],!white)) return false;
+      }
+    }
+    var nb=applyMove(b,m);
+    return !isInCheck(nb,white);
+  });
+}
+
+/* ── Piece-square tables for AI ── */
+var PST = {
+  p:[ [0,0,0,0,0,0,0,0],[50,50,50,50,50,50,50,50],[10,10,20,30,30,20,10,10],
+      [5,5,10,25,25,10,5,5],[0,0,0,20,20,0,0,0],[5,-5,-10,0,0,-10,-5,5],
+      [5,10,10,-20,-20,10,10,5],[0,0,0,0,0,0,0,0] ],
+  n:[ [-50,-40,-30,-30,-30,-30,-40,-50],[-40,-20,0,0,0,0,-20,-40],
+      [-30,0,10,15,15,10,0,-30],[-30,5,15,20,20,15,5,-30],
+      [-30,0,15,20,20,15,0,-30],[-30,5,10,15,15,10,5,-30],
+      [-40,-20,0,5,5,0,-20,-40],[-50,-40,-30,-30,-30,-30,-40,-50] ],
+  b:[ [-20,-10,-10,-10,-10,-10,-10,-20],[-10,0,0,0,0,0,0,-10],
+      [-10,0,5,10,10,5,0,-10],[-10,5,5,10,10,5,5,-10],
+      [-10,0,10,10,10,10,0,-10],[-10,10,10,10,10,10,10,-10],
+      [-10,5,0,0,0,0,5,-10],[-20,-10,-10,-10,-10,-10,-10,-20] ],
+  r:[ [0,0,0,0,0,0,0,0],[5,10,10,10,10,10,10,5],[-5,0,0,0,0,0,0,-5],
+      [-5,0,0,0,0,0,0,-5],[-5,0,0,0,0,0,0,-5],[-5,0,0,0,0,0,0,-5],
+      [-5,0,0,0,0,0,0,-5],[0,0,0,5,5,0,0,0] ],
+  q:[ [-20,-10,-10,-5,-5,-10,-10,-20],[-10,0,0,0,0,0,0,-10],
+      [-10,0,5,5,5,5,0,-10],[-5,0,5,5,5,5,0,-5],
+      [0,0,5,5,5,5,0,-5],[-10,5,5,5,5,5,0,-10],
+      [-10,0,5,0,0,0,0,-10],[-20,-10,-10,-5,-5,-10,-10,-20] ],
+  k:[ [-30,-40,-40,-50,-50,-40,-40,-30],[-30,-40,-40,-50,-50,-40,-40,-30],
+      [-30,-40,-40,-50,-50,-40,-40,-30],[-30,-40,-40,-50,-50,-40,-40,-30],
+      [-20,-30,-30,-40,-40,-30,-30,-20],[-10,-20,-20,-20,-20,-20,-20,-10],
+      [20,20,0,0,0,0,20,20],[20,30,10,0,0,10,30,20] ]
+};
+
+function evalBoard(b){
+  var score=0;
+  for(var r=0;r<8;r++) for(var c=0;c<8;c++){
+    var p=b[r][c];
+    if(p===EMPTY) continue;
+    var white=isWhite(p);
+    var pt=p.toLowerCase();
+    var val=(PIECE_VAL[pt]||0);
+    var pst=PST[pt];
+    var pr=white?(7-r):r;
+    val+=pst[pr][c];
+    score+=white?val:-val;
+  }
+  return score;
+}
+
+/* ── Minimax with alpha-beta ── */
+function minimax(b,depth,alpha,beta,maximizing,state){
+  var white=maximizing; // white = maximizing
+  var legal=getLegalMoves(b,white,state);
+  if(depth===0||legal.length===0){
+    if(legal.length===0){
+      if(isInCheck(b,white)) return maximizing?-99999:99999; // checkmate
+      return 0; // stalemate
+    }
+    return evalBoard(b);
+  }
+  // Move ordering: captures first
+  legal.sort(function(a,b2){
+    var ac=b[a.tr][a.tc]!==EMPTY?1:0;
+    var bc=b[b2.tr][b2.tc]!==EMPTY?1:0;
+    return bc-ac;
+  });
+  if(maximizing){
+    var best=-Infinity;
+    for(var i=0;i<legal.length;i++){
+      var m=legal[i];
+      var nb=applyMove(b,m);
+      var ns=updateState(state,b,m);
+      var v=minimax(nb,depth-1,alpha,beta,false,ns);
+      if(v>best) best=v;
+      if(v>alpha) alpha=v;
+      if(beta<=alpha) break;
+    }
+    return best;
+  } else {
+    var best=-Infinity;
+    best=Infinity;
+    for(var i=0;i<legal.length;i++){
+      var m=legal[i];
+      var nb=applyMove(b,m);
+      var ns=updateState(state,b,m);
+      var v=minimax(nb,depth-1,alpha,beta,true,ns);
+      if(v<best) best=v;
+      if(v<beta) beta=v;
+      if(beta<=alpha) break;
+    }
+    return best;
+  }
+}
+
+function bestMove(b,state,depth){
+  var legal=getLegalMoves(b,false,state); // AI = black
+  if(legal.length===0) return null;
+  var best=null,bestVal=Infinity;
+  // Move ordering
+  legal.sort(function(a,b2){
+    var ac=b[a.tr][a.tc]!==EMPTY?1:0;
+    var bc=b[b2.tr][b2.tc]!==EMPTY?1:0;
+    return bc-ac;
+  });
+  for(var i=0;i<legal.length;i++){
+    var m=legal[i];
+    var nb=applyMove(b,m);
+    var ns=updateState(state,b,m);
+    var v=minimax(nb,depth-1,-Infinity,Infinity,true,ns);
+    if(v<bestVal){bestVal=v;best=m;}
+  }
+  return best;
+}
+
+return {
+  newBoard:newBoard,
+  copyBoard:copyBoard,
+  applyMove:applyMove,
+  updateState:updateState,
+  getLegalMoves:getLegalMoves,
+  isInCheck:isInCheck,
+  isWhite:isWhite,
+  isBlack:isBlack,
+  bestMove:bestMove,
+  EMPTY:EMPTY,
+  initState:function(){return {castle:{wk:true,wq:true,bk:true,bq:true},ep:null};}
+};
+})();
+
+
+/* ═══════════════════════════════════════════
+   GAME 6 — CATUR ISLAMI
+═══════════════════════════════════════════ */
+var caturState = {};
+var caturWins = 0;
+var PIECE_EMOJI = {
+  K:'♔', Q:'♕', R:'♖', B:'♗', N:'♘', P:'♙',
+  k:'♚', q:'♛', r:'♜', b:'♝', n:'♞', p:'♟'
+};
+var FILES = ['a','b','c','d','e','f','g','h'];
+
+function toNotation(m, b){
+  var p = b[m.fr][m.fc];
+  var pt = p.toLowerCase();
+  var capture = b[m.tr][m.tc] !== ChessGame.EMPTY || m.ep;
+  var file = FILES[m.fc], rank = 8 - m.fr;
+  var tfile = FILES[m.tc], trank = 8 - m.tr;
+  if(m.castle === 'wk' || m.castle === 'bk') return 'O-O';
+  if(m.castle === 'wq' || m.castle === 'bq') return 'O-O-O';
+  var prefix = pt === 'p' ? (capture ? file : '') : pt.toUpperCase();
+  return prefix + (capture ? 'x' : '') + tfile + trank + (m.promo ? '=' + (m.promo||'').toUpperCase() : '');
+}
+
+function initCatur() {
+  caturState = {
+    board: ChessGame.newBoard(),
+    gameState: ChessGame.initState(),
+    selected: null,
+    legalMoves: [],
+    whiteTurn: true,
+    gameOver: false,
+    lastMove: null,
+    captured: { white: [], black: [] },
+    moveLog: [],
+    difficulty: 2,
+    thinking: false,
+    pendingPromo: null
+  };
+  renderCatur();
+}
+
+function renderCatur() {
+  var s = caturState;
+  var html =
+    '<div class="chess-wrap">' +
+    '<div class="chess-diff-btns">' +
+      '<span style="font-size:.72rem;font-weight:700;color:var(--tl);margin-right:4px;">Tingkat:</span>' +
+      '<button class="chess-diff-btn'+(s.difficulty===1?' aktif':'')+'" onclick="setCaturDiff(1)">🟢 Mudah</button>' +
+      '<button class="chess-diff-btn'+(s.difficulty===2?' aktif':'')+'" onclick="setCaturDiff(2)">🟡 Sedang</button>' +
+      '<button class="chess-diff-btn'+(s.difficulty===3?' aktif':'')+'" onclick="setCaturDiff(3)">🔴 Sulit</button>' +
+    '</div>' +
+    // Captured by white (black pieces captured)
+    '<div class="chess-captured" id="capturedByWhite">' +
+      (s.captured.white.map(function(p){return '<span class="chess-captured-piece">'+PIECE_EMOJI[p]+'</span>';}).join('')) +
+    '</div>' +
+    // Player info - black (AI)
+    '<div class="chess-topinfo">' +
+      '<div class="chess-player'+((!s.whiteTurn&&!s.gameOver)?' aktif':'')+'">' +
+        '<div class="cp-dot black"></div>Komputer (Hitam)' +
+      '</div>' +
+      getCaturStatus(s) +
+      '<div class="chess-player'+((s.whiteTurn&&!s.gameOver)?' aktif':'')+'">' +
+        '<div class="cp-dot white"></div>Pemain (Putih)' +
+      '</div>' +
+    '</div>';
+
+  // Board with coords
+  html += '<div class="chess-coord-row">';
+  FILES.forEach(function(f){ html += '<div class="chess-coord-item">'+f+'</div>'; });
+  html += '</div>';
+  html += '<div class="chess-board-outer">';
+  html += '<div class="chess-rank-nums">';
+  for(var r=0;r<8;r++) html += '<div class="chess-rank-num">'+(8-r)+'</div>';
+  html += '</div>';
+  html += '<div class="chess-board" id="chessBoard">';
+
+  // Find king in check
+  var checkSq = null;
+  if(ChessGame.isInCheck(s.board, s.whiteTurn)){
+    for(var r2=0;r2<8;r2++) for(var c2=0;c2<8;c2++){
+      var p2 = s.board[r2][c2];
+      if((s.whiteTurn&&p2==='K')||(!s.whiteTurn&&p2==='k')) checkSq=[r2,c2];
+    }
+  }
+
+  var hintSquares = {};
+  var captureSquares = {};
+  s.legalMoves.forEach(function(m){
+    if(s.selected && m.fr===s.selected[0] && m.fc===s.selected[1]){
+      if(s.board[m.tr][m.tc] !== ChessGame.EMPTY || m.ep) captureSquares[m.tr+','+m.tc]=true;
+      else hintSquares[m.tr+','+m.tc]=true;
+    }
+  });
+
+  for(var r=0;r<8;r++){
+    for(var c=0;c<8;c++){
+      var isLight=(r+c)%2===0;
+      var key=r+','+c;
+      var cls='chess-cell '+(isLight?'light':'dark');
+      if(s.selected&&s.selected[0]===r&&s.selected[1]===c) cls+=' selected';
+      else if(hintSquares[key]) cls+=' move-hint';
+      else if(captureSquares[key]) cls+=' capture-hint';
+      if(checkSq&&checkSq[0]===r&&checkSq[1]===c) cls+=' check-sq';
+      if(s.lastMove){
+        if(s.lastMove.fr===r&&s.lastMove.fc===c) cls+=' last-from';
+        if(s.lastMove.tr===r&&s.lastMove.tc===c) cls+=' last-to';
+      }
+      var piece = s.board[r][c];
+      var pieceHtml = piece !== ChessGame.EMPTY ? '<span class="chess-piece">'+PIECE_EMOJI[piece]+'</span>' : '';
+      html += '<div class="'+cls+'" onclick="clickCatur('+r+','+c+')">'+pieceHtml+'</div>';
+    }
+  }
+  html += '</div></div>'; // board + board-outer
+
+  // Captured by black (white pieces)
+  html += '<div class="chess-captured" id="capturedByBlack">' +
+    (s.captured.black.map(function(p){return '<span class="chess-captured-piece">'+PIECE_EMOJI[p]+'</span>';}).join('')) +
+  '</div>';
+
+  // Thinking
+  html += '<div class="chess-thinking'+(s.thinking?' show':'')+'" id="chessThinking">'+
+    '<span>♟ Komputer sedang berpikir...</span></div>';
+
+  // Controls
+  html += '<div class="chess-controls">' +
+    '<button class="chess-btn primary" onclick="initCatur()">🔄 Mulai Baru</button>' +
+    '<button class="chess-btn" onclick="caturUndoMove()">↩ Undo</button>' +
+    (s.gameOver && caturWins > 0 ? '<span style="font-size:.8rem;color:var(--gb);font-weight:700">🏆 Kemenangan: '+caturWins+'</span>' : '') +
+  '</div>';
+
+  // Move log
+  if(s.moveLog.length > 0){
+    html += '<div class="chess-log"><div class="chess-log-title">📋 Riwayat Langkah</div><div class="chess-log-moves">';
+    for(var i=0;i<s.moveLog.length;i+=2){
+      html += '<span class="move-no">'+(Math.floor(i/2)+1)+'.</span>';
+      html += '<span>'+(s.moveLog[i]||'')+'</span>';
+      html += '<span>'+(s.moveLog[i+1]||'')+'</span>';
+    }
+    html += '</div></div>';
+  }
+
+  html += '</div>'; // chess-wrap
+
+  document.getElementById('caturBody').innerHTML = html;
+  // Scroll log to bottom
+  var log = document.querySelector('.chess-log');
+  if(log) log.scrollTop = log.scrollHeight;
+}
+
+function getCaturStatus(s){
+  var legal = ChessGame.getLegalMoves(s.board, s.whiteTurn, s.gameState);
+  var inChk = ChessGame.isInCheck(s.board, s.whiteTurn);
+  var cls = 'chess-status';
+  var txt = s.whiteTurn ? 'Giliran Anda ♟' : 'Komputer berpikir...';
+  if(s.gameOver){
+    cls += ' mate';
+    txt = s.gameOverMsg || 'Selesai';
+  } else if(legal.length===0 && inChk){
+    cls += ' mate'; txt = s.whiteTurn ? '☠ Anda Kalah!' : '🏆 Anda Menang!';
+  } else if(legal.length===0){
+    cls += ' mate'; txt = '🤝 Seri (Stalemate)';
+  } else if(inChk){
+    cls += ' check'; txt = s.whiteTurn ? '⚠ Raja Anda Diancam!' : '⚠ Raja Hitam Diancam!';
+  }
+  return '<div class="'+cls+'">'+txt+'</div>';
+}
+
+function setCaturDiff(d){
+  caturState.difficulty = d;
+  var btns = document.querySelectorAll('.chess-diff-btn');
+  btns.forEach(function(b,i){ b.classList.toggle('aktif', i===d-1); });
+}
+
+function clickCatur(r, c){
+  var s = caturState;
+  if(s.gameOver || s.thinking || !s.whiteTurn) return;
+
+  var piece = s.board[r][c];
+  // If clicking own piece, select it
+  if(piece !== ChessGame.EMPTY && ChessGame.isWhite(piece)){
+    s.selected = [r, c];
+    s.legalMoves = ChessGame.getLegalMoves(s.board, true, s.gameState);
+    renderCatur();
+    return;
+  }
+
+  // If a piece is selected, try to move
+  if(s.selected){
+    var legal = ChessGame.getLegalMoves(s.board, true, s.gameState);
+    var validMoves = legal.filter(function(m){
+      return m.fr===s.selected[0] && m.fc===s.selected[1] && m.tr===r && m.tc===c;
+    });
+
+    if(validMoves.length > 0){
+      // Check if promotion
+      var isPromo = validMoves.some(function(m){ return m.promo; });
+      if(isPromo){
+        s.pendingPromo = {fr:s.selected[0], fc:s.selected[1], tr:r, tc:c};
+        showPromoModal(true);
+        return;
+      }
+      executeCaturMove(validMoves[0]);
+      return;
+    }
+  }
+  // Deselect
+  s.selected = null;
+  s.legalMoves = [];
+  renderCatur();
+}
+
+function showPromoModal(isWhite){
+  var overlay = document.getElementById('promoOverlay');
+  if(!overlay){
+    var div = document.createElement('div');
+    div.id = 'promoOverlay';
+    div.className = 'promo-overlay';
+    div.innerHTML = '<div class="promo-box"><h3>Pilih Promosi Pion</h3>' +
+      '<div class="promo-opts">' +
+        '<div class="promo-opt" onclick="choosePromo(''+(isWhite?'Q':'q')+'')">♕</div>' +
+        '<div class="promo-opt" onclick="choosePromo(''+(isWhite?'R':'r')+'')">♖</div>' +
+        '<div class="promo-opt" onclick="choosePromo(''+(isWhite?'B':'b')+'')">♗</div>' +
+        '<div class="promo-opt" onclick="choosePromo(''+(isWhite?'N':'n')+'')">♘</div>' +
+      '</div></div>';
+    document.body.appendChild(div);
+  }
+  document.getElementById('promoOverlay').classList.add('show');
+}
+
+window.choosePromo = function(piece){
+  var s = caturState;
+  document.getElementById('promoOverlay').classList.remove('show');
+  if(!s.pendingPromo) return;
+  var legal = ChessGame.getLegalMoves(s.board, true, s.gameState);
+  var mArr = legal.filter(function(mv){
+    return mv.fr===s.pendingPromo.fr && mv.fc===s.pendingPromo.fc &&
+           mv.tr===s.pendingPromo.tr && mv.tc===s.pendingPromo.tc &&
+           mv.promo === piece;
+  });
+  var m = mArr[0] || null;
+  s.pendingPromo = null;
+  if(m) executeCaturMove(m);
+};
+
+function executeCaturMove(m){
+  var s = caturState;
+  // Log move
+  var notation = toNotation(m, s.board);
+  // Capture tracking
+  var captured = s.board[m.tr][m.tc];
+  if(captured !== ChessGame.EMPTY) s.captured.white.push(captured);
+  if(m.ep){
+    var dir = s.whiteTurn ? 1 : -1;
+    s.captured.white.push(s.board[m.tr+dir][m.tc]);
+  }
+
+  s.board = ChessGame.applyMove(s.board, m);
+  s.gameState = updateCaturState(s.gameState, m);
+
+  s.lastMove = m;
+  s.selected = null;
+  s.legalMoves = [];
+  s.moveLog.push(notation);
+  s.whiteTurn = false;
+
+  // Check game over
+  var blackLegal = ChessGame.getLegalMoves(s.board, false, s.gameState);
+  if(blackLegal.length === 0){
+    s.gameOver = true;
+    if(ChessGame.isInCheck(s.board, false)){
+      s.gameOverMsg = '🏆 Anda Menang! Skakmat!';
+      caturWins++;
+      document.getElementById('caturScore').textContent = caturWins;
+      setTimeout(function(){
+        showFeedback('🏆','Luar Biasa!','ok','Anda berhasil menyekakmat komputer! Masya Allah!','Main Lagi',function(){initCatur();});
+      }, 500);
+    } else {
+      s.gameOverMsg = '🤝 Seri (Stalemate)';
+    }
+    renderCatur();
+    return;
+  }
+
+  renderCatur();
+  // AI move
+  s.thinking = true;
+  var thinkEl = document.getElementById('chessThinking');
+  if(thinkEl) thinkEl.classList.add('show');
+
+  var depth = s.difficulty === 1 ? 1 : s.difficulty === 2 ? 2 : 3;
+  setTimeout(function(){
+    if(!caturState.whiteTurn && !caturState.gameOver){
+      doAiMove(depth);
+    }
+  }, 300);
+}
+
+function updateCaturState(oldState, m){
+  // Simplified state update
+  var ns = {
+    castle: {wk:oldState.castle.wk, wq:oldState.castle.wq, bk:oldState.castle.bk, bq:oldState.castle.bq},
+    ep: null
+  };
+  // This is called after board is already updated, so check move piece
+  if(m.fr===7&&m.fc===4) { ns.castle.wk=false; ns.castle.wq=false; }
+  if(m.fr===7&&m.fc===7) ns.castle.wk=false;
+  if(m.fr===7&&m.fc===0) ns.castle.wq=false;
+  if(m.fr===0&&m.fc===4) { ns.castle.bk=false; ns.castle.bq=false; }
+  if(m.fr===0&&m.fc===7) ns.castle.bk=false;
+  if(m.fr===0&&m.fc===0) ns.castle.bq=false;
+  if(Math.abs(m.tr-m.fr)===2 && (m.tr===4||m.tr===3))
+    ns.ep = [(m.fr+m.tr)/2, m.tc];
+  return ns;
+}
+
+function doAiMove(depth){
+  var s = caturState;
+  var m = ChessGame.bestMove(s.board, s.gameState, depth);
+  s.thinking = false;
+
+  if(!m){
+    // AI has no moves
+    s.gameOver = true;
+    if(ChessGame.isInCheck(s.board, false)){
+      s.gameOverMsg = '🏆 Anda Menang!';
+      caturWins++;
+      document.getElementById('caturScore').textContent = caturWins;
+    } else {
+      s.gameOverMsg = '🤝 Seri';
+    }
+    renderCatur();
+    return;
+  }
+
+  var notation = toNotation(m, s.board);
+  var captured = s.board[m.tr][m.tc];
+  if(captured !== ChessGame.EMPTY) s.captured.black.push(captured);
+  if(m.ep){ var epCapRow = m.tr+1; s.captured.black.push(s.board[epCapRow] && s.board[epCapRow][m.tc] ? s.board[epCapRow][m.tc] : 'P'); }
+
+  s.board = ChessGame.applyMove(s.board, m);
+  s.gameState = updateCaturState(s.gameState, m);
+  s.lastMove = m;
+  s.moveLog.push(notation);
+  s.whiteTurn = true;
+
+  // Check if white is now in checkmate/stalemate
+  var whiteLegal = ChessGame.getLegalMoves(s.board, true, s.gameState);
+  if(whiteLegal.length === 0){
+    s.gameOver = true;
+    if(ChessGame.isInCheck(s.board, true)){
+      s.gameOverMsg = '☠ Anda Kalah! Skakmat!';
+      setTimeout(function(){
+        showFeedback('😔','Kalah Kali Ini','err','Jangan menyerah! Terus berlatih dan tingkatkan strategi Anda.','Main Lagi',function(){initCatur();});
+      }, 500);
+    } else {
+      s.gameOverMsg = '🤝 Seri (Stalemate)';
+    }
+  }
+  renderCatur();
+}
+
+function caturUndoMove(){
+  // Simple undo: restart (full undo needs move history stack)
+  if(confirm('Undo akan memulai ulang permainan. Lanjutkan?')) initCatur();
+}
+
+window.initCatur = initCatur;
+window.clickCatur = clickCatur;
+window.setCaturDiff = setCaturDiff;
+window.caturUndoMove = caturUndoMove;
 
 /* INIT */
 window.mulaiGame=mulaiGame;
