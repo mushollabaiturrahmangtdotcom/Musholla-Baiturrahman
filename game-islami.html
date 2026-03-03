@@ -278,7 +278,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 /* SVG overlay for snakes & ladders */
 .ut-board-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 /* Tokens */
-.ut-token{position:absolute;width:clamp(12px,3vw,20px);height:clamp(12px,3vw,20px);border-radius:50%;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);font-size:clamp(.5rem,1.2vw,.75rem);display:flex;align-items:center;justify-content:center;transition:all .5s cubic-bezier(.34,1.56,.64,1);z-index:10;line-height:1;}
+.ut-token{position:absolute;width:clamp(12px,3vw,22px);height:clamp(12px,3vw,22px);border-radius:50%;border:2px solid rgba(255,255,255,.9);box-shadow:0 2px 8px rgba(0,0,0,.35);font-size:clamp(.5rem,1.2vw,.78rem);display:flex;align-items:center;justify-content:center;z-index:10;line-height:1;transition:left .15s ease,top .15s ease,transform .1s ease;}
 /* Game panel */
 .ut-panel{background:var(--white);border-radius:14px;padding:16px;border:1px solid var(--creamd);margin-top:12px;}
 .ut-turn-info{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
@@ -1286,6 +1286,9 @@ var UT_DICE_FACES = ['⚀','⚁','⚂','⚃','⚄','⚅'];
 var utState = {};
 
 function initUlarTangga() {
+  // Clean up any lingering token elements
+  var oldWrap = document.getElementById('utBoardWrap');
+  if (oldWrap) oldWrap.querySelectorAll('.ut-token').forEach(function(el){el.remove();});
   utState = {
     phase: 'setup',  // setup | playing | finished
     players: [
@@ -1321,8 +1324,13 @@ function renderUlarTangga() {
   html += '</div>';
   document.getElementById('utBody').innerHTML = html;
 
-  if (s.phase === 'playing') drawBoardSVG(s);
-  renderTokens(s);
+  if (s.phase === 'playing') {
+    // Use rAF to ensure layout is calculated before placing tokens
+    requestAnimationFrame(function() {
+      drawBoardSVG(s);
+      renderTokens(s);
+    });
+  }
 }
 
 function renderSetup(s) {
@@ -1444,50 +1452,44 @@ function renderTokens(s) {
   if (s.phase !== 'playing') return;
   var wrap = document.getElementById('utBoardWrap');
   if (!wrap) return;
-  var W = wrap.offsetWidth, H = wrap.offsetHeight;
-  var cw = W / 10, ch = H / 10;
+  var cw = wrap.offsetWidth / 10;
+  var tw = Math.min(22, cw * 0.48);
 
-  // Remove old tokens
-  wrap.querySelectorAll('.ut-token').forEach(function(el){el.remove();});
-
-  function cellCenter(num) {
-    if (num === 0) return null;
-    var rowNum = Math.floor((num - 1) / 10);
-    var colInRow = (num - 1) % 10;
-    var gridRow = 9 - rowNum;
-    var gridCol = (rowNum % 2 === 0) ? colInRow : (9 - colInRow);
-    return {x: gridCol * cw, y: gridRow * ch};
-  }
-
-  // Group players by position
-  var byPos = {};
+  // For each player, create or update their persistent token element
   s.players.forEach(function(p, i) {
-    if (!byPos[p.pos]) byPos[p.pos] = [];
-    byPos[p.pos].push({player: p, idx: i});
-  });
+    var tokenId = 'utToken-' + i;
+    var token = document.getElementById(tokenId);
 
-  var tw = Math.min(20, cw * 0.45);
+    if (p.pos === 0) {
+      // Not on board yet — hide token
+      if (token) token.style.display = 'none';
+      return;
+    }
 
-  Object.keys(byPos).forEach(function(pos) {
-    if (pos == 0) return;
-    var group = byPos[pos];
-    var cell = cellCenter(parseInt(pos));
-    if (!cell) return;
-    group.forEach(function(item, gi) {
-      var token = document.createElement('div');
+    if (!token) {
+      // Create token element once
+      token = document.createElement('div');
+      token.id = tokenId;
       token.className = 'ut-token';
-      token.textContent = item.player.token;
+      token.textContent = p.token;
       token.style.width = tw + 'px';
       token.style.height = tw + 'px';
-      token.style.fontSize = (tw * 0.6) + 'px';
-      token.style.background = item.player.color;
-      // Offset multiple tokens in same cell
-      var offX = (gi % 2) * (tw * 0.6);
-      var offY = Math.floor(gi / 2) * (tw * 0.6);
-      token.style.left = (cell.x + 2 + offX) + 'px';
-      token.style.top = (cell.y + 2 + offY) + 'px';
+      token.style.fontSize = (tw * 0.65) + 'px';
+      token.style.background = p.color;
+      token.style.transition = 'left 0.15s ease, top 0.15s ease, transform 0.1s ease';
       wrap.appendChild(token);
-    });
+    }
+    token.style.display = 'flex';
+
+    // Calculate offset if multiple players share a cell
+    var cellMates = s.players.filter(function(op, oi){ return oi !== i && op.pos === p.pos; });
+    var offsetSlot = s.players.filter(function(op, oi){ return oi < i && op.pos === p.pos; }).length;
+    var offX = (offsetSlot % 2) * (tw * 0.55);
+    var offY = Math.floor(offsetSlot / 2) * (tw * 0.55);
+
+    var cell = utCellCenter(p.pos);
+    token.style.left = (cell.x + 2 + offX) + 'px';
+    token.style.top  = (cell.y + 2 + offY) + 'px';
   });
 }
 
@@ -1591,67 +1593,137 @@ function utRollDice() {
   }, 80);
 }
 
+function utCellCenter(num) {
+  var wrap = document.getElementById('utBoardWrap');
+  if (!wrap) return {x:0,y:0};
+  var W = wrap.offsetWidth, H = wrap.offsetHeight;
+  var cw = W/10, ch = H/10;
+  var rowNum = Math.floor((num-1)/10);
+  var colInRow = (num-1)%10;
+  var gridRow = 9 - rowNum;
+  var gridCol = (rowNum%2===0) ? colInRow : (9-colInRow);
+  return {x: gridCol*cw, y: gridRow*ch, cw:cw, ch:ch};
+}
+
+function utMoveTokenAnimated(playerIdx, fromPos, toPos, onDone) {
+  // Build list of positions to step through
+  var steps = [];
+  if (toPos > fromPos) {
+    for (var i = fromPos+1; i <= toPos; i++) steps.push(i);
+  } else {
+    // Bouncing back (>100)
+    for (var i = fromPos+1; i <= 100; i++) steps.push(i);
+    for (var i = 99; i >= toPos; i--) steps.push(i);
+  }
+
+  var s = utState;
+  var tokenId = 'utToken-' + playerIdx;
+  var delay = toPos > fromPos ? 180 : 140; // ms per step, faster when bouncing
+
+  var stepIdx = 0;
+  function doStep() {
+    if (stepIdx >= steps.length) {
+      if (onDone) onDone();
+      return;
+    }
+    var pos = steps[stepIdx];
+    s.players[playerIdx].pos = pos;
+    // Move token visually
+    var token = document.getElementById(tokenId);
+    if (token) {
+      var cell = utCellCenter(pos);
+      var tw = token.offsetWidth || 20;
+      // Small bounce effect on each step
+      token.style.transform = 'scale(1.3)';
+      token.style.left = (cell.x + 2) + 'px';
+      token.style.top = (cell.y + 2) + 'px';
+      setTimeout(function(){ if(token) token.style.transform = 'scale(1)'; }, delay*0.4);
+    }
+    stepIdx++;
+    setTimeout(doStep, delay);
+  }
+  doStep();
+}
+
 function utMovePlayer(steps) {
   var s = utState;
-  var p = s.players[s.currentPlayer];
-  var oldPos = p.pos;
-  var newPos = p.pos + steps;
+  var pIdx = s.currentPlayer;
+  var p = s.players[pIdx];
+  var fromPos = p.pos;
+  var targetPos = p.pos + steps;
+  var bounced = false;
 
-  if (newPos > 100) {
-    // Harus tepat 100
-    newPos = 100 - (newPos - 100);
-    s.log.push(p.token+' '+p.name+' dapat '+steps+', memantul ke kotak '+newPos);
+  if (targetPos > 100) {
+    targetPos = 100 - (targetPos - 100);
+    bounced = true;
+    s.log.push(p.token+' '+p.name+' dapat '+steps+', memantul ke kotak '+targetPos);
   } else {
-    s.log.push(p.token+' '+p.name+' dapat '+steps+', maju ke kotak '+newPos);
-  }
-  p.pos = newPos;
-  renderUlarTangga();
-
-  // Check win
-  if (p.pos >= 100) {
-    p.pos = 100;
-    p.score += 50; // bonus menang
-    s.winner = p;
-    s.phase = 'finished';
-    setTimeout(function(){ renderUlarTangga(); }, 600);
-    return;
+    s.log.push(p.token+' '+p.name+' dapat '+steps+', maju ke kotak '+targetPos);
   }
 
-  // Check tangga
-  var tangga = null;
-  UT_TANGGA.forEach(function(t){ if(t.from===p.pos) tangga=t; });
-  if (tangga) {
-    setTimeout(function(){
-      p.pos = tangga.to;
-      p.score += 20;
+  // Disable roll button during animation
+  var btn = document.getElementById('utRollBtn');
+  if (btn) btn.disabled = true;
+
+  // Animate step by step
+  utMoveTokenAnimated(pIdx, fromPos, targetPos, function() {
+    p.pos = targetPos;
+
+    // Check win
+    if (p.pos >= 100) {
+      p.pos = 100;
+      p.score += 50;
+      s.winner = p;
+      s.phase = 'finished';
+      setTimeout(function(){ renderUlarTangga(); }, 600);
+      return;
+    }
+
+    // Check tangga
+    var tangga = null;
+    UT_TANGGA.forEach(function(t){ if(t.from===p.pos) tangga=t; });
+    if (tangga) {
       s.log.push('🪜 TANGGA! '+p.token+' naik dari '+tangga.from+' ke '+tangga.to+' (+20 poin)');
       renderUlarTangga();
-      setTimeout(function(){ utNextTurn(); }, 800);
-    }, 600);
-    return;
-  }
+      // Animate climbing ladder (fast slide)
+      setTimeout(function(){
+        utMoveTokenAnimated(pIdx, tangga.from, tangga.to, function(){
+          p.pos = tangga.to;
+          p.score += 20;
+          renderUlarTangga();
+          setTimeout(function(){ utNextTurn(); }, 500);
+        });
+      }, 300);
+      return;
+    }
 
-  // Check ular
-  var ular = null;
-  UT_ULAR.forEach(function(u){ if(u.from===p.pos) ular=u; });
-  if (ular) {
-    setTimeout(function(){
-      p.pos = ular.to;
+    // Check ular
+    var ular = null;
+    UT_ULAR.forEach(function(u){ if(u.from===p.pos) ular=u; });
+    if (ular) {
       s.log.push('🐍 ULAR! '+p.token+' turun dari '+ular.from+' ke '+ular.to);
       renderUlarTangga();
-      setTimeout(function(){ utNextTurn(); }, 800);
-    }, 600);
-    return;
-  }
+      setTimeout(function(){
+        utMoveTokenAnimated(pIdx, ular.from, ular.to, function(){
+          p.pos = ular.to;
+          renderUlarTangga();
+          setTimeout(function(){ utNextTurn(); }, 500);
+        });
+      }, 300);
+      return;
+    }
 
-  // Check question cell
-  if (UT_QUESTION_CELLS.indexOf(p.pos) >= 0) {
-    setTimeout(function(){ utShowSoal(); }, 600);
-    return;
-  }
+    // Check question cell
+    if (UT_QUESTION_CELLS.indexOf(p.pos) >= 0) {
+      renderUlarTangga();
+      setTimeout(function(){ utShowSoal(); }, 400);
+      return;
+    }
 
-  // Normal move, next turn
-  setTimeout(function(){ utNextTurn(); }, 600);
+    // Normal - next turn
+    renderUlarTangga();
+    setTimeout(function(){ utNextTurn(); }, 400);
+  });
 }
 
 function utShowSoal() {
