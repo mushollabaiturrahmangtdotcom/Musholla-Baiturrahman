@@ -328,11 +328,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-brand">
+  <a href="musholla-baiturrahman.html" class="nav-brand">
     <img src="images/logo_nav.png" alt="Logo">
     <span>Musholla Baiturrahman</span>
   </a>
-  <a href="index.html" class="nav-back">← Kembali</a>
+  <a href="musholla-baiturrahman.html" class="nav-back">← Kembali</a>
 </nav>
 <div id="menuView">
   <div class="menu-hero">
@@ -1304,27 +1304,80 @@ function initUlarTangga() {
 
 function renderUlarTangga() {
   var s = utState;
-  var html = '<div class="ut-wrap">';
+  var body = document.getElementById('utBody');
+  if (!body) return;
 
-  if (s.phase === 'setup') {
-    html += renderSetup(s);
-  } else if (s.phase === 'playing') {
-    html += renderBoard(s);
-    html += renderPanel(s);
-  } else {
-    html += renderFinish(s);
+  if (s.phase === 'setup' || s.phase === 'finished') {
+    // Full rebuild only on setup/finish
+    body.innerHTML = '<div class="ut-wrap">' + (s.phase==='setup' ? renderSetup(s) : renderFinish(s)) + '</div>';
+    return;
   }
-
-  html += '</div>';
-  document.getElementById('utBody').innerHTML = html;
 
   if (s.phase === 'playing') {
-    // Use rAF to ensure layout is calculated before placing tokens
-    requestAnimationFrame(function() {
-      drawBoardSVG(s);
-      renderTokens(s);
-    });
+    var boardExists = !!document.getElementById('utBoardWrap');
+    if (!boardExists) {
+      // First time: build board + panel
+      body.innerHTML = '<div class="ut-wrap">' + renderBoard(s) + '<div id="utPanelHolder">' + renderPanel(s) + '</div></div>';
+      requestAnimationFrame(function() {
+        drawBoardSVG(s);
+        utAllTokens();
+      });
+    } else {
+      // Board already in DOM — only update panel, leave board/tokens untouched
+      var ph = document.getElementById('utPanelHolder');
+      if (ph) ph.innerHTML = renderPanel(s);
+    }
   }
+}
+
+/* Place all tokens at their current positions (called once after board renders) */
+function utAllTokens() {
+  var s = utState;
+  s.players.forEach(function(p, i) { utPlaceToken(i); });
+}
+
+/* Place/update one token at player's current position without animation */
+function utPlaceToken(idx) {
+  var s = utState;
+  var p = s.players[idx];
+  var wrap = document.getElementById('utBoardWrap');
+  if (!wrap) return;
+
+  var cw = wrap.offsetWidth / 10;
+  var tw = Math.min(22, cw * 0.48);
+  var tokenId = 'utToken-' + idx;
+  var token = document.getElementById(tokenId);
+
+  if (!token) {
+    token = document.createElement('div');
+    token.id = tokenId;
+    token.className = 'ut-token';
+    token.textContent = p.token;
+    token.style.background = p.color;
+    token.style.width = tw + 'px';
+    token.style.height = tw + 'px';
+    token.style.fontSize = (tw * 0.65) + 'px';
+    token.style.position = 'absolute';
+    token.style.zIndex = '10';
+    token.style.display = 'flex';
+    token.style.alignItems = 'center';
+    token.style.justifyContent = 'center';
+    token.style.borderRadius = '50%';
+    token.style.border = '2px solid rgba(255,255,255,0.9)';
+    token.style.boxShadow = '0 2px 8px rgba(0,0,0,.35)';
+    token.style.lineHeight = '1';
+    wrap.appendChild(token);
+  }
+
+  if (p.pos === 0) { token.style.display = 'none'; return; }
+  token.style.display = 'flex';
+
+  var offSlot = s.players.filter(function(op, oi){ return oi < idx && op.pos === p.pos; }).length;
+  var offX = (offSlot % 2) * (tw * 0.55);
+  var offY = Math.floor(offSlot / 2) * (tw * 0.55);
+  var cell = utCellCenter(p.pos);
+  token.style.left = (cell.x + 2 + offX) + 'px';
+  token.style.top  = (cell.y + 2 + offY) + 'px';
 }
 
 function renderSetup(s) {
@@ -1558,8 +1611,17 @@ function utRemovePlayer(idx) {
 function utStartGame() {
   utState.phase = 'playing';
   utState.currentPlayer = 0;
+  utState.players.forEach(function(p){ p.pos = 0; });
   utState.log = ['🎮 Permainan dimulai! '+utState.players[0].token+' '+utState.players[0].name+' giliran pertama.'];
-  renderUlarTangga();
+  // Full rebuild (board doesn't exist yet)
+  var body = document.getElementById('utBody');
+  if (body) {
+    body.innerHTML = '<div class="ut-wrap">' + renderBoard(utState) + '<div id="utPanelHolder">' + renderPanel(utState) + '</div></div>';
+    requestAnimationFrame(function() {
+      drawBoardSVG(utState);
+      utAllTokens();
+    });
+  }
 }
 
 function utRollDice() {
@@ -1599,71 +1661,144 @@ function utCellCenter(num) {
   return {x: gridCol*cw, y: gridRow*ch, cw:cw, ch:ch};
 }
 
+/* Update only panel (log, score, turn info) without rebuilding the board */
+function utUpdatePanel() {
+  var s = utState;
+  var panelEl = document.getElementById('utPanel');
+  if (panelEl) {
+    panelEl.outerHTML = '<div id="utPanel">' + renderPanel(s).replace(/^<div class="ut-panel">/, '').replace(/<\/div>$/, '') + '</div>';
+  }
+  // Re-render whole panel area
+  var wrap = document.getElementById('utWrap');
+  if (!wrap) return;
+  // Just re-render panel section only
+  var panelHtml = renderPanel(s);
+  var existing = document.getElementById('utPanelContainer');
+  if (existing) existing.innerHTML = panelHtml;
+}
+
+/* Place / move a single token to a position instantly (no animation) */
+function utPlaceToken(playerIdx, pos) {
+  var s = utState;
+  var p = s.players[playerIdx];
+  var wrap = document.getElementById('utBoardWrap');
+  if (!wrap) return;
+
+  var tokenId = 'utToken-' + playerIdx;
+  var token = document.getElementById(tokenId);
+  var cw = wrap.offsetWidth / 10;
+  var tw = Math.min(22, cw * 0.48);
+
+  if (!token) {
+    token = document.createElement('div');
+    token.id = tokenId;
+    token.className = 'ut-token';
+    token.textContent = p.token;
+    token.style.background = p.color;
+    token.style.width = tw + 'px';
+    token.style.height = tw + 'px';
+    token.style.fontSize = (tw * 0.65) + 'px';
+    token.style.position = 'absolute';
+    token.style.zIndex = '10';
+    token.style.display = 'flex';
+    token.style.alignItems = 'center';
+    token.style.justifyContent = 'center';
+    token.style.borderRadius = '50%';
+    token.style.border = '2px solid rgba(255,255,255,0.9)';
+    token.style.boxShadow = '0 2px 8px rgba(0,0,0,.35)';
+    token.style.lineHeight = '1';
+    wrap.appendChild(token);
+  }
+
+  if (pos === 0) { token.style.display = 'none'; return; }
+  token.style.display = 'flex';
+
+  var offsetSlot = s.players.filter(function(op, oi){ return oi < playerIdx && op.pos === pos; }).length;
+  var offX = (offsetSlot % 2) * (tw * 0.55);
+  var offY = Math.floor(offsetSlot / 2) * (tw * 0.55);
+
+  var cell = utCellCenter(pos);
+  token.style.left = (cell.x + 2 + offX) + 'px';
+  token.style.top  = (cell.y + 2 + offY) + 'px';
+}
+
 function utMoveTokenAnimated(playerIdx, fromPos, toPos, onDone) {
-  // Build list of positions to step through
   var steps = [];
-  if (toPos > fromPos) {
-    for (var i = fromPos+1; i <= toPos; i++) steps.push(i);
+  if (toPos >= fromPos) {
+    for (var i = fromPos + 1; i <= toPos; i++) steps.push(i);
   } else {
-    // Bouncing back (>100)
-    for (var i = fromPos+1; i <= 100; i++) steps.push(i);
+    // Bouncing back over 100
+    for (var i = fromPos + 1; i <= 100; i++) steps.push(i);
     for (var i = 99; i >= toPos; i--) steps.push(i);
   }
 
-  var s = utState;
+  var delay = 200; // ms per step
   var tokenId = 'utToken-' + playerIdx;
-  var delay = toPos > fromPos ? 180 : 140; // ms per step, faster when bouncing
-
   var stepIdx = 0;
+
   function doStep() {
     if (stepIdx >= steps.length) {
       if (onDone) onDone();
       return;
     }
     var pos = steps[stepIdx];
-    s.players[playerIdx].pos = pos;
-    // Move token visually
-    var token = document.getElementById(tokenId);
-    if (token) {
-      var cell = utCellCenter(pos);
-      var tw = token.offsetWidth || 20;
-      // Small bounce effect on each step
-      token.style.transform = 'scale(1.3)';
-      token.style.left = (cell.x + 2) + 'px';
-      token.style.top = (cell.y + 2) + 'px';
-      setTimeout(function(){ if(token) token.style.transform = 'scale(1)'; }, delay*0.4);
-    }
     stepIdx++;
+
+    // Update state position
+    utState.players[playerIdx].pos = pos;
+
+    // Grab token from DOM (must exist already)
+    var token = document.getElementById(tokenId);
+    if (!token) { setTimeout(doStep, delay); return; }
+
+    var wrap = document.getElementById('utBoardWrap');
+    if (!wrap) { setTimeout(doStep, delay); return; }
+
+    var cell = utCellCenter(pos);
+    var tw = parseFloat(token.style.width) || 20;
+
+    // No CSS transition — set directly so we control timing
+    token.style.transition = 'none';
+    token.style.left = (cell.x + 2) + 'px';
+    token.style.top  = (cell.y + 2) + 'px';
+
+    // Bounce scale
+    token.style.transform = 'scale(1.35)';
+    setTimeout(function() {
+      if (token) token.style.transform = 'scale(1)';
+    }, delay * 0.35);
+
     setTimeout(doStep, delay);
   }
-  doStep();
+
+  // Make sure token exists before starting
+  utPlaceToken(playerIdx);
+  // Start stepping after one frame
+  requestAnimationFrame(function() { doStep(); });
 }
 
 function utMovePlayer(steps) {
   var s = utState;
   var pIdx = s.currentPlayer;
   var p = s.players[pIdx];
-  var fromPos = p.pos;
-  var targetPos = p.pos + steps;
-  var bounced = false;
+  var fromPos = p.pos || 0;
+  var targetPos = fromPos + steps;
 
   if (targetPos > 100) {
     targetPos = 100 - (targetPos - 100);
-    bounced = true;
     s.log.push(p.token+' '+p.name+' dapat '+steps+', memantul ke kotak '+targetPos);
   } else {
     s.log.push(p.token+' '+p.name+' dapat '+steps+', maju ke kotak '+targetPos);
   }
 
-  // Disable roll button during animation
-  var btn = document.getElementById('utRollBtn');
-  if (btn) btn.disabled = true;
+  // Update panel log immediately (board stays intact)
+  renderUlarTangga();
 
-  // Animate step by step
+  // Walk token step by step to targetPos
   utMoveTokenAnimated(pIdx, fromPos, targetPos, function() {
-    p.pos = targetPos;
+    // Animation done — p.pos is now targetPos (set inside doStep)
 
-    // Check win
+    // WIN?
     if (p.pos >= 100) {
       p.pos = 100;
       p.score += 50;
@@ -1673,50 +1808,49 @@ function utMovePlayer(steps) {
       return;
     }
 
-    // Check tangga
+    // TANGGA?
     var tangga = null;
-    UT_TANGGA.forEach(function(t){ if(t.from===p.pos) tangga=t; });
+    UT_TANGGA.forEach(function(t){ if(t.from === p.pos) tangga = t; });
     if (tangga) {
-      s.log.push('🪜 TANGGA! '+p.token+' naik dari '+tangga.from+' ke '+tangga.to+' (+20 poin)');
-      renderUlarTangga();
-      // Animate climbing ladder (fast slide)
-      setTimeout(function(){
-        utMoveTokenAnimated(pIdx, tangga.from, tangga.to, function(){
+      s.log.push('🪜 TANGGA! '+p.token+' naik ke kotak '+tangga.to+' (+20 poin)');
+      renderUlarTangga(); // update panel only
+      setTimeout(function() {
+        utMoveTokenAnimated(pIdx, tangga.from, tangga.to, function() {
           p.pos = tangga.to;
           p.score += 20;
           renderUlarTangga();
-          setTimeout(function(){ utNextTurn(); }, 500);
+          setTimeout(utNextTurn, 400);
         });
-      }, 300);
+      }, 250);
       return;
     }
 
-    // Check ular
+    // ULAR?
     var ular = null;
-    UT_ULAR.forEach(function(u){ if(u.from===p.pos) ular=u; });
+    UT_ULAR.forEach(function(u){ if(u.from === p.pos) ular = u; });
     if (ular) {
-      s.log.push('🐍 ULAR! '+p.token+' turun dari '+ular.from+' ke '+ular.to);
+      s.log.push('🐍 ULAR! '+p.token+' turun ke kotak '+ular.to);
       renderUlarTangga();
-      setTimeout(function(){
-        utMoveTokenAnimated(pIdx, ular.from, ular.to, function(){
+      setTimeout(function() {
+        utMoveTokenAnimated(pIdx, ular.from, ular.to, function() {
           p.pos = ular.to;
           renderUlarTangga();
-          setTimeout(function(){ utNextTurn(); }, 500);
+          setTimeout(utNextTurn, 400);
         });
-      }, 300);
+      }, 250);
       return;
     }
 
-    // Check question cell
+    // PERTANYAAN?
     if (UT_QUESTION_CELLS.indexOf(p.pos) >= 0) {
       renderUlarTangga();
-      setTimeout(function(){ utShowSoal(); }, 400);
+      setTimeout(utShowSoal, 350);
       return;
     }
 
-    // Normal - next turn
+    // Normal — next turn
     renderUlarTangga();
-    setTimeout(function(){ utNextTurn(); }, 400);
+    setTimeout(utNextTurn, 350);
   });
 }
 
@@ -1794,13 +1928,13 @@ function utCloseSoal() {
 function utNextTurn() {
   var s = utState;
   s.diceVal = null;
-  // Move to next player
   var next = (s.currentPlayer + 1) % s.players.length;
   s.currentPlayer = next;
   if (next === 0) s.round++;
-  document.getElementById('utRound').textContent = s.round;
+  var roundEl = document.getElementById('utRound');
+  if (roundEl) roundEl.textContent = s.round;
   s.log.push('──── Giliran: '+s.players[next].token+' '+s.players[next].name);
-  renderUlarTangga();
+  renderUlarTangga(); // updates panel only, board stays
 }
 
 window.mulaiGame=mulaiGame;window.keMenu=keMenu;window.closeFeedback=closeFeedback;
