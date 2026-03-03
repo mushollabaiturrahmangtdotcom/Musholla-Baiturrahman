@@ -79,38 +79,49 @@
 
   /* ─── MOBILE MENU OVERLAY ─── */
   .mobile-menu {
-    display: none;
+    /* Selalu ada di DOM, tersembunyi via visibility+opacity agar overflow-y aktif */
+    display: flex;
+    flex-direction: column;
     position: fixed; top: 64px; left: 0; right: 0; bottom: 0; z-index: 99;
     background: rgba(13,59,46,0.98);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0.5rem 0 3rem;
-    flex-direction: column;
-    transform: translateY(-8px);
+    overflow-y: scroll;                 /* paksa scroll aktif di Android */
+    -webkit-overflow-scrolling: touch;  /* iOS smooth scroll */
+    overscroll-behavior: contain;       /* cegah body ikut scroll */
+    padding: 0.5rem 0 4rem;
+    /* Tersembunyi default */
+    visibility: hidden;
     opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
   }
   .mobile-menu.open {
-    transform: translateY(0);
+    visibility: visible;
     opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
   }
-  .mobile-menu.open { display: flex; }
   .mobile-menu a {
     display: flex; align-items: center; gap: 10px;
-    padding: 14px 24px;
+    padding: 16px 24px;
     color: rgba(255,255,255,0.85); text-decoration: none;
-    font-size: 0.95rem; font-weight: 500;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 1rem; font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
     transition: background 0.15s, color 0.15s;
+    /* Pastikan tap area cukup besar di HP */
+    min-height: 52px;
   }
-  .mobile-menu a:hover { background: rgba(255,255,255,0.06); color: var(--gold-light); }
+  .mobile-menu a:hover,
+  .mobile-menu a:active { background: rgba(255,255,255,0.08); color: var(--gold-light); }
   .mobile-menu .mob-section-title {
-    padding: 16px 24px 8px;
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+    padding: 18px 24px 8px;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--gold);
-    border-bottom: none;
+    border-bottom: none; min-height: auto;
   }
-  .mobile-menu .mob-section-title:hover { background: none; color: var(--gold); }
+  .mobile-menu .mob-section-title:hover,
+  .mobile-menu .mob-section-title:active { background: none; color: var(--gold); }
 
   /* ─── DROPDOWN (desktop) ─── */
   .nav-dropdown { position: relative; }
@@ -566,11 +577,10 @@
 
   <!-- Baris 3: fitur lainnya -->
   <div class="hero-btn-row">
-    <a href="kumpulan-sholawat.html" class="hero-cta">🌙 Sholawat</a>
-    <a href="doa-harian.html" class="hero-cta">🤲 Doa Harian</a>
+    <a href="#" class="hero-cta" onclick="showSholawatDoaPopup(); return false;">🌙 Sholawat & Doa</a>
     <a href="belajar-iqro.html" class="hero-cta">📚 Belajar Iqro</a>
     <a href="kisah-kisah.html" class="hero-cta">📜 Kisah Islam</a>
-    <a href="game-islami.html" class="hero-cta">📜 Game</a>
+    <a href="game-islami.html" class="hero-cta">🎮 Game </a>
   </div>
 
   <div class="hero-scroll-indicator">SCROLL</div>
@@ -977,6 +987,8 @@
   window.closeHadisPopup=function(e){ if(e.target===document.getElementById('hadisPopup')){ document.getElementById('hadisPopup').classList.remove('show'); document.body.style.overflow=''; } };
   window.showTataCaraPopup=function(){ document.getElementById('tataCaraPopup').classList.add('show'); document.body.style.overflow='hidden'; };
   window.closeTataCaraPopup=function(e){ if(e.target===document.getElementById('tataCaraPopup')){ document.getElementById('tataCaraPopup').classList.remove('show'); document.body.style.overflow=''; } };
+  window.showSholawatDoaPopup = function(){ document.getElementById('sholawatDoaPopup').classList.add('show'); document.body.style.overflow='hidden'; };
+  window.closeSholawatDoaPopup = function(e){ if(e.target===document.getElementById('sholawatDoaPopup')){ document.getElementById('sholawatDoaPopup').classList.remove('show'); document.body.style.overflow=''; } };
   /* ── Draggable QR ── */
   (function(){
     var el = document.getElementById('floatingQr');
@@ -1022,5 +1034,20 @@
   })();
 })();
 </script>
+
+<!-- POPUP SHOLAWAT & DOA -->
+<div class="popup-overlay" id="sholawatDoaPopup" onclick="closeSholawatDoaPopup(event)">
+  <div class="popup-box">
+    <button class="popup-close" onclick="document.getElementById('sholawatDoaPopup').classList.remove('show');document.body.style.overflow='';">✕</button>
+    <div class="popup-arabic">الصَّلَاةُ وَالدُّعَاء</div>
+    <h3>Sholawat & Doa</h3>
+    <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:4px;">Perbanyak sholawat dan doa dalam keseharian</p>
+    <div class="popup-options">
+      <a href="kumpulan-sholawat.html" class="popup-option-btn"><span class="pob-icon">🌙</span><div><div class="pob-title">Kumpulan Sholawat</div><div class="pob-desc">Sholawat Nariyah, Badar, Thibbil Qulub dan lainnya</div></div></a>
+      <a href="doa-harian.html" class="popup-option-btn"><span class="pob-icon">🤲</span><div><div class="pob-title">Doa Harian</div><div class="pob-desc">Doa bangun tidur, makan, bepergian, dan aktivitas sehari-hari</div></div></a>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
