@@ -205,6 +205,117 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .chess-board-outer{display:flex;gap:4px;align-items:flex-start;}
 .chess-rank-nums{display:flex;flex-direction:column;justify-content:space-around;padding:3px 0;}
 .chess-rank-num{font-size:.55rem;font-weight:600;color:var(--tl);text-align:right;line-height:1;}
+
+/* ══ ULAR TANGGA ══ */
+.ut-wrap{max-width:540px;margin:0 auto;}
+.ut-board-wrap{position:relative;width:100%;aspect-ratio:1;border:3px solid var(--gd);border-radius:10px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.18);}
+.ut-board-svg{width:100%;height:100%;display:block;}
+.ut-players-panel{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap;}
+.ut-player-chip{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:12px;background:var(--white);border:2px solid var(--creamd);flex:1;min-width:120px;transition:all .2s;}
+.ut-player-chip.giliran{border-color:var(--gb);background:rgba(30,138,94,.07);box-shadow:0 2px 8px rgba(30,138,94,.2);}
+.ut-player-chip.selesai{opacity:.5;}
+.ut-pawn{width:22px;height:22px;border-radius:50%;border:2px solid rgba(0,0,0,.25);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;line-height:1;}
+.ut-player-name{font-size:.78rem;font-weight:700;color:var(--td);}
+.ut-player-pos{font-size:.68rem;color:var(--tl);font-weight:600;}
+.ut-dice-area{text-align:center;margin:14px 0;}
+.ut-dice{font-size:3.5rem;display:inline-block;cursor:pointer;transition:transform .15s;user-select:none;line-height:1;}
+.ut-dice:hover{transform:scale(1.1);}
+.ut-dice.rolling{animation:rollDice .5s ease;}
+@keyframes rollDice{0%{transform:rotate(0)scale(1)}25%{transform:rotate(90deg)scale(1.2)}50%{transform:rotate(180deg)scale(.9)}75%{transform:rotate(270deg)scale(1.15)}100%{transform:rotate(360deg)scale(1)}}
+.ut-roll-btn{padding:10px 28px;border-radius:12px;background:var(--gd);color:#fff;font-size:.88rem;font-weight:700;border:none;cursor:pointer;margin-top:8px;transition:all .15s;}
+.ut-roll-btn:hover{background:var(--gm);transform:translateY(-2px);}
+.ut-roll-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.ut-event{margin:10px 0;padding:12px 16px;border-radius:12px;font-size:.82rem;font-weight:600;line-height:1.6;min-height:44px;border:1px solid transparent;}
+.ut-event.naik{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.3);color:#166534;}
+.ut-event.turun{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);color:#991b1b;}
+.ut-event.normal{background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.3);color:#854d0e;}
+.ut-event.soal{background:rgba(30,138,94,.08);border-color:rgba(30,138,94,.3);color:var(--gd);}
+.ut-soal-box{background:var(--white);border-radius:14px;padding:16px;border:1px solid var(--creamd);margin-top:10px;}
+.ut-soal-teks{font-size:.88rem;font-weight:700;color:var(--td);margin-bottom:12px;line-height:1.5;}
+.ut-soal-opts{display:flex;flex-direction:column;gap:8px;}
+.ut-soal-opt{padding:10px 16px;border-radius:10px;border:2px solid var(--creamd);background:var(--white);font-size:.82rem;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;}
+.ut-soal-opt:hover:not(:disabled){border-color:var(--gb);background:rgba(30,138,94,.05);}
+.ut-soal-opt.correct{border-color:var(--ok);background:rgba(34,197,94,.08);color:#166534;}
+.ut-soal-opt.wrong{border-color:var(--err);background:rgba(239,68,68,.06);color:#991b1b;}
+.ut-soal-opt:disabled{cursor:not-allowed;}
+.ut-setup{background:var(--white);border-radius:16px;padding:24px;border:1px solid var(--creamd);}
+.ut-setup h3{font-size:1rem;font-weight:800;color:var(--gd);margin-bottom:16px;}
+.ut-player-setup{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.ut-player-row{display:flex;align-items:center;gap:10px;}
+.ut-player-input{flex:1;padding:8px 12px;border-radius:8px;border:1.5px solid var(--creamd);font-size:.85rem;font-family:inherit;outline:none;}
+.ut-player-input:focus{border-color:var(--gb);}
+.ut-num-btns{display:flex;gap:8px;margin-bottom:16px;}
+.ut-num-btn{padding:7px 16px;border-radius:20px;border:1.5px solid var(--creamd);background:var(--white);font-size:.78rem;font-weight:700;cursor:pointer;color:var(--tm);transition:all .15s;}
+.ut-num-btn.aktif{background:var(--gd);color:#fff;border-color:var(--gd);}
+.ut-start-btn{width:100%;padding:12px;border-radius:12px;background:var(--gd);color:#fff;font-size:.88rem;font-weight:700;border:none;cursor:pointer;transition:all .15s;}
+.ut-start-btn:hover{background:var(--gm);}
+.ut-log{margin-top:10px;font-size:.72rem;color:var(--tl);background:rgba(0,0,0,.03);border-radius:8px;padding:8px 12px;max-height:80px;overflow-y:auto;line-height:1.8;}
+
+
+/* ══════════ ULAR TANGGA ══════════ */
+.ut-wrap{max-width:600px;margin:0 auto;}
+.ut-setup{background:var(--white);border-radius:16px;padding:24px;border:1px solid var(--creamd);margin-bottom:16px;}
+.ut-setup-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tl);margin-bottom:12px;}
+.ut-players-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.ut-player-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:var(--cream);border:1.5px solid var(--creamd);}
+.ut-player-color{width:22px;height:22px;border-radius:50%;flex-shrink:0;border:2px solid rgba(0,0,0,.1);}
+.ut-player-name{font-size:.85rem;font-weight:700;flex:1;}
+.ut-player-score{font-size:.78rem;font-weight:800;color:var(--gb);}
+.ut-add-btn{padding:9px 18px;border-radius:10px;background:var(--white);color:var(--gd);font-size:.78rem;font-weight:700;border:1.5px solid var(--creamd);cursor:pointer;transition:all .15s;}
+.ut-add-btn:hover{border-color:var(--gb);}
+.ut-start-btn{width:100%;padding:12px;border-radius:12px;background:var(--gd);color:#fff;font-size:.88rem;font-weight:700;border:none;cursor:pointer;margin-top:8px;}
+/* Board */
+.ut-board-wrap{position:relative;width:100%;aspect-ratio:1;border:3px solid var(--gd);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.15);}
+.ut-board-grid{display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);width:100%;height:100%;}
+.ut-cell{position:relative;display:flex;align-items:center;justify-content:center;font-size:clamp(.45rem,.9vw,.65rem);font-weight:700;border:1px solid rgba(0,0,0,.08);}
+.ut-cell.light{background:#fffdf7;}
+.ut-cell.dark{background:#f0ece0;}
+.ut-cell-num{position:absolute;top:2px;left:3px;font-size:clamp(.38rem,.7vw,.55rem);color:var(--tl);line-height:1;}
+.ut-cell-icon{font-size:clamp(.8rem,1.8vw,1.2rem);}
+.ut-cell.has-ladder{background:rgba(34,197,94,.15);}
+.ut-cell.has-snake{background:rgba(239,68,68,.12);}
+.ut-cell.has-question{background:rgba(201,168,76,.12);}
+/* SVG overlay for snakes & ladders */
+.ut-board-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+/* Tokens */
+.ut-token{position:absolute;width:clamp(12px,3vw,20px);height:clamp(12px,3vw,20px);border-radius:50%;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);font-size:clamp(.5rem,1.2vw,.75rem);display:flex;align-items:center;justify-content:center;transition:all .5s cubic-bezier(.34,1.56,.64,1);z-index:10;line-height:1;}
+/* Game panel */
+.ut-panel{background:var(--white);border-radius:14px;padding:16px;border:1px solid var(--creamd);margin-top:12px;}
+.ut-turn-info{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.ut-turn-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0;}
+.ut-turn-name{font-size:.9rem;font-weight:800;}
+.ut-turn-pos{font-size:.75rem;color:var(--tl);}
+.ut-dice-area{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.ut-dice{font-size:2.8rem;line-height:1;cursor:pointer;transition:transform .15s;user-select:none;}
+.ut-dice:hover{transform:scale(1.1);}
+.ut-dice.rolling{animation:rollDice .4s ease;}
+@keyframes rollDice{0%{transform:rotate(0)}25%{transform:rotate(-20deg) scale(1.2)}75%{transform:rotate(20deg) scale(1.2)}100%{transform:rotate(0) scale(1)}}
+.ut-roll-btn{padding:10px 22px;border-radius:12px;background:var(--gd);color:#fff;font-size:.85rem;font-weight:700;border:none;cursor:pointer;transition:all .15s;}
+.ut-roll-btn:hover:not(:disabled){background:var(--gm);transform:translateY(-1px);}
+.ut-roll-btn:disabled{opacity:.4;cursor:not-allowed;}
+.ut-log{margin-top:10px;max-height:90px;overflow-y:auto;font-size:.75rem;color:var(--tm);line-height:1.8;}
+.ut-log-item{padding:2px 0;border-bottom:1px solid rgba(0,0,0,.04);}
+/* Soal overlay */
+.ut-soal-overlay{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:16px;}
+.ut-soal-overlay.show{display:flex;}
+.ut-soal-box{background:var(--white);border-radius:20px;padding:28px 24px;max-width:420px;width:100%;animation:popIn .3s cubic-bezier(.34,1.56,.64,1);}
+.ut-soal-header{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.ut-soal-badge{background:var(--gd);color:#fff;font-size:.68rem;font-weight:800;padding:3px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:.06em;}
+.ut-soal-q{font-size:.95rem;font-weight:700;color:var(--td);line-height:1.6;margin-bottom:16px;background:var(--cream);border-radius:10px;padding:14px;}
+.ut-soal-opts{display:flex;flex-direction:column;gap:8px;}
+.ut-soal-opt{padding:11px 16px;border-radius:10px;border:2px solid var(--creamd);background:var(--white);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .15s;text-align:left;}
+.ut-soal-opt:hover:not(:disabled){border-color:var(--gb);transform:translateX(4px);}
+.ut-soal-opt.correct{border-color:var(--ok);background:rgba(34,197,94,.08);}
+.ut-soal-opt.wrong{border-color:var(--err);background:rgba(239,68,68,.07);}
+.ut-soal-opt:disabled{cursor:not-allowed;}
+.ut-soal-result{text-align:center;margin-top:12px;}
+.ut-soal-next{padding:10px 24px;border-radius:12px;background:var(--gd);color:#fff;font-size:.85rem;font-weight:700;border:none;cursor:pointer;margin-top:10px;}
+/* Finish */
+.ut-finish{text-align:center;padding:24px;background:linear-gradient(135deg,var(--gd),var(--gm));border-radius:18px;color:#fff;}
+.ut-finish-emoji{font-size:3rem;margin-bottom:10px;}
+.ut-finish-title{font-family:'Amiri',serif;font-size:1.6rem;margin-bottom:6px;}
+.ut-finish-winner{font-size:1rem;font-weight:700;color:var(--goldl);margin-bottom:16px;}
+
 @media(max-width:600px){
   .game-grid{grid-template-columns:1fr 1fr;gap:10px;}
   .hj-arab{font-size:5rem;}
@@ -227,7 +338,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
   <div class="menu-hero">
     <div class="hero-tag">🎮 Game Islami</div>
     <h1>Belajar Islam <span>Sambil Bermain</span></h1>
-    <p>6 game seru dan edukatif untuk belajar Islam dengan cara yang menyenangkan!</p>
+    <p>7 game seru dan edukatif untuk belajar Islam dengan cara yang menyenangkan!</p>
   </div>
   <div class="game-grid">
     <div class="game-card" style="--cc:#1e8a5e" onclick="mulaiGame('hijaiyah')">
@@ -272,6 +383,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
       <div class="gc-desc">Mainkan catur melawan AI. Asah strategi dan kecerdasan!</div>
       <div class="gc-btn">Main Sekarang →</div>
     </div>
+    <div class="game-card" style="--cc:#e05c00" onclick="mulaiGame('ularTangga')">
+      <span class="gc-badge">2-4 pemain</span>
+      <span class="gc-emoji">🎲</span>
+      <div class="gc-title">Ular Tangga Islami</div>
+      <div class="gc-desc">Main ular tangga sambil menjawab pertanyaan Islam. Naiki tangga, hindari ular!</div>
+      <div class="gc-btn">Main Sekarang →</div>
+    </div>
+    <div class="game-card" style="--cc:#d97706" onclick="mulaiGame('ularTangga')">
+      <span class="gc-badge">2-4 pemain</span>
+      <span class="gc-emoji">🎲</span>
+      <div class="gc-title">Ular Tangga Islami</div>
+      <div class="gc-desc">Naiki tangga ilmu dengan menjawab soal Islam. Jauhi ular dengan akhlak baik!</div>
+      <div class="gc-btn">Main Sekarang →</div>
+    </div>
   </div>
 </div>
 <div class="game-view" id="gHijaiyah">
@@ -297,6 +422,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 <div class="game-view" id="gCatur">
   <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">♟️ Catur Islami</span></div><div class="score-box"><div class="score-val" id="caturScore">0</div><div class="score-lbl">Menang</div></div></div>
   <div class="game-body" id="caturBody"></div>
+</div>
+<div class="game-view" id="gUlarTangga">
+  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">🎲 Ular Tangga Islami</span></div><div class="score-box"><div class="score-val" id="utRound">1</div><div class="score-lbl">Ronde</div></div></div>
+  <div class="game-body" id="utBody"></div>
+</div>
+
+<div class="game-view" id="gUlarTangga">
+  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">🎲 Ular Tangga Islami</span></div><div class="score-box"><div class="score-val" id="utRound">1</div><div class="score-lbl">Ronde</div></div></div>
+  <div class="game-body" id="utBody"></div>
 </div>
 <div class="feedback" id="feedbackOverlay">
   <div class="feedback-box">
@@ -340,12 +474,12 @@ function tampilHasil(id,skor,total,onUlang){
 var gameAktif=null;
 function mulaiGame(g){
   document.getElementById('menuView').style.display='none';
-  ['hijaiyah','kuis','asma','puzzle','tokoh','catur'].forEach(function(id){
+  ['hijaiyah','kuis','asma','puzzle','tokoh','catur','ularTangga'].forEach(function(id){
     var el=document.getElementById('g'+id.charAt(0).toUpperCase()+id.slice(1));
     if(el) el.classList.remove('active');
   });
   gameAktif=g;
-  var vm={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur'};
+  var vm={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur',ularTangga:'gUlarTangga'};
   document.getElementById(vm[g]).classList.add('active');
   scrollTop();
   if(g==='hijaiyah') initHijaiyah();
@@ -354,11 +488,13 @@ function mulaiGame(g){
   else if(g==='puzzle') initPuzzle();
   else if(g==='tokoh') initTokoh();
   else if(g==='catur') initCatur();
+  else if(g==='ularTangga') initUlarTangga();
+  else if(g==='ularTangga') initUlarTangga();
 }
 function keMenu(){
   clearTimers();
   document.getElementById('feedbackOverlay').classList.remove('show');
-  var vm={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur'};
+  var vm={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur',ularTangga:'gUlarTangga'};
   if(gameAktif) document.getElementById(vm[gameAktif]).classList.remove('active');
   document.getElementById('menuView').style.display='block';
   scrollTop();
@@ -713,7 +849,896 @@ function doAI(depth){
   renderCatur();
 }
 
+
+
+/* ══════════════════════════════════════
+   GAME 7 — ULAR TANGGA ISLAMI
+══════════════════════════════════════ */
+
+/* Soal untuk petak bertanda */
+var UT_SOAL = [
+  {q:'Berapa jumlah rakaat shalat Subuh?',opts:['1','2','3','4'],ans:1},
+  {q:'Apa arti "Assalamu\'alaikum"?',opts:['Selamat pagi','Semoga keselamatan atasmu','Terima kasih','Maaf'],ans:1},
+  {q:'Siapakah Nabi terakhir?',opts:['Nabi Isa','Nabi Musa','Nabi Muhammad SAW','Nabi Ibrahim'],ans:2},
+  {q:'Berapa jumlah rukun Islam?',opts:['3','4','5','6'],ans:2},
+  {q:'Apa nama kitab suci umat Islam?',opts:['Taurat','Injil','Zabur','Al-Quran'],ans:3},
+  {q:'Di bulan apa umat Islam berpuasa?',opts:['Muharram','Syawal','Rajab','Ramadhan'],ans:3},
+  {q:'Siapa malaikat penyampai wahyu?',opts:['Mikail','Jibril','Izrail','Israfil'],ans:1},
+  {q:'Apa nama tempat suci umat Islam di Makkah?',opts:['Masjid Nabawi','Masjidil Haram','Masjid Al-Aqsha','Masjid Quba'],ans:1},
+  {q:'Berapa jumlah Asmaul Husna?',opts:['77','88','99','100'],ans:2},
+  {q:'Apa artinya "Subhanallah"?',opts:['Allah Maha Besar','Maha Suci Allah','Segala puji bagi Allah','Tiada Tuhan selain Allah'],ans:1},
+  {q:'Berapa jumlah surat dalam Al-Quran?',opts:['112','113','114','115'],ans:2},
+  {q:'Apa nama shalat yang dilakukan pada hari Jumat?',opts:['Shalat Idul Fitri','Shalat Jumat','Shalat Istisqa','Shalat Gerhana'],ans:1},
+  {q:'Siapakah sahabat Nabi yang pertama masuk Islam?',opts:['Umar','Utsman','Abu Bakar','Ali'],ans:2},
+  {q:'Berapa jumlah rukun iman?',opts:['4','5','6','7'],ans:2},
+  {q:'Apa nama perjalanan Nabi dari Makkah ke Madinah?',opts:['Isra','Miraj','Hijrah','Futuh'],ans:2},
+  {q:'Nabi yang membuat bahtera dan selamat dari banjir besar?',opts:['Ibrahim','Musa','Nuh','Yusuf'],ans:2},
+  {q:'Apa artinya "Alhamdulillah"?',opts:['Maha Suci Allah','Allah Maha Besar','Segala puji bagi Allah','Tiada Tuhan selain Allah'],ans:2},
+  {q:'Berapa rakaat shalat Dzuhur?',opts:['2','3','4','5'],ans:2},
+  {q:'Siapakah istri pertama Nabi Muhammad SAW?',opts:['Aisyah','Hafsah','Khadijah','Maryam'],ans:2},
+  {q:'Apa nama tempat Nabi menerima wahyu pertama?',opts:['Gua Tsur','Gua Hira','Masjid Nabawi','Jabal Uhud'],ans:1}
+];
+
+/* Papan: 100 petak, ular dan tangga */
+var UT_TANGGA = {4:14, 9:31, 20:38, 28:84, 40:59, 51:67, 63:81, 71:91};
+var UT_ULAR   = {17:7, 54:34, 62:19, 64:60, 87:24, 93:73, 95:75, 99:78};
+/* Petak soal (pemain harus jawab soal untuk naik) */
+var UT_PETAK_SOAL = [5,10,15,25,30,35,45,50,55,65,70,75,80,85,90];
+
+var utState = {};
+var UT_COLORS = ['#ef4444','#3b82f6','#22c55e','#f59e0b'];
+var UT_PAWNS  = ['🔴','🔵','🟢','🟡'];
+var UT_NAMES_DEFAULT = ['Pemain 1','Pemain 2','Pemain 3','Pemain 4'];
+
+function initUlarTangga() {
+  renderUtSetup();
+}
+
+function renderUtSetup() {
+  var jumlah = utState.setupJumlah || 2;
+  var names = utState.setupNames || ['','','',''];
+  var html = '<div class="ut-wrap"><div class="ut-setup">' +
+    '<h3>🎲 Pengaturan Pemain</h3>' +
+    '<div style="font-size:.76rem;font-weight:700;color:var(--tl);margin-bottom:8px;">Jumlah Pemain:</div>' +
+    '<div class="ut-num-btns">';
+  [2,3,4].forEach(function(n){
+    html += '<button class="ut-num-btn'+(jumlah===n?' aktif':'')+'" onclick="utSetJumlah('+n+')">'+n+' Pemain</button>';
+  });
+  html += '</div><div style="font-size:.76rem;font-weight:700;color:var(--tl);margin-bottom:8px;">Nama Pemain:</div>' +
+    '<div class="ut-player-setup">';
+  for(var i=0;i<jumlah;i++){
+    html += '<div class="ut-player-row"><div class="ut-pawn" style="background:'+UT_COLORS[i]+'">'+UT_PAWNS[i]+'</div>' +
+      '<input class="ut-player-input" id="utName'+i+'" type="text" placeholder="'+UT_NAMES_DEFAULT[i]+'" value="'+(names[i]||'')+'"></div>';
+  }
+  html += '</div><button class="ut-start-btn" onclick="utMulai()">🎲 Mulai Permainan!</button></div></div>';
+  document.getElementById('utBody').innerHTML = html;
+}
+
+function utSetJumlah(n) {
+  utState.setupJumlah = n;
+  // Save names before re-render
+  var names = [];
+  for(var i=0;i<4;i++){var el=document.getElementById('utName'+i);names.push(el?el.value:'');}
+  utState.setupNames = names;
+  renderUtSetup();
+}
+
+function utMulai() {
+  var jumlah = utState.setupJumlah || 2;
+  var pemain = [];
+  for(var i=0;i<jumlah;i++){
+    var el=document.getElementById('utName'+i);
+    var nm = (el&&el.value.trim()) ? el.value.trim() : UT_NAMES_DEFAULT[i];
+    pemain.push({nama:nm, pos:0, color:UT_COLORS[i], pawn:UT_PAWNS[i], active:true});
+  }
+  utState = {
+    pemain: pemain,
+    giliran: 0,
+    dadu: 1,
+    rolling: false,
+    soalAktif: null,
+    event: null,
+    selesai: false,
+    pemenang: null,
+    round: 1,
+    log: [],
+    menunggu: false   // waiting for soal answer
+  };
+  document.getElementById('utRound').textContent = '1';
+  renderUt();
+}
+
+function renderUt() {
+  var s = utState;
+  var html = '<div class="ut-wrap">';
+  // Board SVG
+  html += renderUtBoard();
+  // Players panel
+  html += '<div class="ut-players-panel">';
+  s.pemain.forEach(function(p,i){
+    html += '<div class="ut-player-chip'+(s.giliran===i&&!s.selesai?' giliran':'')+(p.pos>=100?' selesai':'')+'">' +
+      '<div class="ut-pawn" style="background:'+p.color+'">'+p.pawn+'</div>' +
+      '<div><div class="ut-player-name">'+p.nama+'</div><div class="ut-player-pos">Petak: '+(p.pos===0?'Start':p.pos)+'</div></div>' +
+    '</div>';
+  });
+  html += '</div>';
+  // Event info
+  if(s.event){
+    html += '<div class="ut-event '+s.event.type+'">'+s.event.msg+'</div>';
+  }
+  // Soal or dice
+  if(s.soalAktif && !s.soalAktif.answered){
+    var q = s.soalAktif.soal;
+    html += '<div class="ut-soal-box"><div class="ut-soal-teks">📚 '+q.q+'</div><div class="ut-soal-opts">';
+    q.opts.forEach(function(o,i){
+      html += '<button class="ut-soal-opt" id="utOpt'+i+'" onclick="utJawab('+i+')">'+String.fromCharCode(65+i)+'. '+o+'</button>';
+    });
+    html += '</div></div>';
+  } else if(!s.selesai && !s.menunggu){
+    var gp = s.pemain[s.giliran];
+    html += '<div class="ut-dice-area">' +
+      '<div>'+s.pemain.map(function(p,i){return'<span style="opacity:'+(s.giliran===i?1:.4)+'">'+p.pawn+'</span>';}).join(' ')+'</div>' +
+      '<div style="font-size:.82rem;font-weight:700;color:var(--gd);margin:6px 0;">Giliran: <strong>'+gp.nama+'</strong></div>' +
+      '<div class="ut-dice" id="utDiceEl">'+getDaduEmoji(s.dadu)+'</div>' +
+      '<br><button class="ut-roll-btn" id="utRollBtn" onclick="utLempar()">🎲 Lempar Dadu!</button>' +
+    '</div>';
+  } else if(s.menunggu){
+    html += '<div class="ut-dice-area"><div style="font-size:.82rem;color:var(--tm);padding:10px;">'+
+      '<span style="font-size:1.5rem">⏳</span><br>Menunggu jawaban...</div></div>';
+  } else if(s.selesai){
+    html += '<div style="text-align:center;padding:20px;background:var(--white);border-radius:16px;border:2px solid var(--creamd);margin-top:10px;">' +
+      '<div style="font-size:3rem;margin-bottom:8px;">🏆</div>' +
+      '<div style="font-family:var(--font);font-size:1.2rem;font-weight:800;color:var(--gd);margin-bottom:6px;">'+s.pemenang+' Menang!</div>' +
+      '<div style="font-size:.82rem;color:var(--tm);margin-bottom:16px;">Selamat! Berhasil mencapai petak 100!</div>' +
+      '<button onclick="initUlarTangga()" style="padding:10px 24px;border-radius:12px;background:var(--gd);color:#fff;font-size:.85rem;font-weight:700;border:none;cursor:pointer;margin-right:8px;">🔄 Main Lagi</button>' +
+      '<button onclick="keMenu()" style="padding:10px 24px;border-radius:12px;background:var(--white);color:var(--gd);font-size:.83rem;font-weight:700;border:2px solid var(--creamd);cursor:pointer;">🏠 Menu</button>' +
+    '</div>';
+  }
+  // Log
+  if(s.log.length>0){
+    html += '<div class="ut-log">'+s.log.slice(-6).reverse().join('<br>')+'</div>';
+  }
+  html += '</div>';
+  document.getElementById('utBody').innerHTML = html;
+}
+
+function getDaduEmoji(n){
+  return ['','⚀','⚁','⚂','⚃','⚄','⚅'][n];
+}
+
+function renderUtBoard(){
+  var s = utState;
+  var SIZE = 10;
+  var CELL = 100/SIZE;
+  var svg = '<div class="ut-board-wrap"><svg class="ut-board-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">';
+
+  // Draw cells
+  for(var row=0;row<SIZE;row++){
+    for(var col=0;col<SIZE;col++){
+      var petak = getPetakNum(row,col);
+      var x = col*CELL, y = row*CELL;
+      var isLight = (row+col)%2===0;
+      var bg = isLight?'#fef9f0':'#fdf5e4';
+      // Special colors
+      if(UT_TANGGA[petak]) bg='#dcfce7';
+      if(UT_ULAR[petak]) bg='#fef2f2';
+      if(UT_PETAK_SOAL.indexOf(petak)>=0) bg='#eff6ff';
+      svg += '<rect x="'+x+'" y="'+y+'" width="'+CELL+'" height="'+CELL+'" fill="'+bg+'" stroke="#e5d9c8" stroke-width="0.3"/>';
+      // Number
+      var fontSize = petak>=10?'3.2':'3.8';
+      svg += '<text x="'+(x+1)+'" y="'+(y+4.5)+'" font-size="'+fontSize+'" fill="#a0826a" font-family="sans-serif" font-weight="700">'+petak+'</text>';
+      // Icons
+      if(UT_TANGGA[petak]) svg += '<text x="'+(x+CELL/2)+'" y="'+(y+CELL*0.72)+'" font-size="6" text-anchor="middle">🪜</text>';
+      if(UT_ULAR[petak]) svg += '<text x="'+(x+CELL/2)+'" y="'+(y+CELL*0.72)+'" font-size="6" text-anchor="middle">🐍</text>';
+      if(UT_PETAK_SOAL.indexOf(petak)>=0) svg += '<text x="'+(x+CELL/2)+'" y="'+(y+CELL*0.72)+'" font-size="5.5" text-anchor="middle">❓</text>';
+    }
+  }
+
+  // Draw snakes (curved lines)
+  Object.keys(UT_ULAR).forEach(function(from){
+    var to = UT_ULAR[from];
+    var f = getPetakCoord(parseInt(from)), t = getPetakCoord(parseInt(to));
+    svg += '<line x1="'+f[0]+'" y1="'+f[1]+'" x2="'+t[0]+'" y2="'+t[1]+'" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2,1" opacity="0.6"/>';
+  });
+  // Draw ladders
+  Object.keys(UT_TANGGA).forEach(function(from){
+    var to = UT_TANGGA[from];
+    var f = getPetakCoord(parseInt(from)), t = getPetakCoord(parseInt(to));
+    svg += '<line x1="'+f[0]+'" y1="'+f[1]+'" x2="'+t[0]+'" y2="'+t[1]+'" stroke="#22c55e" stroke-width="1.5" opacity="0.6"/>';
+  });
+
+  // Draw pawns
+  s.pemain.forEach(function(p,pi){
+    if(p.pos<=0) return;
+    var coord = getPetakCoord(Math.min(p.pos,100));
+    var offset = [(pi%2===0?-2:2),(pi<2?-2:2)];
+    // Draw circle
+    svg += '<circle cx="'+(coord[0]+offset[0])+'" cy="'+(coord[1]+offset[1])+'" r="3.2" fill="'+p.color+'" stroke="#fff" stroke-width="1" opacity="0.95"/>';
+    svg += '<text x="'+(coord[0]+offset[0])+'" y="'+(coord[1]+offset[1]+1.2)+'" font-size="3" text-anchor="middle" fill="white">'+p.pawn+'</text>';
+  });
+
+  svg += '</svg></div>';
+  return svg;
+}
+
+function getPetakNum(row, col){
+  // row 0 = top (petak 91-100), row 9 = bottom (petak 1-10)
+  var r = 9 - row; // flip: r=0 means petak 1-10
+  if(r%2===0) return r*10 + col + 1;      // left to right
+  else        return r*10 + (9-col) + 1;  // right to left
+}
+
+function getPetakCoord(petak){
+  // Returns [cx, cy] in SVG units (0-100)
+  var CELL = 10;
+  var idx = petak - 1; // 0-indexed
+  var r = Math.floor(idx/10); // row from bottom (0=bottom)
+  var col;
+  if(r%2===0) col = idx%10; // left to right
+  else        col = 9 - (idx%10); // right to left
+  var row = 9 - r; // SVG row (0=top)
+  return [col*CELL + CELL/2, row*CELL + CELL/2];
+}
+
+function utLempar(){
+  var s = utState;
+  if(s.rolling || s.selesai || s.menunggu) return;
+  s.rolling = true;
+  s.event = null;
+  var btn = document.getElementById('utRollBtn');
+  if(btn) btn.disabled = true;
+  var dice = document.getElementById('utDiceEl');
+  if(dice) dice.classList.add('rolling');
+
+  var count = 0;
+  var animId = setInterval(function(){
+    var r = Math.floor(Math.random()*6)+1;
+    s.dadu = r;
+    var d2 = document.getElementById('utDiceEl');
+    if(d2) d2.textContent = getDaduEmoji(r);
+    count++;
+    if(count>=8){
+      clearInterval(animId);
+      s.rolling = false;
+      utProses();
+    }
+  }, 80);
+}
+
+function utProses(){
+  var s = utState;
+  var p = s.pemain[s.giliran];
+  var oldPos = p.pos;
+  var newPos = Math.min(p.pos + s.dadu, 100);
+  p.pos = newPos;
+
+  s.log.unshift(p.pawn+' '+p.nama+': dadu='+s.dadu+', '+oldPos+'→'+newPos);
+
+  // Tepat 100 = menang
+  if(newPos >= 100){
+    p.pos = 100;
+    s.selesai = true;
+    s.pemenang = p.nama;
+    renderUt();
+    return;
+  }
+
+  // Cek petak soal dulu
+  if(UT_PETAK_SOAL.indexOf(newPos)>=0){
+    var soalIdx = Math.floor(Math.random()*UT_SOAL.length);
+    s.soalAktif = {soal:UT_SOAL[soalIdx], pos:newPos, answered:false};
+    s.event = {type:'soal', msg:'❓ '+p.nama+' di petak '+newPos+'! Jawab soal untuk dapat bonus naik!'};
+    s.menunggu = true;
+    renderUt();
+    return;
+  }
+
+  utCekPetak(newPos);
+}
+
+function utJawab(idx){
+  var s = utState;
+  if(!s.soalAktif || s.soalAktif.answered) return;
+  s.soalAktif.answered = true;
+  s.menunggu = false;
+  var q = s.soalAktif.soal;
+  var benar = (idx === q.ans);
+
+  // Disable buttons
+  document.querySelectorAll('.ut-soal-opt').forEach(function(b){b.disabled=true;});
+  document.getElementById('utOpt'+idx).classList.add(benar?'correct':'wrong');
+  if(!benar) document.getElementById('utOpt'+q.ans).classList.add('correct');
+
+  var p = s.pemain[s.giliran];
+  if(benar){
+    s.event = {type:'naik', msg:'✅ Jawaban benar! '+p.pawn+' '+p.nama+' mendapat +3 langkah bonus!'};
+    s.log.unshift('✅ '+p.nama+' jawab benar! +3 bonus');
+  } else {
+    s.event = {type:'turun', msg:'❌ Jawaban salah! Tidak ada bonus. Cek tangga/ular...'};
+    s.log.unshift('❌ '+p.nama+' jawab salah');
+  }
+
+  setTimeout(function(){
+    s.soalAktif = null;
+    var newPos = p.pos;
+    if(benar) newPos = Math.min(p.pos+3, 100);
+    p.pos = newPos;
+    if(newPos>=100){s.selesai=true;s.pemenang=p.nama;renderUt();return;}
+    utCekPetak(newPos);
+  }, 1500);
+}
+
+function utCekPetak(pos){
+  var s = utState;
+  var p = s.pemain[s.giliran];
+
+  if(UT_TANGGA[pos]){
+    var newPos = UT_TANGGA[pos];
+    s.event = {type:'naik', msg:'🪜 Alhamdulillah! '+p.pawn+' '+p.nama+' naik tangga dari '+pos+' ke '+newPos+'! Terus berbuat baik!'};
+    s.log.unshift('🪜 '+p.nama+': naik '+pos+'→'+newPos);
+    p.pos = newPos;
+    renderUt();
+    setTimeout(utGiliranBerikut, 1800);
+  } else if(UT_ULAR[pos]){
+    var newPos2 = UT_ULAR[pos];
+    s.event = {type:'turun', msg:'🐍 Astaghfirullah! '+p.pawn+' '+p.nama+' kena ular dari '+pos+' ke '+newPos2+'! Jaga akhlak ya!'};
+    s.log.unshift('🐍 '+p.nama+': turun '+pos+'→'+newPos2);
+    p.pos = newPos2;
+    renderUt();
+    setTimeout(utGiliranBerikut, 1800);
+  } else {
+    s.event = {type:'normal', msg:'➡️ '+p.pawn+' '+p.nama+' bergerak ke petak '+pos};
+    renderUt();
+    setTimeout(utGiliranBerikut, 1000);
+  }
+}
+
+function utGiliranBerikut(){
+  var s = utState;
+  if(s.selesai) return;
+  // Next active player
+  var next = (s.giliran+1) % s.pemain.length;
+  s.giliran = next;
+  s.event = null;
+  s.soalAktif = null;
+  s.menunggu = false;
+  // Update round counter
+  if(s.giliran===0) s.round++;
+  document.getElementById('utRound').textContent = s.round;
+  renderUt();
+}
+
+window.utSetJumlah = utSetJumlah;
+window.utMulai = utMulai;
+window.utLempar = utLempar;
+window.utJawab = utJawab;
+window.initUlarTangga = initUlarTangga;
+
+
+/* ══════════════════════════════════════════════
+   ULAR TANGGA ISLAMI
+══════════════════════════════════════════════ */
+
+/* ── Data Pertanyaan ── */
+var UT_SOAL = [
+  {q:'Berapa jumlah rakaat shalat Subuh?',opts:['1','2','3','4'],ans:1,poin:10},
+  {q:'Siapakah Nabi terakhir dalam Islam?',opts:['Nabi Isa AS','Nabi Musa AS','Nabi Muhammad SAW','Nabi Ibrahim AS'],ans:2,poin:10},
+  {q:'Apa arti "Alhamdulillah"?',opts:['Segala puji bagi Allah','Dengan nama Allah','Allah Maha Besar','Subhanallah'],ans:0,poin:10},
+  {q:'Berapa jumlah rukun Islam?',opts:['3','4','5','6'],ans:2,poin:10},
+  {q:'Kitab suci umat Islam bernama?',opts:['Taurat','Injil','Zabur','Al-Quran'],ans:3,poin:10},
+  {q:'Berapa jumlah rakaat shalat Dzuhur?',opts:['2','3','4','5'],ans:2,poin:10},
+  {q:'Siapakah malaikat penjaga neraka?',opts:['Jibril','Mikail','Malik','Izrail'],ans:2,poin:15},
+  {q:'Apa nama bulan puasa dalam Islam?',opts:['Syawal','Rajab','Muharram','Ramadhan'],ans:3,poin:10},
+  {q:'Berapa jumlah Asmaul Husna?',opts:['77','88','99','100'],ans:2,poin:10},
+  {q:'Di kota mana Nabi Muhammad SAW lahir?',opts:['Madinah','Makkah','Thaif','Palestina'],ans:1,poin:10},
+  {q:'Siapa istri pertama Nabi Muhammad SAW?',opts:['Aisyah','Hafsah','Khadijah','Ummu Salamah'],ans:2,poin:10},
+  {q:'Berapa rakaat shalat Maghrib?',opts:['2','3','4','5'],ans:1,poin:10},
+  {q:'Apa nama tempat suci umat Islam di Makkah?',opts:['Masjidil Aqsha','Masjid Nabawi','Kabah','Masjid Quba'],ans:2,poin:15},
+  {q:'Berapa jumlah rukun iman?',opts:['4','5','6','7'],ans:2,poin:10},
+  {q:'Siapa khalifah pertama setelah Nabi Muhammad SAW?',opts:['Umar','Ali','Utsman','Abu Bakar'],ans:3,poin:15},
+  {q:'Apa arti "Subhanallah"?',opts:['Allah Maha Besar','Maha Suci Allah','Segala Puji Allah','Tiada Tuhan selain Allah'],ans:1,poin:10},
+  {q:'Berapa jumlah surat dalam Al-Quran?',opts:['112','113','114','115'],ans:2,poin:10},
+  {q:'Nabi manakah yang dilempar ke dalam sumur oleh saudaranya?',opts:['Musa','Ibrahim','Yusuf','Isa'],ans:2,poin:15},
+  {q:'Apa nama peristiwa Nabi naik ke langit?',opts:['Hijrah','Isra Miraj','Fathu Makkah','Haji Wada'],ans:1,poin:15},
+  {q:'Berapa rakaat shalat Isya?',opts:['2','3','4','5'],ans:2,poin:10},
+  {q:'Siapa malaikat yang menyampaikan wahyu?',opts:['Mikail','Jibril','Israfil','Izrail'],ans:1,poin:10},
+  {q:'Apa nama surat pertama Al-Quran?',opts:['Al-Baqarah','Al-Ikhlas','An-Nas','Al-Fatihah'],ans:3,poin:10},
+  {q:'Berapa rakaat shalat Ashar?',opts:['2','3','4','5'],ans:2,poin:10},
+  {q:'Apa arti "Allahu Akbar"?',opts:['Maha Suci Allah','Allah Maha Esa','Allah Maha Besar','Maha Pengasih Allah'],ans:2,poin:10},
+  {q:'Nabi manakah yang membuat bahtera besar?',opts:['Ibrahim AS','Musa AS','Nuh AS','Sulaiman AS'],ans:2,poin:15},
+  {q:'Berapa jumlah malaikat yang wajib diketahui?',opts:['8','10','12','15'],ans:1,poin:15},
+  {q:'Apa nama shalat sunnah yang dikerjakan sebelum Subuh?',opts:['Tahajud','Dhuha','Qabliyah Subuh','Witir'],ans:2,poin:15},
+  {q:'Siapa nabi yang menerima kitab Taurat?',opts:['Isa AS','Ibrahim AS','Musa AS','Daud AS'],ans:2,poin:15},
+  {q:'Apa nama anak Nabi Ibrahim AS yang rela disembelih?',opts:['Ishak','Yakub','Ismail','Yusuf'],ans:2,poin:15},
+  {q:'Berapa hari puasa Ramadhan dalam sebulan penuh?',opts:['28','29 atau 30','30','31'],ans:1,poin:10}
+];
+
+/* ── Konfigurasi papan 10x10 ── */
+/* Tangga: {from, to} - naik */
+var UT_TANGGA = [
+  {from:4,  to:14},  // tangga hijau kecil
+  {from:9,  to:31},  // tangga besar
+  {from:20, to:38},  // tangga sedang
+  {from:28, to:84},  // tangga besar banget!
+  {from:40, to:59},  // tangga sedang
+  {from:51, to:67},  // tangga kecil
+  {from:63, to:81},  // tangga sedang
+  {from:71, to:91}   // tangga besar
+];
+/* Ular: {from, to} - turun */
+var UT_ULAR = [
+  {from:17, to:7},   // ular kecil
+  {from:54, to:34},  // ular sedang
+  {from:62, to:19},  // ular besar!
+  {from:64, to:60},  // ular kecil
+  {from:87, to:24},  // ular besar banget!
+  {from:93, to:73},  // ular sedang
+  {from:95, to:75},  // ular kecil
+  {from:99, to:78}   // ular terakhir, tragis!
+];
+/* Kotak pertanyaan */
+var UT_QUESTION_CELLS = [5,10,15,22,30,35,42,48,55,65,70,77,82,88,96];
+
+var UT_COLORS = ['#e74c3c','#3498db','#2ecc71','#f39c12'];
+var UT_TOKENS = ['🔴','🔵','🟢','🟡'];
+var UT_DICE_FACES = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+
+var utState = {};
+
+function initUlarTangga() {
+  utState = {
+    phase: 'setup',  // setup | playing | finished
+    players: [
+      {name:'Pemain 1', color: UT_COLORS[0], token: UT_TOKENS[0], pos: 0, score: 0, active: true}
+    ],
+    currentPlayer: 0,
+    diceVal: null,
+    rolling: false,
+    log: [],
+    soalActive: false,
+    soalIdx: null,
+    soalCallback: null,
+    round: 1,
+    winner: null,
+    usedSoal: []
+  };
+  renderUlarTangga();
+}
+
+function renderUlarTangga() {
+  var s = utState;
+  var html = '<div class="ut-wrap">';
+
+  if (s.phase === 'setup') {
+    html += renderSetup(s);
+  } else if (s.phase === 'playing') {
+    html += renderBoard(s);
+    html += renderPanel(s);
+  } else {
+    html += renderFinish(s);
+  }
+
+  html += '</div>';
+  document.getElementById('utBody').innerHTML = html;
+
+  if (s.phase === 'playing') drawBoardSVG(s);
+  renderTokens(s);
+}
+
+function renderSetup(s) {
+  var html = '<div class="ut-setup">';
+  html += '<div class="ut-setup-title">🎮 Pengaturan Pemain</div>';
+  html += '<div class="ut-players-list">';
+  s.players.forEach(function(p, i) {
+    html += '<div class="ut-player-row">';
+    html += '<div class="ut-player-color" style="background:'+p.color+'"></div>';
+    html += '<span class="ut-player-name">'+p.token+' '+p.name+'</span>';
+    if(s.players.length > 1) {
+      html += '<button onclick="utRemovePlayer('+i+')" style="background:none;border:none;color:var(--err);cursor:pointer;font-size:.85rem;padding:4px 8px;">✕</button>';
+    }
+    html += '</div>';
+  });
+  html += '</div>';
+  if (s.players.length < 4) {
+    html += '<button class="ut-add-btn" onclick="utAddPlayer()">+ Tambah Pemain</button>';
+  }
+  html += '<br>';
+  html += '<button class="ut-start-btn" onclick="utStartGame()">🎲 Mulai Permainan!</button>';
+  html += '</div>';
+
+  // Preview board
+  html += '<div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tl);margin:8px 0;">📋 Peta Papan:</div>';
+  html += '<div style="background:var(--white);border-radius:10px;padding:12px;border:1px solid var(--creamd);font-size:.75rem;color:var(--tm);line-height:2;">';
+  html += '🟩 <b>Tangga (naik):</b> ';
+  html += UT_TANGGA.map(function(t){return t.from+'→'+t.to;}).join(' | ');
+  html += '<br>🐍 <b>Ular (turun):</b> ';
+  html += UT_ULAR.map(function(u){return u.from+'→'+u.to;}).join(' | ');
+  html += '<br>❓ <b>Pertanyaan:</b> Kotak '+UT_QUESTION_CELLS.join(', ');
+  html += '</div>';
+  return html;
+}
+
+function renderBoard(s) {
+  var html = '<div class="ut-board-wrap" id="utBoardWrap">';
+  html += '<div class="ut-board-grid" id="utBoardGrid">';
+
+  // Build cell number map (snake ladder numbering: row 9 = 1-10, row 8 = 11-20, etc.)
+  // Bottom row: 1-10 left to right
+  // Row above: 11-20 right to left, etc.
+  for (var row = 9; row >= 0; row--) {
+    var rowNum = 9 - row; // 0=bottom, 9=top
+    var startNum = rowNum * 10 + 1;
+    var nums = [];
+    for (var col = 0; col < 10; col++) {
+      nums.push(rowNum % 2 === 0 ? startNum + col : startNum + 9 - col);
+    }
+    nums.forEach(function(num) {
+      var cls = 'ut-cell ' + ((num % 2 === 0) ? 'dark' : 'light');
+      var icon = '';
+      var hasTangga = UT_TANGGA.some(function(t){return t.from===num;});
+      var hasUlar = UT_ULAR.some(function(u){return u.from===num;});
+      var hasQ = UT_QUESTION_CELLS.indexOf(num) >= 0;
+      if (num === 100) { cls += ' has-ladder'; icon = '🏆'; }
+      else if (hasTangga) { cls += ' has-ladder'; icon = '🪜'; }
+      else if (hasUlar) { cls += ' has-snake'; icon = '🐍'; }
+      else if (hasQ) { cls += ' has-question'; icon = '❓'; }
+      html += '<div class="'+cls+'" id="utCell-'+num+'" data-num="'+num+'">';
+      html += '<span class="ut-cell-num">'+num+'</span>';
+      if(icon) html += '<span class="ut-cell-icon">'+icon+'</span>';
+      html += '</div>';
+    });
+  }
+
+  html += '</div>';
+  // SVG overlay for snakes & ladders lines
+  html += '<svg class="ut-board-svg" id="utSvg"></svg>';
+  html += '</div>';
+  return html;
+}
+
+function drawBoardSVG(s) {
+  // Draw ladder and snake lines on SVG
+  var svg = document.getElementById('utSvg');
+  if (!svg) return;
+  var wrap = document.getElementById('utBoardWrap');
+  if (!wrap) return;
+  var W = wrap.offsetWidth, H = wrap.offsetHeight;
+  var cw = W / 10, ch = H / 10;
+
+  function cellCenter(num) {
+    var rowNum = Math.floor((num - 1) / 10); // 0-9 from bottom
+    var colInRow = (num - 1) % 10;
+    var gridRow = 9 - rowNum; // 0=top row visually
+    var gridCol = (rowNum % 2 === 0) ? colInRow : (9 - colInRow);
+    return {
+      x: (gridCol + 0.5) * cw,
+      y: (gridRow + 0.5) * ch
+    };
+  }
+
+  var svgContent = '';
+
+  // Ladders (green lines)
+  UT_TANGGA.forEach(function(t) {
+    var a = cellCenter(t.from), b = cellCenter(t.to);
+    svgContent += '<line x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" stroke="#22c55e" stroke-width="3" stroke-dasharray="6,3" opacity="0.7"/>';
+    svgContent += '<circle cx="'+a.x+'" cy="'+a.y+'" r="4" fill="#22c55e" opacity="0.8"/>';
+    svgContent += '<circle cx="'+b.x+'" cy="'+b.y+'" r="4" fill="#22c55e" opacity="0.8"/>';
+  });
+
+  // Snakes (red wavy lines - simplified as curves)
+  UT_ULAR.forEach(function(u) {
+    var a = cellCenter(u.from), b = cellCenter(u.to);
+    var mx = (a.x + b.x) / 2 + (a.y - b.y) * 0.3;
+    var my = (a.y + b.y) / 2;
+    svgContent += '<path d="M'+a.x+','+a.y+' Q'+mx+','+my+' '+b.x+','+b.y+'" stroke="#ef4444" stroke-width="3" fill="none" opacity="0.75"/>';
+    svgContent += '<circle cx="'+a.x+'" cy="'+a.y+'" r="5" fill="#ef4444" opacity="0.85"/>';
+    // Arrow head at snake tail
+    svgContent += '<circle cx="'+b.x+'" cy="'+b.y+'" r="3" fill="#ef4444" opacity="0.7"/>';
+  });
+
+  svg.innerHTML = svgContent;
+}
+
+function renderTokens(s) {
+  if (s.phase !== 'playing') return;
+  var wrap = document.getElementById('utBoardWrap');
+  if (!wrap) return;
+  var W = wrap.offsetWidth, H = wrap.offsetHeight;
+  var cw = W / 10, ch = H / 10;
+
+  // Remove old tokens
+  wrap.querySelectorAll('.ut-token').forEach(function(el){el.remove();});
+
+  function cellCenter(num) {
+    if (num === 0) return null;
+    var rowNum = Math.floor((num - 1) / 10);
+    var colInRow = (num - 1) % 10;
+    var gridRow = 9 - rowNum;
+    var gridCol = (rowNum % 2 === 0) ? colInRow : (9 - colInRow);
+    return {x: gridCol * cw, y: gridRow * ch};
+  }
+
+  // Group players by position
+  var byPos = {};
+  s.players.forEach(function(p, i) {
+    if (!byPos[p.pos]) byPos[p.pos] = [];
+    byPos[p.pos].push({player: p, idx: i});
+  });
+
+  var tw = Math.min(20, cw * 0.45);
+
+  Object.keys(byPos).forEach(function(pos) {
+    if (pos == 0) return;
+    var group = byPos[pos];
+    var cell = cellCenter(parseInt(pos));
+    if (!cell) return;
+    group.forEach(function(item, gi) {
+      var token = document.createElement('div');
+      token.className = 'ut-token';
+      token.textContent = item.player.token;
+      token.style.width = tw + 'px';
+      token.style.height = tw + 'px';
+      token.style.fontSize = (tw * 0.6) + 'px';
+      token.style.background = item.player.color;
+      // Offset multiple tokens in same cell
+      var offX = (gi % 2) * (tw * 0.6);
+      var offY = Math.floor(gi / 2) * (tw * 0.6);
+      token.style.left = (cell.x + 2 + offX) + 'px';
+      token.style.top = (cell.y + 2 + offY) + 'px';
+      wrap.appendChild(token);
+    });
+  });
+}
+
+function renderPanel(s) {
+  var p = s.players[s.currentPlayer];
+  var html = '<div class="ut-panel">';
+  html += '<div class="ut-turn-info">';
+  html += '<div class="ut-turn-dot" style="background:'+p.color+'"></div>';
+  html += '<div><div class="ut-turn-name">'+p.token+' '+p.name+'</div>';
+  html += '<div class="ut-turn-pos">Posisi: '+(p.pos||'Start')+' / 100 — Skor: '+p.score+'</div></div>';
+  html += '</div>';
+
+  // Score chips
+  html += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">';
+  s.players.forEach(function(pl) {
+    html += '<div style="padding:4px 10px;border-radius:20px;background:'+pl.color+'22;border:1.5px solid '+pl.color+';font-size:.7rem;font-weight:700;color:'+pl.color+'">'+pl.token+' '+pl.score+'pts</div>';
+  });
+  html += '</div>';
+
+  html += '<div class="ut-dice-area">';
+  html += '<span class="ut-dice" id="utDice">' + (s.diceVal ? UT_DICE_FACES[s.diceVal - 1] : '🎲') + '</span>';
+  html += '<button class="ut-roll-btn" id="utRollBtn" onclick="utRollDice()" ' + (s.rolling || s.soalActive ? 'disabled' : '') + '>Lempar Dadu 🎲</button>';
+  html += '</div>';
+
+  if (s.log.length > 0) {
+    html += '<div class="ut-log">';
+    s.log.slice(-8).reverse().forEach(function(item) {
+      html += '<div class="ut-log-item">'+item+'</div>';
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderFinish(s) {
+  var w = s.winner;
+  var sorted = s.players.slice().sort(function(a,b){return b.score-a.score;});
+  var html = '<div class="ut-finish">';
+  html += '<div class="ut-finish-emoji">🏆</div>';
+  html += '<div class="ut-finish-title">Permainan Selesai!</div>';
+  html += '<div class="ut-finish-winner">'+w.token+' '+w.name+' Menang!</div>';
+  html += '<div style="margin-bottom:20px;">';
+  sorted.forEach(function(p,i){
+    html += '<div style="padding:6px 12px;background:rgba(255,255,255,'+(i===0?'.25':'.1')+');border-radius:8px;margin-bottom:6px;font-size:.85rem;font-weight:700;">';
+    html += ['🥇','🥈','🥉','4️⃣'][i]+' '+p.token+' '+p.name+' — '+p.score+' poin';
+    html += '</div>';
+  });
+  html += '</div>';
+  html += '<button onclick="initUlarTangga()" style="padding:12px 28px;border-radius:12px;background:var(--goldl);color:var(--gd);font-size:.88rem;font-weight:800;border:none;cursor:pointer;">🔄 Main Lagi</button>';
+  html += '</div>';
+  return html;
+}
+
+function utAddPlayer() {
+  var s = utState;
+  if (s.players.length >= 4) return;
+  var i = s.players.length;
+  s.players.push({name:'Pemain '+(i+1), color:UT_COLORS[i], token:UT_TOKENS[i], pos:0, score:0, active:true});
+  renderUlarTangga();
+}
+
+function utRemovePlayer(idx) {
+  var s = utState;
+  if (s.players.length <= 1) return;
+  s.players.splice(idx, 1);
+  // Reassign colors/tokens
+  s.players.forEach(function(p,i){p.color=UT_COLORS[i];p.token=UT_TOKENS[i];});
+  renderUlarTangga();
+}
+
+function utStartGame() {
+  utState.phase = 'playing';
+  utState.currentPlayer = 0;
+  utState.log = ['🎮 Permainan dimulai! '+utState.players[0].token+' '+utState.players[0].name+' giliran pertama.'];
+  renderUlarTangga();
+}
+
+function utRollDice() {
+  var s = utState;
+  if (s.rolling || s.soalActive) return;
+  s.rolling = true;
+  var diceEl = document.getElementById('utDice');
+  var rollBtn = document.getElementById('utRollBtn');
+  if (rollBtn) rollBtn.disabled = true;
+  if (diceEl) diceEl.classList.add('rolling');
+
+  // Animate dice
+  var count = 0, interval = setInterval(function() {
+    var tempVal = Math.floor(Math.random() * 6) + 1;
+    if (diceEl) diceEl.textContent = UT_DICE_FACES[tempVal - 1];
+    count++;
+    if (count >= 8) {
+      clearInterval(interval);
+      var finalVal = Math.floor(Math.random() * 6) + 1;
+      s.diceVal = finalVal;
+      if (diceEl) { diceEl.textContent = UT_DICE_FACES[finalVal - 1]; diceEl.classList.remove('rolling'); }
+      s.rolling = false;
+      setTimeout(function(){ utMovePlayer(finalVal); }, 300);
+    }
+  }, 80);
+}
+
+function utMovePlayer(steps) {
+  var s = utState;
+  var p = s.players[s.currentPlayer];
+  var oldPos = p.pos;
+  var newPos = p.pos + steps;
+
+  if (newPos > 100) {
+    // Harus tepat 100
+    newPos = 100 - (newPos - 100);
+    s.log.push(p.token+' '+p.name+' dapat '+steps+', memantul ke kotak '+newPos);
+  } else {
+    s.log.push(p.token+' '+p.name+' dapat '+steps+', maju ke kotak '+newPos);
+  }
+  p.pos = newPos;
+  renderUlarTangga();
+
+  // Check win
+  if (p.pos >= 100) {
+    p.pos = 100;
+    p.score += 50; // bonus menang
+    s.winner = p;
+    s.phase = 'finished';
+    setTimeout(function(){ renderUlarTangga(); }, 600);
+    return;
+  }
+
+  // Check tangga
+  var tangga = null;
+  UT_TANGGA.forEach(function(t){ if(t.from===p.pos) tangga=t; });
+  if (tangga) {
+    setTimeout(function(){
+      p.pos = tangga.to;
+      p.score += 20;
+      s.log.push('🪜 TANGGA! '+p.token+' naik dari '+tangga.from+' ke '+tangga.to+' (+20 poin)');
+      renderUlarTangga();
+      setTimeout(function(){ utNextTurn(); }, 800);
+    }, 600);
+    return;
+  }
+
+  // Check ular
+  var ular = null;
+  UT_ULAR.forEach(function(u){ if(u.from===p.pos) ular=u; });
+  if (ular) {
+    setTimeout(function(){
+      p.pos = ular.to;
+      s.log.push('🐍 ULAR! '+p.token+' turun dari '+ular.from+' ke '+ular.to);
+      renderUlarTangga();
+      setTimeout(function(){ utNextTurn(); }, 800);
+    }, 600);
+    return;
+  }
+
+  // Check question cell
+  if (UT_QUESTION_CELLS.indexOf(p.pos) >= 0) {
+    setTimeout(function(){ utShowSoal(); }, 600);
+    return;
+  }
+
+  // Normal move, next turn
+  setTimeout(function(){ utNextTurn(); }, 600);
+}
+
+function utShowSoal() {
+  var s = utState;
+  // Pick random unused question
+  var available = [];
+  for (var i = 0; i < UT_SOAL.length; i++) {
+    if (s.usedSoal.indexOf(i) < 0) available.push(i);
+  }
+  if (available.length === 0) { s.usedSoal = []; available = UT_SOAL.map(function(_,i){return i;}); }
+  var idx = available[Math.floor(Math.random() * available.length)];
+  s.usedSoal.push(idx);
+  s.soalActive = true;
+  s.soalIdx = idx;
+
+  var p = s.players[s.currentPlayer];
+  var q = UT_SOAL[idx];
+
+  var overlay = document.getElementById('utSoalOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'utSoalOverlay';
+    overlay.className = 'ut-soal-overlay';
+    document.body.appendChild(overlay);
+  }
+
+  var optsHtml = '';
+  q.opts.forEach(function(opt, i) {
+    optsHtml += '<button class="ut-soal-opt" id="utOpt-'+i+'" onclick="utAnswer('+i+')">' + ['A','B','C','D'][i]+'. '+opt+'</button>';
+  });
+
+  overlay.innerHTML = '<div class="ut-soal-box">' +
+    '<div class="ut-soal-header">' +
+      '<div class="ut-soal-badge">❓ Pertanyaan</div>' +
+      '<span style="font-size:.75rem;color:var(--tl)">'+p.token+' '+p.name+' — +'+q.poin+' poin</span>' +
+    '</div>' +
+    '<div class="ut-soal-q">'+q.q+'</div>' +
+    '<div class="ut-soal-opts">'+optsHtml+'</div>' +
+    '<div class="ut-soal-result" id="utSoalResult"></div>' +
+  '</div>';
+  overlay.classList.add('show');
+}
+
+function utAnswer(chosen) {
+  var s = utState;
+  var q = UT_SOAL[s.soalIdx];
+  var p = s.players[s.currentPlayer];
+  document.querySelectorAll('.ut-soal-opt').forEach(function(b){ b.disabled = true; });
+  var correct = chosen === q.ans;
+  document.getElementById('utOpt-'+chosen).classList.add(correct ? 'correct' : 'wrong');
+  document.getElementById('utOpt-'+q.ans).classList.add('correct');
+
+  var resultEl = document.getElementById('utSoalResult');
+  if (correct) {
+    p.score += q.poin;
+    resultEl.innerHTML = '<div style="color:var(--ok);font-weight:800;font-size:.9rem;">✅ Benar! +'+q.poin+' poin</div>' +
+      '<button class="ut-soal-next" onclick="utCloseSoal()">Lanjut →</button>';
+    s.log.push('✅ '+p.token+' '+p.name+' jawab benar! +'+q.poin+' poin');
+  } else {
+    resultEl.innerHTML = '<div style="color:var(--err);font-weight:800;font-size:.9rem;">❌ Salah! Tetap di kotak '+p.pos+'</div>' +
+      '<button class="ut-soal-next" onclick="utCloseSoal()">Lanjut →</button>';
+    s.log.push('❌ '+p.token+' '+p.name+' jawab salah');
+  }
+}
+
+function utCloseSoal() {
+  var overlay = document.getElementById('utSoalOverlay');
+  if (overlay) overlay.classList.remove('show');
+  utState.soalActive = false;
+  renderUlarTangga();
+  setTimeout(function(){ utNextTurn(); }, 300);
+}
+
+function utNextTurn() {
+  var s = utState;
+  s.diceVal = null;
+  // Move to next player
+  var next = (s.currentPlayer + 1) % s.players.length;
+  s.currentPlayer = next;
+  if (next === 0) s.round++;
+  document.getElementById('utRound').textContent = s.round;
+  s.log.push('──── Giliran: '+s.players[next].token+' '+s.players[next].name);
+  renderUlarTangga();
+}
+
 window.mulaiGame=mulaiGame;window.keMenu=keMenu;window.closeFeedback=closeFeedback;
+window.initUlarTangga=initUlarTangga;window.utRollDice=utRollDice;window.utAnswer=utAnswer;window.utNextTurn=utNextTurn;window.utAddPlayer=utAddPlayer;window.utStartGame=utStartGame;window.utCloseSoal=utCloseSoal;
 window.setAsmaMode=setAsmaMode;window.ahNav=ahNav;
 window.initCatur=initCatur;window.clickCatur=clickCatur;window.setCaturDiff=setCaturDiff;
 </script>
