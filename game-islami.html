@@ -16,16 +16,12 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--td);min-height:100vh;}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.97);backdrop-filter:blur(12px);height:64px;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,168,76,0.3);}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-brand img{height:36px;}
 .nav-brand span{font-size:0.83rem;font-weight:600;color:#fff;}
 .nav-back{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.8rem;font-weight:500;padding:6px 13px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);transition:all .2s;}
 .nav-back:hover{background:rgba(255,255,255,0.1);color:var(--goldl);}
-
-/* ═══ MENU UTAMA ═══ */
 #menuView{display:block;padding-top:64px;}
 .menu-hero{background:linear-gradient(135deg,var(--gd),#1a5c40,#0a2e24);padding:44px 1.5rem 36px;text-align:center;position:relative;overflow:hidden;}
 .menu-hero::before{content:'🌙⭐🕌📖🌿';position:absolute;font-size:3rem;opacity:0.04;top:10px;left:50%;transform:translateX(-50%);white-space:nowrap;letter-spacing:40px;}
@@ -44,8 +40,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .gc-btn{display:inline-block;padding:7px 18px;border-radius:20px;background:var(--cc,var(--gb));color:#fff;font-size:.75rem;font-weight:700;transition:all .15s;}
 .game-card:hover .gc-btn{transform:scale(1.05);}
 .gc-badge{position:absolute;top:12px;right:12px;background:var(--goldl);color:var(--gd);font-size:.6rem;font-weight:800;padding:2px 8px;border-radius:10px;text-transform:uppercase;}
-
-/* ═══ GAME SHELL ═══ */
 .game-view{display:none;padding-top:64px;min-height:100vh;}
 .game-view.active{display:block;}
 .game-topbar{background:linear-gradient(135deg,var(--gd),var(--gm));padding:16px 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:12px;}
@@ -57,8 +51,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .score-val{font-size:1.1rem;font-weight:800;color:var(--goldl);line-height:1;}
 .score-lbl{font-size:.6rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;}
 .game-body{padding:24px 1.5rem;max-width:800px;margin:0 auto;}
-
-/* ══ FEEDBACK OVERLAY ══ */
 .feedback{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.5);align-items:center;justify-content:center;}
 .feedback.show{display:flex;}
 .feedback-box{background:#fff;border-radius:20px;padding:32px 28px;text-align:center;max-width:360px;width:90%;animation:popIn .3s cubic-bezier(.34,1.56,.64,1);}
@@ -70,8 +62,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .fb-text{font-size:.82rem;color:var(--tm);line-height:1.65;margin-bottom:18px;}
 .fb-btn{padding:10px 28px;border-radius:12px;background:var(--gd);color:#fff;font-size:.85rem;font-weight:700;border:none;cursor:pointer;transition:background .15s;}
 .fb-btn:hover{background:var(--gm);}
-
-/* ══ HASIL AKHIR ══ */
 .hasil-box{background:var(--white);border-radius:20px;padding:36px 28px;text-align:center;border:2px solid var(--creamd);max-width:460px;margin:0 auto;}
 .hasil-emoji{font-size:3.5rem;margin-bottom:12px;}
 .hasil-title{font-family:'Amiri',serif;font-size:1.6rem;color:var(--gd);margin-bottom:6px;}
@@ -83,10 +73,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .btn-ulang:hover{background:var(--gm);transform:translateY(-2px);}
 .btn-menu{padding:10px 22px;border-radius:12px;background:var(--white);color:var(--gd);font-size:.83rem;font-weight:700;border:2px solid var(--creamd);cursor:pointer;transition:all .15s;}
 .btn-menu:hover{border-color:var(--gb);}
-
-/* ════════════════════════
-   GAME 1 — TEBAK HIJAIYAH
-   ════════════════════════ */
 .hj-card{background:linear-gradient(135deg,var(--gd),var(--gm));border-radius:20px;padding:32px;text-align:center;margin-bottom:24px;position:relative;}
 .hj-progress{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
 .hj-prog-text{font-size:.72rem;color:rgba(255,255,255,.6);font-weight:600;}
@@ -100,12 +86,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .hj-opt.correct{border-color:var(--ok);background:rgba(34,197,94,.1);color:var(--ok);}
 .hj-opt.wrong{border-color:var(--err);background:rgba(239,68,68,.08);color:var(--err);}
 .hj-opt:disabled{cursor:not-allowed;opacity:.7;}
-
-/* ════════════════════════
-   GAME 2 — KUIS ISLAMI
-   ════════════════════════ */
 .kuis-no{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tl);margin-bottom:8px;}
-.kuis-soal{font-size:1.05rem;font-weight:700;color:var(--td);background:var(--white);border-radius:14px;padding:20px 20px;border:1px solid var(--creamd);margin-bottom:20px;line-height:1.6;}
+.kuis-soal{font-size:1.05rem;font-weight:700;color:var(--td);background:var(--white);border-radius:14px;padding:20px;border:1px solid var(--creamd);margin-bottom:20px;line-height:1.6;}
 .kuis-options{display:flex;flex-direction:column;gap:10px;}
 .kuis-opt{padding:13px 18px;border-radius:12px;border:2px solid var(--creamd);background:var(--white);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .18s;text-align:left;display:flex;align-items:center;gap:12px;}
 .kuis-opt:hover:not(:disabled){border-color:var(--gb);transform:translateX(4px);}
@@ -120,14 +102,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .timer-fill{height:100%;background:linear-gradient(90deg,var(--gb),var(--goldl));border-radius:4px;transition:width .1s linear;}
 .timer-fill.urgent{background:linear-gradient(90deg,var(--err),#ff9800);}
 .timer-num{font-size:.78rem;font-weight:800;color:var(--tm);min-width:28px;text-align:right;}
-
-/* ════════════════════════
-   GAME 3 — ASMAUL HUSNA
-   ════════════════════════ */
 .ah-mode-btns{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
 .ah-mode-btn{padding:8px 16px;border-radius:20px;border:1.5px solid var(--creamd);background:var(--white);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .15s;color:var(--tm);}
 .ah-mode-btn.aktif{background:var(--gd);color:#fff;border-color:var(--gd);}
-/* Mode hafalan */
 .ah-hafalan-card{background:linear-gradient(135deg,var(--gd),var(--gm));border-radius:20px;padding:28px;text-align:center;margin-bottom:20px;}
 .ah-no-badge{display:inline-block;background:rgba(201,168,76,.25);color:var(--goldl);font-size:.72rem;font-weight:800;padding:3px 12px;border-radius:12px;letter-spacing:.06em;margin-bottom:12px;}
 .ah-arab{font-family:'Amiri',serif;font-size:2.6rem;color:#fff;margin-bottom:8px;line-height:1.3;}
@@ -137,39 +114,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .ah-nav-btn{padding:9px 20px;border-radius:10px;border:1.5px solid var(--creamd);background:var(--white);font-size:.8rem;font-weight:700;cursor:pointer;transition:all .15s;color:var(--gd);}
 .ah-nav-btn:hover{background:var(--gd);color:#fff;border-color:var(--gd);}
 .ah-nav-btn:disabled{opacity:.35;cursor:not-allowed;}
-/* Mode kuis asma */
 .ah-kuis-arab{font-family:'Amiri',serif;font-size:3.2rem;color:var(--gd);text-align:center;background:var(--white);border-radius:16px;padding:24px;border:1px solid var(--creamd);margin-bottom:20px;line-height:1.3;}
 .ah-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .ah-opt{padding:12px 10px;border-radius:10px;border:2px solid var(--creamd);background:var(--white);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .18s;text-align:center;}
 .ah-opt:hover:not(:disabled){border-color:var(--gb);}
 .ah-opt.correct{border-color:var(--ok);background:rgba(34,197,94,.08);color:var(--ok);}
 .ah-opt.wrong{border-color:var(--err);background:rgba(239,68,68,.06);color:var(--err);}
-
-/* ════════════════════════
-   GAME 4 — PUZZLE AYAT
-   ════════════════════════ */
 .pz-surat{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gb);margin-bottom:8px;}
 .pz-arti{font-size:.82rem;color:var(--tm);font-style:italic;background:var(--white);border-radius:10px;padding:12px 14px;border:1px solid var(--creamd);margin-bottom:20px;line-height:1.6;}
 .pz-slot-area{background:linear-gradient(135deg,rgba(13,59,46,.05),rgba(13,59,46,.02));border:2px dashed var(--creamd);border-radius:16px;min-height:80px;padding:16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;direction:rtl;}
-.pz-slot-area.correct-all{border-color:var(--ok);background:rgba(34,197,94,.05);}
 .pz-kata{font-family:'Amiri',serif;font-size:1.5rem;padding:10px 14px;border-radius:10px;cursor:grab;user-select:none;transition:all .2s;border:2px solid transparent;}
 .pz-kata.in-slot{background:var(--gd);color:#fff;border-color:var(--gm);}
-.pz-kata.in-slot.correct{background:var(--ok);border-color:var(--ok);}
-.pz-kata.in-slot.wrong-pos{background:var(--err);border-color:var(--err);}
-.pz-kata.in-slot:hover{cursor:grab;}
 .pz-bank{display:flex;flex-wrap:wrap;gap:10px;padding:14px;background:var(--white);border-radius:14px;border:1px solid var(--creamd);direction:rtl;}
 .pz-kata.in-bank{background:rgba(30,138,94,.08);border:2px solid var(--creamd);color:var(--gd);}
 .pz-kata.in-bank:hover{border-color:var(--gb);background:rgba(30,138,94,.12);}
 .pz-actions{display:flex;gap:10px;margin-top:14px;justify-content:center;}
 .pz-btn{padding:9px 20px;border-radius:10px;border:none;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .15s;}
 .pz-btn-check{background:var(--gd);color:#fff;}
-.pz-btn-check:hover{background:var(--gm);}
 .pz-btn-reset{background:var(--white);color:var(--tm);border:1.5px solid var(--creamd);}
-.pz-btn-reset:hover{border-color:var(--gb);}
-
-/* ════════════════════════
-   GAME 5 — TEBAK TOKOH
-   ════════════════════════ */
 .tt-card{background:linear-gradient(135deg,var(--gd),var(--gm));border-radius:20px;padding:24px;margin-bottom:20px;}
 .tt-kat{display:inline-block;background:rgba(201,168,76,.2);color:var(--goldl);font-size:.68rem;font-weight:800;padding:3px 12px;border-radius:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;}
 .tt-hints{display:flex;flex-direction:column;gap:8px;}
@@ -178,7 +140,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .tt-hint-text{font-size:.83rem;color:rgba(255,255,255,.85);line-height:1.5;}
 .tt-hint.locked{opacity:.25;filter:blur(3px);pointer-events:none;}
 .tt-unlock-btn{background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.3);color:var(--goldl);font-size:.75rem;font-weight:700;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .15s;margin-top:12px;}
-.tt-unlock-btn:hover{background:rgba(201,168,76,.3);}
 .tt-unlock-btn:disabled{opacity:.4;cursor:not-allowed;}
 .tt-input-area{background:var(--white);border-radius:14px;padding:18px;border:1px solid var(--creamd);}
 .tt-input-label{font-size:.72rem;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
@@ -187,21 +148,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .tt-input.correct{border-color:var(--ok);background:rgba(34,197,94,.06);}
 .tt-input.wrong{border-color:var(--err);background:rgba(239,68,68,.05);animation:shake .3s;}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-.tt-submit{width:100%;padding:12px;border-radius:10px;background:var(--gd);color:#fff;font-size:.88rem;font-weight:700;border:none;cursor:pointer;margin-top:10px;transition:all .15s;}
-.tt-submit:hover{background:var(--gm);}
+.tt-submit{width:100%;padding:12px;border-radius:10px;background:var(--gd);color:#fff;font-size:.88rem;font-weight:700;border:none;cursor:pointer;margin-top:10px;}
 .tt-skip{width:100%;padding:9px;border-radius:10px;background:transparent;color:var(--tl);font-size:.78rem;font-weight:600;border:1px solid var(--creamd);cursor:pointer;margin-top:6px;}
 .tt-score-info{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
 .tt-score-chip{padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:700;}
 .chip-sisa{background:rgba(30,138,94,.1);color:var(--gb);}
 .chip-nyawa{background:rgba(239,68,68,.1);color:var(--err);}
 .chip-poin{background:rgba(201,168,76,.15);color:#8a6b1e;}
-
-
-/* ── CATUR ── */
+/* CATUR */
 .chess-wrap{max-width:480px;margin:0 auto;}
 .chess-topinfo{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
 .chess-player{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:10px;background:var(--white);border:1.5px solid var(--creamd);font-size:.8rem;font-weight:700;transition:all .2s;}
-.chess-player.aktif{border-color:var(--gb);background:rgba(30,138,94,.07);box-shadow:0 2px 8px rgba(30,138,94,.15);}
+.chess-player.aktif{border-color:var(--gb);background:rgba(30,138,94,.07);}
 .cp-dot{width:12px;height:12px;border-radius:50%;}
 .cp-dot.white{background:#fff;border:2px solid #888;}
 .cp-dot.black{background:#222;}
@@ -220,8 +178,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 .chess-cell.last-to{background:#b5cc42 !important;}
 .chess-piece{font-size:clamp(1.2rem,4.5vw,2rem);line-height:1;pointer-events:none;user-select:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));}
 .chess-captured{display:flex;gap:3px;flex-wrap:wrap;min-height:24px;padding:4px 8px;background:rgba(0,0,0,.04);border-radius:8px;margin-bottom:5px;}
-.chess-captured-piece{font-size:1rem;line-height:1;}
-.chess-diff-btns{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.chess-captured-piece{font-size:1rem;}
+.chess-diff-btns{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center;}
 .chess-diff-btn{padding:5px 13px;border-radius:20px;border:1.5px solid var(--creamd);background:var(--white);font-size:.72rem;font-weight:700;cursor:pointer;color:var(--tm);transition:all .15s;}
 .chess-diff-btn.aktif{background:var(--gd);color:#fff;border-color:var(--gd);}
 .chess-controls{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center;}
@@ -237,18 +195,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 @keyframes blinkThink{0%,100%{opacity:1}50%{opacity:.25}}
 .promo-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.55);align-items:center;justify-content:center;}
 .promo-overlay.show{display:flex;}
-.promo-box{background:var(--white);border-radius:16px;padding:24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:popIn .25s ease;}
+.promo-box{background:var(--white);border-radius:16px;padding:24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);}
 .promo-box h3{font-size:.95rem;font-weight:700;color:var(--gd);margin-bottom:12px;}
 .promo-opts{display:flex;gap:10px;justify-content:center;}
 .promo-opt{font-size:2.4rem;cursor:pointer;padding:8px;border-radius:10px;border:2px solid var(--creamd);transition:all .15s;line-height:1;}
-.promo-opt:hover{border-color:var(--gb);background:rgba(30,138,94,.08);}
+.promo-opt:hover{border-color:var(--gb);}
 .chess-coord-row{display:flex;padding-left:20px;}
 .chess-coord-item{flex:1;text-align:center;font-size:.55rem;font-weight:600;color:var(--tl);}
 .chess-board-outer{display:flex;gap:4px;align-items:flex-start;}
 .chess-rank-nums{display:flex;flex-direction:column;justify-content:space-around;padding:3px 0;}
 .chess-rank-num{font-size:.55rem;font-weight:600;color:var(--tl);text-align:right;line-height:1;}
-
-/* RESPONSIVE */
 @media(max-width:600px){
   .game-grid{grid-template-columns:1fr 1fr;gap:10px;}
   .hj-arab{font-size:5rem;}
@@ -260,8 +216,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <a href="musholla-baiturrahman.html" class="nav-brand">
     <img src="images/logo_nav.png" alt="Logo">
@@ -269,129 +223,81 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
   </a>
   <a href="musholla-baiturrahman.html" class="nav-back">← Kembali</a>
 </nav>
-
-<!-- MENU UTAMA -->
 <div id="menuView">
   <div class="menu-hero">
     <div class="hero-tag">🎮 Game Islami</div>
     <h1>Belajar Islam <span>Sambil Bermain</span></h1>
-    <p>5 game seru dan edukatif untuk belajar Islam dengan cara yang menyenangkan!</p>
+    <p>6 game seru dan edukatif untuk belajar Islam dengan cara yang menyenangkan!</p>
   </div>
   <div class="game-grid">
     <div class="game-card" style="--cc:#1e8a5e" onclick="mulaiGame('hijaiyah')">
       <span class="gc-badge">28 huruf</span>
       <span class="gc-emoji">🔤</span>
       <div class="gc-title">Tebak Huruf Hijaiyah</div>
-      <div class="gc-desc">Tebak nama huruf hijaiyah yang ditampilkan. Cocok untuk pemula belajar huruf Arab!</div>
+      <div class="gc-desc">Tebak nama huruf hijaiyah yang ditampilkan. Cocok untuk pemula!</div>
       <div class="gc-btn">Main Sekarang →</div>
     </div>
     <div class="game-card" style="--cc:#0077b6" onclick="mulaiGame('kuis')">
       <span class="gc-badge">25 soal</span>
       <span class="gc-emoji">❓</span>
       <div class="gc-title">Kuis Islami</div>
-      <div class="gc-desc">Uji pengetahuan Islam kamu dengan kuis pilihan ganda. Ada timer di setiap soal!</div>
+      <div class="gc-desc">Uji pengetahuan Islam kamu dengan kuis pilihan ganda. Ada timer!</div>
       <div class="gc-btn">Main Sekarang →</div>
     </div>
     <div class="game-card" style="--cc:#c9a84c" onclick="mulaiGame('asma')">
       <span class="gc-badge">99 nama</span>
       <span class="gc-emoji">✨</span>
       <div class="gc-title">Hafalan Asmaul Husna</div>
-      <div class="gc-desc">Hafal 99 nama-nama indah Allah dengan mode hafalan dan kuis interaktif!</div>
+      <div class="gc-desc">Hafal 99 nama-nama indah Allah dengan mode hafalan dan kuis!</div>
       <div class="gc-btn">Main Sekarang →</div>
     </div>
     <div class="game-card" style="--cc:#8d6e63" onclick="mulaiGame('puzzle')">
       <span class="gc-badge">8 ayat</span>
       <span class="gc-emoji">🧩</span>
       <div class="gc-title">Puzzle Ayat Al-Qur'an</div>
-      <div class="gc-desc">Susun kata-kata yang diacak menjadi ayat Al-Qur'an yang benar. Seru dan menantang!</div>
+      <div class="gc-desc">Susun kata-kata yang diacak menjadi ayat Al-Qur'an yang benar!</div>
       <div class="gc-btn">Main Sekarang →</div>
     </div>
     <div class="game-card" style="--cc:#6a4c93" onclick="mulaiGame('tokoh')">
       <span class="gc-badge">18 tokoh</span>
       <span class="gc-emoji">🌟</span>
       <div class="gc-title">Tebak Tokoh Islam</div>
-      <div class="gc-desc">Tebak nama Nabi, Sahabat, dan Orang Sholeh dari petunjuk-petunjuk yang diberikan!</div>
+      <div class="gc-desc">Tebak nama Nabi, Sahabat, dan Orang Sholeh dari petunjuk!</div>
       <div class="gc-btn">Main Sekarang →</div>
     </div>
     <div class="game-card" style="--cc:#7b3f00" onclick="mulaiGame('catur')">
       <span class="gc-badge">vs AI</span>
       <span class="gc-emoji">♟️</span>
       <div class="gc-title">Catur Islami</div>
-      <div class="gc-desc">Mainkan catur melawan AI dengan pilihan tingkat kesulitan. Asah strategi dan kecerdasan!</div>
+      <div class="gc-desc">Mainkan catur melawan AI. Asah strategi dan kecerdasan!</div>
       <div class="gc-btn">Main Sekarang →</div>
     </div>
   </div>
 </div>
-
-<!-- GAME VIEWS (hidden by default) -->
 <div class="game-view" id="gHijaiyah">
-  <div class="game-topbar">
-    <div class="gtb-left">
-      <button class="btn-back-game" onclick="keMenu()">← Menu</button>
-      <span class="gtb-title">🔤 Tebak Huruf Hijaiyah</span>
-    </div>
-    <div class="score-box"><div class="score-val" id="hjScore">0</div><div class="score-lbl">Skor</div></div>
-  </div>
+  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">🔤 Tebak Huruf Hijaiyah</span></div><div class="score-box"><div class="score-val" id="hjScore">0</div><div class="score-lbl">Skor</div></div></div>
   <div class="game-body" id="hjBody"></div>
 </div>
-
 <div class="game-view" id="gKuis">
-  <div class="game-topbar">
-    <div class="gtb-left">
-      <button class="btn-back-game" onclick="keMenu()">← Menu</button>
-      <span class="gtb-title">❓ Kuis Islami</span>
-    </div>
-    <div class="score-box"><div class="score-val" id="kuisScore">0</div><div class="score-lbl">Skor</div></div>
-  </div>
+  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">❓ Kuis Islami</span></div><div class="score-box"><div class="score-val" id="kuisScore">0</div><div class="score-lbl">Skor</div></div></div>
   <div class="game-body" id="kuisBody"></div>
 </div>
-
 <div class="game-view" id="gAsma">
-  <div class="game-topbar">
-    <div class="gtb-left">
-      <button class="btn-back-game" onclick="keMenu()">← Menu</button>
-      <span class="gtb-title">✨ Asmaul Husna</span>
-    </div>
-    <div class="score-box"><div class="score-val" id="asmaScore">0</div><div class="score-lbl">Skor</div></div>
-  </div>
+  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">✨ Asmaul Husna</span></div><div class="score-box"><div class="score-val" id="asmaScore">0</div><div class="score-lbl">Skor</div></div></div>
   <div class="game-body" id="asmaBody"></div>
 </div>
-
 <div class="game-view" id="gPuzzle">
-  <div class="game-topbar">
-    <div class="gtb-left">
-      <button class="btn-back-game" onclick="keMenu()">← Menu</button>
-      <span class="gtb-title">🧩 Puzzle Ayat</span>
-    </div>
-    <div class="score-box"><div class="score-val" id="pzScore">0</div><div class="score-lbl">Skor</div></div>
-  </div>
+  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">🧩 Puzzle Ayat</span></div><div class="score-box"><div class="score-val" id="pzScore">0</div><div class="score-lbl">Skor</div></div></div>
   <div class="game-body" id="pzBody"></div>
 </div>
-
 <div class="game-view" id="gTokoh">
-  <div class="game-topbar">
-    <div class="gtb-left">
-      <button class="btn-back-game" onclick="keMenu()">← Menu</button>
-      <span class="gtb-title">🌟 Tebak Tokoh Islam</span>
-    </div>
-    <div class="score-box"><div class="score-val" id="tokohScore">0</div><div class="score-lbl">Skor</div></div>
-  </div>
+  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">🌟 Tebak Tokoh Islam</span></div><div class="score-box"><div class="score-val" id="tokohScore">0</div><div class="score-lbl">Skor</div></div></div>
   <div class="game-body" id="tokohBody"></div>
 </div>
-
-
 <div class="game-view" id="gCatur">
-  <div class="game-topbar">
-    <div class="gtb-left">
-      <button class="btn-back-game" onclick="keMenu()">← Menu</button>
-      <span class="gtb-title">♟️ Catur Islami</span>
-    </div>
-    <div class="score-box"><div class="score-val" id="caturScore">0</div><div class="score-lbl">Menang</div></div>
-  </div>
+  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">♟️ Catur Islami</span></div><div class="score-box"><div class="score-val" id="caturScore">0</div><div class="score-lbl">Menang</div></div></div>
   <div class="game-body" id="caturBody"></div>
 </div>
-
-<!-- FEEDBACK OVERLAY -->
 <div class="feedback" id="feedbackOverlay">
   <div class="feedback-box">
     <div class="fb-icon" id="fbIcon"></div>
@@ -400,262 +306,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
     <button class="fb-btn" id="fbBtn" onclick="closeFeedback()">Lanjut →</button>
   </div>
 </div>
-
 <script>
-/* ═══════════════════════════════════════════
-   GAME DATA
-═══════════════════════════════════════════ */
+/* ── DATA ── */
+var HIJAIYAH=[{arab:'ا',nama:'Alif',latin:'A'},{arab:'ب',nama:'Ba',latin:'B'},{arab:'ت',nama:'Ta',latin:'T'},{arab:'ث',nama:'Tsa',latin:'Ts'},{arab:'ج',nama:'Jim',latin:'J'},{arab:'ح',nama:'Ha',latin:'H'},{arab:'خ',nama:'Kha',latin:'Kh'},{arab:'د',nama:'Dal',latin:'D'},{arab:'ذ',nama:'Dzal',latin:'Dz'},{arab:'ر',nama:'Ra',latin:'R'},{arab:'ز',nama:'Zai',latin:'Z'},{arab:'س',nama:'Sin',latin:'S'},{arab:'ش',nama:'Syin',latin:'Sy'},{arab:'ص',nama:'Shad',latin:'Sh'},{arab:'ض',nama:'Dhad',latin:'Dh'},{arab:'ط',nama:'Tha',latin:'Th'},{arab:'ظ',nama:'Zha',latin:'Zh'},{arab:'ع',nama:'Ain',latin:"'A"},{arab:'غ',nama:'Ghain',latin:'Gh'},{arab:'ف',nama:'Fa',latin:'F'},{arab:'ق',nama:'Qaf',latin:'Q'},{arab:'ك',nama:'Kaf',latin:'K'},{arab:'ل',nama:'Lam',latin:'L'},{arab:'م',nama:'Mim',latin:'M'},{arab:'ن',nama:'Nun',latin:'N'},{arab:'و',nama:'Wau',latin:'W'},{arab:'ه',nama:'Ha',latin:'H'},{arab:'ء',nama:'Hamzah',latin:"'"},{arab:'ي',nama:'Ya',latin:'Y'}];
+var ASMAUL_HUSNA=[{no:1,arab:'الرَّحْمَنُ',latin:'Ar-Rahman',arti:'Yang Maha Pengasih'},{no:2,arab:'الرَّحِيمُ',latin:'Ar-Rahim',arti:'Yang Maha Penyayang'},{no:3,arab:'الْمَلِكُ',latin:'Al-Malik',arti:'Yang Maha Merajai'},{no:4,arab:'الْقُدُّوسُ',latin:'Al-Quddus',arti:'Yang Maha Suci'},{no:5,arab:'السَّلَامُ',latin:'As-Salam',arti:'Yang Maha Memberi Kesejahteraan'},{no:6,arab:'الْمُؤْمِنُ',latin:'Al-Mumin',arti:'Yang Maha Memberi Keamanan'},{no:7,arab:'الْمُهَيْمِنُ',latin:'Al-Muhaimin',arti:'Yang Maha Memelihara'},{no:8,arab:'الْعَزِيزُ',latin:'Al-Aziz',arti:'Yang Maha Perkasa'},{no:9,arab:'الْجَبَّارُ',latin:'Al-Jabbar',arti:'Yang Maha Kuasa Memaksa'},{no:10,arab:'الْمُتَكَبِّرُ',latin:'Al-Mutakabbir',arti:'Yang Maha Megah'},{no:11,arab:'الْخَالِقُ',latin:'Al-Khaliq',arti:'Yang Maha Pencipta'},{no:12,arab:'الْبَارِئُ',latin:'Al-Bari',arti:'Yang Maha Melepaskan'},{no:13,arab:'الْمُصَوِّرُ',latin:'Al-Musawwir',arti:'Yang Maha Membentuk Rupa'},{no:14,arab:'الْغَفَّارُ',latin:'Al-Ghaffar',arti:'Yang Maha Pengampun'},{no:15,arab:'الْقَهَّارُ',latin:'Al-Qahhar',arti:'Yang Maha Menundukkan'},{no:16,arab:'الْوَهَّابُ',latin:'Al-Wahhab',arti:'Yang Maha Pemberi'},{no:17,arab:'الرَّزَّاقُ',latin:'Ar-Razzaq',arti:'Yang Maha Pemberi Rezeki'},{no:18,arab:'الْفَتَّاحُ',latin:'Al-Fattah',arti:'Yang Maha Pembuka Rahmat'},{no:19,arab:'الْعَلِيمُ',latin:'Al-Alim',arti:'Yang Maha Mengetahui'},{no:20,arab:'الْقَابِضُ',latin:'Al-Qabidh',arti:'Yang Maha Menyempitkan'},{no:21,arab:'الْبَاسِطُ',latin:'Al-Basith',arti:'Yang Maha Melapangkan'},{no:22,arab:'الْخَافِضُ',latin:'Al-Khafidh',arti:'Yang Maha Merendahkan'},{no:23,arab:'الرَّافِعُ',latin:'Ar-Rafi',arti:'Yang Maha Meninggikan'},{no:24,arab:'الْمُعِزُّ',latin:'Al-Muizz',arti:'Yang Maha Memuliakan'},{no:25,arab:'الْمُذِلُّ',latin:'Al-Mudzill',arti:'Yang Maha Menghinakan'},{no:26,arab:'السَّمِيعُ',latin:'As-Sami',arti:'Yang Maha Mendengar'},{no:27,arab:'الْبَصِيرُ',latin:'Al-Bashir',arti:'Yang Maha Melihat'},{no:28,arab:'الْحَكَمُ',latin:'Al-Hakam',arti:'Yang Maha Menetapkan'},{no:29,arab:'الْعَدْلُ',latin:'Al-Adl',arti:'Yang Maha Adil'},{no:30,arab:'اللَّطِيفُ',latin:'Al-Lathif',arti:'Yang Maha Lembut'},{no:31,arab:'الْخَبِيرُ',latin:'Al-Khabir',arti:'Yang Maha Mengetahui Rahasia'},{no:32,arab:'الْحَلِيمُ',latin:'Al-Halim',arti:'Yang Maha Penyantun'},{no:33,arab:'الْعَظِيمُ',latin:'Al-Azhim',arti:'Yang Maha Agung'},{no:34,arab:'الْغَفُورُ',latin:'Al-Ghafur',arti:'Yang Maha Pengampun'},{no:35,arab:'الشَّكُورُ',latin:'Asy-Syakur',arti:'Yang Maha Mensyukuri'},{no:36,arab:'الْعَلِيُّ',latin:'Al-Ali',arti:'Yang Maha Tinggi'},{no:37,arab:'الْكَبِيرُ',latin:'Al-Kabir',arti:'Yang Maha Besar'},{no:38,arab:'الْحَفِيظُ',latin:'Al-Hafizh',arti:'Yang Maha Menjaga'},{no:39,arab:'الْمُقِيتُ',latin:'Al-Muqit',arti:'Yang Maha Pemberi Kecukupan'},{no:40,arab:'الْحَسِيبُ',latin:'Al-Hasib',arti:'Yang Maha Membuat Perhitungan'},{no:41,arab:'الْجَلِيلُ',latin:'Al-Jalil',arti:'Yang Maha Mulia'},{no:42,arab:'الْكَرِيمُ',latin:'Al-Karim',arti:'Yang Maha Mulia dan Dermawan'},{no:43,arab:'الرَّقِيبُ',latin:'Ar-Raqib',arti:'Yang Maha Mengawasi'},{no:44,arab:'الْمُجِيبُ',latin:'Al-Mujib',arti:'Yang Maha Mengabulkan'},{no:45,arab:'الْوَاسِعُ',latin:'Al-Wasi',arti:'Yang Maha Luas'},{no:46,arab:'الْحَكِيمُ',latin:'Al-Hakim',arti:'Yang Maha Bijaksana'},{no:47,arab:'الْوَدُودُ',latin:'Al-Wadud',arti:'Yang Maha Mengasihi'},{no:48,arab:'الْمَجِيدُ',latin:'Al-Majid',arti:'Yang Maha Mulia'},{no:49,arab:'الْبَاعِثُ',latin:'Al-Baith',arti:'Yang Maha Membangkitkan'},{no:50,arab:'الشَّهِيدُ',latin:'Asy-Syahid',arti:'Yang Maha Menyaksikan'},{no:51,arab:'الْحَقُّ',latin:'Al-Haq',arti:'Yang Maha Benar'},{no:52,arab:'الْوَكِيلُ',latin:'Al-Wakil',arti:'Yang Maha Memelihara'},{no:53,arab:'الْقَوِيُّ',latin:'Al-Qawi',arti:'Yang Maha Kuat'},{no:54,arab:'الْمَتِينُ',latin:'Al-Matin',arti:'Yang Maha Kokoh'},{no:55,arab:'الْوَلِيُّ',latin:'Al-Wali',arti:'Yang Maha Melindungi'},{no:56,arab:'الْحَمِيدُ',latin:'Al-Hamid',arti:'Yang Maha Terpuji'},{no:57,arab:'الْمُحْصِيُ',latin:'Al-Muhshi',arti:'Yang Maha Menghitung'},{no:58,arab:'الْمُبْدِئُ',latin:'Al-Mubdi',arti:'Yang Maha Memulai'},{no:59,arab:'الْمُعِيدُ',latin:'Al-Muid',arti:'Yang Maha Mengembalikan'},{no:60,arab:'الْمُحْيِي',latin:'Al-Muhyi',arti:'Yang Maha Menghidupkan'},{no:61,arab:'الْمُمِيتُ',latin:'Al-Mumit',arti:'Yang Maha Mematikan'},{no:62,arab:'الْحَيُّ',latin:'Al-Hayy',arti:'Yang Maha Hidup'},{no:63,arab:'الْقَيُّومُ',latin:'Al-Qayyum',arti:'Yang Maha Mandiri'},{no:64,arab:'الْوَاجِدُ',latin:'Al-Wajid',arti:'Yang Maha Menemukan'},{no:65,arab:'الْمَاجِدُ',latin:'Al-Majid',arti:'Yang Maha Mulia'},{no:66,arab:'الْوَاحِدُ',latin:'Al-Wahid',arti:'Yang Maha Esa'},{no:67,arab:'الْأَحَدُ',latin:'Al-Ahad',arti:'Yang Maha Tunggal'},{no:68,arab:'الصَّمَدُ',latin:'As-Shamad',arti:'Yang Maha Dibutuhkan'},{no:69,arab:'الْقَادِرُ',latin:'Al-Qadir',arti:'Yang Maha Menentukan'},{no:70,arab:'الْمُقْتَدِرُ',latin:'Al-Muqtadir',arti:'Yang Maha Berkuasa'},{no:71,arab:'الْمُقَدِّمُ',latin:'Al-Muqaddim',arti:'Yang Maha Mendahulukan'},{no:72,arab:'الْمُؤَخِّرُ',latin:'Al-Muakhkhir',arti:'Yang Maha Mengakhirkan'},{no:73,arab:'الْأَوَّلُ',latin:'Al-Awwal',arti:'Yang Maha Awal'},{no:74,arab:'الْآخِرُ',latin:'Al-Akhir',arti:'Yang Maha Akhir'},{no:75,arab:'الظَّاهِرُ',latin:'Az-Zhahir',arti:'Yang Maha Nyata'},{no:76,arab:'الْبَاطِنُ',latin:'Al-Bathin',arti:'Yang Maha Ghaib'},{no:77,arab:'الْوَالِي',latin:'Al-Wali',arti:'Yang Maha Memerintah'},{no:78,arab:'الْمُتَعَالِ',latin:'Al-Mutaali',arti:'Yang Maha Tinggi'},{no:79,arab:'الْبَرُّ',latin:'Al-Barr',arti:'Yang Maha Dermawan'},{no:80,arab:'التَّوَّابُ',latin:'At-Tawwab',arti:'Yang Maha Penerima Tobat'},{no:81,arab:'الْمُنْتَقِمُ',latin:'Al-Muntaqim',arti:'Yang Maha Pemberi Balasan'},{no:82,arab:'الْعَفُوُّ',latin:'Al-Afuw',arti:'Yang Maha Pemaaf'},{no:83,arab:'الرَّؤُوفُ',latin:'Ar-Rauf',arti:'Yang Maha Pengasuh'},{no:84,arab:'مَالِكُ الْمُلْكِ',latin:'Malikul Mulk',arti:'Yang Maha Penguasa Kerajaan'},{no:85,arab:'ذُو الْجَلَالِ وَالْإِكْرَامِ',latin:'Dzul Jalali wal Ikram',arti:'Yang Maha Pemilik Keagungan dan Kemuliaan'},{no:86,arab:'الْمُقْسِطُ',latin:'Al-Muqsith',arti:'Yang Maha Adil'},{no:87,arab:'الْجَامِعُ',latin:'Al-Jami',arti:'Yang Maha Mengumpulkan'},{no:88,arab:'الْغَنِيُّ',latin:'Al-Ghani',arti:'Yang Maha Kaya'},{no:89,arab:'الْمُغْنِي',latin:'Al-Mughni',arti:'Yang Maha Pemberi Kekayaan'},{no:90,arab:'الْمَانِعُ',latin:'Al-Mani',arti:'Yang Maha Mencegah'},{no:91,arab:'الضَّارُّ',latin:'Ad-Dharr',arti:'Yang Maha Memberi Derita'},{no:92,arab:'النَّافِعُ',latin:'An-Nafi',arti:'Yang Maha Memberi Manfaat'},{no:93,arab:'النُّورُ',latin:'An-Nur',arti:'Yang Maha Bercahaya'},{no:94,arab:'الْهَادِي',latin:'Al-Hadi',arti:'Yang Maha Pemberi Petunjuk'},{no:95,arab:'الْبَدِيعُ',latin:'Al-Badi',arti:'Yang Maha Pencipta Keindahan'},{no:96,arab:'الْبَاقِي',latin:'Al-Baqi',arti:'Yang Maha Kekal'},{no:97,arab:'الْوَارِثُ',latin:'Al-Warith',arti:'Yang Maha Pewaris'},{no:98,arab:'الرَّشِيدُ',latin:'Ar-Rasyid',arti:'Yang Maha Pandai'},{no:99,arab:'الصَّبُورُ',latin:'As-Shabur',arti:'Yang Maha Sabar'}];
+var KUIS_DATA=[{soal:'Berapa jumlah rakaat shalat Subuh?',pilihan:['1 rakaat','2 rakaat','3 rakaat','4 rakaat'],jawaban:1,penjelasan:'Shalat Subuh terdiri dari 2 rakaat fardhu.'},{soal:'Siapakah Nabi yang dilempar ke dalam sumur oleh saudara-saudaranya?',pilihan:['Nabi Musa AS','Nabi Yusuf AS','Nabi Ibrahim AS','Nabi Isa AS'],jawaban:1,penjelasan:'Nabi Yusuf AS dilempar ke dalam sumur oleh 11 saudara-saudaranya yang iri.'},{soal:'Apa nama kitab suci yang diturunkan kepada Nabi Muhammad SAW?',pilihan:['Taurat','Injil','Zabur','Al-Quran'],jawaban:3,penjelasan:'Al-Quran adalah kitab suci Islam yang diturunkan kepada Nabi Muhammad SAW.'},{soal:'Berapa jumlah huruf hijaiyah?',pilihan:['26 huruf','28 huruf','30 huruf','29 huruf'],jawaban:1,penjelasan:'Huruf hijaiyah berjumlah 28 huruf.'},{soal:'Siapakah sahabat Nabi yang pertama masuk Islam dari kalangan pria dewasa?',pilihan:['Umar bin Khattab','Utsman bin Affan','Abu Bakar Ash-Shiddiq','Ali bin Abi Thalib'],jawaban:2,penjelasan:'Abu Bakar Ash-Shiddiq adalah orang pertama dari kalangan pria dewasa yang masuk Islam.'},{soal:'Di kota manakah Nabi Muhammad SAW dilahirkan?',pilihan:['Madinah','Thaif','Makkah','Palestina'],jawaban:2,penjelasan:'Nabi Muhammad SAW lahir di Makkah Al-Mukarramah pada 12 Rabiul Awal.'},{soal:'Apa arti dari "Bismillahirrahmanirrahim"?',pilihan:['Dengan nama Allah Yang Maha Esa','Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang','Segala puji bagi Allah','Allah Maha Besar'],jawaban:1,penjelasan:'Bismillahirrahmanirrahim artinya Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang.'},{soal:'Berapa jumlah Asmaul Husna?',pilihan:['77 nama','88 nama','99 nama','100 nama'],jawaban:2,penjelasan:'Asmaul Husna berjumlah 99 nama-nama indah Allah SWT.'},{soal:'Nabi manakah yang membuat bahtera besar dan selamat dari banjir besar?',pilihan:['Nabi Ibrahim AS','Nabi Nuh AS','Nabi Musa AS','Nabi Sulaiman AS'],jawaban:1,penjelasan:'Nabi Nuh AS membuat bahtera besar atas perintah Allah.'},{soal:'Apa nama istri pertama Nabi Muhammad SAW?',pilihan:['Aisyah','Hafsah','Khadijah','Maryam'],jawaban:2,penjelasan:'Khadijah binti Khuwailid adalah istri pertama Nabi Muhammad SAW.'},{soal:'Berapa jumlah rukun Islam?',pilihan:['3','4','5','6'],jawaban:2,penjelasan:'Rukun Islam ada 5: Syahadat, Shalat, Zakat, Puasa, dan Haji.'},{soal:'Surat apakah yang disebut Jantung Al-Quran?',pilihan:['Al-Fatihah','Yasin','Al-Ikhlas','Al-Baqarah'],jawaban:1,penjelasan:'Surat Yasin sering disebut sebagai jantung Al-Quran berdasarkan hadis Nabi.'},{soal:'Siapakah Nabi yang dimasukkan ke dalam api namun tidak terbakar?',pilihan:['Nabi Musa AS','Nabi Yusuf AS','Nabi Ibrahim AS','Nabi Isa AS'],jawaban:2,penjelasan:'Nabi Ibrahim AS dilempar ke dalam api oleh Raja Namrud, namun Allah memerintahkan api menjadi dingin.'},{soal:'Berapa jumlah rakaat shalat Isya?',pilihan:['2 rakaat','3 rakaat','4 rakaat','5 rakaat'],jawaban:2,penjelasan:'Shalat Isya terdiri dari 4 rakaat fardhu.'},{soal:'Apa nama peristiwa Nabi Muhammad SAW naik ke langit bertemu Allah?',pilihan:['Hijrah','Isra Miraj','Fathu Makkah','Haji Wada'],jawaban:1,penjelasan:'Isra Miraj adalah perjalanan Nabi dari Masjidil Haram ke Masjidil Aqsha dan naik ke langit.'},{soal:'Siapakah yang menjadi khalifah pertama setelah wafatnya Nabi Muhammad SAW?',pilihan:['Umar bin Khattab','Ali bin Abi Thalib','Utsman bin Affan','Abu Bakar Ash-Shiddiq'],jawaban:3,penjelasan:'Abu Bakar Ash-Shiddiq menjadi khalifah pertama setelah wafatnya Nabi Muhammad SAW.'},{soal:'Di bulan apakah umat Islam berpuasa wajib?',pilihan:['Muharram','Rajab','Ramadhan','Syawal'],jawaban:2,penjelasan:'Umat Islam berpuasa wajib di bulan Ramadhan.'},{soal:'Berapa jumlah rukun iman?',pilihan:['4','5','6','7'],jawaban:2,penjelasan:'Rukun iman ada 6: Iman kepada Allah, Malaikat, Kitab, Rasul, Hari Akhir, dan Qadha-Qadar.'},{soal:'Apa nama bukit tempat Nabi Muhammad SAW menerima wahyu pertama?',pilihan:['Bukit Uhud','Bukit Sinai','Bukit Tsur','Bukit Nur (Hira)'],jawaban:3,penjelasan:'Wahyu pertama turun di Gua Hira, di Bukit Nur di Makkah.'},{soal:'Siapakah malaikat yang bertugas menyampaikan wahyu kepada para Nabi?',pilihan:['Malaikat Mikail','Malaikat Jibril','Malaikat Israfil','Malaikat Izrail'],jawaban:1,penjelasan:'Malaikat Jibril adalah malaikat yang bertugas menyampaikan wahyu kepada para Nabi.'},{soal:'Apa nama surat pertama dalam Al-Quran?',pilihan:['Al-Baqarah','Al-Ikhlas','Al-Fatihah','An-Nas'],jawaban:2,penjelasan:'Al-Fatihah adalah surat pertama dalam Al-Quran yang terdiri dari 7 ayat.'},{soal:'Berapa jumlah surat dalam Al-Quran?',pilihan:['112 surat','113 surat','114 surat','115 surat'],jawaban:2,penjelasan:'Al-Quran terdiri dari 114 surat.'},{soal:'Nabi manakah yang terkenal dengan kesabarannya menghadapi penyakit?',pilihan:['Nabi Yusuf AS','Nabi Ayub AS','Nabi Yunus AS','Nabi Isa AS'],jawaban:1,penjelasan:'Nabi Ayub AS terkenal dengan kesabarannya yang luar biasa.'},{soal:'Apa nama perjalanan Nabi Muhammad SAW dari Makkah ke Madinah?',pilihan:['Isra','Miraj','Hijrah','Futuh'],jawaban:2,penjelasan:'Hijrah adalah perjalanan Nabi Muhammad SAW beserta para sahabat dari Makkah ke Madinah.'},{soal:'Siapakah yang disebut Dzun Nurain (Pemilik Dua Cahaya)?',pilihan:['Abu Bakar RA','Umar bin Khattab RA','Utsman bin Affan RA','Ali bin Abi Thalib RA'],jawaban:2,penjelasan:'Utsman bin Affan RA disebut Dzun Nurain karena menikahi dua putri Nabi.'}];
+var PUZZLE_DATA=[{surat:'Al-Fatihah: 1',ayat:'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ',arti:'Dengan nama Allah Yang Maha Pengasih, Maha Penyayang',kata:['بِسْمِ','اللَّهِ','الرَّحْمَنِ','الرَّحِيمِ'],acak:['الرَّحِيمِ','اللَّهِ','بِسْمِ','الرَّحْمَنِ']},{surat:'Al-Ikhlas: 1',ayat:'قُلْ هُوَ اللَّهُ أَحَدٌ',arti:'Katakanlah: Dialah Allah Yang Maha Esa',kata:['قُلْ','هُوَ','اللَّهُ','أَحَدٌ'],acak:['أَحَدٌ','قُلْ','اللَّهُ','هُوَ']},{surat:'Al-Baqarah: 255',ayat:'اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ',arti:'Allah tidak ada tuhan selain Dia Yang Maha Hidup Yang terus menerus mengurus makhluk-Nya',kata:['اللَّهُ','لَا','إِلَهَ','إِلَّا','هُوَ','الْحَيُّ','الْقَيُّومُ'],acak:['الْحَيُّ','إِلَّا','اللَّهُ','الْقَيُّومُ','لَا','هُوَ','إِلَهَ']},{surat:'Al-Ashr: 1-3',ayat:'وَالْعَصْرِ إِنَّ الْإِنْسَانَ لَفِي خُسْرٍ',arti:'Demi masa sungguh manusia berada dalam kerugian',kata:['وَالْعَصْرِ','إِنَّ','الْإِنْسَانَ','لَفِي','خُسْرٍ'],acak:['الْإِنْسَانَ','وَالْعَصْرِ','خُسْرٍ','إِنَّ','لَفِي']},{surat:'An-Nas: 1',ayat:'قُلْ أَعُوذُ بِرَبِّ النَّاسِ',arti:'Katakanlah: Aku berlindung kepada Tuhan manusia',kata:['قُلْ','أَعُوذُ','بِرَبِّ','النَّاسِ'],acak:['بِرَبِّ','النَّاسِ','قُلْ','أَعُوذُ']},{surat:'Al-Falaq: 1',ayat:'قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ',arti:'Katakanlah: Aku berlindung kepada Tuhan yang menguasai subuh',kata:['قُلْ','أَعُوذُ','بِرَبِّ','الْفَلَقِ'],acak:['أَعُوذُ','الْفَلَقِ','بِرَبِّ','قُلْ']},{surat:'Al-Kautsar: 1',ayat:'إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ',arti:'Sungguh Kami telah memberimu nikmat yang banyak',kata:['إِنَّا','أَعْطَيْنَاكَ','الْكَوْثَرَ'],acak:['الْكَوْثَرَ','إِنَّا','أَعْطَيْنَاكَ']},{surat:'Al-Kafirun: 1',ayat:'قُلْ يَا أَيُّهَا الْكَافِرُونَ',arti:'Katakanlah: Wahai orang-orang kafir',kata:['قُلْ','يَا','أَيُّهَا','الْكَافِرُونَ'],acak:['أَيُّهَا','قُلْ','الْكَافِرُونَ','يَا']}];
+var TOKOH_DATA=[{nama:'Nabi Adam AS',kategori:'Nabi',petunjuk:['Manusia pertama yang diciptakan Allah','Diciptakan dari tanah liat','Ditempatkan di surga bersama istrinya','Nama istrinya adalah Hawa'],jawaban:'Adam'},{nama:'Nabi Nuh AS',kategori:'Nabi',petunjuk:['Berdakwah selama 950 tahun','Membuat bahtera besar','Selamat dari banjir besar','Salah satu putranya bernama Kanan'],jawaban:'Nuh'},{nama:'Nabi Ibrahim AS',kategori:'Nabi',petunjuk:['Disebut Khalilullah (kekasih Allah)','Dilempar ke dalam api namun selamat','Membangun Kabah bersama putranya','Mendapat ujian menyembelih putranya'],jawaban:'Ibrahim'},{nama:'Nabi Ismail AS',kategori:'Nabi',petunjuk:['Putra pertama Nabi Ibrahim AS','Dari ibunya yang bernama Hajar','Di kakinya memancar air Zamzam','Rela disembelih tapi diganti domba'],jawaban:'Ismail'},{nama:'Nabi Musa AS',kategori:'Nabi',petunjuk:['Dibesarkan di istana Firaun','Memiliki tongkat yang bisa jadi ular','Menerima kitab Taurat','Membelah laut dengan tongkatnya'],jawaban:'Musa'},{nama:'Nabi Yusuf AS',kategori:'Nabi',petunjuk:['Dilempar ke dalam sumur oleh saudaranya','Dijual sebagai budak di Mesir','Bisa menafsirkan mimpi','Menjadi menteri di Mesir'],jawaban:'Yusuf'},{nama:'Nabi Isa AS',kategori:'Nabi',petunjuk:['Lahir tanpa ayah dari Maryam','Bisa berbicara saat masih bayi','Menyembuhkan orang sakit atas izin Allah','Menerima kitab Injil'],jawaban:'Isa'},{nama:'Nabi Muhammad SAW',kategori:'Nabi',petunjuk:['Nabi terakhir dan penutup para nabi','Lahir di Makkah tahun 570 M','Dijuluki Al-Amin sebelum kenabian','Menerima Al-Quran di Gua Hira'],jawaban:'Muhammad'},{nama:'Abu Bakar Ash-Shiddiq RA',kategori:'Sahabat',petunjuk:['Sahabat terdekat Nabi','Orang pertama membenarkan Isra Miraj','Menemani Nabi hijrah ke Madinah','Khalifah pertama Islam'],jawaban:'Abu Bakar'},{nama:'Umar bin Khattab RA',kategori:'Sahabat',petunjuk:['Dijuluki Al-Faruq','Masuk Islam setelah membaca ayat Al-Quran','Khalifah kedua Islam','Dikenal sangat adil dan tegas'],jawaban:'Umar'},{nama:'Utsman bin Affan RA',kategori:'Sahabat',petunjuk:['Dijuluki Dzun Nurain','Menikahi dua putri Nabi','Mengumpulkan Al-Quran dalam satu mushaf','Khalifah ketiga Islam'],jawaban:'Utsman'},{nama:'Ali bin Abi Thalib RA',kategori:'Sahabat',petunjuk:['Sepupu dan menantu Nabi','Anak pertama masuk Islam','Tidur di tempat tidur Nabi saat hijrah','Khalifah keempat Islam'],jawaban:'Ali'},{nama:'Bilal bin Rabah RA',kategori:'Sahabat',petunjuk:['Budak yang disiksa karena Islam','Diselamatkan oleh Abu Bakar','Muadzin pertama dalam Islam','Berasal dari Habasyah'],jawaban:'Bilal'},{nama:'Khadijah binti Khuwailid RA',kategori:'Sahabat',petunjuk:['Istri pertama Nabi Muhammad','Wanita pertama masuk Islam','Seorang pebisnis kaya dan terhormat','Melamar Nabi Muhammad saat berusia 40 tahun'],jawaban:'Khadijah'},{nama:'Uwais Al-Qarni',kategori:'Orang Sholeh',petunjuk:['Berasal dari Yaman','Tidak pernah bertemu Nabi namun sangat dicintai Nabi','Sangat berbakti kepada ibunya','Umar dan Ali disuruh Nabi mencarinya'],jawaban:'Uwais'},{nama:'Imam Al-Ghazali',kategori:'Orang Sholeh',petunjuk:['Dijuluki Hujjatul Islam','Meninggalkan jabatan professor untuk mencari kebenaran','Menulis kitab Ihya Ulumuddin','Lahir di Tus Persia'],jawaban:'Ghazali'},{nama:'Rabiah Al-Adawiyah',kategori:'Orang Sholeh',petunjuk:['Wanita sufi terbesar','Berasal dari Bashrah Iraq','Pernah menjadi budak sebelum dibebaskan','Mengajarkan cinta murni kepada Allah'],jawaban:'Rabiah'},{nama:'Hasan Al-Bashri',kategori:'Orang Sholeh',petunjuk:['Imam tabiin terbesar','Dibesarkan di rumah Ummu Salamah','Berasal dari Bashrah','Terkenal dengan kata-kata hikmah yang menyentuh hati'],jawaban:'Hasan'}];
 
-/* ── 1. HURUF HIJAIYAH ── */
-var HIJAIYAH = [
-  {arab:'ا',nama:'Alif',latin:'A'},{arab:'ب',nama:'Ba',latin:'B'},
-  {arab:'ت',nama:'Ta',latin:'T'},{arab:'ث',nama:'Tsa',latin:'Ts'},
-  {arab:'ج',nama:'Jim',latin:'J'},{arab:'ح',nama:'Ha',latin:'H'},
-  {arab:'خ',nama:'Kha',latin:'Kh'},{arab:'د',nama:'Dal',latin:'D'},
-  {arab:'ذ',nama:'Dzal',latin:'Dz'},{arab:'ر',nama:'Ra',latin:'R'},
-  {arab:'ز',nama:'Zai',latin:'Z'},{arab:'س',nama:'Sin',latin:'S'},
-  {arab:'ش',nama:'Syin',latin:'Sy'},{arab:'ص',nama:'Shad',latin:'Sh'},
-  {arab:'ض',nama:'Dhad',latin:'Dh'},{arab:'ط',nama:'Tha',latin:'Th'},
-  {arab:'ظ',nama:'Zha',latin:'Zh'},{arab:'ع',nama:'Ain',latin:"'A"},
-  {arab:'غ',nama:'Ghain',latin:'Gh'},{arab:'ف',nama:'Fa',latin:'F'},
-  {arab:'ق',nama:'Qaf',latin:'Q'},{arab:'ك',nama:'Kaf',latin:'K'},
-  {arab:'ل',nama:'Lam',latin:'L'},{arab:'م',nama:'Mim',latin:'M'},
-  {arab:'ن',nama:'Nun',latin:'N'},{arab:'و',nama:'Wau',latin:'W'},
-  {arab:'ه',nama:'Ha',latin:'H'},{arab:'ء',nama:'Hamzah',latin:"'"},
-  {arab:'ي',nama:'Ya',latin:'Y'}
-];
-
-/* ── 2. ASMAUL HUSNA ── */
-var ASMAUL_HUSNA = [
-  {no:1,arab:'الرَّحْمَنُ',latin:'Ar-Rahman',arti:'Yang Maha Pengasih'},
-  {no:2,arab:'الرَّحِيمُ',latin:'Ar-Rahim',arti:'Yang Maha Penyayang'},
-  {no:3,arab:'الْمَلِكُ',latin:'Al-Malik',arti:'Yang Maha Merajai'},
-  {no:4,arab:'الْقُدُّوسُ',latin:'Al-Quddus',arti:'Yang Maha Suci'},
-  {no:5,arab:'السَّلَامُ',latin:'As-Salam',arti:'Yang Maha Memberi Kesejahteraan'},
-  {no:6,arab:'الْمُؤْمِنُ',latin:'Al-Mumin',arti:'Yang Maha Memberi Keamanan'},
-  {no:7,arab:'الْمُهَيْمِنُ',latin:'Al-Muhaimin',arti:'Yang Maha Memelihara'},
-  {no:8,arab:'الْعَزِيزُ',latin:'Al-Aziz',arti:'Yang Maha Perkasa'},
-  {no:9,arab:'الْجَبَّارُ',latin:'Al-Jabbar',arti:'Yang Maha Kuasa Memaksa'},
-  {no:10,arab:'الْمُتَكَبِّرُ',latin:'Al-Mutakabbir',arti:'Yang Maha Megah'},
-  {no:11,arab:'الْخَالِقُ',latin:'Al-Khaliq',arti:'Yang Maha Pencipta'},
-  {no:12,arab:'الْبَارِئُ',latin:'Al-Bari',arti:'Yang Maha Melepaskan'},
-  {no:13,arab:'الْمُصَوِّرُ',latin:'Al-Musawwir',arti:'Yang Maha Membentuk Rupa'},
-  {no:14,arab:'الْغَفَّارُ',latin:'Al-Ghaffar',arti:'Yang Maha Pengampun'},
-  {no:15,arab:'الْقَهَّارُ',latin:'Al-Qahhar',arti:'Yang Maha Menundukkan'},
-  {no:16,arab:'الْوَهَّابُ',latin:'Al-Wahhab',arti:'Yang Maha Pemberi'},
-  {no:17,arab:'الرَّزَّاقُ',latin:'Ar-Razzaq',arti:'Yang Maha Pemberi Rezeki'},
-  {no:18,arab:'الْفَتَّاحُ',latin:'Al-Fattah',arti:'Yang Maha Pembuka Rahmat'},
-  {no:19,arab:'الْعَلِيمُ',latin:'Al-Alim',arti:'Yang Maha Mengetahui'},
-  {no:20,arab:'الْقَابِضُ',latin:'Al-Qabidh',arti:'Yang Maha Menyempitkan'},
-  {no:21,arab:'الْبَاسِطُ',latin:'Al-Basith',arti:'Yang Maha Melapangkan'},
-  {no:22,arab:'الْخَافِضُ',latin:'Al-Khafidh',arti:'Yang Maha Merendahkan'},
-  {no:23,arab:'الرَّافِعُ',latin:'Ar-Rafi',arti:'Yang Maha Meninggikan'},
-  {no:24,arab:'الْمُعِزُّ',latin:'Al-Muizz',arti:'Yang Maha Memuliakan'},
-  {no:25,arab:'الْمُذِلُّ',latin:'Al-Mudzill',arti:'Yang Maha Menghinakan'},
-  {no:26,arab:'السَّمِيعُ',latin:'As-Sami',arti:'Yang Maha Mendengar'},
-  {no:27,arab:'الْبَصِيرُ',latin:'Al-Bashir',arti:'Yang Maha Melihat'},
-  {no:28,arab:'الْحَكَمُ',latin:'Al-Hakam',arti:'Yang Maha Menetapkan'},
-  {no:29,arab:'الْعَدْلُ',latin:'Al-Adl',arti:'Yang Maha Adil'},
-  {no:30,arab:'اللَّطِيفُ',latin:'Al-Lathif',arti:'Yang Maha Lembut'},
-  {no:31,arab:'الْخَبِيرُ',latin:'Al-Khabir',arti:'Yang Maha Mengetahui Rahasia'},
-  {no:32,arab:'الْحَلِيمُ',latin:'Al-Halim',arti:'Yang Maha Penyantun'},
-  {no:33,arab:'الْعَظِيمُ',latin:'Al-Azhim',arti:'Yang Maha Agung'},
-  {no:34,arab:'الْغَفُورُ',latin:'Al-Ghafur',arti:'Yang Maha Pengampun'},
-  {no:35,arab:'الشَّكُورُ',latin:'Asy-Syakur',arti:'Yang Maha Mensyukuri'},
-  {no:36,arab:'الْعَلِيُّ',latin:'Al-Ali',arti:'Yang Maha Tinggi'},
-  {no:37,arab:'الْكَبِيرُ',latin:'Al-Kabir',arti:'Yang Maha Besar'},
-  {no:38,arab:'الْحَفِيظُ',latin:'Al-Hafizh',arti:'Yang Maha Menjaga'},
-  {no:39,arab:'الْمُقِيتُ',latin:'Al-Muqit',arti:'Yang Maha Pemberi Kecukupan'},
-  {no:40,arab:'الْحَسِيبُ',latin:'Al-Hasib',arti:'Yang Maha Membuat Perhitungan'},
-  {no:41,arab:'الْجَلِيلُ',latin:'Al-Jalil',arti:'Yang Maha Mulia'},
-  {no:42,arab:'الْكَرِيمُ',latin:'Al-Karim',arti:'Yang Maha Mulia dan Dermawan'},
-  {no:43,arab:'الرَّقِيبُ',latin:'Ar-Raqib',arti:'Yang Maha Mengawasi'},
-  {no:44,arab:'الْمُجِيبُ',latin:'Al-Mujib',arti:'Yang Maha Mengabulkan'},
-  {no:45,arab:'الْوَاسِعُ',latin:'Al-Wasi',arti:'Yang Maha Luas'},
-  {no:46,arab:'الْحَكِيمُ',latin:'Al-Hakim',arti:'Yang Maha Bijaksana'},
-  {no:47,arab:'الْوَدُودُ',latin:'Al-Wadud',arti:'Yang Maha Mengasihi'},
-  {no:48,arab:'الْمَجِيدُ',latin:'Al-Majid',arti:'Yang Maha Mulia'},
-  {no:49,arab:'الْبَاعِثُ',latin:'Al-Baith',arti:'Yang Maha Membangkitkan'},
-  {no:50,arab:'الشَّهِيدُ',latin:'Asy-Syahid',arti:'Yang Maha Menyaksikan'},
-  {no:51,arab:'الْحَقُّ',latin:'Al-Haq',arti:'Yang Maha Benar'},
-  {no:52,arab:'الْوَكِيلُ',latin:'Al-Wakil',arti:'Yang Maha Memelihara'},
-  {no:53,arab:'الْقَوِيُّ',latin:'Al-Qawi',arti:'Yang Maha Kuat'},
-  {no:54,arab:'الْمَتِينُ',latin:'Al-Matin',arti:'Yang Maha Kokoh'},
-  {no:55,arab:'الْوَلِيُّ',latin:'Al-Wali',arti:'Yang Maha Melindungi'},
-  {no:56,arab:'الْحَمِيدُ',latin:'Al-Hamid',arti:'Yang Maha Terpuji'},
-  {no:57,arab:'الْمُحْصِيُ',latin:'Al-Muhshi',arti:'Yang Maha Menghitung'},
-  {no:58,arab:'الْمُبْدِئُ',latin:'Al-Mubdi',arti:'Yang Maha Memulai'},
-  {no:59,arab:'الْمُعِيدُ',latin:'Al-Muid',arti:'Yang Maha Mengembalikan'},
-  {no:60,arab:'الْمُحْيِي',latin:'Al-Muhyi',arti:'Yang Maha Menghidupkan'},
-  {no:61,arab:'الْمُمِيتُ',latin:'Al-Mumit',arti:'Yang Maha Mematikan'},
-  {no:62,arab:'الْحَيُّ',latin:'Al-Hayy',arti:'Yang Maha Hidup'},
-  {no:63,arab:'الْقَيُّومُ',latin:'Al-Qayyum',arti:'Yang Maha Mandiri'},
-  {no:64,arab:'الْوَاجِدُ',latin:'Al-Wajid',arti:'Yang Maha Menemukan'},
-  {no:65,arab:'الْمَاجِدُ',latin:'Al-Majid',arti:'Yang Maha Mulia'},
-  {no:66,arab:'الْوَاحِدُ',latin:'Al-Wahid',arti:'Yang Maha Esa'},
-  {no:67,arab:'الْأَحَدُ',latin:'Al-Ahad',arti:'Yang Maha Tunggal'},
-  {no:68,arab:'الصَّمَدُ',latin:'As-Shamad',arti:'Yang Maha Dibutuhkan'},
-  {no:69,arab:'الْقَادِرُ',latin:'Al-Qadir',arti:'Yang Maha Menentukan'},
-  {no:70,arab:'الْمُقْتَدِرُ',latin:'Al-Muqtadir',arti:'Yang Maha Berkuasa'},
-  {no:71,arab:'الْمُقَدِّمُ',latin:'Al-Muqaddim',arti:'Yang Maha Mendahulukan'},
-  {no:72,arab:'الْمُؤَخِّرُ',latin:'Al-Muakhkhir',arti:'Yang Maha Mengakhirkan'},
-  {no:73,arab:'الْأَوَّلُ',latin:'Al-Awwal',arti:'Yang Maha Awal'},
-  {no:74,arab:'الْآخِرُ',latin:'Al-Akhir',arti:'Yang Maha Akhir'},
-  {no:75,arab:'الظَّاهِرُ',latin:'Az-Zhahir',arti:'Yang Maha Nyata'},
-  {no:76,arab:'الْبَاطِنُ',latin:'Al-Bathin',arti:'Yang Maha Ghaib'},
-  {no:77,arab:'الْوَالِي',latin:'Al-Wali',arti:'Yang Maha Memerintah'},
-  {no:78,arab:'الْمُتَعَالِ',latin:'Al-Mutaali',arti:'Yang Maha Tinggi'},
-  {no:79,arab:'الْبَرُّ',latin:'Al-Barr',arti:'Yang Maha Dermawan'},
-  {no:80,arab:'التَّوَّابُ',latin:'At-Tawwab',arti:'Yang Maha Penerima Tobat'},
-  {no:81,arab:'الْمُنْتَقِمُ',latin:'Al-Muntaqim',arti:'Yang Maha Pemberi Balasan'},
-  {no:82,arab:'الْعَفُوُّ',latin:'Al-Afuw',arti:'Yang Maha Pemaaf'},
-  {no:83,arab:'الرَّؤُوفُ',latin:'Ar-Rauf',arti:'Yang Maha Pengasuh'},
-  {no:84,arab:'مَالِكُ الْمُلْكِ',latin:'Malikul Mulk',arti:'Yang Maha Penguasa Kerajaan'},
-  {no:85,arab:'ذُو الْجَلَالِ وَالْإِكْرَامِ',latin:'Dzul Jalali wal Ikram',arti:'Yang Maha Pemilik Keagungan dan Kemuliaan'},
-  {no:86,arab:'الْمُقْسِطُ',latin:'Al-Muqsith',arti:'Yang Maha Adil'},
-  {no:87,arab:'الْجَامِعُ',latin:'Al-Jami',arti:'Yang Maha Mengumpulkan'},
-  {no:88,arab:'الْغَنِيُّ',latin:'Al-Ghani',arti:'Yang Maha Kaya'},
-  {no:89,arab:'الْمُغْنِي',latin:'Al-Mughni',arti:'Yang Maha Pemberi Kekayaan'},
-  {no:90,arab:'الْمَانِعُ',latin:'Al-Mani',arti:'Yang Maha Mencegah'},
-  {no:91,arab:'الضَّارُّ',latin:'Ad-Dharr',arti:'Yang Maha Memberi Derita'},
-  {no:92,arab:'النَّافِعُ',latin:'An-Nafi',arti:'Yang Maha Memberi Manfaat'},
-  {no:93,arab:'النُّورُ',latin:'An-Nur',arti:'Yang Maha Bercahaya'},
-  {no:94,arab:'الْهَادِي',latin:'Al-Hadi',arti:'Yang Maha Pemberi Petunjuk'},
-  {no:95,arab:'الْبَدِيعُ',latin:'Al-Badi',arti:'Yang Maha Pencipta Keindahan'},
-  {no:96,arab:'الْبَاقِي',latin:'Al-Baqi',arti:'Yang Maha Kekal'},
-  {no:97,arab:'الْوَارِثُ',latin:'Al-Warith',arti:'Yang Maha Pewaris'},
-  {no:98,arab:'الرَّشِيدُ',latin:'Ar-Rasyid',arti:'Yang Maha Pandai'},
-  {no:99,arab:'الصَّبُورُ',latin:'As-Shabur',arti:'Yang Maha Sabar'}
-];
-
-/* ── 3. KUIS ISLAMI ── */
-var KUIS_DATA = [
-  {soal:'Berapa jumlah rakaat shalat Subuh?',pilihan:['1 rakaat','2 rakaat','3 rakaat','4 rakaat'],jawaban:1,penjelasan:'Shalat Subuh terdiri dari 2 rakaat fardhu.'},
-  {soal:'Siapakah Nabi yang dilempar ke dalam sumur oleh saudara-saudaranya?',pilihan:['Nabi Musa AS','Nabi Yusuf AS','Nabi Ibrahim AS','Nabi Isa AS'],jawaban:1,penjelasan:'Nabi Yusuf AS dilempar ke dalam sumur oleh 11 saudara-saudaranya yang iri.'},
-  {soal:'Apa nama kitab suci yang diturunkan kepada Nabi Muhammad SAW?',pilihan:['Taurat','Injil','Zabur','Al-Qur\'an'],jawaban:3,penjelasan:'Al-Qur\'an adalah kitab suci Islam yang diturunkan kepada Nabi Muhammad SAW.'},
-  {soal:'Berapa jumlah huruf hijaiyah?',pilihan:['26 huruf','28 huruf','30 huruf','29 huruf'],jawaban:1,penjelasan:'Huruf hijaiyah berjumlah 28 huruf atau 29 jika menghitung Hamzah dan Alif sebagai huruf berbeda.'},
-  {soal:'Siapakah sahabat Nabi yang pertama masuk Islam dari kalangan pria dewasa?',pilihan:['Umar bin Khattab','Utsman bin Affan','Abu Bakar Ash-Shiddiq','Ali bin Abi Thalib'],jawaban:2,penjelasan:'Abu Bakar Ash-Shiddiq adalah orang pertama dari kalangan pria dewasa yang masuk Islam.'},
-  {soal:'Di kota manakah Nabi Muhammad SAW dilahirkan?',pilihan:['Madinah','Thaif','Makkah','Palestina'],jawaban:2,penjelasan:'Nabi Muhammad SAW lahir di Makkah Al-Mukarramah pada 12 Rabiul Awal.'},
-  {soal:'Apa arti dari "Bismillahirrahmanirrahim"?',pilihan:['Dengan nama Allah Yang Maha Esa','Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang','Segala puji bagi Allah','Allah Maha Besar'],jawaban:1,penjelasan:'Bismillahirrahmanirrahim artinya "Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang".'},
-  {soal:'Berapa jumlah Asmaul Husna?',pilihan:['77 nama','88 nama','99 nama','100 nama'],jawaban:2,penjelasan:'Asmaul Husna berjumlah 99 nama-nama indah Allah SWT.'},
-  {soal:'Nabi manakah yang membuat bahtera besar dan selamat dari banjir besar?',pilihan:['Nabi Ibrahim AS','Nabi Nuh AS','Nabi Musa AS','Nabi Sulaiman AS'],jawaban:1,penjelasan:'Nabi Nuh AS membuat bahtera besar atas perintah Allah untuk menyelamatkan orang-orang beriman.'},
-  {soal:'Apa nama istri pertama Nabi Muhammad SAW?',pilihan:['Aisyah','Hafsah','Khadijah','Maryam'],jawaban:2,penjelasan:'Khadijah binti Khuwailid adalah istri pertama Nabi Muhammad SAW.'},
-  {soal:'Berapa jumlah rukun Islam?',pilihan:['3','4','5','6'],jawaban:2,penjelasan:'Rukun Islam ada 5: Syahadat, Shalat, Zakat, Puasa, dan Haji.'},
-  {soal:'Surat apakah yang disebut "Jantung Al-Qur\'an"?',pilihan:['Al-Fatihah','Yasin','Al-Ikhlas','Al-Baqarah'],jawaban:1,penjelasan:'Surat Yasin sering disebut sebagai "jantung Al-Qur\'an" berdasarkan hadis Nabi.'},
-  {soal:'Siapakah Nabi yang dimasukkan ke dalam api namun tidak terbakar?',pilihan:['Nabi Musa AS','Nabi Yusuf AS','Nabi Ibrahim AS','Nabi Isa AS'],jawaban:2,penjelasan:'Nabi Ibrahim AS dilempar ke dalam api oleh Raja Namrud, namun Allah memerintahkan api menjadi dingin.'},
-  {soal:'Berapa jumlah rakaat shalat Isya?',pilihan:['2 rakaat','3 rakaat','4 rakaat','5 rakaat'],jawaban:2,penjelasan:'Shalat Isya terdiri dari 4 rakaat fardhu.'},
-  {soal:'Apa nama peristiwa Nabi Muhammad SAW naik ke langit bertemu Allah?',pilihan:['Hijrah','Isra Mi\'raj','Fathu Makkah','Haji Wada'],jawaban:1,penjelasan:'Isra Mi\'raj adalah perjalanan Nabi dari Masjidil Haram ke Masjidil Aqsha (Isra) dan naik ke langit (Mi\'raj).'},
-  {soal:'Siapakah yang menjadi khalifah pertama setelah wafatnya Nabi Muhammad SAW?',pilihan:['Umar bin Khattab','Ali bin Abi Thalib','Utsman bin Affan','Abu Bakar Ash-Shiddiq'],jawaban:3,penjelasan:'Abu Bakar Ash-Shiddiq menjadi khalifah pertama setelah wafatnya Nabi Muhammad SAW.'},
-  {soal:'Di bulan apakah umat Islam berpuasa wajib?',pilihan:['Muharram','Rajab','Ramadhan','Syawal'],jawaban:2,penjelasan:'Umat Islam berpuasa wajib di bulan Ramadhan, bulan ke-9 dalam kalender Hijriah.'},
-  {soal:'Berapa jumlah rukun iman?',pilihan:['4','5','6','7'],jawaban:2,penjelasan:'Rukun iman ada 6: Iman kepada Allah, Malaikat, Kitab, Rasul, Hari Akhir, dan Qadha-Qadar.'},
-  {soal:'Apa nama bukit tempat Nabi Muhammad SAW menerima wahyu pertama?',pilihan:['Bukit Uhud','Bukit Sinai','Bukit Tsur','Bukit Nur (Hira)'],jawaban:3,penjelasan:'Wahyu pertama turun di Gua Hira, di Bukit Nur (Jabal Nur) di Makkah.'},
-  {soal:'Siapakah malaikat yang bertugas menyampaikan wahyu kepada para Nabi?',pilihan:['Malaikat Mikail','Malaikat Jibril','Malaikat Israfil','Malaikat Izrail'],jawaban:1,penjelasan:'Malaikat Jibril (Jibril AS) adalah malaikat yang bertugas menyampaikan wahyu kepada para Nabi.'},
-  {soal:'Apa nama surat pertama dalam Al-Qur\'an?',pilihan:['Al-Baqarah','Al-Ikhlas','Al-Fatihah','An-Nas'],jawaban:2,penjelasan:'Al-Fatihah adalah surat pertama dalam Al-Qur\'an yang terdiri dari 7 ayat.'},
-  {soal:'Berapa jumlah surat dalam Al-Qur\'an?',pilihan:['112 surat','113 surat','114 surat','115 surat'],jawaban:2,penjelasan:'Al-Qur\'an terdiri dari 114 surat.'},
-  {soal:'Nabi manakah yang terkenal dengan kesabarannya menghadapi penyakit?',pilihan:['Nabi Yusuf AS','Nabi Ayub AS','Nabi Yunus AS','Nabi Isa AS'],jawaban:1,penjelasan:'Nabi Ayub AS terkenal dengan kesabarannya yang luar biasa menghadapi penyakit yang berat.'},
-  {soal:'Apa nama perjalanan Nabi Muhammad SAW dari Makkah ke Madinah?',pilihan:['Isra','Mi\'raj','Hijrah','Futuh'],jawaban:2,penjelasan:'Hijrah adalah perjalanan Nabi Muhammad SAW beserta para sahabat dari Makkah ke Madinah.'},
-  {soal:'Siapakah yang disebut "Dzun Nurain" (Pemilik Dua Cahaya)?',pilihan:['Abu Bakar RA','Umar bin Khattab RA','Utsman bin Affan RA','Ali bin Abi Thalib RA'],jawaban:2,penjelasan:'Utsman bin Affan RA disebut Dzun Nurain karena menikahi dua putri Nabi: Ruqayyah dan Ummu Kulthum.'}
-];
-
-/* ── 4. PUZZLE AYAT ── */
-var PUZZLE_DATA = [
-  {
-    surat:'Al-Fatihah: 1',
-    ayat:'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ',
-    arti:'Dengan nama Allah Yang Maha Pengasih, Maha Penyayang',
-    kata:['بِسْمِ','اللَّهِ','الرَّحْمَنِ','الرَّحِيمِ'],
-    acak:['الرَّحِيمِ','اللَّهِ','بِسْمِ','الرَّحْمَنِ']
-  },
-  {
-    surat:'Al-Ikhlas: 1',
-    ayat:'قُلْ هُوَ اللَّهُ أَحَدٌ',
-    arti:'Katakanlah: Dialah Allah Yang Maha Esa',
-    kata:['قُلْ','هُوَ','اللَّهُ','أَحَدٌ'],
-    acak:['أَحَدٌ','قُلْ','اللَّهُ','هُوَ']
-  },
-  {
-    surat:'Al-Baqarah: 255 (Ayat Kursi - bagian 1)',
-    ayat:'اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ',
-    arti:'Allah, tidak ada tuhan selain Dia, Yang Maha Hidup, Yang terus menerus mengurus makhluk-Nya',
-    kata:['اللَّهُ','لَا','إِلَهَ','إِلَّا','هُوَ','الْحَيُّ','الْقَيُّومُ'],
-    acak:['الْحَيُّ','إِلَّا','اللَّهُ','الْقَيُّومُ','لَا','هُوَ','إِلَهَ']
-  },
-  {
-    surat:'Al-Ashr: 1-3',
-    ayat:'وَالْعَصْرِ إِنَّ الْإِنْسَانَ لَفِي خُسْرٍ',
-    arti:'Demi masa, sungguh manusia berada dalam kerugian',
-    kata:['وَالْعَصْرِ','إِنَّ','الْإِنْسَانَ','لَفِي','خُسْرٍ'],
-    acak:['الْإِنْسَانَ','وَالْعَصْرِ','خُسْرٍ','إِنَّ','لَفِي']
-  },
-  {
-    surat:'Al-Kafirun: 1',
-    ayat:'قُلْ يَا أَيُّهَا الْكَافِرُونَ',
-    arti:'Katakanlah: Wahai orang-orang kafir',
-    kata:['قُلْ','يَا','أَيُّهَا','الْكَافِرُونَ'],
-    acak:['أَيُّهَا','قُلْ','الْكَافِرُونَ','يَا']
-  },
-  {
-    surat:'An-Nas: 1',
-    ayat:'قُلْ أَعُوذُ بِرَبِّ النَّاسِ',
-    arti:'Katakanlah: Aku berlindung kepada Tuhan manusia',
-    kata:['قُلْ','أَعُوذُ','بِرَبِّ','النَّاسِ'],
-    acak:['بِرَبِّ','النَّاسِ','قُلْ','أَعُوذُ']
-  },
-  {
-    surat:'Al-Falaq: 1',
-    ayat:'قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ',
-    arti:'Katakanlah: Aku berlindung kepada Tuhan yang menguasai subuh',
-    kata:['قُلْ','أَعُوذُ','بِرَبِّ','الْفَلَقِ'],
-    acak:['أَعُوذُ','الْفَلَقِ','بِرَبِّ','قُلْ']
-  },
-  {
-    surat:'Al-Kautsar: 1',
-    ayat:'إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ',
-    arti:'Sungguh, Kami telah memberimu nikmat yang banyak',
-    kata:['إِنَّا','أَعْطَيْنَاكَ','الْكَوْثَرَ'],
-    acak:['الْكَوْثَرَ','إِنَّا','أَعْطَيْنَاكَ']
-  }
-];
-
-/* ── 5. TEBAK TOKOH ── */
-var TOKOH_DATA = [
-  {nama:'Nabi Adam AS',kategori:'Nabi',petunjuk:['Manusia pertama yang diciptakan Allah','Diciptakan dari tanah liat','Ditempatkan di surga bersama istrinya','Nama istrinya adalah Hawa'],jawaban:'Adam'},
-  {nama:'Nabi Nuh AS',kategori:'Nabi',petunjuk:['Berdakwah selama 950 tahun','Membuat bahtera besar','Selamat dari banjir besar','Salah satu putranya bernama Kan\'an'],jawaban:'Nuh'},
-  {nama:'Nabi Ibrahim AS',kategori:'Nabi',petunjuk:['Disebut Khalilullah (kekasih Allah)','Dilempar ke dalam api namun selamat','Membangun Ka\'bah bersama putranya','Mendapat ujian menyembelih putranya'],jawaban:'Ibrahim'},
-  {nama:'Nabi Ismail AS',kategori:'Nabi',petunjuk:['Putra pertama Nabi Ibrahim AS','Dari ibunya yang bernama Hajar','Di kakinya memancar air Zamzam','Rela disembelih tapi diganti domba'],jawaban:'Ismail'},
-  {nama:'Nabi Musa AS',kategori:'Nabi',petunjuk:['Dibesarkan di istana Firaun','Memiliki tongkat yang bisa jadi ular','Menerima kitab Taurat','Membelah laut dengan tongkatnya'],jawaban:'Musa'},
-  {nama:'Nabi Yusuf AS',kategori:'Nabi',petunjuk:['Dilempar ke dalam sumur oleh saudaranya','Dijual sebagai budak di Mesir','Bisa menafsirkan mimpi','Menjadi menteri di Mesir'],jawaban:'Yusuf'},
-  {nama:'Nabi Isa AS',kategori:'Nabi',petunjuk:['Lahir tanpa ayah dari Maryam','Bisa berbicara saat masih bayi','Menyembuhkan orang sakit atas izin Allah','Menerima kitab Injil'],jawaban:'Isa'},
-  {nama:'Nabi Muhammad SAW',kategori:'Nabi',petunjuk:['Nabi terakhir dan penutup para nabi','Lahir di Makkah tahun 570 M','Dijuluki Al-Amin sebelum kenabian','Menerima Al-Qur\'an di Gua Hira'],jawaban:'Muhammad'},
-  {nama:'Abu Bakar Ash-Shiddiq RA',kategori:'Sahabat',petunjuk:['Sahabat terdekat Nabi','Orang pertama membenarkan Isra Mi\'raj','Menemani Nabi hijrah ke Madinah','Khalifah pertama Islam'],jawaban:'Abu Bakar'},
-  {nama:'Umar bin Khattab RA',kategori:'Sahabat',petunjuk:['Dijuluki Al-Faruq','Masuk Islam setelah membaca ayat Al-Qur\'an','Khalifah kedua Islam','Dikenal sangat adil dan tegas'],jawaban:'Umar'},
-  {nama:'Utsman bin Affan RA',kategori:'Sahabat',petunjuk:['Dijuluki Dzun Nurain','Menikahi dua putri Nabi','Mengumpulkan Al-Qur\'an dalam satu mushaf','Khalifah ketiga Islam'],jawaban:'Utsman'},
-  {nama:'Ali bin Abi Thalib RA',kategori:'Sahabat',petunjuk:['Sepupu dan menantu Nabi','Anak pertama masuk Islam','Tidur di tempat tidur Nabi saat hijrah','Khalifah keempat Islam'],jawaban:'Ali'},
-  {nama:'Bilal bin Rabah RA',kategori:'Sahabat',petunjuk:['Budak yang disiksa karena Islam','Diselamatkan oleh Abu Bakar','Muadzin pertama dalam Islam','Berasal dari Habasyah'],jawaban:'Bilal'},
-  {nama:'Khadijah binti Khuwailid RA',kategori:'Sahabat',petunjuk:['Istri pertama Nabi Muhammad','Wanita pertama masuk Islam','Seorang pebisnis kaya dan terhormat','Melamar Nabi Muhammad saat berusia 40 tahun'],jawaban:'Khadijah'},
-  {nama:'Uwais Al-Qarni',kategori:'Orang Sholeh',petunjuk:['Berasal dari Yaman','Tidak pernah bertemu Nabi namun sangat dicintai Nabi','Sangat berbakti kepada ibunya','Umar dan Ali disuruh Nabi mencarinya'],jawaban:'Uwais'},
-  {nama:'Imam Al-Ghazali',kategori:'Orang Sholeh',petunjuk:['Dijuluki Hujjatul Islam','Meninggalkan jabatan professor untuk mencari kebenaran','Menulis kitab Ihya Ulumuddin','Lahir di Tus, Persia'],jawaban:'Ghazali'},
-  {nama:'Rabi\'ah Al-Adawiyah',kategori:'Orang Sholeh',petunjuk:['Wanita sufi terbesar','Berasal dari Bashrah Iraq','Pernah menjadi budak sebelum dibebaskan','Mengajarkan cinta murni kepada Allah'],jawaban:'Rabiah'},
-  {nama:'Hasan Al-Bashri',kategori:'Orang Sholeh',petunjuk:['Imam tabi\'in terbesar','Dibesarkan di rumah Ummu Salamah','Berasal dari Bashrah','Terkenal dengan kata-kata hikmah yang menyentuh hati'],jawaban:'Hasan'}
-];
-
-
-/* ═══════════════════════════════════════════
-   UTILITIES
-═══════════════════════════════════════════ */
-function acak(arr){
-  var a=arr.slice();
-  for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
-  return a;
-}
-function ambilN(arr,n){return acak(arr).slice(0,n);}
+/* ── UTILITIES ── */
+function acak(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
-
 var fbCallback=null;
 function showFeedback(icon,titleText,titleClass,text,btnLabel,cb){
   document.getElementById('fbIcon').textContent=icon;
-  var t=document.getElementById('fbTitle');
-  t.textContent=titleText;t.className='fb-title '+titleClass;
+  var t=document.getElementById('fbTitle');t.textContent=titleText;t.className='fb-title '+titleClass;
   document.getElementById('fbText').textContent=text;
   document.getElementById('fbBtn').textContent=btnLabel||'Lanjut →';
   fbCallback=cb||null;
@@ -665,40 +330,23 @@ function closeFeedback(){
   document.getElementById('feedbackOverlay').classList.remove('show');
   if(fbCallback){var c=fbCallback;fbCallback=null;c();}
 }
-
-function tampilHasil(containerId,skor,total,onUlang,onMenu){
+function tampilHasil(id,skor,total,onUlang){
   var pct=Math.round(skor/total*100);
   var emoji=pct>=80?'🏆':pct>=60?'⭐':pct>=40?'👍':'💪';
-  var msg=pct>=80?'Luar biasa! Kamu sangat pintar! Terus semangat belajar Islam ya!':
-          pct>=60?'Bagus sekali! Kamu sudah tahu banyak tentang Islam. Ayo terus belajar!':
-          pct>=40?'Cukup baik! Masih banyak yang bisa dipelajari. Jangan menyerah!':
-          'Jangan sedih, terus berlatih ya! Belajar itu proses, bukan perlombaan 😊';
-  document.getElementById(containerId).innerHTML=
-    '<div class="hasil-box">'+
-      '<div class="hasil-emoji">'+emoji+'</div>'+
-      '<div class="hasil-title">Permainan Selesai!</div>'+
-      '<div class="hasil-score">'+skor+'<span> / '+total+'</span></div>'+
-      '<div class="hasil-msg">'+msg+'</div>'+
-      '<div class="hasil-btns">'+
-        '<button class="btn-ulang" onclick="('+onUlang+')()">🔄 Main Lagi</button>'+
-        '<button class="btn-menu" onclick="keMenu()">🏠 Menu</button>'+
-      '</div>'+
-    '</div>';
+  var msg=pct>=80?'Luar biasa! Kamu sangat pintar!':pct>=60?'Bagus sekali! Terus belajar!':pct>=40?'Cukup baik! Jangan menyerah!':'Terus berlatih ya! Belajar itu proses 😊';
+  document.getElementById(id).innerHTML='<div class="hasil-box"><div class="hasil-emoji">'+emoji+'</div><div class="hasil-title">Permainan Selesai!</div><div class="hasil-score">'+skor+'<span> / '+total+'</span></div><div class="hasil-msg">'+msg+'</div><div class="hasil-btns"><button class="btn-ulang" onclick="('+onUlang+')()">🔄 Main Lagi</button><button class="btn-menu" onclick="keMenu()">🏠 Menu</button></div></div>';
   scrollTop();
 }
-
-/* ═══════════════════════════════════════════
-   NAVIGASI GAME
-═══════════════════════════════════════════ */
 var gameAktif=null;
 function mulaiGame(g){
   document.getElementById('menuView').style.display='none';
   ['hijaiyah','kuis','asma','puzzle','tokoh','catur'].forEach(function(id){
-    document.getElementById('g'+id.charAt(0).toUpperCase()+id.slice(1)).classList.remove('active');
+    var el=document.getElementById('g'+id.charAt(0).toUpperCase()+id.slice(1));
+    if(el) el.classList.remove('active');
   });
   gameAktif=g;
-  var viewMap={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur'};
-  document.getElementById(viewMap[g]).classList.add('active');
+  var vm={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur'};
+  document.getElementById(vm[g]).classList.add('active');
   scrollTop();
   if(g==='hijaiyah') initHijaiyah();
   else if(g==='kuis') initKuis();
@@ -710,8 +358,8 @@ function mulaiGame(g){
 function keMenu(){
   clearTimers();
   document.getElementById('feedbackOverlay').classList.remove('show');
-  var viewMap={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur'};
-  if(gameAktif) document.getElementById(viewMap[gameAktif]).classList.remove('active');
+  var vm={hijaiyah:'gHijaiyah',kuis:'gKuis',asma:'gAsma',puzzle:'gPuzzle',tokoh:'gTokoh',catur:'gCatur'};
+  if(gameAktif) document.getElementById(vm[gameAktif]).classList.remove('active');
   document.getElementById('menuView').style.display='block';
   scrollTop();
 }
@@ -719,131 +367,64 @@ var timerIds=[];
 function regTimer(id){timerIds.push(id);}
 function clearTimers(){timerIds.forEach(clearInterval);timerIds.forEach(clearTimeout);timerIds=[];}
 
-/* ═══════════════════════════════════════════
-   GAME 1 — TEBAK HURUF HIJAIYAH
-═══════════════════════════════════════════ */
+/* ── GAME 1: HIJAIYAH ── */
 var hjState={};
-function initHijaiyah(){
-  hjState={soal:acak(HIJAIYAH),idx:0,skor:0,total:15};
-  hjState.soal=hjState.soal.slice(0,hjState.total);
-  document.getElementById('hjScore').textContent='0';
-  renderHijaiyah();
-}
+function initHijaiyah(){hjState={soal:acak(HIJAIYAH).slice(0,15),idx:0,skor:0};document.getElementById('hjScore').textContent='0';renderHijaiyah();}
 function renderHijaiyah(){
   var s=hjState;
-  if(s.idx>=s.total){
-    tampilHasil('hjBody',s.skor,s.total,'initHijaiyah','keMenu');
-    return;
-  }
+  if(s.idx>=s.soal.length){tampilHasil('hjBody',s.skor,s.soal.length,'initHijaiyah');return;}
   var benar=s.soal[s.idx];
-  var salah=acak(HIJAIYAH.filter(function(h){return h.nama!==benar.nama;})).slice(0,3);
-  var opts=acak([benar].concat(salah));
-  var pct=Math.round((s.idx/s.total)*100);
-  var html=
-    '<div class="hj-card">'+
-      '<div class="hj-progress">'+
-        '<span class="hj-prog-text">'+s.idx+'/'+s.total+'</span>'+
-        '<div class="hj-prog-bar"><div class="hj-prog-fill" style="width:'+pct+'%"></div></div>'+
-        '<span class="hj-prog-text">Skor: '+s.skor+'</span>'+
-      '</div>'+
-      '<div class="hj-arab">'+benar.arab+'</div>'+
-      '<div class="hj-hint">Apa nama huruf ini?</div>'+
-    '</div>'+
-    '<div class="hj-options">';
-  opts.forEach(function(o){
-    html+='<button class="hj-opt" id="hjOpt-'+o.nama+'" onclick="jwbHijaiyah(\''+o.nama+'\',\''+benar.nama+'\')">'+o.nama+' ('+o.latin+')</button>';
-  });
+  var opts=acak([benar].concat(acak(HIJAIYAH.filter(function(h){return h.nama!==benar.nama;})).slice(0,3)));
+  var pct=Math.round(s.idx/s.soal.length*100);
+  var html='<div class="hj-card"><div class="hj-progress"><span class="hj-prog-text">'+s.idx+'/'+s.soal.length+'</span><div class="hj-prog-bar"><div class="hj-prog-fill" style="width:'+pct+'%"></div></div><span class="hj-prog-text">Skor: '+s.skor+'</span></div><div class="hj-arab">'+benar.arab+'</div><div class="hj-hint">Apa nama huruf ini?</div></div><div class="hj-options">';
+  opts.forEach(function(o){html+='<button class="hj-opt" id="hjOpt-'+o.nama+'" onclick="jwbHijaiyah(\''+o.nama+'\',\''+benar.nama+'\')">'+o.nama+' ('+o.latin+')</button>';});
   html+='</div>';
   document.getElementById('hjBody').innerHTML=html;
 }
 function jwbHijaiyah(pilih,benar){
   document.querySelectorAll('.hj-opt').forEach(function(b){b.disabled=true;});
-  var isBenar=pilih===benar;
-  document.getElementById('hjOpt-'+pilih).classList.add(isBenar?'correct':'wrong');
-  if(!isBenar) document.getElementById('hjOpt-'+benar).classList.add('correct');
-  if(isBenar) hjState.skor++;
+  var ok=pilih===benar;
+  document.getElementById('hjOpt-'+pilih).classList.add(ok?'correct':'wrong');
+  if(!ok) document.getElementById('hjOpt-'+benar).classList.add('correct');
+  if(ok) hjState.skor++;
   document.getElementById('hjScore').textContent=hjState.skor;
-  var t=setTimeout(function(){
-    hjState.idx++;
-    renderHijaiyah();
-  },isBenar?900:1600);
-  regTimer(t);
+  regTimer(setTimeout(function(){hjState.idx++;renderHijaiyah();},ok?900:1600));
 }
 
-/* ═══════════════════════════════════════════
-   GAME 2 — KUIS ISLAMI
-═══════════════════════════════════════════ */
-var kuisState={};
-var kuisTimerInterval=null;
-function initKuis(){
-  kuisState={soal:acak(KUIS_DATA).slice(0,15),idx:0,skor:0,dijawab:false};
-  document.getElementById('kuisScore').textContent='0';
-  renderKuis();
-}
+/* ── GAME 2: KUIS ── */
+var kuisState={},kuisTimerInterval=null;
+function initKuis(){kuisState={soal:acak(KUIS_DATA).slice(0,15),idx:0,skor:0,dijawab:false};document.getElementById('kuisScore').textContent='0';renderKuis();}
 function renderKuis(){
   var s=kuisState;
-  if(s.idx>=s.soal.length){
-    tampilHasil('kuisBody',s.skor,s.soal.length,'initKuis','keMenu');
-    return;
-  }
-  var q=s.soal[s.idx];
-  s.dijawab=false;
-  var timer=20;
-  var html=
-    '<div class="kuis-no">Soal '+(s.idx+1)+' dari '+s.soal.length+'</div>'+
-    '<div class="kuis-timer">'+
-      '<div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:100%"></div></div>'+
-      '<div class="timer-num" id="timerNum">20</div>'+
-    '</div>'+
-    '<div class="kuis-soal">'+q.soal+'</div>'+
-    '<div class="kuis-options">';
+  if(s.idx>=s.soal.length){tampilHasil('kuisBody',s.skor,s.soal.length,'initKuis');return;}
+  var q=s.soal[s.idx];s.dijawab=false;
   var labels=['A','B','C','D'];
-  q.pilihan.forEach(function(p,i){
-    html+='<button class="kuis-opt" id="kopt-'+i+'" onclick="jwbKuis('+i+','+q.jawaban+')">'+
-          '<div class="kopt-label">'+labels[i]+'</div>'+p+'</button>';
-  });
+  var html='<div class="kuis-no">Soal '+(s.idx+1)+' dari '+s.soal.length+'</div><div class="kuis-timer"><div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:100%"></div></div><div class="timer-num" id="timerNum">20</div></div><div class="kuis-soal">'+q.soal+'</div><div class="kuis-options">';
+  q.pilihan.forEach(function(p,i){html+='<button class="kuis-opt" id="kopt-'+i+'" onclick="jwbKuis('+i+','+q.jawaban+')"><div class="kopt-label">'+labels[i]+'</div>'+p+'</button>';});
   html+='</div>';
   document.getElementById('kuisBody').innerHTML=html;
   if(kuisTimerInterval) clearInterval(kuisTimerInterval);
-  var timeLeft=20;
+  var tl=20;
   kuisTimerInterval=setInterval(function(){
-    timeLeft--;
-    var pct=(timeLeft/20)*100;
-    var fill=document.getElementById('timerFill');
-    var num=document.getElementById('timerNum');
+    tl--;var pct=tl/20*100;
+    var fill=document.getElementById('timerFill'),num=document.getElementById('timerNum');
     if(!fill){clearInterval(kuisTimerInterval);return;}
-    fill.style.width=pct+'%';
-    num.textContent=timeLeft;
-    if(timeLeft<=7) fill.classList.add('urgent'); else fill.classList.remove('urgent');
-    if(timeLeft<=0){
-      clearInterval(kuisTimerInterval);
-      if(!kuisState.dijawab) waktusHabis(q.jawaban,q.penjelasan);
-    }
+    fill.style.width=pct+'%';num.textContent=tl;
+    if(tl<=7) fill.classList.add('urgent'); else fill.classList.remove('urgent');
+    if(tl<=0){clearInterval(kuisTimerInterval);if(!kuisState.dijawab) waktusHabis(q.jawaban,q.penjelasan);}
   },1000);
   regTimer(kuisTimerInterval);
 }
 function jwbKuis(pilih,benar){
-  if(kuisState.dijawab) return;
-  kuisState.dijawab=true;
-  clearInterval(kuisTimerInterval);
+  if(kuisState.dijawab) return;kuisState.dijawab=true;clearInterval(kuisTimerInterval);
   document.querySelectorAll('.kuis-opt').forEach(function(b){b.disabled=true;});
-  var isBenar=pilih===benar;
-  document.getElementById('kopt-'+pilih).classList.add(isBenar?'correct':'wrong');
+  var ok=pilih===benar;
+  document.getElementById('kopt-'+pilih).classList.add(ok?'correct':'wrong');
   document.getElementById('kopt-'+benar).classList.add('correct');
-  if(isBenar) kuisState.skor++;
+  if(ok) kuisState.skor++;
   document.getElementById('kuisScore').textContent=kuisState.skor;
   var q=kuisState.soal[kuisState.idx];
-  var t=setTimeout(function(){
-    showFeedback(
-      isBenar?'✅':'❌',
-      isBenar?'Benar!':'Salah!',
-      isBenar?'ok':'err',
-      q.penjelasan,
-      'Soal Berikutnya →',
-      function(){kuisState.idx++;renderKuis();}
-    );
-  },600);
-  regTimer(t);
+  regTimer(setTimeout(function(){showFeedback(ok?'✅':'❌',ok?'Benar!':'Salah!',ok?'ok':'err',q.penjelasan,'Soal Berikutnya →',function(){kuisState.idx++;renderKuis();});},600));
 }
 function waktusHabis(benar,penjelasan){
   document.querySelectorAll('.kuis-opt').forEach(function(b){b.disabled=true;});
@@ -851,54 +432,23 @@ function waktusHabis(benar,penjelasan){
   showFeedback('⏰','Waktu Habis!','err',penjelasan,'Soal Berikutnya →',function(){kuisState.idx++;renderKuis();});
 }
 
-/* ═══════════════════════════════════════════
-   GAME 3 — ASMAUL HUSNA
-═══════════════════════════════════════════ */
+/* ── GAME 3: ASMAUL HUSNA ── */
 var asmaState={};
-function initAsma(){
-  asmaState={mode:'hafalan',idx:0,kuisIdx:0,kuisSkor:0,kuisTotal:20,selesai:false};
-  document.getElementById('asmaScore').textContent='0';
-  renderAsma();
-}
+function initAsma(){asmaState={mode:'hafalan',idx:0,kuisIdx:0,kuisSkor:0,kuisTotal:20,selesai:false,soalKuis:null};document.getElementById('asmaScore').textContent='0';renderAsma();}
 function renderAsma(){
   var s=asmaState;
-  var html='<div class="ah-mode-btns">'+
-    '<button class="ah-mode-btn'+(s.mode==='hafalan'?' aktif':'')+'" onclick="setAsmaMode(\'hafalan\')">📖 Hafalan</button>'+
-    '<button class="ah-mode-btn'+(s.mode==='kuis'?' aktif':'')+'" onclick="setAsmaMode(\'kuis\')">🎯 Kuis</button>'+
-  '</div>';
+  var html='<div class="ah-mode-btns"><button class="ah-mode-btn'+(s.mode==='hafalan'?' aktif':'')+'" onclick="setAsmaMode(\'hafalan\')">📖 Hafalan</button><button class="ah-mode-btn'+(s.mode==='kuis'?' aktif':'')+'" onclick="setAsmaMode(\'kuis\')">🎯 Kuis</button></div>';
   if(s.mode==='hafalan'){
     var item=ASMAUL_HUSNA[s.idx];
-    html+=
-      '<div class="ah-hafalan-card">'+
-        '<div class="ah-no-badge">No. '+item.no+' dari 99</div>'+
-        '<div class="ah-arab">'+item.arab+'</div>'+
-        '<div class="ah-latin">'+item.latin+'</div>'+
-        '<div class="ah-arti">'+item.arti+'</div>'+
-      '</div>'+
-      '<div class="ah-nav">'+
-        '<button class="ah-nav-btn" onclick="ahNav(-1)"'+(s.idx<=0?' disabled':'')+'>← Sebelumnya</button>'+
-        '<button class="ah-nav-btn" style="background:var(--gd);color:#fff;border-color:var(--gd)" onclick="ahNav(1)"'+(s.idx>=98?' disabled':'')+'>Berikutnya →</button>'+
-      '</div>';
+    html+='<div class="ah-hafalan-card"><div class="ah-no-badge">No. '+item.no+' dari 99</div><div class="ah-arab">'+item.arab+'</div><div class="ah-latin">'+item.latin+'</div><div class="ah-arti">'+item.arti+'</div></div><div class="ah-nav"><button class="ah-nav-btn" onclick="ahNav(-1)"'+(s.idx<=0?' disabled':'')+'>← Sebelumnya</button><button class="ah-nav-btn" style="background:var(--gd);color:#fff;border-color:var(--gd)" onclick="ahNav(1)"'+(s.idx>=98?' disabled':'')+'>Berikutnya →</button></div>';
   } else {
-    if(s.selesai){
-      tampilHasil('asmaBody',s.kuisSkor,s.kuisTotal,'function(){asmaState.kuisIdx=0;asmaState.kuisSkor=0;asmaState.selesai=false;asmaState.soalKuis=null;renderAsma();}','keMenu');
-      return;
-    }
+    if(s.selesai){tampilHasil('asmaBody',s.kuisSkor,s.kuisTotal,'function(){asmaState.kuisIdx=0;asmaState.kuisSkor=0;asmaState.selesai=false;asmaState.soalKuis=null;renderAsma();}');return;}
     if(!s.soalKuis||s.kuisIdx===0) s.soalKuis=acak(ASMAUL_HUSNA).slice(0,s.kuisTotal);
     if(s.kuisIdx>=s.kuisTotal){s.selesai=true;renderAsma();return;}
     var item=s.soalKuis[s.kuisIdx];
-    var salah=acak(ASMAUL_HUSNA.filter(function(a){return a.no!==item.no;})).slice(0,3);
-    var opts=acak([item].concat(salah));
-    html+=
-      '<div style="font-size:.72rem;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">'+
-        (s.kuisIdx+1)+'/'+s.kuisTotal+' — Skor: '+s.kuisSkor+
-      '</div>'+
-      '<div class="ah-kuis-arab">'+item.arab+'<br><div style="font-size:.9rem;color:var(--tl);margin-top:6px;">'+item.latin+'</div></div>'+
-      '<div style="font-size:.78rem;color:var(--tm);margin-bottom:10px;">Apa arti Asmaul Husna di atas?</div>'+
-      '<div class="ah-opts">';
-    opts.forEach(function(o){
-      html+='<button class="ah-opt" id="ahOpt-'+o.no+'" onclick="jwbAsma('+o.no+','+item.no+')">'+o.arti+'</button>';
-    });
+    var opts=acak([item].concat(acak(ASMAUL_HUSNA.filter(function(a){return a.no!==item.no;})).slice(0,3)));
+    html+='<div style="font-size:.72rem;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">'+(s.kuisIdx+1)+'/'+s.kuisTotal+' — Skor: '+s.kuisSkor+'</div><div class="ah-kuis-arab">'+item.arab+'<br><div style="font-size:.9rem;color:var(--tl);margin-top:6px;">'+item.latin+'</div></div><div style="font-size:.78rem;color:var(--tm);margin-bottom:10px;">Apa arti Asmaul Husna di atas?</div><div class="ah-opts">';
+    opts.forEach(function(o){html+='<button class="ah-opt" id="ahOpt-'+o.no+'" onclick="jwbAsma('+o.no+','+item.no+')">'+o.arti+'</button>';});
     html+='</div>';
   }
   document.getElementById('asmaBody').innerHTML=html;
@@ -907,942 +457,265 @@ function setAsmaMode(m){asmaState.mode=m;asmaState.selesai=false;asmaState.kuisI
 function ahNav(d){asmaState.idx=Math.max(0,Math.min(98,asmaState.idx+d));renderAsma();}
 function jwbAsma(pilih,benar){
   document.querySelectorAll('.ah-opt').forEach(function(b){b.disabled=true;});
-  var isBenar=pilih===benar;
-  document.getElementById('ahOpt-'+pilih).classList.add(isBenar?'correct':'wrong');
-  if(!isBenar) document.getElementById('ahOpt-'+benar).classList.add('correct');
-  if(isBenar) asmaState.kuisSkor++;
+  var ok=pilih===benar;
+  document.getElementById('ahOpt-'+pilih).classList.add(ok?'correct':'wrong');
+  if(!ok) document.getElementById('ahOpt-'+benar).classList.add('correct');
+  if(ok) asmaState.kuisSkor++;
   document.getElementById('asmaScore').textContent=asmaState.kuisSkor;
-  var t=setTimeout(function(){asmaState.kuisIdx++;renderAsma();},isBenar?800:1500);
-  regTimer(t);
+  regTimer(setTimeout(function(){asmaState.kuisIdx++;renderAsma();},ok?800:1500));
 }
 
-/* ═══════════════════════════════════════════
-   GAME 4 — PUZZLE AYAT
-═══════════════════════════════════════════ */
+/* ── GAME 4: PUZZLE ── */
 var pzState={};
-function initPuzzle(){
-  pzState={soal:acak(PUZZLE_DATA),idx:0,skor:0,slotKata:[],bankKata:[]};
-  document.getElementById('pzScore').textContent='0';
-  renderPuzzle();
-}
+function initPuzzle(){pzState={soal:acak(PUZZLE_DATA),idx:0,skor:0,slotKata:[],bankKata:[]};document.getElementById('pzScore').textContent='0';renderPuzzle();}
 function renderPuzzle(){
   var s=pzState;
-  if(s.idx>=s.soal.length){
-    tampilHasil('pzBody',s.skor,s.soal.length,'initPuzzle','keMenu');
-    return;
-  }
-  var q=s.soal[s.idx];
-  s.slotKata=[];
-  s.bankKata=acak(q.kata.slice());
-  var html=
-    '<div class="pz-surat">📖 '+q.surat+'</div>'+
-    '<div class="pz-arti">Artinya: "'+q.arti+'"</div>'+
-    '<div style="font-size:.72rem;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Susun Ayat yang Benar (klik untuk pindah):</div>'+
-    '<div class="pz-slot-area" id="pzSlot"></div>'+
-    '<div style="font-size:.72rem;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:4px;">Kata-kata Tersedia:</div>'+
-    '<div class="pz-bank" id="pzBank"></div>'+
-    '<div class="pz-actions">'+
-      '<button class="pz-btn pz-btn-reset" onclick="resetPuzzle()">🔄 Ulang</button>'+
-      '<button class="pz-btn pz-btn-check" onclick="cekPuzzle()">✓ Cek Jawaban</button>'+
-    '</div>'+
-    '<div style="text-align:center;font-size:.72rem;color:var(--tl);margin-top:10px;">Soal '+(s.idx+1)+' dari '+s.soal.length+'</div>';
-  document.getElementById('pzBody').innerHTML=html;
-  renderPzKata();
+  if(s.idx>=s.soal.length){tampilHasil('pzBody',s.skor,s.soal.length,'initPuzzle');return;}
+  var q=s.soal[s.idx];s.slotKata=[];s.bankKata=acak(q.kata.slice());
+  var html='<div class="pz-surat">📖 '+q.surat+'</div><div class="pz-arti">Artinya: "'+q.arti+'"</div><div style="font-size:.72rem;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Susun Ayat yang Benar:</div><div class="pz-slot-area" id="pzSlot"></div><div style="font-size:.72rem;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:4px;">Kata-kata Tersedia:</div><div class="pz-bank" id="pzBank"></div><div class="pz-actions"><button class="pz-btn pz-btn-reset" onclick="resetPuzzle()">🔄 Ulang</button><button class="pz-btn pz-btn-check" onclick="cekPuzzle()">✓ Cek Jawaban</button></div><div style="text-align:center;font-size:.72rem;color:var(--tl);margin-top:10px;">Soal '+(s.idx+1)+' dari '+s.soal.length+'</div>';
+  document.getElementById('pzBody').innerHTML=html;renderPzKata();
 }
 function renderPzKata(){
-  var s=pzState;
-  var slotEl=document.getElementById('pzSlot');
-  var bankEl=document.getElementById('pzBank');
-  if(!slotEl) return;
-  slotEl.innerHTML='';
-  bankEl.innerHTML='';
-  if(s.slotKata.length===0){
-    var placeholder=document.createElement('div');
-    placeholder.style.cssText='font-size:.75rem;color:var(--tl);padding:8px;';
-    placeholder.textContent='Klik kata di bawah untuk menambahkan ke sini...';
-    slotEl.appendChild(placeholder);
-  }
-  s.slotKata.forEach(function(kata,i){
-    var el=document.createElement('div');
-    el.className='pz-kata in-slot';
-    el.textContent=kata;
-    el.onclick=function(){pzKataKeBank(i);};
-    slotEl.appendChild(el);
-  });
-  s.bankKata.forEach(function(kata,i){
-    var el=document.createElement('div');
-    el.className='pz-kata in-bank';
-    el.textContent=kata;
-    el.onclick=function(){pzKataKeSlot(i);};
-    bankEl.appendChild(el);
-  });
+  var s=pzState;var slotEl=document.getElementById('pzSlot');var bankEl=document.getElementById('pzBank');
+  if(!slotEl) return;slotEl.innerHTML='';bankEl.innerHTML='';
+  if(s.slotKata.length===0){var p=document.createElement('div');p.style.cssText='font-size:.75rem;color:var(--tl);padding:8px;';p.textContent='Klik kata di bawah untuk menambahkan...';slotEl.appendChild(p);}
+  s.slotKata.forEach(function(k,i){var el=document.createElement('div');el.className='pz-kata in-slot';el.textContent=k;el.onclick=function(){pzKataKeBank(i);};slotEl.appendChild(el);});
+  s.bankKata.forEach(function(k,i){var el=document.createElement('div');el.className='pz-kata in-bank';el.textContent=k;el.onclick=function(){pzKataKeSlot(i);};bankEl.appendChild(el);});
 }
-function pzKataKeSlot(bankIdx){
-  var s=pzState;
-  var kata=s.bankKata.splice(bankIdx,1)[0];
-  s.slotKata.push(kata);
-  renderPzKata();
-}
-function pzKataKeBank(slotIdx){
-  var s=pzState;
-  var kata=s.slotKata.splice(slotIdx,1)[0];
-  s.bankKata.push(kata);
-  renderPzKata();
-}
-function resetPuzzle(){
-  var s=pzState;
-  var q=s.soal[s.idx];
-  s.slotKata=[];
-  s.bankKata=acak(q.kata.slice());
-  renderPzKata();
-}
+function pzKataKeSlot(i){var k=pzState.bankKata.splice(i,1)[0];pzState.slotKata.push(k);renderPzKata();}
+function pzKataKeBank(i){var k=pzState.slotKata.splice(i,1)[0];pzState.bankKata.push(k);renderPzKata();}
+function resetPuzzle(){pzState.slotKata=[];pzState.bankKata=acak(pzState.soal[pzState.idx].kata.slice());renderPzKata();}
 function cekPuzzle(){
-  var s=pzState;
-  var q=s.soal[s.idx];
-  if(s.slotKata.length!==q.kata.length){
-    showFeedback('⚠️','Belum Selesai','err','Pastikan semua kata sudah disusun sebelum mengecek jawaban.','Oke','');
-    return;
-  }
-  var isBenar=s.slotKata.every(function(k,i){return k===q.kata[i];});
-  if(isBenar) s.skor++;
-  document.getElementById('pzScore').textContent=s.skor;
-  showFeedback(
-    isBenar?'🎉':'❌',
-    isBenar?'Benar!':'Belum Tepat',
-    isBenar?'ok':'err',
-    isBenar?'Susunan ayat sudah benar! Subhanallah!':'Susunan yang benar: '+q.kata.join(' — '),
-    s.idx<s.soal.length-1?'Ayat Berikutnya →':'Lihat Hasil',
-    function(){pzState.idx++;renderPuzzle();}
-  );
+  var s=pzState;var q=s.soal[s.idx];
+  if(s.slotKata.length!==q.kata.length){showFeedback('⚠️','Belum Selesai','err','Pastikan semua kata sudah disusun.','Oke',null);return;}
+  var ok=s.slotKata.every(function(k,i){return k===q.kata[i];});
+  if(ok) s.skor++;document.getElementById('pzScore').textContent=s.skor;
+  showFeedback(ok?'🎉':'❌',ok?'Benar!':'Belum Tepat',ok?'ok':'err',ok?'Susunan ayat sudah benar! Subhanallah!':'Susunan yang benar: '+q.kata.join(' — '),s.idx<s.soal.length-1?'Ayat Berikutnya →':'Lihat Hasil',function(){pzState.idx++;renderPuzzle();});
 }
 
-/* ═══════════════════════════════════════════
-   GAME 5 — TEBAK TOKOH ISLAM
-═══════════════════════════════════════════ */
+/* ── GAME 5: TOKOH ── */
 var tokohState={};
-function initTokoh(){
-  tokohState={soal:acak(TOKOH_DATA),idx:0,skor:0,nyawa:3,hintsShown:1,dijawab:false};
-  document.getElementById('tokohScore').textContent='0';
-  renderTokoh();
-}
+function initTokoh(){tokohState={soal:acak(TOKOH_DATA),idx:0,skor:0,nyawa:3,hintsShown:1,dijawab:false};document.getElementById('tokohScore').textContent='0';renderTokoh();}
 function renderTokoh(){
   var s=tokohState;
-  if(s.nyawa<=0||s.idx>=s.soal.length){
-    tampilHasil('tokohBody',s.skor,Math.min(s.idx+(s.nyawa>0?1:0),s.soal.length),'initTokoh','keMenu');
-    return;
-  }
-  var q=s.soal[s.idx];
-  s.hintsShown=1;
-  s.dijawab=false;
-  var poinPetunjuk=[100,75,50,25];
-  var nyawaHtml='';
-  for(var i=0;i<3;i++) nyawaHtml+=(i<s.nyawa?'❤️':'🖤');
+  if(s.nyawa<=0||s.idx>=s.soal.length){tampilHasil('tokohBody',s.skor,Math.min(s.idx+(s.nyawa>0?1:0),s.soal.length),'initTokoh');return;}
+  var q=s.soal[s.idx];s.hintsShown=1;s.dijawab=false;
+  var nyawaHtml='';for(var i=0;i<3;i++) nyawaHtml+=(i<s.nyawa?'❤️':'🖤');
   var hintsHtml='';
-  q.petunjuk.forEach(function(h,i){
-    var locked=i>=s.hintsShown;
-    hintsHtml+='<div class="tt-hint'+(locked?' locked':'')+'" id="ttHint-'+i+'">'+
-      '<div class="tt-hint-no">'+(i+1)+'</div>'+
-      '<div class="tt-hint-text">'+h+'</div>'+
-    '</div>';
-  });
-  var bisa=s.hintsShown<q.petunjuk.length;
-  var poin=poinPetunjuk[Math.min(s.hintsShown-1,3)];
-  var html=
-    '<div class="tt-score-info">'+
-      '<div class="tt-score-chip chip-sisa">Soal '+(s.idx+1)+'/'+s.soal.length+'</div>'+
-      '<div class="tt-score-chip chip-nyawa">'+nyawaHtml+'</div>'+
-      '<div class="tt-score-chip chip-poin">+'+poin+' poin</div>'+
-    '</div>'+
-    '<div class="tt-card">'+
-      '<div class="tt-kat">'+q.kategori+'</div>'+
-      '<div class="tt-hints" id="ttHints">'+hintsHtml+'</div>'+
-      '<button class="tt-unlock-btn" id="ttUnlockBtn" onclick="buka1Petunjuk()"'+(bisa?'':' disabled')+'>'+
-        (bisa?'🔍 Buka Petunjuk Berikutnya (-25 poin)':'✅ Semua Petunjuk Terbuka')+
-      '</button>'+
-    '</div>'+
-    '<div class="tt-input-area">'+
-      '<div class="tt-input-label">Masukkan Jawaban:</div>'+
-      '<input class="tt-input" id="ttInput" type="text" placeholder="Ketik nama tokoh..." '+
-        'onkeydown="if(event.key===\'Enter\') jwbTokoh()">'+
-      '<button class="tt-submit" onclick="jwbTokoh()">Jawab Sekarang</button>'+
-      '<button class="tt-skip" onclick="skipTokoh()">Lewati soal ini (−1 nyawa)</button>'+
-    '</div>';
+  q.petunjuk.forEach(function(h,i){hintsHtml+='<div class="tt-hint'+(i>=s.hintsShown?' locked':'')+'" id="ttHint-'+i+'"><div class="tt-hint-no">'+(i+1)+'</div><div class="tt-hint-text">'+h+'</div></div>';});
+  var poin=[100,75,50,25][Math.min(s.hintsShown-1,3)];
+  var html='<div class="tt-score-info"><div class="tt-score-chip chip-sisa">Soal '+(s.idx+1)+'/'+s.soal.length+'</div><div class="tt-score-chip chip-nyawa">'+nyawaHtml+'</div><div class="tt-score-chip chip-poin">+'+poin+' poin</div></div><div class="tt-card"><div class="tt-kat">'+q.kategori+'</div><div class="tt-hints">'+hintsHtml+'</div><button class="tt-unlock-btn" id="ttUnlockBtn" onclick="buka1Petunjuk()"'+(s.hintsShown<q.petunjuk.length?'':' disabled')+'>'+(s.hintsShown<q.petunjuk.length?'🔍 Buka Petunjuk Berikutnya (-25 poin)':'✅ Semua Petunjuk Terbuka')+'</button></div><div class="tt-input-area"><div class="tt-input-label">Masukkan Jawaban:</div><input class="tt-input" id="ttInput" type="text" placeholder="Ketik nama tokoh..." onkeydown="if(event.key===\'Enter\') jwbTokoh()"><button class="tt-submit" onclick="jwbTokoh()">Jawab Sekarang</button><button class="tt-skip" onclick="skipTokoh()">Lewati soal ini (−1 nyawa)</button></div>';
   document.getElementById('tokohBody').innerHTML=html;
-  var inp=document.getElementById('ttInput');
-  if(inp) setTimeout(function(){inp.focus();},100);
+  var inp=document.getElementById('ttInput');if(inp) setTimeout(function(){inp.focus();},100);
 }
 function buka1Petunjuk(){
-  var s=tokohState;
-  var q=s.soal[s.idx];
-  if(s.hintsShown>=q.petunjuk.length) return;
-  s.hintsShown++;
-  var el=document.getElementById('ttHint-'+(s.hintsShown-1));
-  if(el) el.classList.remove('locked');
-  var bisa=s.hintsShown<q.petunjuk.length;
-  var btn=document.getElementById('ttUnlockBtn');
-  if(btn){
-    btn.disabled=!bisa;
-    btn.textContent=bisa?'🔍 Buka Petunjuk Berikutnya (-25 poin)':'✅ Semua Petunjuk Terbuka';
-  }
-  var poinPetunjuk=[100,75,50,25];
-  var chip=document.querySelector('.chip-poin');
-  if(chip) chip.textContent='+'+poinPetunjuk[Math.min(s.hintsShown-1,3)]+' poin';
+  var s=tokohState;var q=s.soal[s.idx];
+  if(s.hintsShown>=q.petunjuk.length) return;s.hintsShown++;
+  var el=document.getElementById('ttHint-'+(s.hintsShown-1));if(el) el.classList.remove('locked');
+  var btn=document.getElementById('ttUnlockBtn');var bisa=s.hintsShown<q.petunjuk.length;
+  if(btn){btn.disabled=!bisa;btn.textContent=bisa?'🔍 Buka Petunjuk Berikutnya (-25 poin)':'✅ Semua Petunjuk Terbuka';}
+  var chip=document.querySelector('.chip-poin');if(chip) chip.textContent='+'+[100,75,50,25][Math.min(s.hintsShown-1,3)]+' poin';
 }
 function normTeks(s){return s.toLowerCase().replace(/[^a-z\s]/g,'').replace(/\s+/,' ').trim();}
 function jwbTokoh(){
-  var s=tokohState;
-  if(s.dijawab) return;
-  var inp=document.getElementById('ttInput');
-  if(!inp) return;
-  var jawaban=normTeks(inp.value);
-  if(!jawaban) return;
+  var s=tokohState;if(s.dijawab) return;
+  var inp=document.getElementById('ttInput');if(!inp) return;
+  var jawaban=normTeks(inp.value);if(!jawaban) return;
   var q=s.soal[s.idx];
-  var kunciList=q.jawaban.toLowerCase().split('/').map(function(k){return normTeks(k);});
-  var isBenar=kunciList.some(function(k){return jawaban.includes(k)||k.includes(jawaban);});
+  var ok=q.jawaban.toLowerCase().split('/').some(function(k){k=normTeks(k);return jawaban.includes(k)||k.includes(jawaban);});
   s.dijawab=true;
-  if(isBenar){
-    var poinPetunjuk=[100,75,50,25];
-    var poin=poinPetunjuk[Math.min(s.hintsShown-1,3)];
-    s.skor+=poin;
-    document.getElementById('tokohScore').textContent=s.skor;
-    inp.classList.add('correct');
-    showFeedback('🎉','Benar! +'+poin+' poin','ok',
-      'Jawaban yang tepat: '+q.nama,
-      s.idx<s.soal.length-1?'Tokoh Berikutnya →':'Lihat Hasil',
-      function(){s.idx++;renderTokoh();}
-    );
+  if(ok){
+    var poin=[100,75,50,25][Math.min(s.hintsShown-1,3)];s.skor+=poin;
+    document.getElementById('tokohScore').textContent=s.skor;inp.classList.add('correct');
+    showFeedback('🎉','Benar! +'+poin+' poin','ok','Jawaban yang tepat: '+q.nama,s.idx<s.soal.length-1?'Tokoh Berikutnya →':'Lihat Hasil',function(){s.idx++;renderTokoh();});
   } else {
-    s.nyawa--;
-    inp.classList.add('wrong');
-    if(s.nyawa<=0){
-      showFeedback('💔','Nyawa Habis!','err','Jawaban yang benar adalah: '+q.nama,'Lihat Hasil',function(){renderTokoh();});
-    } else {
-      showFeedback('❌','Salah!','err','Coba lagi! Masih ada '+s.nyawa+' nyawa tersisa. Jawaban: '+q.nama,'Coba Lagi',function(){
-        s.dijawab=false;
-        inp.classList.remove('wrong');
-        inp.value='';
-        inp.focus();
-      });
-    }
+    s.nyawa--;inp.classList.add('wrong');
+    if(s.nyawa<=0) showFeedback('💔','Nyawa Habis!','err','Jawaban yang benar adalah: '+q.nama,'Lihat Hasil',function(){renderTokoh();});
+    else showFeedback('❌','Salah!','err','Coba lagi! Masih ada '+s.nyawa+' nyawa. Jawaban: '+q.nama,'Coba Lagi',function(){s.dijawab=false;inp.classList.remove('wrong');inp.value='';inp.focus();});
   }
 }
 function skipTokoh(){
-  var s=tokohState;
-  var q=s.soal[s.idx];
-  s.nyawa--;
-  showFeedback('⏭️','Dilewati','err','Jawaban yang benar adalah: '+q.nama,
-    s.nyawa<=0?'Lihat Hasil':(s.idx<s.soal.length-1?'Tokoh Berikutnya →':'Lihat Hasil'),
-    function(){s.idx++;renderTokoh();}
-  );
+  var s=tokohState;var q=s.soal[s.idx];s.nyawa--;
+  showFeedback('⏭️','Dilewati','err','Jawaban yang benar: '+q.nama,s.nyawa<=0?'Lihat Hasil':s.idx<s.soal.length-1?'Tokoh Berikutnya →':'Lihat Hasil',function(){s.idx++;renderTokoh();});
 }
 
-
-
-/* ═══════════════════════════════════════════
+/* ══════════════════════════════════════
    CHESS ENGINE
-═══════════════════════════════════════════ */
-/* ═══════════════════════════════════════
-   CHESS ENGINE — FULL IMPLEMENTATION
-═══════════════════════════════════════ */
-
-/* Piece codes: uppercase=white, lowercase=black
-   K=King, Q=Queen, R=Rook, B=Bishop, N=Knight, P=Pawn */
-
-var ChessGame = (function(){
-
-/* ── Board representation: 8x8 array, row 0 = rank 8 (black side) ── */
-var EMPTY = '.';
-
-function newBoard(){
-  return [
-    ['r','n','b','q','k','b','n','r'],
-    ['p','p','p','p','p','p','p','p'],
-    ['.','.','.','.','.','.','.','.',],
-    ['.','.','.','.','.','.','.','.',],
-    ['.','.','.','.','.','.','.','.',],
-    ['.','.','.','.','.','.','.','.',],
-    ['P','P','P','P','P','P','P','P'],
-    ['R','N','B','Q','K','B','N','R']
-  ];
-}
-
-function copyBoard(b){
-  return b.map(function(r){return r.slice();});
-}
-
-function isWhite(p){ return p!==EMPTY && p===p.toUpperCase(); }
-function isBlack(p){ return p!==EMPTY && p===p.toLowerCase(); }
-function isEnemy(p,white){ return white ? isBlack(p) : isWhite(p); }
-function isFriend(p,white){ return white ? isWhite(p) : isBlack(p); }
-function isEmpty(b,r,c){ return b[r][c]===EMPTY; }
-function inBounds(r,c){ return r>=0&&r<8&&c>=0&&c<8; }
-
-/* ── Piece values for AI ── */
-var PIECE_VAL = {p:100,n:320,b:330,r:500,q:900,k:20000};
-
-/* ── Move generation ── */
-function getMoves(b,r,c,state){
-  var p=b[r][c]; if(p===EMPTY) return [];
-  var white=isWhite(p);
-  var moves=[];
-  var pt=p.toLowerCase();
-
-  function push(tr,tc,promo){
-    if(!inBounds(tr,tc)) return;
-    if(isFriend(b[tr][tc],white)) return;
-    moves.push({fr:r,fc:c,tr:tr,tc:tc,promo:promo||null});
-  }
-  function slide(dr,dc){
-    var nr=r+dr,nc=c+dc;
-    while(inBounds(nr,nc)){
-      if(isFriend(b[nr][nc],white)) break;
-      moves.push({fr:r,fc:c,tr:nr,tc:nc,promo:null});
-      if(isEnemy(b[nr][nc],white)) break;
-      nr+=dr; nc+=dc;
-    }
-  }
-
+══════════════════════════════════════ */
+var ChessGame=(function(){
+var E='.';
+function nb(){return[['r','n','b','q','k','b','n','r'],['p','p','p','p','p','p','p','p'],[E,E,E,E,E,E,E,E],[E,E,E,E,E,E,E,E],[E,E,E,E,E,E,E,E],[E,E,E,E,E,E,E,E],['P','P','P','P','P','P','P','P'],['R','N','B','Q','K','B','N','R']];}
+function cb(b){return b.map(function(r){return r.slice();});}
+function iW(p){return p!==E&&p===p.toUpperCase();}
+function iB(p){return p!==E&&p===p.toLowerCase();}
+function iEn(p,w){return w?iB(p):iW(p);}
+function iFr(p,w){return w?iW(p):iB(p);}
+function inB(r,c){return r>=0&&r<8&&c>=0&&c<8;}
+var PV={p:100,n:320,b:330,r:500,q:900,k:20000};
+function gMv(b,r,c,st){
+  var p=b[r][c];if(p===E) return[];
+  var w=iW(p),mv=[],pt=p.toLowerCase();
+  function push(tr,tc){if(!inB(tr,tc)||iFr(b[tr][tc],w)) return;mv.push({fr:r,fc:c,tr:tr,tc:tc,promo:null});}
+  function slide(dr,dc){var nr=r+dr,nc=c+dc;while(inB(nr,nc)){if(iFr(b[nr][nc],w)) break;mv.push({fr:r,fc:c,tr:nr,tc:nc,promo:null});if(iEn(b[nr][nc],w)) break;nr+=dr;nc+=dc;}}
   if(pt==='p'){
-    var dir=white?-1:1;
-    var startRow=white?6:1;
-    var promoRow=white?0:7;
-    // Forward
-    if(inBounds(r+dir,c)&&isEmpty(b,r+dir,c)){
-      var isPromo=(r+dir===promoRow);
-      if(isPromo){['q','r','b','n'].forEach(function(pp){moves.push({fr:r,fc:c,tr:r+dir,tc:c,promo:white?pp.toUpperCase():pp});});}
-      else{ moves.push({fr:r,fc:c,tr:r+dir,tc:c,promo:null}); }
-      // Double push
-      if(r===startRow&&isEmpty(b,r+2*dir,c))
-        moves.push({fr:r,fc:c,tr:r+2*dir,tc:c,promo:null,dbl:true});
+    var dir=w?-1:1,sr=w?6:1,pr=w?0:7;
+    if(inB(r+dir,c)&&b[r+dir][c]===E){
+      if(r+dir===pr){['q','r','b','n'].forEach(function(pp){mv.push({fr:r,fc:c,tr:r+dir,tc:c,promo:w?pp.toUpperCase():pp});});}
+      else{mv.push({fr:r,fc:c,tr:r+dir,tc:c,promo:null});}
+      if(r===sr&&b[r+2*dir][c]===E) mv.push({fr:r,fc:c,tr:r+2*dir,tc:c,promo:null,dbl:true});
     }
-    // Captures
     [-1,1].forEach(function(dc){
-      var tc2=c+dc,tr2=r+dir;
-      if(!inBounds(tr2,tc2)) return;
-      if(isEnemy(b[tr2][tc2],white)){
-        var isPromo2=(tr2===promoRow);
-        if(isPromo2){['q','r','b','n'].forEach(function(pp){moves.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:white?pp.toUpperCase():pp});});}
-        else{ moves.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:null}); }
-      }
-      // En passant
-      if(state&&state.ep&&state.ep[0]===tr2&&state.ep[1]===tc2)
-        moves.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:null,ep:true});
+      var tc2=c+dc,tr2=r+dir;if(!inB(tr2,tc2)) return;
+      if(iEn(b[tr2][tc2],w)){if(tr2===pr){['q','r','b','n'].forEach(function(pp){mv.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:w?pp.toUpperCase():pp});});}else mv.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:null});}
+      if(st&&st.ep&&st.ep[0]===tr2&&st.ep[1]===tc2) mv.push({fr:r,fc:c,tr:tr2,tc:tc2,promo:null,ep:true});
     });
-  }
-  else if(pt==='n'){
-    [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]].forEach(function(d){push(r+d[0],c+d[1]);});
-  }
-  else if(pt==='b'){ [[-1,-1],[-1,1],[1,-1],[1,1]].forEach(function(d){slide(d[0],d[1]);}); }
-  else if(pt==='r'){ [[-1,0],[1,0],[0,-1],[0,1]].forEach(function(d){slide(d[0],d[1]);}); }
-  else if(pt==='q'){ [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]].forEach(function(d){slide(d[0],d[1]);}); }
+  } else if(pt==='n'){[[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]].forEach(function(d){push(r+d[0],c+d[1]);});}
+  else if(pt==='b'){[[-1,-1],[-1,1],[1,-1],[1,1]].forEach(function(d){slide(d[0],d[1]);});}
+  else if(pt==='r'){[[-1,0],[1,0],[0,-1],[0,1]].forEach(function(d){slide(d[0],d[1]);});}
+  else if(pt==='q'){[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]].forEach(function(d){slide(d[0],d[1]);});}
   else if(pt==='k'){
     [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]].forEach(function(d){push(r+d[0],c+d[1]);});
-    // Castling
-    if(state){
-      var kingRow=white?7:0;
-      if(r===kingRow&&c===4){
-        if(white){
-          if(state.castle.wk && b[7][5]===EMPTY&&b[7][6]===EMPTY&&b[7][7]==='R')
-            moves.push({fr:7,fc:4,tr:7,tc:6,castle:'wk'});
-          if(state.castle.wq && b[7][3]===EMPTY&&b[7][2]===EMPTY&&b[7][1]===EMPTY&&b[7][0]==='R')
-            moves.push({fr:7,fc:4,tr:7,tc:2,castle:'wq'});
-        } else {
-          if(state.castle.bk && b[0][5]===EMPTY&&b[0][6]===EMPTY&&b[0][7]==='r')
-            moves.push({fr:0,fc:4,tr:0,tc:6,castle:'bk'});
-          if(state.castle.bq && b[0][3]===EMPTY&&b[0][2]===EMPTY&&b[0][1]===EMPTY&&b[0][0]==='r')
-            moves.push({fr:0,fc:4,tr:0,tc:2,castle:'bq'});
-        }
-      }
-    }
+    if(st){var kr=w?7:0;if(r===kr&&c===4){if(w){if(st.castle.wk&&b[7][5]===E&&b[7][6]===E&&b[7][7]==='R') mv.push({fr:7,fc:4,tr:7,tc:6,castle:'wk',promo:null});if(st.castle.wq&&b[7][3]===E&&b[7][2]===E&&b[7][1]===E&&b[7][0]==='R') mv.push({fr:7,fc:4,tr:7,tc:2,castle:'wq',promo:null});}else{if(st.castle.bk&&b[0][5]===E&&b[0][6]===E&&b[0][7]==='r') mv.push({fr:0,fc:4,tr:0,tc:6,castle:'bk',promo:null});if(st.castle.bq&&b[0][3]===E&&b[0][2]===E&&b[0][1]===E&&b[0][0]==='r') mv.push({fr:0,fc:4,tr:0,tc:2,castle:'bq',promo:null});}}}
   }
-  return moves;
+  return mv;
 }
-
-function getAllMoves(b,white,state){
-  var all=[];
-  for(var r=0;r<8;r++) for(var c=0;c<8;c++){
-    var p=b[r][c];
-    if(p===EMPTY) continue;
-    if(white&&!isWhite(p)) continue;
-    if(!white&&!isBlack(p)) continue;
-    var ms=getMoves(b,r,c,state);
-    all=all.concat(ms);
-  }
-  return all;
-}
-
-function applyMove(b,m){
-  var nb=copyBoard(b);
-  var p=nb[m.fr][m.fc];
-  nb[m.tr][m.tc]=m.promo||(p);
-  nb[m.fr][m.fc]=EMPTY;
-  // En passant capture
-  if(m.ep){
-    var dir=isWhite(p)?1:-1;
-    nb[m.tr+dir][m.tc]=EMPTY;
-  }
-  // Castling rook move
-  if(m.castle==='wk'){nb[7][5]='R';nb[7][7]=EMPTY;}
-  else if(m.castle==='wq'){nb[7][3]='R';nb[7][0]=EMPTY;}
-  else if(m.castle==='bk'){nb[0][5]='r';nb[0][7]=EMPTY;}
-  else if(m.castle==='bq'){nb[0][3]='r';nb[0][0]=EMPTY;}
-  return nb;
-}
-
-function updateState(state,b,m){
-  var p=b[m.fr][m.fc];
-  var ns={
-    castle:{wk:state.castle.wk,wq:state.castle.wq,bk:state.castle.bk,bq:state.castle.bq},
-    ep:null
-  };
-  // Revoke castling rights
-  if(p==='K'){ns.castle.wk=false;ns.castle.wq=false;}
-  if(p==='R'&&m.fr===7&&m.fc===7) ns.castle.wk=false;
-  if(p==='R'&&m.fr===7&&m.fc===0) ns.castle.wq=false;
-  if(p==='k'){ns.castle.bk=false;ns.castle.bq=false;}
-  if(p==='r'&&m.fr===0&&m.fc===7) ns.castle.bk=false;
-  if(p==='r'&&m.fr===0&&m.fc===0) ns.castle.bq=false;
-  // En passant target
-  if((p==='P'||p==='p')&&Math.abs(m.tr-m.fr)===2)
-    ns.ep=[(m.fr+m.tr)/2,m.tc];
-  return ns;
-}
-
-/* ── Check detection ── */
-function findKing(b,white){
-  var k=white?'K':'k';
-  for(var r=0;r<8;r++) for(var c=0;c<8;c++) if(b[r][c]===k) return [r,c];
-  return null;
-}
-
-function isSquareAttacked(b,r,c,byWhite){
-  var allM=getAllMoves(b,byWhite,{castle:{wk:false,wq:false,bk:false,bq:false},ep:null});
-  return allM.some(function(m){return m.tr===r&&m.tc===c;});
-}
-
-function isInCheck(b,white){
-  var k=findKing(b,white);
-  if(!k) return true;
-  return isSquareAttacked(b,k[0],k[1],!white);
-}
-
-function getLegalMoves(b,white,state){
-  var pseudo=getAllMoves(b,white,state);
-  return pseudo.filter(function(m){
-    // Check castling doesn't pass through check
-    if(m.castle){
-      var passCols=m.castle==='wk'||m.castle==='bk'?[4,5,6]:[2,3,4];
-      var row=white?7:0;
-      for(var i=0;i<passCols.length;i++){
-        if(isSquareAttacked(b,row,passCols[i],!white)) return false;
-      }
-    }
-    var nb=applyMove(b,m);
-    return !isInCheck(nb,white);
-  });
-}
-
-/* ── Piece-square tables for AI ── */
-var PST = {
-  p:[ [0,0,0,0,0,0,0,0],[50,50,50,50,50,50,50,50],[10,10,20,30,30,20,10,10],
-      [5,5,10,25,25,10,5,5],[0,0,0,20,20,0,0,0],[5,-5,-10,0,0,-10,-5,5],
-      [5,10,10,-20,-20,10,10,5],[0,0,0,0,0,0,0,0] ],
-  n:[ [-50,-40,-30,-30,-30,-30,-40,-50],[-40,-20,0,0,0,0,-20,-40],
-      [-30,0,10,15,15,10,0,-30],[-30,5,15,20,20,15,5,-30],
-      [-30,0,15,20,20,15,0,-30],[-30,5,10,15,15,10,5,-30],
-      [-40,-20,0,5,5,0,-20,-40],[-50,-40,-30,-30,-30,-30,-40,-50] ],
-  b:[ [-20,-10,-10,-10,-10,-10,-10,-20],[-10,0,0,0,0,0,0,-10],
-      [-10,0,5,10,10,5,0,-10],[-10,5,5,10,10,5,5,-10],
-      [-10,0,10,10,10,10,0,-10],[-10,10,10,10,10,10,10,-10],
-      [-10,5,0,0,0,0,5,-10],[-20,-10,-10,-10,-10,-10,-10,-20] ],
-  r:[ [0,0,0,0,0,0,0,0],[5,10,10,10,10,10,10,5],[-5,0,0,0,0,0,0,-5],
-      [-5,0,0,0,0,0,0,-5],[-5,0,0,0,0,0,0,-5],[-5,0,0,0,0,0,0,-5],
-      [-5,0,0,0,0,0,0,-5],[0,0,0,5,5,0,0,0] ],
-  q:[ [-20,-10,-10,-5,-5,-10,-10,-20],[-10,0,0,0,0,0,0,-10],
-      [-10,0,5,5,5,5,0,-10],[-5,0,5,5,5,5,0,-5],
-      [0,0,5,5,5,5,0,-5],[-10,5,5,5,5,5,0,-10],
-      [-10,0,5,0,0,0,0,-10],[-20,-10,-10,-5,-5,-10,-10,-20] ],
-  k:[ [-30,-40,-40,-50,-50,-40,-40,-30],[-30,-40,-40,-50,-50,-40,-40,-30],
-      [-30,-40,-40,-50,-50,-40,-40,-30],[-30,-40,-40,-50,-50,-40,-40,-30],
-      [-20,-30,-30,-40,-40,-30,-30,-20],[-10,-20,-20,-20,-20,-20,-20,-10],
-      [20,20,0,0,0,0,20,20],[20,30,10,0,0,10,30,20] ]
-};
-
-function evalBoard(b){
-  var score=0;
-  for(var r=0;r<8;r++) for(var c=0;c<8;c++){
-    var p=b[r][c];
-    if(p===EMPTY) continue;
-    var white=isWhite(p);
-    var pt=p.toLowerCase();
-    var val=(PIECE_VAL[pt]||0);
-    var pst=PST[pt];
-    var pr=white?(7-r):r;
-    val+=pst[pr][c];
-    score+=white?val:-val;
-  }
-  return score;
-}
-
-/* ── Minimax with alpha-beta ── */
-function minimax(b,depth,alpha,beta,maximizing,state){
-  var white=maximizing; // white = maximizing
-  var legal=getLegalMoves(b,white,state);
-  if(depth===0||legal.length===0){
-    if(legal.length===0){
-      if(isInCheck(b,white)) return maximizing?-99999:99999; // checkmate
-      return 0; // stalemate
-    }
-    return evalBoard(b);
-  }
-  // Move ordering: captures first
-  legal.sort(function(a,b2){
-    var ac=b[a.tr][a.tc]!==EMPTY?1:0;
-    var bc=b[b2.tr][b2.tc]!==EMPTY?1:0;
-    return bc-ac;
-  });
-  if(maximizing){
-    var best=-Infinity;
-    for(var i=0;i<legal.length;i++){
-      var m=legal[i];
-      var nb=applyMove(b,m);
-      var ns=updateState(state,b,m);
-      var v=minimax(nb,depth-1,alpha,beta,false,ns);
-      if(v>best) best=v;
-      if(v>alpha) alpha=v;
-      if(beta<=alpha) break;
-    }
-    return best;
-  } else {
-    var best=-Infinity;
-    best=Infinity;
-    for(var i=0;i<legal.length;i++){
-      var m=legal[i];
-      var nb=applyMove(b,m);
-      var ns=updateState(state,b,m);
-      var v=minimax(nb,depth-1,alpha,beta,true,ns);
-      if(v<best) best=v;
-      if(v<beta) beta=v;
-      if(beta<=alpha) break;
-    }
-    return best;
-  }
-}
-
-function bestMove(b,state,depth){
-  var legal=getLegalMoves(b,false,state); // AI = black
-  if(legal.length===0) return null;
-  var best=null,bestVal=Infinity;
-  // Move ordering
-  legal.sort(function(a,b2){
-    var ac=b[a.tr][a.tc]!==EMPTY?1:0;
-    var bc=b[b2.tr][b2.tc]!==EMPTY?1:0;
-    return bc-ac;
-  });
-  for(var i=0;i<legal.length;i++){
-    var m=legal[i];
-    var nb=applyMove(b,m);
-    var ns=updateState(state,b,m);
-    var v=minimax(nb,depth-1,-Infinity,Infinity,true,ns);
-    if(v<bestVal){bestVal=v;best=m;}
-  }
-  return best;
-}
-
-return {
-  newBoard:newBoard,
-  copyBoard:copyBoard,
-  applyMove:applyMove,
-  updateState:updateState,
-  getLegalMoves:getLegalMoves,
-  isInCheck:isInCheck,
-  isWhite:isWhite,
-  isBlack:isBlack,
-  bestMove:bestMove,
-  EMPTY:EMPTY,
-  initState:function(){return {castle:{wk:true,wq:true,bk:true,bq:true},ep:null};}
-};
+function gaM(b,w,st){var all=[];for(var r=0;r<8;r++) for(var c=0;c<8;c++){var p=b[r][c];if(p===E||(w&&!iW(p))||(!w&&!iB(p))) continue;all=all.concat(gMv(b,r,c,st));}return all;}
+function apM(b,m){var nb2=cb(b);var p=nb2[m.fr][m.fc];nb2[m.tr][m.tc]=m.promo||p;nb2[m.fr][m.fc]=E;if(m.ep){nb2[m.tr+(iW(p)?1:-1)][m.tc]=E;}if(m.castle==='wk'){nb2[7][5]='R';nb2[7][7]=E;}else if(m.castle==='wq'){nb2[7][3]='R';nb2[7][0]=E;}else if(m.castle==='bk'){nb2[0][5]='r';nb2[0][7]=E;}else if(m.castle==='bq'){nb2[0][3]='r';nb2[0][0]=E;}return nb2;}
+function uSt(st,b,m){var p=b[m.fr][m.fc];var ns={castle:{wk:st.castle.wk,wq:st.castle.wq,bk:st.castle.bk,bq:st.castle.bq},ep:null};if(p==='K'){ns.castle.wk=false;ns.castle.wq=false;}if(p==='R'&&m.fr===7&&m.fc===7) ns.castle.wk=false;if(p==='R'&&m.fr===7&&m.fc===0) ns.castle.wq=false;if(p==='k'){ns.castle.bk=false;ns.castle.bq=false;}if(p==='r'&&m.fr===0&&m.fc===7) ns.castle.bk=false;if(p==='r'&&m.fr===0&&m.fc===0) ns.castle.bq=false;if((p==='P'||p==='p')&&Math.abs(m.tr-m.fr)===2) ns.ep=[(m.fr+m.tr)/2,m.tc];return ns;}
+function fK(b,w){var k=w?'K':'k';for(var r=0;r<8;r++) for(var c=0;c<8;c++) if(b[r][c]===k) return[r,c];return null;}
+function iSA(b,r,c,bW){return gaM(b,bW,{castle:{wk:false,wq:false,bk:false,bq:false},ep:null}).some(function(m){return m.tr===r&&m.tc===c;});}
+function iIC(b,w){var k=fK(b,w);if(!k) return true;return iSA(b,k[0],k[1],!w);}
+function gLM(b,w,st){return gaM(b,w,st).filter(function(m){if(m.castle){var pc=m.castle==='wk'||m.castle==='bk'?[4,5,6]:[2,3,4];var row=w?7:0;for(var i=0;i<pc.length;i++) if(iSA(b,row,pc[i],!w)) return false;}return!iIC(apM(b,m),w);});}
+var PST={p:[[0,0,0,0,0,0,0,0],[50,50,50,50,50,50,50,50],[10,10,20,30,30,20,10,10],[5,5,10,25,25,10,5,5],[0,0,0,20,20,0,0,0],[5,-5,-10,0,0,-10,-5,5],[5,10,10,-20,-20,10,10,5],[0,0,0,0,0,0,0,0]],n:[[-50,-40,-30,-30,-30,-30,-40,-50],[-40,-20,0,0,0,0,-20,-40],[-30,0,10,15,15,10,0,-30],[-30,5,15,20,20,15,5,-30],[-30,0,15,20,20,15,0,-30],[-30,5,10,15,15,10,5,-30],[-40,-20,0,5,5,0,-20,-40],[-50,-40,-30,-30,-30,-30,-40,-50]],b:[[-20,-10,-10,-10,-10,-10,-10,-20],[-10,0,0,0,0,0,0,-10],[-10,0,5,10,10,5,0,-10],[-10,5,5,10,10,5,5,-10],[-10,0,10,10,10,10,0,-10],[-10,10,10,10,10,10,10,-10],[-10,5,0,0,0,0,5,-10],[-20,-10,-10,-10,-10,-10,-10,-20]],r:[[0,0,0,0,0,0,0,0],[5,10,10,10,10,10,10,5],[-5,0,0,0,0,0,0,-5],[-5,0,0,0,0,0,0,-5],[-5,0,0,0,0,0,0,-5],[-5,0,0,0,0,0,0,-5],[-5,0,0,0,0,0,0,-5],[0,0,0,5,5,0,0,0]],q:[[-20,-10,-10,-5,-5,-10,-10,-20],[-10,0,0,0,0,0,0,-10],[-10,0,5,5,5,5,0,-10],[-5,0,5,5,5,5,0,-5],[0,0,5,5,5,5,0,-5],[-10,5,5,5,5,5,0,-10],[-10,0,5,0,0,0,0,-10],[-20,-10,-10,-5,-5,-10,-10,-20]],k:[[-30,-40,-40,-50,-50,-40,-40,-30],[-30,-40,-40,-50,-50,-40,-40,-30],[-30,-40,-40,-50,-50,-40,-40,-30],[-30,-40,-40,-50,-50,-40,-40,-30],[-20,-30,-30,-40,-40,-30,-30,-20],[-10,-20,-20,-20,-20,-20,-20,-10],[20,20,0,0,0,0,20,20],[20,30,10,0,0,10,30,20]]};
+function evB(b){var s=0;for(var r=0;r<8;r++) for(var c=0;c<8;c++){var p=b[r][c];if(p===E) continue;var w=iW(p);var pt=p.toLowerCase();var v=(PV[pt]||0)+(PST[pt]?PST[pt][w?(7-r):r][c]:0);s+=w?v:-v;}return s;}
+function mm(b,depth,alpha,beta,max,st){var w=max;var lg=gLM(b,w,st);if(depth===0||lg.length===0){if(lg.length===0) return(iIC(b,w))?(max?-99999:99999):0;return evB(b);}lg.sort(function(a,b2){return(b[b2.tr][b2.tc]!==E?1:0)-(b[a.tr][a.tc]!==E?1:0);});if(max){var best=-Infinity;for(var i=0;i<lg.length;i++){var v=mm(apM(b,lg[i]),depth-1,alpha,beta,false,uSt(st,b,lg[i]));if(v>best) best=v;if(v>alpha) alpha=v;if(beta<=alpha) break;}return best;}else{var best2=Infinity;for(var i=0;i<lg.length;i++){var v2=mm(apM(b,lg[i]),depth-1,alpha,beta,true,uSt(st,b,lg[i]));if(v2<best2) best2=v2;if(v2<beta) beta=v2;if(beta<=alpha) break;}return best2;}}
+function bM(b,st,depth){var lg=gLM(b,false,st);if(lg.length===0) return null;lg.sort(function(a,b2){return(b[b2.tr][b2.tc]!==E?1:0)-(b[a.tr][a.tc]!==E?1:0);});var best=null,bestV=Infinity;for(var i=0;i<lg.length;i++){var v=mm(apM(b,lg[i]),depth-1,-Infinity,Infinity,true,uSt(st,b,lg[i]));if(v<bestV){bestV=v;best=lg[i];}}return best;}
+return{newBoard:nb,copyBoard:cb,applyMove:apM,updateState:uSt,getLegalMoves:gLM,isInCheck:iIC,isWhite:iW,isBlack:iB,bestMove:bM,EMPTY:E,initState:function(){return{castle:{wk:true,wq:true,bk:true,bq:true},ep:null};}};
 })();
 
-
-/* ═══════════════════════════════════════════
-   GAME 6 — CATUR ISLAMI
-═══════════════════════════════════════════ */
-var caturState = {};
-var caturWins = 0;
-var PIECE_EMOJI = {
-  K:'♔', Q:'♕', R:'♖', B:'♗', N:'♘', P:'♙',
-  k:'♚', q:'♛', r:'♜', b:'♝', n:'♞', p:'♟'
-};
-var FILES = ['a','b','c','d','e','f','g','h'];
-
-function toNotation(m, b){
-  var p = b[m.fr][m.fc];
-  var pt = p.toLowerCase();
-  var capture = b[m.tr][m.tc] !== ChessGame.EMPTY || m.ep;
-  var file = FILES[m.fc], rank = 8 - m.fr;
-  var tfile = FILES[m.tc], trank = 8 - m.tr;
-  if(m.castle === 'wk' || m.castle === 'bk') return 'O-O';
-  if(m.castle === 'wq' || m.castle === 'bq') return 'O-O-O';
-  var prefix = pt === 'p' ? (capture ? file : '') : pt.toUpperCase();
-  return prefix + (capture ? 'x' : '') + tfile + trank + (m.promo ? '=' + (m.promo||'').toUpperCase() : '');
+/* ── GAME 6: CATUR ── */
+var caturState={},caturWins=0;
+var PE={K:'♔',Q:'♕',R:'♖',B:'♗',N:'♘',P:'♙',k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟'};
+var FILES=['a','b','c','d','e','f','g','h'];
+function toN(m,b){
+  var p=b[m.fr][m.fc],pt=p.toLowerCase(),cap=b[m.tr][m.tc]!==ChessGame.EMPTY||m.ep;
+  if(m.castle==='wk'||m.castle==='bk') return'O-O';
+  if(m.castle==='wq'||m.castle==='bq') return'O-O-O';
+  return(pt==='p'?(cap?FILES[m.fc]:''):pt.toUpperCase())+(cap?'x':'')+FILES[m.tc]+(8-m.tr)+(m.promo?'='+(m.promo||'').toUpperCase():'');
 }
-
-function initCatur() {
-  caturState = {
-    board: ChessGame.newBoard(),
-    gameState: ChessGame.initState(),
-    selected: null,
-    legalMoves: [],
-    whiteTurn: true,
-    gameOver: false,
-    lastMove: null,
-    captured: { white: [], black: [] },
-    moveLog: [],
-    difficulty: 2,
-    thinking: false,
-    pendingPromo: null
-  };
+function initCatur(){
+  caturState={board:ChessGame.newBoard(),gameState:ChessGame.initState(),selected:null,legalMoves:[],whiteTurn:true,gameOver:false,lastMove:null,captured:{white:[],black:[]},moveLog:[],difficulty:2,thinking:false,pendingPromo:null};
   renderCatur();
 }
-
-function renderCatur() {
-  var s = caturState;
-  var html =
-    '<div class="chess-wrap">' +
-    '<div class="chess-diff-btns">' +
-      '<span style="font-size:.72rem;font-weight:700;color:var(--tl);margin-right:4px;">Tingkat:</span>' +
-      '<button class="chess-diff-btn'+(s.difficulty===1?' aktif':'')+'" onclick="setCaturDiff(1)">🟢 Mudah</button>' +
-      '<button class="chess-diff-btn'+(s.difficulty===2?' aktif':'')+'" onclick="setCaturDiff(2)">🟡 Sedang</button>' +
-      '<button class="chess-diff-btn'+(s.difficulty===3?' aktif':'')+'" onclick="setCaturDiff(3)">🔴 Sulit</button>' +
-    '</div>' +
-    // Captured by white (black pieces captured)
-    '<div class="chess-captured" id="capturedByWhite">' +
-      (s.captured.white.map(function(p){return '<span class="chess-captured-piece">'+PIECE_EMOJI[p]+'</span>';}).join('')) +
-    '</div>' +
-    // Player info - black (AI)
-    '<div class="chess-topinfo">' +
-      '<div class="chess-player'+((!s.whiteTurn&&!s.gameOver)?' aktif':'')+'">' +
-        '<div class="cp-dot black"></div>Komputer (Hitam)' +
-      '</div>' +
-      getCaturStatus(s) +
-      '<div class="chess-player'+((s.whiteTurn&&!s.gameOver)?' aktif':'')+'">' +
-        '<div class="cp-dot white"></div>Pemain (Putih)' +
-      '</div>' +
-    '</div>';
-
-  // Board with coords
-  html += '<div class="chess-coord-row">';
-  FILES.forEach(function(f){ html += '<div class="chess-coord-item">'+f+'</div>'; });
-  html += '</div>';
-  html += '<div class="chess-board-outer">';
-  html += '<div class="chess-rank-nums">';
-  for(var r=0;r<8;r++) html += '<div class="chess-rank-num">'+(8-r)+'</div>';
-  html += '</div>';
-  html += '<div class="chess-board" id="chessBoard">';
-
-  // Find king in check
-  var checkSq = null;
-  if(ChessGame.isInCheck(s.board, s.whiteTurn)){
-    for(var r2=0;r2<8;r2++) for(var c2=0;c2<8;c2++){
-      var p2 = s.board[r2][c2];
-      if((s.whiteTurn&&p2==='K')||(!s.whiteTurn&&p2==='k')) checkSq=[r2,c2];
-    }
+function renderCatur(){
+  var s=caturState;
+  var html='<div class="chess-wrap"><div class="chess-diff-btns"><span style="font-size:.72rem;font-weight:700;color:var(--tl);margin-right:4px;">Tingkat:</span>';
+  ['Mudah','Sedang','Sulit'].forEach(function(lbl,i){html+='<button class="chess-diff-btn'+(s.difficulty===i+1?' aktif':'')+'" onclick="setCaturDiff('+(i+1)+')">'+['🟢','🟡','🔴'][i]+' '+lbl+'</button>';});
+  html+='</div>';
+  html+='<div class="chess-captured">'+s.captured.white.map(function(p){return'<span class="chess-captured-piece">'+PE[p]+'</span>';}).join('')+'</div>';
+  html+='<div class="chess-topinfo"><div class="chess-player'+((!s.whiteTurn&&!s.gameOver)?' aktif':'')+'"><div class="cp-dot black"></div>Komputer (Hitam)</div>'+getCaturStatus(s)+'<div class="chess-player'+((s.whiteTurn&&!s.gameOver)?' aktif':'')+'"><div class="cp-dot white"></div>Pemain (Putih)</div></div>';
+  html+='<div class="chess-coord-row">'+FILES.map(function(f){return'<div class="chess-coord-item">'+f+'</div>';}).join('')+'</div>';
+  html+='<div class="chess-board-outer"><div class="chess-rank-nums">';
+  for(var ri=0;ri<8;ri++) html+='<div class="chess-rank-num">'+(8-ri)+'</div>';
+  html+='</div><div class="chess-board">';
+  var checkSq=null;
+  if(ChessGame.isInCheck(s.board,s.whiteTurn)){for(var r2=0;r2<8;r2++) for(var c2=0;c2<8;c2++){var p2=s.board[r2][c2];if((s.whiteTurn&&p2==='K')||(!s.whiteTurn&&p2==='k')) checkSq=[r2,c2];}}
+  var hints={},caps={};
+  s.legalMoves.forEach(function(m){if(s.selected&&m.fr===s.selected[0]&&m.fc===s.selected[1]){if(s.board[m.tr][m.tc]!==ChessGame.EMPTY||m.ep) caps[m.tr+','+m.tc]=true;else hints[m.tr+','+m.tc]=true;}});
+  for(var r=0;r<8;r++) for(var c=0;c<8;c++){
+    var isLight=(r+c)%2===0,key=r+','+c;
+    var cls='chess-cell '+(isLight?'light':'dark');
+    if(s.selected&&s.selected[0]===r&&s.selected[1]===c) cls+=' selected';
+    else if(hints[key]) cls+=' move-hint';
+    else if(caps[key]) cls+=' capture-hint';
+    if(checkSq&&checkSq[0]===r&&checkSq[1]===c) cls+=' check-sq';
+    if(s.lastMove){if(s.lastMove.fr===r&&s.lastMove.fc===c) cls+=' last-from';if(s.lastMove.tr===r&&s.lastMove.tc===c) cls+=' last-to';}
+    var pc=s.board[r][c];
+    html+='<div class="'+cls+'" onclick="clickCatur('+r+','+c+')">'+(pc!==ChessGame.EMPTY?'<span class="chess-piece">'+PE[pc]+'</span>':'')+'</div>';
   }
-
-  var hintSquares = {};
-  var captureSquares = {};
-  s.legalMoves.forEach(function(m){
-    if(s.selected && m.fr===s.selected[0] && m.fc===s.selected[1]){
-      if(s.board[m.tr][m.tc] !== ChessGame.EMPTY || m.ep) captureSquares[m.tr+','+m.tc]=true;
-      else hintSquares[m.tr+','+m.tc]=true;
-    }
-  });
-
-  for(var r=0;r<8;r++){
-    for(var c=0;c<8;c++){
-      var isLight=(r+c)%2===0;
-      var key=r+','+c;
-      var cls='chess-cell '+(isLight?'light':'dark');
-      if(s.selected&&s.selected[0]===r&&s.selected[1]===c) cls+=' selected';
-      else if(hintSquares[key]) cls+=' move-hint';
-      else if(captureSquares[key]) cls+=' capture-hint';
-      if(checkSq&&checkSq[0]===r&&checkSq[1]===c) cls+=' check-sq';
-      if(s.lastMove){
-        if(s.lastMove.fr===r&&s.lastMove.fc===c) cls+=' last-from';
-        if(s.lastMove.tr===r&&s.lastMove.tc===c) cls+=' last-to';
-      }
-      var piece = s.board[r][c];
-      var pieceHtml = piece !== ChessGame.EMPTY ? '<span class="chess-piece">'+PIECE_EMOJI[piece]+'</span>' : '';
-      html += '<div class="'+cls+'" onclick="clickCatur('+r+','+c+')">'+pieceHtml+'</div>';
-    }
+  html+='</div></div>';
+  html+='<div class="chess-captured">'+s.captured.black.map(function(p){return'<span class="chess-captured-piece">'+PE[p]+'</span>';}).join('')+'</div>';
+  html+='<div class="chess-thinking'+(s.thinking?' show':'')+'" id="chessThinking"><span>♟ Komputer sedang berpikir...</span></div>';
+  html+='<div class="chess-controls"><button class="chess-btn primary" onclick="initCatur()">🔄 Mulai Baru</button><button class="chess-btn" onclick="initCatur()">↩ Reset</button>'+(caturWins>0?'<span style="font-size:.8rem;color:var(--gb);font-weight:700">🏆 Menang: '+caturWins+'</span>':'')+'</div>';
+  if(s.moveLog.length>0){
+    html+='<div class="chess-log"><div class="chess-log-title">📋 Riwayat Langkah</div><div class="chess-log-moves">';
+    for(var i=0;i<s.moveLog.length;i+=2) html+='<span>'+(Math.floor(i/2)+1)+'.</span><span>'+(s.moveLog[i]||'')+'</span><span>'+(s.moveLog[i+1]||'')+'</span>';
+    html+='</div></div>';
   }
-  html += '</div></div>'; // board + board-outer
-
-  // Captured by black (white pieces)
-  html += '<div class="chess-captured" id="capturedByBlack">' +
-    (s.captured.black.map(function(p){return '<span class="chess-captured-piece">'+PIECE_EMOJI[p]+'</span>';}).join('')) +
-  '</div>';
-
-  // Thinking
-  html += '<div class="chess-thinking'+(s.thinking?' show':'')+'" id="chessThinking">'+
-    '<span>♟ Komputer sedang berpikir...</span></div>';
-
-  // Controls
-  html += '<div class="chess-controls">' +
-    '<button class="chess-btn primary" onclick="initCatur()">🔄 Mulai Baru</button>' +
-    '<button class="chess-btn" onclick="caturUndoMove()">↩ Undo</button>' +
-    (s.gameOver && caturWins > 0 ? '<span style="font-size:.8rem;color:var(--gb);font-weight:700">🏆 Kemenangan: '+caturWins+'</span>' : '') +
-  '</div>';
-
-  // Move log
-  if(s.moveLog.length > 0){
-    html += '<div class="chess-log"><div class="chess-log-title">📋 Riwayat Langkah</div><div class="chess-log-moves">';
-    for(var i=0;i<s.moveLog.length;i+=2){
-      html += '<span class="move-no">'+(Math.floor(i/2)+1)+'.</span>';
-      html += '<span>'+(s.moveLog[i]||'')+'</span>';
-      html += '<span>'+(s.moveLog[i+1]||'')+'</span>';
-    }
-    html += '</div></div>';
-  }
-
-  html += '</div>'; // chess-wrap
-
-  document.getElementById('caturBody').innerHTML = html;
-  // Scroll log to bottom
-  var log = document.querySelector('.chess-log');
-  if(log) log.scrollTop = log.scrollHeight;
+  html+='</div>';
+  document.getElementById('caturBody').innerHTML=html;
+  var log=document.querySelector('.chess-log');if(log) log.scrollTop=log.scrollHeight;
 }
-
 function getCaturStatus(s){
-  var legal = ChessGame.getLegalMoves(s.board, s.whiteTurn, s.gameState);
-  var inChk = ChessGame.isInCheck(s.board, s.whiteTurn);
-  var cls = 'chess-status';
-  var txt = s.whiteTurn ? 'Giliran Anda ♟' : 'Komputer berpikir...';
-  if(s.gameOver){
-    cls += ' mate';
-    txt = s.gameOverMsg || 'Selesai';
-  } else if(legal.length===0 && inChk){
-    cls += ' mate'; txt = s.whiteTurn ? '☠ Anda Kalah!' : '🏆 Anda Menang!';
-  } else if(legal.length===0){
-    cls += ' mate'; txt = '🤝 Seri (Stalemate)';
-  } else if(inChk){
-    cls += ' check'; txt = s.whiteTurn ? '⚠ Raja Anda Diancam!' : '⚠ Raja Hitam Diancam!';
-  }
-  return '<div class="'+cls+'">'+txt+'</div>';
+  var lg=ChessGame.getLegalMoves(s.board,s.whiteTurn,s.gameState),chk=ChessGame.isInCheck(s.board,s.whiteTurn);
+  var cls='chess-status',txt=s.whiteTurn?'Giliran Anda ♙':'Komputer berpikir...';
+  if(s.gameOver){cls+=' mate';txt=s.gameOverMsg||'Selesai';}
+  else if(lg.length===0&&chk){cls+=' mate';txt=s.whiteTurn?'☠ Anda Kalah!':'🏆 Anda Menang!';}
+  else if(lg.length===0){cls+=' mate';txt='🤝 Seri (Stalemate)';}
+  else if(chk){cls+=' check';txt=s.whiteTurn?'⚠ Raja Anda Diancam!':'⚠ Raja Hitam Diancam!';}
+  return'<div class="'+cls+'">'+txt+'</div>';
 }
-
 function setCaturDiff(d){
-  caturState.difficulty = d;
-  var btns = document.querySelectorAll('.chess-diff-btn');
-  btns.forEach(function(b,i){ b.classList.toggle('aktif', i===d-1); });
+  caturState.difficulty=d;
+  document.querySelectorAll('.chess-diff-btn').forEach(function(b,i){b.classList.toggle('aktif',i===d-1);});
 }
-
-function clickCatur(r, c){
-  var s = caturState;
-  if(s.gameOver || s.thinking || !s.whiteTurn) return;
-
-  var piece = s.board[r][c];
-  // If clicking own piece, select it
-  if(piece !== ChessGame.EMPTY && ChessGame.isWhite(piece)){
-    s.selected = [r, c];
-    s.legalMoves = ChessGame.getLegalMoves(s.board, true, s.gameState);
-    renderCatur();
-    return;
-  }
-
-  // If a piece is selected, try to move
+function clickCatur(r,c){
+  var s=caturState;if(s.gameOver||s.thinking||!s.whiteTurn) return;
+  var piece=s.board[r][c];
+  if(piece!==ChessGame.EMPTY&&ChessGame.isWhite(piece)){s.selected=[r,c];s.legalMoves=ChessGame.getLegalMoves(s.board,true,s.gameState);renderCatur();return;}
   if(s.selected){
-    var legal = ChessGame.getLegalMoves(s.board, true, s.gameState);
-    var validMoves = legal.filter(function(m){
-      return m.fr===s.selected[0] && m.fc===s.selected[1] && m.tr===r && m.tc===c;
-    });
-
-    if(validMoves.length > 0){
-      // Check if promotion
-      var isPromo = validMoves.some(function(m){ return m.promo; });
-      if(isPromo){
-        s.pendingPromo = {fr:s.selected[0], fc:s.selected[1], tr:r, tc:c};
-        showPromoModal(true);
-        return;
-      }
-      executeCaturMove(validMoves[0]);
-      return;
+    var valid=ChessGame.getLegalMoves(s.board,true,s.gameState).filter(function(m){return m.fr===s.selected[0]&&m.fc===s.selected[1]&&m.tr===r&&m.tc===c;});
+    if(valid.length>0){
+      if(valid.some(function(m){return m.promo;})){s.pendingPromo={fr:s.selected[0],fc:s.selected[1],tr:r,tc:c};showPromoModal();return;}
+      execMove(valid[0]);return;
     }
   }
-  // Deselect
-  s.selected = null;
-  s.legalMoves = [];
-  renderCatur();
+  s.selected=null;s.legalMoves=[];renderCatur();
 }
-
-function showPromoModal(isWhite){
-  var overlay = document.getElementById('promoOverlay');
-  if(!overlay){
-    var div = document.createElement('div');
-    div.id = 'promoOverlay';
-    div.className = 'promo-overlay';
-    div.innerHTML = '<div class="promo-box"><h3>Pilih Promosi Pion</h3>' +
-      '<div class="promo-opts">' +
-        '<div class="promo-opt" onclick="choosePromo(''+(isWhite?'Q':'q')+'')">♕</div>' +
-        '<div class="promo-opt" onclick="choosePromo(''+(isWhite?'R':'r')+'')">♖</div>' +
-        '<div class="promo-opt" onclick="choosePromo(''+(isWhite?'B':'b')+'')">♗</div>' +
-        '<div class="promo-opt" onclick="choosePromo(''+(isWhite?'N':'n')+'')">♘</div>' +
-      '</div></div>';
-    document.body.appendChild(div);
-  }
-  document.getElementById('promoOverlay').classList.add('show');
+function showPromoModal(){
+  var ov=document.getElementById('promoOverlay');
+  if(!ov){ov=document.createElement('div');ov.id='promoOverlay';ov.className='promo-overlay';document.body.appendChild(ov);}
+  ov.innerHTML='<div class="promo-box"><h3>Pilih Promosi Pion</h3><div class="promo-opts"><div class="promo-opt" onclick="choosePromo(\'Q\')">♕</div><div class="promo-opt" onclick="choosePromo(\'R\')">♖</div><div class="promo-opt" onclick="choosePromo(\'B\')">♗</div><div class="promo-opt" onclick="choosePromo(\'N\')">♘</div></div></div>';
+  ov.classList.add('show');
 }
-
-window.choosePromo = function(piece){
-  var s = caturState;
-  document.getElementById('promoOverlay').classList.remove('show');
-  if(!s.pendingPromo) return;
-  var legal = ChessGame.getLegalMoves(s.board, true, s.gameState);
-  var mArr = legal.filter(function(mv){
-    return mv.fr===s.pendingPromo.fr && mv.fc===s.pendingPromo.fc &&
-           mv.tr===s.pendingPromo.tr && mv.tc===s.pendingPromo.tc &&
-           mv.promo === piece;
-  });
-  var m = mArr[0] || null;
-  s.pendingPromo = null;
-  if(m) executeCaturMove(m);
+window.choosePromo=function(piece){
+  var ov=document.getElementById('promoOverlay');if(ov) ov.classList.remove('show');
+  var s=caturState;if(!s.pendingPromo) return;
+  var m=ChessGame.getLegalMoves(s.board,true,s.gameState).filter(function(mv){return mv.fr===s.pendingPromo.fr&&mv.fc===s.pendingPromo.fc&&mv.tr===s.pendingPromo.tr&&mv.tc===s.pendingPromo.tc&&mv.promo===piece;})[0];
+  s.pendingPromo=null;if(m) execMove(m);
 };
-
-function executeCaturMove(m){
-  var s = caturState;
-  // Log move
-  var notation = toNotation(m, s.board);
-  // Capture tracking
-  var captured = s.board[m.tr][m.tc];
-  if(captured !== ChessGame.EMPTY) s.captured.white.push(captured);
-  if(m.ep){
-    var dir = s.whiteTurn ? 1 : -1;
-    s.captured.white.push(s.board[m.tr+dir][m.tc]);
-  }
-
-  s.board = ChessGame.applyMove(s.board, m);
-  s.gameState = updateCaturState(s.gameState, m);
-
-  s.lastMove = m;
-  s.selected = null;
-  s.legalMoves = [];
-  s.moveLog.push(notation);
-  s.whiteTurn = false;
-
-  // Check game over
-  var blackLegal = ChessGame.getLegalMoves(s.board, false, s.gameState);
-  if(blackLegal.length === 0){
-    s.gameOver = true;
-    if(ChessGame.isInCheck(s.board, false)){
-      s.gameOverMsg = '🏆 Anda Menang! Skakmat!';
-      caturWins++;
-      document.getElementById('caturScore').textContent = caturWins;
-      setTimeout(function(){
-        showFeedback('🏆','Luar Biasa!','ok','Anda berhasil menyekakmat komputer! Masya Allah!','Main Lagi',function(){initCatur();});
-      }, 500);
-    } else {
-      s.gameOverMsg = '🤝 Seri (Stalemate)';
-    }
-    renderCatur();
-    return;
-  }
-
+function execMove(m){
+  var s=caturState;
+  var notation=toN(m,s.board);
+  var cap=s.board[m.tr][m.tc];if(cap!==ChessGame.EMPTY) s.captured.white.push(cap);
+  if(m.ep) s.captured.white.push(s.board[m.tr+1][m.tc]||'p');
+  s.board=ChessGame.applyMove(s.board,m);
+  s.gameState=ChessGame.updateState(s.gameState,ChessGame.newBoard(),m);
+  // Fix: re-compute state properly from move
+  s.gameState=(function(old,mv){var ns={castle:{wk:old.castle.wk,wq:old.castle.wq,bk:old.castle.bk,bq:old.castle.bq},ep:null};if(mv.fr===7&&mv.fc===4){ns.castle.wk=false;ns.castle.wq=false;}if(mv.fr===7&&mv.fc===7) ns.castle.wk=false;if(mv.fr===7&&mv.fc===0) ns.castle.wq=false;if(mv.fr===0&&mv.fc===4){ns.castle.bk=false;ns.castle.bq=false;}if(mv.fr===0&&mv.fc===7) ns.castle.bk=false;if(mv.fr===0&&mv.fc===0) ns.castle.bq=false;if(Math.abs(mv.tr-mv.fr)===2&&(mv.tr===4||mv.tr===3)) ns.ep=[(mv.fr+mv.tr)/2,mv.tc];return ns;})(s.gameState,m);
+  s.lastMove=m;s.selected=null;s.legalMoves=[];s.moveLog.push(notation);s.whiteTurn=false;
+  var bLg=ChessGame.getLegalMoves(s.board,false,s.gameState);
+  if(bLg.length===0){s.gameOver=true;if(ChessGame.isInCheck(s.board,false)){s.gameOverMsg='🏆 Anda Menang! Skakmat!';caturWins++;document.getElementById('caturScore').textContent=caturWins;setTimeout(function(){showFeedback('🏆','Luar Biasa!','ok','Anda berhasil menyekakmat komputer! Masya Allah!','Main Lagi',function(){initCatur();});},500);}else s.gameOverMsg='🤝 Seri (Stalemate)';renderCatur();return;}
   renderCatur();
-  // AI move
-  s.thinking = true;
-  var thinkEl = document.getElementById('chessThinking');
-  if(thinkEl) thinkEl.classList.add('show');
-
-  var depth = s.difficulty === 1 ? 1 : s.difficulty === 2 ? 2 : 3;
-  setTimeout(function(){
-    if(!caturState.whiteTurn && !caturState.gameOver){
-      doAiMove(depth);
-    }
-  }, 300);
+  s.thinking=true;var thEl=document.getElementById('chessThinking');if(thEl) thEl.classList.add('show');
+  var depth=s.difficulty===1?1:s.difficulty===2?2:3;
+  setTimeout(function(){if(!caturState.whiteTurn&&!caturState.gameOver) doAI(depth);},400);
 }
-
-function updateCaturState(oldState, m){
-  // Simplified state update
-  var ns = {
-    castle: {wk:oldState.castle.wk, wq:oldState.castle.wq, bk:oldState.castle.bk, bq:oldState.castle.bq},
-    ep: null
-  };
-  // This is called after board is already updated, so check move piece
-  if(m.fr===7&&m.fc===4) { ns.castle.wk=false; ns.castle.wq=false; }
-  if(m.fr===7&&m.fc===7) ns.castle.wk=false;
-  if(m.fr===7&&m.fc===0) ns.castle.wq=false;
-  if(m.fr===0&&m.fc===4) { ns.castle.bk=false; ns.castle.bq=false; }
-  if(m.fr===0&&m.fc===7) ns.castle.bk=false;
-  if(m.fr===0&&m.fc===0) ns.castle.bq=false;
-  if(Math.abs(m.tr-m.fr)===2 && (m.tr===4||m.tr===3))
-    ns.ep = [(m.fr+m.tr)/2, m.tc];
-  return ns;
-}
-
-function doAiMove(depth){
-  var s = caturState;
-  var m = ChessGame.bestMove(s.board, s.gameState, depth);
-  s.thinking = false;
-
-  if(!m){
-    // AI has no moves
-    s.gameOver = true;
-    if(ChessGame.isInCheck(s.board, false)){
-      s.gameOverMsg = '🏆 Anda Menang!';
-      caturWins++;
-      document.getElementById('caturScore').textContent = caturWins;
-    } else {
-      s.gameOverMsg = '🤝 Seri';
-    }
-    renderCatur();
-    return;
-  }
-
-  var notation = toNotation(m, s.board);
-  var captured = s.board[m.tr][m.tc];
-  if(captured !== ChessGame.EMPTY) s.captured.black.push(captured);
-  if(m.ep){ var epCapRow = m.tr+1; s.captured.black.push(s.board[epCapRow] && s.board[epCapRow][m.tc] ? s.board[epCapRow][m.tc] : 'P'); }
-
-  s.board = ChessGame.applyMove(s.board, m);
-  s.gameState = updateCaturState(s.gameState, m);
-  s.lastMove = m;
-  s.moveLog.push(notation);
-  s.whiteTurn = true;
-
-  // Check if white is now in checkmate/stalemate
-  var whiteLegal = ChessGame.getLegalMoves(s.board, true, s.gameState);
-  if(whiteLegal.length === 0){
-    s.gameOver = true;
-    if(ChessGame.isInCheck(s.board, true)){
-      s.gameOverMsg = '☠ Anda Kalah! Skakmat!';
-      setTimeout(function(){
-        showFeedback('😔','Kalah Kali Ini','err','Jangan menyerah! Terus berlatih dan tingkatkan strategi Anda.','Main Lagi',function(){initCatur();});
-      }, 500);
-    } else {
-      s.gameOverMsg = '🤝 Seri (Stalemate)';
-    }
-  }
+function doAI(depth){
+  var s=caturState;var m=ChessGame.bestMove(s.board,s.gameState,depth);s.thinking=false;
+  if(!m){s.gameOver=true;s.gameOverMsg=ChessGame.isInCheck(s.board,false)?'🏆 Anda Menang!':'🤝 Seri';if(ChessGame.isInCheck(s.board,false)){caturWins++;document.getElementById('caturScore').textContent=caturWins;}renderCatur();return;}
+  var cap=s.board[m.tr][m.tc];if(cap!==ChessGame.EMPTY) s.captured.black.push(cap);
+  s.board=ChessGame.applyMove(s.board,m);
+  s.gameState=(function(old,mv){var ns={castle:{wk:old.castle.wk,wq:old.castle.wq,bk:old.castle.bk,bq:old.castle.bq},ep:null};if(mv.fr===7&&mv.fc===4){ns.castle.wk=false;ns.castle.wq=false;}if(mv.fr===7&&mv.fc===7) ns.castle.wk=false;if(mv.fr===7&&mv.fc===0) ns.castle.wq=false;if(mv.fr===0&&mv.fc===4){ns.castle.bk=false;ns.castle.bq=false;}if(mv.fr===0&&mv.fc===7) ns.castle.bk=false;if(mv.fr===0&&mv.fc===0) ns.castle.bq=false;if(Math.abs(mv.tr-mv.fr)===2&&(mv.tr===4||mv.tr===3)) ns.ep=[(mv.fr+mv.tr)/2,mv.tc];return ns;})(s.gameState,m);
+  s.lastMove=m;s.moveLog.push(toN(m,ChessGame.newBoard()));s.whiteTurn=true;
+  var wLg=ChessGame.getLegalMoves(s.board,true,s.gameState);
+  if(wLg.length===0){s.gameOver=true;if(ChessGame.isInCheck(s.board,true)){s.gameOverMsg='☠ Anda Kalah! Skakmat!';setTimeout(function(){showFeedback('😔','Kalah Kali Ini','err','Jangan menyerah! Terus berlatih dan tingkatkan strategi Anda.','Main Lagi',function(){initCatur();});},500);}else s.gameOverMsg='🤝 Seri (Stalemate)';}
   renderCatur();
 }
 
-function caturUndoMove(){
-  // Simple undo: restart (full undo needs move history stack)
-  if(confirm('Undo akan memulai ulang permainan. Lanjutkan?')) initCatur();
-}
-
-window.initCatur = initCatur;
-window.clickCatur = clickCatur;
-window.setCaturDiff = setCaturDiff;
-window.caturUndoMove = caturUndoMove;
-
-/* INIT */
-window.mulaiGame=mulaiGame;
-window.keMenu=keMenu;
-window.setAsmaMode=setAsmaMode;
-window.ahNav=ahNav;
-window.closeFeedback=closeFeedback;
-
+window.mulaiGame=mulaiGame;window.keMenu=keMenu;window.closeFeedback=closeFeedback;
+window.setAsmaMode=setAsmaMode;window.ahNav=ahNav;
+window.initCatur=initCatur;window.clickCatur=clickCatur;window.setCaturDiff=setCaturDiff;
 </script>
 </body>
 </html>
