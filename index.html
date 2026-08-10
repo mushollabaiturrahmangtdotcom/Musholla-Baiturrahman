@@ -935,8 +935,7 @@
   }
   if(overlay){ overlay.addEventListener('click', closeSidebar); }
 
-  /* Default: sidebar terbuka otomatis di layar besar (PC/laptop), tertutup di layar kecil */
-  if(isDesktop()){ openSidebar(); }
+  /* Default: sidebar tertutup saat pertama kali halaman dibuka (PC/laptop maupun HP) */
 
   /* Saat ukuran layar berubah, sesuaikan overlay tanpa memaksa buka/tutup sidebar */
   window.addEventListener('resize', function(){
