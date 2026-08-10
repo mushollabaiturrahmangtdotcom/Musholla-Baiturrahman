@@ -30,130 +30,98 @@
     overflow-x: hidden;
   }
 
-  /* ─── NAVBAR ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(13, 59, 46, 0.97);
-    backdrop-filter: blur(12px);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-    border-bottom: 1px solid rgba(201,168,76,0.3);
-  }
-  .nav-brand {
-    display: flex; align-items: center; gap: 12px;
-    text-decoration: none;
-  }
-  .nav-brand span {
-    font-size: 0.85rem; font-weight: 600;
-    color: var(--white); letter-spacing: 0.02em;
-  }
-  .nav-links {
-    display: flex; gap: 1.4rem; list-style: none; align-items: center;
-  }
-  .nav-links a {
-    color: rgba(255,255,255,0.8); text-decoration: none;
-    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold-light); }
-
-  /* ─── HAMBURGER ─── */
-  .nav-hamburger {
+  /* ─── SIDEBAR ─── */
+  .sidebar-toggle {
     display: none;
+    position: fixed; top: 14px; left: 14px; z-index: 210;
     flex-direction: column; justify-content: center; gap: 5px;
-    width: 40px; height: 40px; cursor: pointer;
-    background: none; border: none; padding: 6px;
-    border-radius: 8px;
-    transition: background 0.2s;
+    width: 42px; height: 42px; cursor: pointer;
+    background: rgba(13,59,46,0.95);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 10px; padding: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   }
-  .nav-hamburger:hover { background: rgba(255,255,255,0.1); }
-  .nav-hamburger span {
+  .sidebar-toggle span {
     display: block; height: 2px; width: 100%;
     background: var(--white); border-radius: 2px;
     transition: transform 0.3s, opacity 0.3s;
   }
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .sidebar-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .sidebar-toggle.open span:nth-child(2) { opacity: 0; }
+  .sidebar-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* ─── MOBILE MENU OVERLAY ─── */
-  .mobile-menu {
-    /* Selalu ada di DOM, tersembunyi via visibility+opacity agar overflow-y aktif */
-    display: flex;
-    flex-direction: column;
-    position: fixed; top: 64px; left: 0; right: 0; bottom: 0; z-index: 99;
-    background: rgba(13,59,46,0.98);
-    overflow-y: scroll;                 /* paksa scroll aktif di Android */
-    -webkit-overflow-scrolling: touch;  /* iOS smooth scroll */
-    overscroll-behavior: contain;       /* cegah body ikut scroll */
-    padding: 0.5rem 0 4rem;
-    /* Tersembunyi default */
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-6px);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
-  }
-  .mobile-menu.open {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
-  }
-  .mobile-menu a {
-    display: flex; align-items: center; gap: 10px;
-    padding: 16px 24px;
-    color: rgba(255,255,255,0.85); text-decoration: none;
-    font-size: 1rem; font-weight: 500;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    transition: background 0.15s, color 0.15s;
-    /* Pastikan tap area cukup besar di HP */
-    min-height: 52px;
-  }
-  .mobile-menu a:hover,
-  .mobile-menu a:active { background: rgba(255,255,255,0.08); color: var(--gold-light); }
-  .mobile-menu .mob-section-title {
-    padding: 18px 24px 8px;
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--gold);
-    border-bottom: none; min-height: auto;
-  }
-  .mobile-menu .mob-section-title:hover,
-  .mobile-menu .mob-section-title:active { background: none; color: var(--gold); }
-
-  /* ─── DROPDOWN (desktop) ─── */
-  .nav-dropdown { position: relative; }
-  .nav-dropdown-toggle { cursor: pointer; user-select: none; }
-  .nav-dropdown-menu {
+  .sidebar-overlay {
     display: none;
-    position: absolute; top: 100%; right: 0;
-    background: var(--white);
-    border-radius: 10px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    border: 1px solid var(--cream-dark);
-    min-width: 200px;
-    list-style: none;
-    overflow: hidden;
-    z-index: 200;
-    padding-top: 8px;
-    margin-top: -8px;
+    position: fixed; inset: 0; z-index: 150;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
   }
-  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
-  .nav-dropdown-menu li a {
-    display: flex; align-items: center; gap: 8px;
-    padding: 11px 16px;
-    color: var(--text-dark) !important;
-    font-size: 0.83rem; font-weight: 500;
+  .sidebar-overlay.show { display: block; }
+
+  .sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0; width: 272px; z-index: 200;
+    background: linear-gradient(180deg, rgba(13,59,46,0.98), rgba(21,95,69,0.98));
+    border-right: 1px solid rgba(201,168,76,0.3);
+    display: flex; flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  .sidebar-brand {
+    display: flex; align-items: center; gap: 10px;
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     text-decoration: none;
-    transition: background 0.15s;
-    border-bottom: 1px solid var(--cream-dark);
   }
-  .nav-dropdown-menu li:last-child a { border-bottom: none; }
-  .nav-dropdown-menu li a:hover {
-    background: rgba(30,138,94,0.08);
-    color: var(--green-deep) !important;
+  .sidebar-brand span {
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--white); letter-spacing: 0.02em; line-height: 1.3;
+  }
+  .sidebar-scroll { flex: 1; overflow-y: auto; padding: 8px 0 24px; }
+  .sidebar-scroll::-webkit-scrollbar { width: 5px; }
+  .sidebar-scroll::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.4); border-radius: 4px; }
+
+  .sidebar-section-title {
+    padding: 18px 20px 8px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .sidebar-dropdown-toggle {
+    width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    background: none; border: none; cursor: pointer;
+    padding: 14px 20px 12px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    font-family: inherit;
+  }
+  .sidebar-dropdown-toggle .sdt-chevron {
+    font-size: 0.7rem; color: var(--gold);
+    transition: transform 0.25s ease;
+  }
+  .sidebar-dropdown-toggle.open .sdt-chevron { transform: rotate(180deg); }
+  .sidebar-dropdown-panel {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .sidebar-dropdown-panel.open { max-height: 600px; }
+  .sidebar-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 20px;
+    color: rgba(255,255,255,0.82); text-decoration: none;
+    font-size: 0.83rem; font-weight: 500; letter-spacing: 0.02em;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .sidebar-link:hover, .sidebar-link:active {
+    background: rgba(255,255,255,0.08); color: var(--gold-light); border-left-color: var(--gold);
+  }
+
+  @media (min-width: 901px) {
+    body { padding-left: 272px; }
+  }
+  @media (max-width: 900px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar-toggle { display: flex; }
   }
 
   /* ─── HERO ─── */
@@ -162,7 +130,7 @@
     background: linear-gradient(160deg, var(--green-deep) 0%, var(--green-mid) 55%, var(--green-bright) 100%);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center;
-    padding: 100px 1.5rem 4rem;
+    padding: 64px 1.5rem 4rem;
     position: relative; overflow: hidden;
   }
   #hero::before {
@@ -325,6 +293,7 @@
   .hadis-sumber { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; color: var(--gold); text-transform: uppercase; }
 
   /* ─── KEGIATAN ─── */
+  #hadis { background: var(--cream); }
   #kegiatan { background: var(--white); }
   .kegiatan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 2rem; }
   .kegiatan-card { border: 1px solid var(--cream-dark); border-radius: 12px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
@@ -441,6 +410,9 @@
   .popup-box h3 { font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--green-deep); margin-bottom: 6px; }
   .popup-box .popup-arabic { font-family: 'Amiri', serif; font-size: 1.1rem; color: var(--gold); margin-bottom: 20px; }
   .popup-options { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .popup-options-scroll { max-height: 62vh; overflow-y: auto; padding-right: 4px; }
+  .popup-options-scroll::-webkit-scrollbar { width: 5px; }
+  .popup-options-scroll::-webkit-scrollbar-thumb { background: rgba(30,138,94,0.3); border-radius: 4px; }
   .popup-option-btn { display: flex; align-items: center; gap: 14px; padding: 14px 20px; border-radius: 12px; background: var(--cream); border: 1.5px solid var(--cream-dark); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; cursor: pointer; }
   .popup-option-btn:hover { background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); border-color: transparent; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,59,46,0.2); }
   .popup-option-btn:hover .pob-title, .popup-option-btn:hover .pob-desc { color: var(--white); }
@@ -455,10 +427,6 @@
   @keyframes float { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-6px); } }
 
   /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-  }
   @media (max-width: 768px) {
     section { padding: 60px 1.2rem; }
     .jadwal-cards { grid-template-columns: repeat(3, 1fr); }
@@ -492,67 +460,48 @@
 -->
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <a href="#hero" class="nav-brand">
+<!-- SIDEBAR TOGGLE (mobile) -->
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- SIDEBAR OVERLAY (mobile backdrop) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <a href="#hero" class="sidebar-brand" onclick="closeSidebar()">
     <img src="images/musholla.svg" alt="Logo Baiturrahman" style="height:38px;width:auto;">
     <span>Musholla Baiturrahman</span>
   </a>
+  <div class="sidebar-scroll">
+    <div class="sidebar-section-title">📍 Navigasi</div>
+    <a href="#jadwal" class="sidebar-link" onclick="closeSidebar()">🕐 Jadwal Sholat</a>
+    <a href="#profil" class="sidebar-link" onclick="closeSidebar()">🕌 Profil Musholla</a>
+    <a href="#hadis" class="sidebar-link" onclick="closeSidebar()">📜 Hadis</a>
+    <a href="#kegiatan" class="sidebar-link" onclick="closeSidebar()">📅 Kegiatan</a>
+    <a href="#galeri" class="sidebar-link" onclick="closeSidebar()">🖼️ Galeri</a>
+    <a href="#lokasi" class="sidebar-link" onclick="closeSidebar()">📍 Lokasi</a>
+    <a href="#sekitar" class="sidebar-link" onclick="closeSidebar()">🗺️ Masjid Terdekat</a>
+    <a href="game-islami.html" class="sidebar-link">🎮 Game Islami</a>
 
-  <!-- Desktop links -->
-  <ul class="nav-links">
-    <li><a href="#jadwal">Jadwal Sholat</a></li>
-    <li><a href="#profil">Profil</a></li>
-    <li><a href="#kegiatan">Kegiatan</a></li>
-    <li><a href="#galeri">Galeri</a></li>
-    <li><a href="#lokasi">Lokasi</a></li>
-    <li><a href="#sekitar">Masjid Terdekat</a></li>
-    <li><a href="game-islami.html">🎮 Game</a></li>
-    <li class="nav-dropdown">
-      <a href="#" class="nav-dropdown-toggle">⚡ Fitur Lainnya ▾</a>
-      <ul class="nav-dropdown-menu">
-        <li><a href="alquran.html">📖 Al-Qur'an</a></li>
-        <li><a href="hadis-qudsi.html">📜 Hadis Qudsi</a></li>
-        <li><a href="hadis-bukhari.html">📗 Hadis Bukhari</a></li>
-        <li><a href="hadis-muslim.html">📗 Hadis Muslim</a></li>
-        <li><a href="tata-cara-sholat.html">🕌 Tata Cara Sholat</a></li>
-        <li><a href="tata-cara-wudhu.html">💧 Tata Cara Wudhu</a></li>
-        <li><a href="kumpulan-sholawat.html">🌙 Kumpulan Sholawat</a></li>
-        <li><a href="doa-harian.html">🤲 Doa Harian</a></li>
-        <li><a href="belajar-iqro.html">📚 Belajar Iqro</a></li>
-        <li><a href="kisah-kisah.html">📜 Kisah-Kisah</a></li>
-      </ul>
-    </li>
-  </ul>
-
-  <!-- Hamburger button (mobile) -->
-  <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- MOBILE MENU -->
-<nav class="mobile-menu" id="mobileMenu">
-  <a class="mob-section-title">📍 Navigasi</a>
-  <a href="#jadwal"  onclick="closeMobileMenu()">🕐 Jadwal Sholat</a>
-  <a href="#profil"  onclick="closeMobileMenu()">🕌 Profil Musholla</a>
-  <a href="#kegiatan" onclick="closeMobileMenu()">📅 Kegiatan</a>
-  <a href="#galeri"  onclick="closeMobileMenu()">🖼️ Galeri</a>
-  <a href="#lokasi"  onclick="closeMobileMenu()">📍 Lokasi</a>
-  <a href="#sekitar" onclick="closeMobileMenu()">🗺️ Masjid Terdekat</a>
-  <a href="game-islami.html">🎮 Game Islami</a>
-
-  <a class="mob-section-title">⚡ Fitur Islami</a>
-  <a href="alquran.html">📖 Al-Qur'an</a>
-  <a href="hadis-qudsi.html">📜 Hadis Qudsi</a>
-  <a href="hadis-bukhari.html">📗 Hadis Bukhari</a>
-  <a href="hadis-muslim.html">📗 Hadis Muslim</a>
-  <a href="tata-cara-sholat.html">🕌 Tata Cara Sholat</a>
-  <a href="tata-cara-wudhu.html">💧 Tata Cara Wudhu</a>
-  <a href="kumpulan-sholawat.html">🌙 Kumpulan Sholawat</a>
-  <a href="doa-harian.html">🤲 Doa Harian</a>
-  <a href="belajar-iqro.html">📚 Belajar Iqro</a>
-  <a href="kisah-kisah.html">📜 Kisah-Kisah Islam</a>
+    <button class="sidebar-dropdown-toggle" id="fiturDropdownToggle" aria-expanded="false">
+      <span>⚡ Fitur Islami</span>
+      <span class="sdt-chevron">▾</span>
+    </button>
+    <div class="sidebar-dropdown-panel" id="fiturDropdownPanel">
+      <a href="alquran.html" class="sidebar-link">📖 Al-Qur'an</a>
+      <a href="hadis-qudsi.html" class="sidebar-link">📜 Hadis Qudsi</a>
+      <a href="hadis-bukhari.html" class="sidebar-link">📗 Hadis Bukhari</a>
+      <a href="hadis-muslim.html" class="sidebar-link">📗 Hadis Muslim</a>
+      <a href="tata-cara-sholat.html" class="sidebar-link">🕌 Tata Cara Sholat</a>
+      <a href="tata-cara-wudhu.html" class="sidebar-link">💧 Tata Cara Wudhu</a>
+      <a href="kumpulan-sholawat.html" class="sidebar-link">🌙 Kumpulan Sholawat</a>
+      <a href="doa-harian.html" class="sidebar-link">🤲 Doa Harian</a>
+      <a href="belajar-iqro.html" class="sidebar-link">📚 Belajar Iqro</a>
+      <a href="kisah-kisah.html" class="sidebar-link">📜 Kisah-Kisah</a>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -568,19 +517,9 @@
     <a href="#jadwal" class="hero-cta">🕌 Lihat Jadwal Sholat</a>
   </div>
 
-  <!-- Baris 2: fitur utama -->
+  <!-- Baris 2: fitur lainnya (popup) -->
   <div class="hero-btn-row">
-    <a href="alquran.html" class="hero-cta">📖 Baca Al-Qur'an</a>
-    <a href="#" class="hero-cta" onclick="showHadisPopup(); return false;">📚 Hadis</a>
-    <a href="#" class="hero-cta" onclick="showTataCaraPopup(); return false;">🕌 Tata Cara Ibadah</a>
-  </div>
-
-  <!-- Baris 3: fitur lainnya -->
-  <div class="hero-btn-row">
-    <a href="#" class="hero-cta" onclick="showSholawatDoaPopup(); return false;">🌙 Sholawat & Doa</a>
-    <a href="belajar-iqro.html" class="hero-cta">📚 Belajar Iqro</a>
-    <a href="kisah-kisah.html" class="hero-cta">📜 Kisah Islam</a>
-    <a href="game-islami.html" class="hero-cta">🎮 Game </a>
+    <a href="#" class="hero-cta" onclick="showFiturLainnyaPopup(); return false;">✨ Fitur Lainnya</a>
   </div>
 
   <div class="hero-scroll-indicator">SCROLL</div>
@@ -664,10 +603,10 @@
 </section>
 
 <!-- KEGIATAN -->
-<section id="kegiatan">
+<section id="hadis">
   <div class="section-inner">
-    <span class="section-tag">📅 Agenda</span>
-    <h2 class="section-title">Kegiatan & <em>Pengumuman</em></h2>
+    <span class="section-tag">📜 Hadis Pilihan</span>
+    <h2 class="section-title">Hadis <em>Keutamaan Masjid</em></h2>
     <div class="section-divider"></div>
     <div class="hadis-grid">
       <div class="hadis-card">
@@ -686,6 +625,14 @@
         <div class="hadis-sumber">HR. Bukhari & Muslim</div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="kegiatan">
+  <div class="section-inner">
+    <span class="section-tag">📅 Agenda</span>
+    <h2 class="section-title">Kegiatan & <em>Pengumuman</em></h2>
+    <div class="section-divider"></div>
     <div class="kegiatan-grid">
       <div class="kegiatan-card">
         <div class="kegiatan-header"><span class="kegiatan-icon">📖</span><div><div class="kegiatan-date">Setiap Hari Senin s.d Jum'at — Ba'da Ashar</div><div class="kegiatan-title-card">Taman Pendidikan Al-Qur'an</div></div></div>
@@ -860,6 +807,7 @@
         <ul>
           <li><a href="#jadwal">Jadwal Sholat</a></li>
           <li><a href="#profil">Profil Musholla</a></li>
+          <li><a href="#hadis">Hadis</a></li>
           <li><a href="#kegiatan">Kegiatan</a></li>
           <li><a href="#galeri">Galeri</a></li>
           <li><a href="#lokasi">Lokasi</a></li>
@@ -912,6 +860,25 @@
   </div>
 </div>
 
+<!-- POPUP FITUR LAINNYA -->
+<div class="popup-overlay" id="fiturLainnyaPopup" onclick="closeFiturLainnyaPopup(event)">
+  <div class="popup-box">
+    <button class="popup-close" onclick="document.getElementById('fiturLainnyaPopup').classList.remove('show');document.body.style.overflow='';">✕</button>
+    <div class="popup-arabic">مِيزَاتٌ إِسْلَامِيَّة</div>
+    <h3>Fitur Lainnya</h3>
+    <p style="font-size:0.8rem;color:var(--text-light);margin-bottom:4px;">Jelajahi fitur-fitur islami lainnya</p>
+    <div class="popup-options popup-options-scroll">
+      <a href="alquran.html" class="popup-option-btn"><span class="pob-icon">📖</span><div><div class="pob-title">Baca Al-Qur'an</div><div class="pob-desc">Baca Al-Qur'an lengkap 30 juz</div></div></a>
+      <a href="#" class="popup-option-btn" onclick="closeFiturLainnyaPopup(); showHadisPopup(); return false;"><span class="pob-icon">📚</span><div><div class="pob-title">Hadis</div><div class="pob-desc">Hadis Qudsi, Bukhari, dan Muslim</div></div></a>
+      <a href="#" class="popup-option-btn" onclick="closeFiturLainnyaPopup(); showTataCaraPopup(); return false;"><span class="pob-icon">🕌</span><div><div class="pob-title">Tata Cara Ibadah</div><div class="pob-desc">Panduan wudhu dan sholat sesuai sunnah</div></div></a>
+      <a href="#" class="popup-option-btn" onclick="closeFiturLainnyaPopup(); showSholawatDoaPopup(); return false;"><span class="pob-icon">🌙</span><div><div class="pob-title">Sholawat & Doa</div><div class="pob-desc">Kumpulan sholawat dan doa harian</div></div></a>
+      <a href="belajar-iqro.html" class="popup-option-btn"><span class="pob-icon">📚</span><div><div class="pob-title">Belajar Iqro</div><div class="pob-desc">Panduan belajar membaca Iqro dari dasar</div></div></a>
+      <a href="kisah-kisah.html" class="popup-option-btn"><span class="pob-icon">📜</span><div><div class="pob-title">Kisah Islami</div><div class="pob-desc">Kisah-kisah teladan dalam Islam</div></div></a>
+      <a href="game-islami.html" class="popup-option-btn"><span class="pob-icon">🎮</span><div><div class="pob-title">Game Islami</div><div class="pob-desc">Belajar sambil bermain game islami</div></div></a>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   /* ── Tanggal ── */
@@ -922,25 +889,44 @@
   var el = document.getElementById('current-date');
   if(el) el.textContent = tglStr;
 
-  /* ── Hamburger Menu ── */
-  var btn  = document.getElementById('hamburgerBtn');
-  var menu = document.getElementById('mobileMenu');
-  btn.addEventListener('click', function(){
-    var open = menu.classList.toggle('open');
-    btn.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  window.closeMobileMenu = function(){
-    menu.classList.remove('open');
-    btn.classList.remove('open');
+  /* ── Sidebar Toggle (mobile) ── */
+  var toggleBtn = document.getElementById('sidebarToggle');
+  var sidebar   = document.getElementById('sidebar');
+  var overlay   = document.getElementById('sidebarOverlay');
+
+  function openSidebar(){
+    sidebar.classList.add('open');
+    toggleBtn.classList.add('open');
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  window.closeSidebar = function(){
+    sidebar.classList.remove('open');
+    toggleBtn.classList.remove('open');
+    overlay.classList.remove('show');
     document.body.style.overflow = '';
   };
-  /* Tutup menu kalau klik di luar */
-  document.addEventListener('click', function(e){
-    if(menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)){
-      closeMobileMenu();
-    }
+  if(toggleBtn){
+    toggleBtn.addEventListener('click', function(){
+      if(sidebar.classList.contains('open')) { closeSidebar(); } else { openSidebar(); }
+    });
+  }
+  if(overlay){ overlay.addEventListener('click', closeSidebar); }
+  /* Tutup sidebar otomatis kalau layar di-resize ke ukuran desktop */
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 900) closeSidebar();
   });
+
+  /* ── Dropdown "Fitur Islami" ── */
+  var fiturToggle = document.getElementById('fiturDropdownToggle');
+  var fiturPanel   = document.getElementById('fiturDropdownPanel');
+  if(fiturToggle && fiturPanel){
+    fiturToggle.addEventListener('click', function(){
+      var isOpen = fiturPanel.classList.toggle('open');
+      fiturToggle.classList.toggle('open', isOpen);
+      fiturToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
 
   /* ── Kalkulasi Waktu Sholat ── */
   var DEG = Math.PI / 180;
@@ -989,9 +975,13 @@
   window.closeTataCaraPopup=function(e){ if(e.target===document.getElementById('tataCaraPopup')){ document.getElementById('tataCaraPopup').classList.remove('show'); document.body.style.overflow=''; } };
   window.showSholawatDoaPopup = function(){ document.getElementById('sholawatDoaPopup').classList.add('show'); document.body.style.overflow='hidden'; };
   window.closeSholawatDoaPopup = function(e){ if(e.target===document.getElementById('sholawatDoaPopup')){ document.getElementById('sholawatDoaPopup').classList.remove('show'); document.body.style.overflow=''; } };
-  /* ── Draggable QR ── */
+  window.showFiturLainnyaPopup = function(){ document.getElementById('fiturLainnyaPopup').classList.add('show'); document.body.style.overflow='hidden'; };
+  window.closeFiturLainnyaPopup = function(e){ if(!e || e.target===document.getElementById('fiturLainnyaPopup')){ document.getElementById('fiturLainnyaPopup').classList.remove('show'); document.body.style.overflow=''; } };
+
+  /* ── Draggable QR (jika elemen ada) ── */
   (function(){
     var el = document.getElementById('floatingQr');
+    if(!el) return; /* elemen QR sedang dinonaktifkan (dikomentari di HTML) */
     var isDragging = false, startX, startY, origX, origY;
 
     function getPos(e){ return e.touches ? e.touches[0] : e; }
