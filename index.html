@@ -32,7 +32,7 @@
 
   /* ─── SIDEBAR ─── */
   .sidebar-toggle {
-    display: none;
+    display: flex;
     position: fixed; top: 14px; left: 14px; z-index: 210;
     flex-direction: column; justify-content: center; gap: 5px;
     width: 42px; height: 42px; cursor: pointer;
@@ -40,6 +40,11 @@
     border: 1px solid rgba(201,168,76,0.4);
     border-radius: 10px; padding: 6px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    transition: left 0.3s ease, box-shadow 0.2s ease;
+  }
+  .sidebar-toggle:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,168,76,0.5); }
+  @media (min-width: 901px) {
+    .sidebar-toggle.open { left: 296px; }
   }
   .sidebar-toggle span {
     display: block; height: 2px; width: 100%;
@@ -63,8 +68,10 @@
     background: linear-gradient(180deg, rgba(13,59,46,0.98), rgba(21,95,69,0.98));
     border-right: 1px solid rgba(201,168,76,0.3);
     display: flex; flex-direction: column;
+    transform: translateX(-100%);
     transition: transform 0.3s ease;
   }
+  .sidebar.open { transform: translateX(0); }
   .sidebar-brand {
     display: flex; align-items: center; gap: 10px;
     padding: 20px 20px 16px;
@@ -83,6 +90,7 @@
     padding: 18px 20px 8px;
     font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 8px;
   }
   .sidebar-dropdown-toggle {
     width: 100%;
@@ -93,6 +101,16 @@
     text-transform: uppercase; color: var(--gold);
     font-family: inherit;
   }
+  .sidebar-dropdown-toggle .sdt-label { display: flex; align-items: center; gap: 8px; }
+  .sidebar-link svg,
+  .sidebar-dropdown-toggle svg,
+  .sidebar-section-title svg {
+    width: 16px; height: 16px; flex-shrink: 0;
+    stroke: currentColor; fill: none;
+    stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+    opacity: 0.85;
+  }
+  .sidebar-link:hover svg { opacity: 1; }
   .sidebar-dropdown-toggle .sdt-chevron {
     font-size: 0.7rem; color: var(--gold);
     transition: transform 0.25s ease;
@@ -115,13 +133,9 @@
     background: rgba(255,255,255,0.08); color: var(--gold-light); border-left-color: var(--gold);
   }
 
+  body { padding-left: 0; transition: padding-left 0.3s ease; }
   @media (min-width: 901px) {
-    body { padding-left: 272px; }
-  }
-  @media (max-width: 900px) {
-    .sidebar { transform: translateX(-100%); }
-    .sidebar.open { transform: translateX(0); }
-    .sidebar-toggle { display: flex; }
+    body.sidebar-open { padding-left: 272px; }
   }
 
   /* ─── HERO ─── */
@@ -470,36 +484,36 @@
 
 <!-- SIDEBAR -->
 <nav class="sidebar" id="sidebar">
-  <a href="#hero" class="sidebar-brand" onclick="closeSidebar()">
+  <a href="#hero" class="sidebar-brand" onclick="if(window.innerWidth<=900) closeSidebar()">
     <img src="images/musholla.svg" alt="Logo Baiturrahman" style="height:38px;width:auto;">
     <span>Musholla Baiturrahman</span>
   </a>
   <div class="sidebar-scroll">
-    <div class="sidebar-section-title">📍 Navigasi</div>
-    <a href="#jadwal" class="sidebar-link" onclick="closeSidebar()">🕐 Jadwal Sholat</a>
-    <a href="#profil" class="sidebar-link" onclick="closeSidebar()">🕌 Profil Musholla</a>
-    <a href="#hadis" class="sidebar-link" onclick="closeSidebar()">📜 Hadis</a>
-    <a href="#kegiatan" class="sidebar-link" onclick="closeSidebar()">📅 Kegiatan</a>
-    <a href="#galeri" class="sidebar-link" onclick="closeSidebar()">🖼️ Galeri</a>
-    <a href="#lokasi" class="sidebar-link" onclick="closeSidebar()">📍 Lokasi</a>
-    <a href="#sekitar" class="sidebar-link" onclick="closeSidebar()">🗺️ Masjid Terdekat</a>
-    <a href="game-islami.html" class="sidebar-link">🎮 Game Islami</a>
+    <div class="sidebar-section-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 6-6 2 2-6 6-2Z"/></svg><span>Navigasi</span></div>
+    <a href="#jadwal" class="sidebar-link" onclick="if(window.innerWidth<=900) closeSidebar()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Jadwal Sholat</span></a>
+    <a href="#profil" class="sidebar-link" onclick="if(window.innerWidth<=900) closeSidebar()"><svg viewBox="0 0 24 24"><path d="M8 8a4 4 0 0 1 8 0c0 2-1.5 3-1.5 3h-5S8 10 8 8Z"/><path d="M12 2v2"/><path d="M4 21V11l2-2M20 21V11l-2-2"/><path d="M4 21h16"/><path d="M9 21v-5a3 3 0 0 1 6 0v5"/></svg><span>Profil Musholla</span></a>
+    <a href="#hadis" class="sidebar-link" onclick="if(window.innerWidth<=900) closeSidebar()"><svg viewBox="0 0 24 24"><path d="M7 7h4v4c0 2-1.5 4-4 4"/><path d="M14 7h4v4c0 2-1.5 4-4 4"/></svg><span>Hadis</span></a>
+    <a href="#kegiatan" class="sidebar-link" onclick="if(window.innerWidth<=900) closeSidebar()"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Kegiatan</span></a>
+    <a href="#galeri" class="sidebar-link" onclick="if(window.innerWidth<=900) closeSidebar()"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m21 16-5-5-9 9"/></svg><span>Galeri</span></a>
+    <a href="#lokasi" class="sidebar-link" onclick="if(window.innerWidth<=900) closeSidebar()"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg><span>Lokasi</span></a>
+    <a href="#sekitar" class="sidebar-link" onclick="if(window.innerWidth<=900) closeSidebar()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15 9-2 6-6 2 2-6 6-2Z"/></svg><span>Masjid Terdekat</span></a>
+    <a href="game-islami.html" class="sidebar-link"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="16" cy="11.5" r="1"/><circle cx="18.5" cy="14" r="1"/></svg><span>Game Islami</span></a>
 
     <button class="sidebar-dropdown-toggle" id="fiturDropdownToggle" aria-expanded="false">
-      <span>⚡ Fitur Islami</span>
+      <span class="sdt-label"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg><span>Fitur Islami</span></span>
       <span class="sdt-chevron">▾</span>
     </button>
     <div class="sidebar-dropdown-panel" id="fiturDropdownPanel">
-      <a href="alquran.html" class="sidebar-link">📖 Al-Qur'an</a>
-      <a href="hadis-qudsi.html" class="sidebar-link">📜 Hadis Qudsi</a>
-      <a href="hadis-bukhari.html" class="sidebar-link">📗 Hadis Bukhari</a>
-      <a href="hadis-muslim.html" class="sidebar-link">📗 Hadis Muslim</a>
-      <a href="tata-cara-sholat.html" class="sidebar-link">🕌 Tata Cara Sholat</a>
-      <a href="tata-cara-wudhu.html" class="sidebar-link">💧 Tata Cara Wudhu</a>
-      <a href="kumpulan-sholawat.html" class="sidebar-link">🌙 Kumpulan Sholawat</a>
-      <a href="doa-harian.html" class="sidebar-link">🤲 Doa Harian</a>
-      <a href="belajar-iqro.html" class="sidebar-link">📚 Belajar Iqro</a>
-      <a href="kisah-kisah.html" class="sidebar-link">📜 Kisah-Kisah</a>
+      <a href="alquran.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M3 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z"/><path d="M21 5c-2-1-5-1-7 0v14c2-1 5-1 7 0V5Z"/></svg><span>Al-Qur'an</span></a>
+      <a href="hadis-qudsi.html" class="sidebar-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg><span>Hadis Qudsi</span></a>
+      <a href="hadis-bukhari.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2V5Z"/><path d="M4 5a2 2 0 0 0 2 2h12M8 8v11"/></svg><span>Hadis Bukhari</span></a>
+      <a href="hadis-muslim.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M3 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z"/><path d="M21 5c-2-1-5-1-7 0v14c2-1 5-1 7 0V5Z"/></svg><span>Hadis Muslim</span></a>
+      <a href="tata-cara-sholat.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M5 21V11a7 7 0 0 1 14 0v10"/><path d="M5 21h14M9 21v-6a3 3 0 0 1 6 0v6"/></svg><span>Tata Cara Sholat</span></a>
+      <a href="tata-cara-wudhu.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg><span>Tata Cara Wudhu</span></a>
+      <a href="kumpulan-sholawat.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg><span>Kumpulan Sholawat</span></a>
+      <a href="doa-harian.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M6 3v9c0 2 1 3.5 2.5 4.5M18 3v9c0 2-1 3.5-2.5 4.5"/><path d="M6 12c0 4 2.5 7 6 8 3.5-1 6-4 6-8"/></svg><span>Doa Harian</span></a>
+      <a href="belajar-iqro.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg><span>Belajar Iqro</span></a>
+      <a href="kisah-kisah.html" class="sidebar-link"><svg viewBox="0 0 24 24"><path d="M6 4h11a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4Z"/><path d="M6 4a2 2 0 1 0 0 4"/><path d="M9 9h7M9 13h7M9 17h4"/></svg><span>Kisah-Kisah</span></a>
     </div>
   </div>
 </nav>
@@ -755,7 +769,7 @@
     <div class="sekitar-grid">
       <a href="https://maps.google.com/?q=Masjid+Agung+Nurussalam+Tanah+Bumbu" target="_blank" class="sekitar-card">
         <div class="sekitar-img-placeholder">
-          <img src="images/masjid agung nurussalam.png" alt="Masjid Agung Nurussalam Tanah Bumbu" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="images/maulid 1448H.png" alt="Masjid Agung Nurussalam Tanah Bumbu" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div class="sekitar-body">
           <div class="sekitar-name">Masjid Agung Nurussalam Tanah Bumbu</div>
@@ -891,20 +905,26 @@
   var el = document.getElementById('current-date');
   if(el) el.textContent = tglStr;
 
-  /* ── Sidebar Toggle (mobile) ── */
+  /* ── Sidebar Toggle (desktop & mobile) ── */
   var toggleBtn = document.getElementById('sidebarToggle');
   var sidebar   = document.getElementById('sidebar');
   var overlay   = document.getElementById('sidebarOverlay');
 
+  function isDesktop(){ return window.innerWidth > 900; }
+
   function openSidebar(){
     sidebar.classList.add('open');
     toggleBtn.classList.add('open');
-    overlay.classList.add('show');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('sidebar-open');
+    if(!isDesktop()){
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
   }
   window.closeSidebar = function(){
     sidebar.classList.remove('open');
     toggleBtn.classList.remove('open');
+    document.body.classList.remove('sidebar-open');
     overlay.classList.remove('show');
     document.body.style.overflow = '';
   };
@@ -914,9 +934,19 @@
     });
   }
   if(overlay){ overlay.addEventListener('click', closeSidebar); }
-  /* Tutup sidebar otomatis kalau layar di-resize ke ukuran desktop */
+
+  /* Default: sidebar terbuka otomatis di layar besar (PC/laptop), tertutup di layar kecil */
+  if(isDesktop()){ openSidebar(); }
+
+  /* Saat ukuran layar berubah, sesuaikan overlay tanpa memaksa buka/tutup sidebar */
   window.addEventListener('resize', function(){
-    if(window.innerWidth > 900) closeSidebar();
+    if(isDesktop()){
+      overlay.classList.remove('show');
+      document.body.style.overflow = '';
+    } else if(sidebar.classList.contains('open')){
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
   });
 
   /* ── Dropdown "Fitur Islami" ── */
