@@ -313,9 +313,9 @@ nav {
         <input type="number" id="jumpInput" min="1" placeholder="1">
         <button class="jump-btn" onclick="jumpToPage()">Go</button>
       </div>
-      <button class="nav-arrow" id="btnPrev" onclick="pindahHal(curPage-1)" disabled>‹</button>
+      <button class="nav-arrow" id="btnPrev" onclick="goPrevPage()" disabled>‹</button>
       <span class="page-counter" id="pageCounter">1 / 1</span>
-      <button class="nav-arrow" id="btnNext" onclick="pindahHal(curPage+1)" disabled>›</button>
+      <button class="nav-arrow" id="btnNext" onclick="goNextPage()" disabled>›</button>
     </div>
   </div>
 
@@ -644,6 +644,14 @@ window.pindahHal = function(page) {
   if (isNaN(pg) || pg < 1 || pg > totalPages) return;
   curPage = pg;
   muatHalaman(pg);
+};
+
+window.goPrevPage = function() {
+  pindahHal(curPage - 1);
+};
+
+window.goNextPage = function() {
+  pindahHal(curPage + 1);
 };
 
 window.jumpToPage = function() {
