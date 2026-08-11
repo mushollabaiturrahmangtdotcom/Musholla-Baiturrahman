@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shahih Muslim — Musholla Baiturrahman</title>
-<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="icon" type="image/png" href="images/musholla.svg">
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -157,9 +157,9 @@ nav {
         Hal. <input type="number" id="jumpInput" min="1" placeholder="1">
         <button class="jump-btn" onclick="jumpToPage()">Go</button>
       </div>
-      <button class="nav-arrow" id="btnPrev" onclick="pindahHal(curPage-1)" disabled>‹</button>
+      <button class="nav-arrow" id="btnPrev" onclick="goPrevPage()" disabled>‹</button>
       <span class="page-counter" id="pageCounter">– / –</span>
-      <button class="nav-arrow" id="btnNext" onclick="pindahHal(curPage+1)" disabled>›</button>
+      <button class="nav-arrow" id="btnNext" onclick="goNextPage()" disabled>›</button>
     </div>
   </div>
 
@@ -447,6 +447,15 @@ window.pindahHal = function(page){
   var pg=parseInt(page); if(isNaN(pg)||pg<1||pg>totalPages) return;
   curPage=pg; muatHalaman(pg);
 };
+
+window.goPrevPage = function(){
+  pindahHal(curPage - 1);
+};
+
+window.goNextPage = function(){
+  pindahHal(curPage + 1);
+};
+
 window.jumpToPage = function(){
   var v=parseInt(document.getElementById('jumpInput').value);
   if(!isNaN(v)&&v>=1&&v<=totalPages) pindahHal(v);
