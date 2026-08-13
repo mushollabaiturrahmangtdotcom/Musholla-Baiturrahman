@@ -422,10 +422,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,59,46,0.9
   <div class="game-body" id="utBody"></div>
 </div>
 
-<div class="game-view" id="gUlarTangga">
-  <div class="game-topbar"><div class="gtb-left"><button class="btn-back-game" onclick="keMenu()">← Menu</button><span class="gtb-title">🎲 Ular Tangga Islami</span></div><div class="score-box"><div class="score-val" id="utRound">1</div><div class="score-lbl">Ronde</div></div></div>
-  <div class="game-body" id="utBody"></div>
-</div>
 <div class="feedback" id="feedbackOverlay">
   <div class="feedback-box">
     <div class="fb-icon" id="fbIcon"></div>
@@ -482,7 +478,6 @@ function mulaiGame(g){
   else if(g==='puzzle') initPuzzle();
   else if(g==='tokoh') initTokoh();
   else if(g==='catur') initCatur();
-  else if(g==='ularTangga') initUlarTangga();
   else if(g==='ularTangga') initUlarTangga();
 }
 function keMenu(){
@@ -848,13 +843,6 @@ function doAI(depth){
 /* ══════════════════════════════════════
    GAME 7 — ULAR TANGGA ISLAMI
 ══════════════════════════════════════ */
-
-/* Soal untuk petak bertanda */
-
-
-/* ══════════════════════════════════════════════
-   ULAR TANGGA ISLAMI
-══════════════════════════════════════════════ */
 
 /* ── Data Pertanyaan ── */
 var UT_SOAL = [
@@ -1304,7 +1292,8 @@ function utCellCenter(num) {
   return {x: gridCol*cw, y: gridRow*ch, cw:cw, ch:ch};
 }
 
-/* Place / move a single token to a position instantly (no animation) */
+/* Move a token step-by-step from fromPos to targetPos, following the
+   real dice-roll path (bounces back off 100 if it would overshoot). */
 function utMoveTokenAnimated(playerIdx, fromPos, toPos, onDone) {
   var steps = [];
   if (toPos >= fromPos) {
@@ -1314,8 +1303,25 @@ function utMoveTokenAnimated(playerIdx, fromPos, toPos, onDone) {
     for (var i = fromPos + 1; i <= 100; i++) steps.push(i);
     for (var i = 99; i >= toPos; i--) steps.push(i);
   }
+  utRunTokenSteps(playerIdx, steps, onDone);
+}
 
-  var delay = 200; // ms per step
+/* Move a token step-by-step DIRECTLY between two positions (used for
+   ladders and snakes) — never routes through 100, just walks straight
+   up or down between fromPos and toPos. */
+function utMoveTokenDirect(playerIdx, fromPos, toPos, onDone) {
+  var steps = [];
+  if (toPos >= fromPos) {
+    for (var i = fromPos + 1; i <= toPos; i++) steps.push(i);
+  } else {
+    for (var i = fromPos - 1; i >= toPos; i--) steps.push(i);
+  }
+  utRunTokenSteps(playerIdx, steps, onDone);
+}
+
+/* Shared stepper used by both animation helpers above */
+function utRunTokenSteps(playerIdx, steps, onDone) {
+  var delay = 180; // ms per step
   var tokenId = 'utToken-' + playerIdx;
   var stepIdx = 0;
 
@@ -1338,7 +1344,6 @@ function utMoveTokenAnimated(playerIdx, fromPos, toPos, onDone) {
     if (!wrap) { setTimeout(doStep, delay); return; }
 
     var cell = utCellCenter(pos);
-    var tw = parseFloat(token.style.width) || 20;
 
     // No CSS transition — set directly so we control timing
     token.style.transition = 'none';
@@ -1378,7 +1383,8 @@ function utMovePlayer(steps) {
   // Update panel log immediately (board stays intact)
   renderUlarTangga();
 
-  // Walk token step by step to targetPos
+  // Walk token step by step to targetPos (this is the dice-roll move,
+  // so bounce-off-100 behaviour is correct here)
   utMoveTokenAnimated(pIdx, fromPos, targetPos, function() {
     // Animation done — p.pos is now targetPos (set inside doStep)
 
@@ -1399,7 +1405,8 @@ function utMovePlayer(steps) {
       s.log.push('🪜 TANGGA! '+p.token+' naik ke kotak '+tangga.to+' (+20 poin)');
       renderUlarTangga(); // update panel only
       setTimeout(function() {
-        utMoveTokenAnimated(pIdx, tangga.from, tangga.to, function() {
+        // Direct move up the ladder — no bounce-through-100 logic
+        utMoveTokenDirect(pIdx, tangga.from, tangga.to, function() {
           p.pos = tangga.to;
           p.score += 20;
           renderUlarTangga();
@@ -1416,7 +1423,8 @@ function utMovePlayer(steps) {
       s.log.push('🐍 ULAR! '+p.token+' turun ke kotak '+ular.to);
       renderUlarTangga();
       setTimeout(function() {
-        utMoveTokenAnimated(pIdx, ular.from, ular.to, function() {
+        // Direct move down the snake — no bounce-through-100 logic
+        utMoveTokenDirect(pIdx, ular.from, ular.to, function() {
           p.pos = ular.to;
           renderUlarTangga();
           setTimeout(utNextTurn, 400);
