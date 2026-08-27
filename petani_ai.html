@@ -1,1 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Pak Tani AI - Asisten Digital Petani</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* Scrollbar custom biar rapi */
+  #chatContainer::-webkit-scrollbar {
+    width: 6px;
+  }
+  #chatContainer::-webkit-scrollbar-thumb {
+    background-color: #86efac;
+    border-radius: 10px;
+  }
+  #chatContainer::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
+  /* Animasi titik loading */
+  .dot-flashing {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background-color: #16a34a;
+    color: #16a34a;
+    animation: dotFlashing 1s infinite linear alternate;
+    animation-delay: .5s;
+  }
+  .dot-flashing::before, .dot-flashing::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
+  .dot-flashing::before {
+    left: -13px;
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background-color: #16a34a;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 0s;
+  }
+  .dot-flashing::after {
+    left: 13px;
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background-color: #16a34a;
+    animation: dotFlashing 1s infinite alternate;
+    animation-delay: 1s;
+  }
+  @keyframes dotFlashing {
+    0% { background-color: #16a34a; }
+    50%, 100% { background-color: #bbf7d0; }
+  }
+
+  /* Animasi masuk untuk bubble chat */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-bubble-anim {
+    animation: fadeInUp 0.25s ease-out;
+  }
+
+  /* Supaya textarea tidak melebar aneh di mobile */
+  textarea {
+    -webkit-appearance: none;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-green-50 to-emerald-100 min-h-screen flex flex-col">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="bg-green-700 shadow-md sticky top-0 z-20">
+    <div class="max-w-2xl mx-auto px-4 py-3 flex items-center gap-3">
+      <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-xl flex-shrink-0">
+        🌾
+      </div>
+      <div>
+        <h1 class="text-white font-bold text-lg leading-tight">Pak Tani AI</h1>
+        <p class="text-green-200 text-xs leading-tight">Asisten &amp; Penyuluh Pertanian Digital</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CHAT AREA ==================== -->
+  <main class="flex-1 max-w-2xl w-full mx-auto px-3 py-4 overflow-hidden flex flex-col">
+    <div id="chatContainer" class="flex-1 overflow-y-auto space-y-3 pb-3 px-1">
+      <!-- Pesan sambutan awal -->
+      <div class="flex items-end gap-2 chat-bubble-anim">
+        <div class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center text-sm flex-shrink-0">🌱</div>
+        <div class="bg-white border border-green-200 rounded-2xl rounded-bl-none px-4 py-2.5 shadow-sm max-w-[80%]">
+          <p class="text-gray-800 text-sm">Assalamu'alaikum, Sahabat Petani! 👋 Saya Pak Tani AI, siap bantu soal budidaya, jadwal tanam, atau kalau tanamannya kena masalah. Boleh cerita atau kirim foto daun/tanamannya, Pak/Bu.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PREVIEW GAMBAR ==================== -->
+    <div id="imagePreviewWrapper" class="hidden px-1 pb-2">
+      <div class="relative inline-block">
+        <img id="imagePreview" src="" alt="Preview gambar" class="h-20 w-20 object-cover rounded-lg border-2 border-green-400 shadow">
+        <button id="removeImageBtn" type="button"
+          class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs shadow">
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== INDIKATOR LOADING ==================== -->
+    <div id="loadingIndicator" class="hidden px-1 pb-2">
+      <div class="flex items-center gap-2 bg-white border border-green-200 rounded-2xl rounded-bl-none px-4 py-3 shadow-sm max-w-[80%]">
+        <div class="dot-flashing"></div>
+        <span class="text-xs text-green-700 font-medium">Pak Tani AI sedang menganalisis tanaman...</span>
+      </div>
+    </div>
+
+    <!-- ==================== INPUT AREA ==================== -->
+    <div class="bg-white rounded-2xl shadow-md border border-green-200 p-2 flex items-end gap-2">
+      <!-- Tombol upload foto custom -->
+      <label for="imageInput" class="flex-shrink-0 cursor-pointer w-11 h-11 rounded-xl bg-green-100 hover:bg-green-200 active:scale-95 transition flex items-center justify-center text-green-700 text-xl" title="Kirim foto tanaman">
+        📷
+        <input type="file" id="imageInput" accept="image/*" capture="environment" class="hidden">
+      </label>
+
+      <textarea id="textInput" rows="1"
+        placeholder="Tulis pertanyaan atau keluhan tanaman di sini..."
+        class="flex-1 resize-none max-h-28 border-0 focus:ring-0 focus:outline-none text-sm py-2.5 px-2 text-gray-800 placeholder-gray-400"></textarea>
+
+      <button id="sendBtn" type="button"
+        class="flex-shrink-0 w-11 h-11 rounded-xl bg-green-600 hover:bg-green-700 active:scale-95 transition flex items-center justify-center text-white shadow disabled:opacity-50 disabled:cursor-not-allowed">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+          <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+        </svg>
+      </button>
+    </div>
+    <p class="text-center text-[11px] text-gray-400 mt-2">Pak Tani AI bisa saja keliru. Konsultasikan ke penyuluh pertanian setempat untuk kasus serius.</p>
+  </main>
+
+<script>
+/* ============================================================
+   KONFIGURASI - GANTI API KEY DI BAWAH INI
+============================================================ */
+const GEMINI_API_KEY = "AQ.Ab8RN6LRkW4KBnHfl6vOfIGFmSukpi29PKswpNM8anvJZ4R5Kw";
+const GEMINI_MODEL = "gemini-1.5-flash";
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+
+/* ============================================================
+   SYSTEM INSTRUCTION UNTUK PAK TANI AI
+============================================================ */
+const SYSTEM_INSTRUCTION_TEXT = `Anda adalah 'Pak Tani AI', seorang sistem pakar agronomi, penyuluh lapangan senior, dan asisten digital untuk petani Indonesia. 
+TUGAS UTAMA:
+1. PERCAKAPAN: Jawab pertanyaan petani seputar budidaya, jadwal tanam, kendala cuaca, dan tips pertanian dengan bahasa Indonesia yang sederhana, ramah, praktis, dan hindari istilah ilmiah rumit.
+2. SISTEM PAKAR (DIAGNOSIS): Jika petani mengeluhkan gejala tanaman (teks atau foto), lakukan diagnosis sistem pakar dengan format terstruktur:
+   - Nama Penyakit/Hama:
+   - Penyebab Utama:
+   - Solusi Kimiawi (jika darurat):
+   - Solusi Organik/Alami (sangat disarankan):
+   - Langkah Pencegahan ke Depan:
+3. ANALISIS MODE FOTO: Jika menerima input gambar/foto (daun, batang, buah, atau hama), analisis kondisi visual objek tersebut secara teliti. Deteksi tanda-tanda kekurangan nutrisi (misal daun menguning), serangan jamur, ulat, atau bakteri, lalu berikan rekomendasi penanganan langsung.
+PRINSIP JAWABAN:
+- Selalu prioritaskan bahan dan pupuk yang mudah didapatkan oleh petani lokal di pasar atau toko pertanian terdekat.
+- Jika data kurang jelas, tanyakan detail tambahan (misal: 'Apakah ada bintik hitam di bawah daunnya, Pak/Bu?').
+- Tetap ramah dan gunakan sapaan seperti 'Pak', 'Bu', atau 'Sahabat Petani'.`;
+
+/* ============================================================
+   STATE APLIKASI
+============================================================ */
+let selectedImageBase64 = null; // Base64 murni (tanpa prefix data:...)
+let selectedImageMimeType = null;
+let conversationHistory = []; // Menyimpan riwayat percakapan untuk konteks (format Gemini "contents")
+let isSending = false;
+
+/* ============================================================
+   REFERENSI ELEMEN DOM
+============================================================ */
+const chatContainer = document.getElementById('chatContainer');
+const textInput = document.getElementById('textInput');
+const sendBtn = document.getElementById('sendBtn');
+const imageInput = document.getElementById('imageInput');
+const imagePreviewWrapper = document.getElementById('imagePreviewWrapper');
+const imagePreview = document.getElementById('imagePreview');
+const removeImageBtn = document.getElementById('removeImageBtn');
+const loadingIndicator = document.getElementById('loadingIndicator');
+
+/* ============================================================
+   AUTO-RESIZE TEXTAREA
+============================================================ */
+textInput.addEventListener('input', () => {
+  textInput.style.height = 'auto';
+  textInput.style.height = Math.min(textInput.scrollHeight, 112) + 'px';
+});
+
+/* Kirim pesan dengan tombol Enter (Shift+Enter = baris baru) */
+textInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    handleSendMessage();
+  }
+});
+
+sendBtn.addEventListener('click', handleSendMessage);
+
+/* ============================================================
+   HANDLE PEMILIHAN GAMBAR -> KONVERSI KE BASE64
+============================================================ */
+imageInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith('image/')) {
+    alert('Mohon pilih file gambar (JPG/PNG), Pak/Bu.');
+    imageInput.value = '';
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    const dataUrl = event.target.result; // format: "data:image/jpeg;base64,XXXXX"
+    const base64Pure = dataUrl.split(',')[1]; // ambil bagian base64 murni saja
+
+    selectedImageBase64 = base64Pure;
+    selectedImageMimeType = file.type;
+
+    // Tampilkan preview
+    imagePreview.src = dataUrl;
+    imagePreviewWrapper.classList.remove('hidden');
+  };
+  reader.onerror = function () {
+    alert('Gagal membaca gambar. Silakan coba lagi, Pak/Bu.');
+  };
+  reader.readAsDataURL(file);
+});
+
+/* Tombol hapus preview gambar */
+removeImageBtn.addEventListener('click', () => {
+  clearSelectedImage();
+});
+
+function clearSelectedImage() {
+  selectedImageBase64 = null;
+  selectedImageMimeType = null;
+  imageInput.value = '';
+  imagePreview.src = '';
+  imagePreviewWrapper.classList.add('hidden');
+}
+
+/* ============================================================
+   FUNGSI UTAMA: KIRIM PESAN KE GEMINI API
+============================================================ */
+async function handleSendMessage() {
+  const userText = textInput.value.trim();
+
+  if (isSending) return;
+  if (!userText && !selectedImageBase64) {
+    return; // tidak ada apa-apa untuk dikirim
+  }
+
+  if (GEMINI_API_KEY === "ISI_API_KEY_DI_SINI" || !GEMINI_API_KEY) {
+    appendBotBubble('⚠️ API Key Gemini belum diisi. Silakan isi variabel GEMINI_API_KEY di bagian atas kode terlebih dahulu, Pak/Bu.');
+    return;
+  }
+
+  // Bangun bagian "parts" untuk pesan user (bisa teks saja, foto saja, atau keduanya)
+  const userParts = [];
+  if (userText) {
+    userParts.push({ text: userText });
+  }
+  if (selectedImageBase64) {
+    userParts.push({
+      inlineData: {
+        mimeType: selectedImageMimeType,
+        data: selectedImageBase64
+      }
+    });
+  }
+
+  // Tampilkan bubble user di UI
+  appendUserBubble(userText, selectedImageBase64 ? imagePreview.src : null);
+
+  // Simpan ke riwayat percakapan (format contents Gemini)
+  conversationHistory.push({
+    role: 'user',
+    parts: userParts
+  });
+
+  // Reset input
+  textInput.value = '';
+  textInput.style.height = 'auto';
+  clearSelectedImage();
+
+  // Tampilkan loading
+  setLoading(true);
+
+  try {
+    const response = await fetch(GEMINI_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        contents: conversationHistory,
+        systemInstruction: {
+          parts: [
+            { text: SYSTEM_INSTRUCTION_TEXT }
+          ]
+        },
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 1024
+        }
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      const errorMsg = errorData?.error?.message || `Kode error ${response.status}`;
+      throw new Error(errorMsg);
+    }
+
+    const data = await response.json();
+
+    const candidate = data?.candidates?.[0];
+    const botReplyText = candidate?.content?.parts?.map(p => p.text || '').join('') || '';
+
+    if (!botReplyText) {
+      // Bisa jadi diblokir oleh safety filter, dsb.
+      const finishReason = candidate?.finishReason || 'TIDAK DIKETAHUI';
+      appendBotBubble(`Maaf, Pak/Bu, Pak Tani AI belum bisa memberi jawaban (alasan: ${finishReason}). Coba ulangi pertanyaannya dengan cara lain, ya.`);
+    } else {
+      appendBotBubble(botReplyText);
+      // Simpan balasan model ke riwayat supaya percakapan lanjutan tetap nyambung
+      conversationHistory.push({
+        role: 'model',
+        parts: [{ text: botReplyText }]
+      });
+    }
+
+  } catch (err) {
+    console.error('Gemini API Error:', err);
+    appendBotBubble(`⚠️ Waduh, terjadi masalah saat menghubungi Pak Tani AI: ${err.message}. Coba periksa API Key atau koneksi internet Bapak/Ibu, lalu coba lagi.`);
+  } finally {
+    setLoading(false);
+  }
+}
+
+/* ============================================================
+   FUNGSI TAMPILAN CHAT BUBBLE
+============================================================ */
+function appendUserBubble(text, imageDataUrl) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'flex items-end justify-end gap-2 chat-bubble-anim';
+
+  let imageHtml = '';
+  if (imageDataUrl) {
+    imageHtml = `<img src="${imageDataUrl}" class="rounded-lg mb-1.5 max-h-40 w-auto object-cover border border-green-300">`;
+  }
+
+  wrapper.innerHTML = `
+    <div class="bg-green-600 text-white rounded-2xl rounded-br-none px-4 py-2.5 shadow-sm max-w-[80%]">
+      ${imageHtml}
+      ${text ? `<p class="text-sm whitespace-pre-wrap">${escapeHtml(text)}</p>` : ''}
+    </div>
+    <div class="w-8 h-8 rounded-full bg-emerald-800 text-white flex items-center justify-center text-sm flex-shrink-0">🧑‍🌾</div>
+  `;
+
+  chatContainer.appendChild(wrapper);
+  scrollToBottom();
+}
+
+function appendBotBubble(text) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'flex items-end gap-2 chat-bubble-anim';
+
+  wrapper.innerHTML = `
+    <div class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center text-sm flex-shrink-0">🌱</div>
+    <div class="bg-white border border-green-200 rounded-2xl rounded-bl-none px-4 py-2.5 shadow-sm max-w-[80%]">
+      <p class="text-gray-800 text-sm whitespace-pre-wrap">${escapeHtml(text)}</p>
+    </div>
+  `;
+
+  chatContainer.appendChild(wrapper);
+  scrollToBottom();
+}
+
+function setLoading(state) {
+  isSending = state;
+  sendBtn.disabled = state;
+  loadingIndicator.classList.toggle('hidden', !state);
+  if (state) scrollToBottom();
+}
+
+function scrollToBottom() {
+  requestAnimationFrame(() => {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  });
+}
+
+/* Mencegah XSS sederhana saat menampilkan teks pengguna/model */
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>
